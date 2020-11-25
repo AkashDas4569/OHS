@@ -23,7 +23,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'status/medical-record-book',
+    path: 'status/medical-record-book/:eId/:eTestVisitId',
     component:  MedicalRecordBookComponent,
     data: {
       title: 'Employee Medical Record Book'

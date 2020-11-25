@@ -8,6 +8,7 @@ $black: #000000;
 // $red: #ff4747;
 $red:#eb1a1a;
 $yellow: #FFBB00;
+$orange: #ffab73;
 $cyan: #2199fa;
 $blue: #8cdbf3;
 $darkgrey: #aaaaaa;
@@ -41,6 +42,7 @@ $theme-colors: map-merge(
     'blue': $blue,
     'primary-blue': $primary-blue,
     'yellow': $yellow,
+    'orange': $orange,
     'darkgrey': $darkgrey,
     'verydarkgrey': $verydarkgrey,
     'verydarkblue': $verydarkblue,

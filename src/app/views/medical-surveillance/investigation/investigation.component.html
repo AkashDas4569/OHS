@@ -1,26 +1,69 @@
 <section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
     <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-2 mt-2 bg-white shadow-sm rounded w-100">
+                    <div class="row">
+                        <div class="col-xl-12 col-12">
+                            <div
+                                class="pt-3 px-3 pb-1 mb-2 bg-primary-blue text-white text-start rounded-top px-2 py-1 flex-row flex-wrap">
+                                <p class="fw600 fs16 mr-4 text-uppercase">Employee Information</p>
+                            </div>
 
+                            <div class="row px-3 pb-2">
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Employee name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForinv.EmployeeName" placeholder="Enter Employee Name" type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForinv.ICNUmber" placeholder="Enter MyKad/IC No." type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Company Name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForinv.CompanyName" placeholder="Enter Company Name" type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="investigationForm col-xl-12 col-12 p-0" [formGroup]="investigationForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="row pt-3">
             <div class="col-xl-12 col-12">
                 <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
                     <div class="bg-primary-blue text-white rounded-top px-3 py-2 text-center flex-row flex-wrap">
                         <h6 class="mr-3 pt-2 text-uppercase">
                             <span
-                                class="pl-1 fs16 fw600 text-normal">Baseline/Preplacement/Periodic/Post-Employment</span>
+                                class="pl-1 fs16 fw600 text-normal">INVESTIGATION TO BE DONE /DONE Baseline/Preplacement/Periodic/Post-Employment</span>
                         </h6>
                     </div>
 
-                    <form class="investigationForm col-xl-12 col-12 p-0" (ngSubmit)="onSubmit()" autocomplete="off">
                         <div class="table-responsive">
                             <table class="table table-sm table-borderless px-2 text-left text-nowrap text-uppercase">
                                 <thead class="bg-color6">
                                     <tr>
-                                        <th scope="col" class="pl-3 text-center text-dark" style="min-width: 70px;">
-                                            Investigation</th>
-                                        <th scope="col" class="pl-1" style="min-width: 20px;"></th>
-                                        <th scope="col" class="pl-1" style="min-width: 20px;"></th>
-                                        <th scope="col" class="pl-3 text-left text-dark" style="min-width: 200px;">Result</th>
+                                        <th scope="col" class="pl-3 text-center fw700 text-dark" style="min-width: 60px;">Investigation</th>
+                                        <th scope="col" class="pl-1 text-dark" style="min-width: 20px;"></th>
+                                        <th scope="col" class="pl-1 text-dark" style="min-width: 20px;"></th>
+                                        <th scope="col" class="pl-3 text-left fw700 text-dark" style="min-width: 200px;">Result</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -30,35 +73,31 @@
                                                 Urine
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="p-0">
                                             <td class="pl-3">
                                                 <div>
                                                     <mat-label class="fw500">Feme</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="FEME">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
                                             <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="FemeSpecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('FemeSpecify')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['FemeSpecify'], 'errorMsg').message">
+                                                        {{ errorState(formControls['FemeSpecify'], 'errorMsg').message }}
+                                                    </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
@@ -74,29 +113,25 @@
                                                     <mat-label class="fw500">HB</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="Hb">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-2 text-center">
+                                            <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="HbSpecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('HbSpecify')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['HbSpecify'], 'errorMsg').message">
+                                                        {{ errorState(formControls['HbSpecify'], 'errorMsg').message }}
+                                                    </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
@@ -106,29 +141,25 @@
                                                     <mat-label class="fw500">BUSE</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="BUSE">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
                                             <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="BUSEspecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('BUSEspecify')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['BUSEspecify'], 'errorMsg').message">
+                                                    {{ errorState(formControls['BUSEspecify'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
@@ -138,29 +169,25 @@
                                                     <mat-label class="fw500">Renal Profile</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="RenalProfile">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
                                             <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="RenalProfileSpecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('RenalProfileSpecify')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['RenalProfileSpecify'], 'errorMsg').message">
+                                                    {{ errorState(formControls['RenalProfileSpecify'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
@@ -170,61 +197,53 @@
                                                     <mat-label class="fw500">Liver Function Test</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="LiverFn">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
                                             <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="LiverFnSpecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('LiverFnSpecify')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['LiverFnSpecify'], 'errorMsg').message">
+                                                    {{ errorState(formControls['LiverFnSpecify'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
                                         <tr class="p-0">
                                             <td class="pl-3">
                                                 <div>
-                                                    <mat-label class="fw500">Others (Specify)</mat-label>
+                                                    <mat-label class="fw700">Others (Specify)</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-2 text-left">
+                                            <!-- <td colspan="2" class="pl-1"> -->
+                                                <!-- <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary">
+                                                    <mat-radio-button class="ml-1 mr-3" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-1 mr-3" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group> -->
+                                            <!-- </td> -->
+                                            <td colspan="4" class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="OtherSpecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('OtherSpecify')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['OtherSpecify'], 'errorMsg').message">
+                                                    {{ errorState(formControls['OtherSpecify'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
@@ -234,29 +253,25 @@
                                                     <mat-label class="fw500">Sputum for AFB</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="Sputum">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
                                             <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="SputumSpecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('SputumSpecify')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['SputumSpecify'], 'errorMsg').message">
+                                                    {{ errorState(formControls['SputumSpecify'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
@@ -266,29 +281,25 @@
                                                     <mat-label class="fw500">CXR</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="CXR">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
                                             <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="CXRSpecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('CXRSpecify')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['CXRSpecify'], 'errorMsg').message">
+                                                    {{ errorState(formControls['CXRSpecify'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
@@ -304,29 +315,25 @@
                                                     <mat-label class="fw500">FVC</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="FVC">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
                                             <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="FVCspecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('FVCspecify')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['FVCspecify'], 'errorMsg').message">
+                                                    {{ errorState(formControls['FVCspecify'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
@@ -336,29 +343,25 @@
                                                     <mat-label class="fw500">FEV1</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="FEV1">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
                                             <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="FEV1specify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('FEV1specify')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['FEV1specify'], 'errorMsg').message">
+                                                    {{ errorState(formControls['FEV1specify'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
@@ -368,125 +371,109 @@
                                                     <mat-label class="fw500">FEV1/FVC</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="FEV1_FVC">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
                                             <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="FEV1_FVCspecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('FEV1_FVCspecify')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['FEV1_FVCspecify'], 'errorMsg').message">
+                                                    {{ errorState(formControls['FEV1_FVCspecify'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
                                         <tr class="p-0">
                                             <td class="pl-3">
                                                 <div>
-                                                    <mat-label class="fw500">Audiogram</mat-label>
+                                                    <mat-label class="fw500">Audigram</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
+                                            <td colspan="2" class="pl-1">
+                                                <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary" formControlName="Audigram">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group>
                                             </td>
                                             <td class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="AudigramSpecify">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('AudigramSpecify')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['AudigramSpecify'], 'errorMsg').message">
+                                                    {{ errorState(formControls['AudigramSpecify'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
                                         <tr class="p-0">
                                             <td class="pl-3">
                                                 <div>
-                                                    <mat-label class="fw500">Immunisation Status</mat-label>
+                                                    <mat-label class="fw700">Immunisation Status</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-2 text-left">
+                                            <!-- <td colspan="2" class="pl-1"> -->
+                                                <!-- <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group> -->
+                                            <!-- </td> -->
+                                            <td colspan="4" class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="Immunization">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('Immunization')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['Immunization'], 'errorMsg').message">
+                                                    {{ errorState(formControls['Immunization'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
                                         <tr class="p-0">
                                             <td class="pl-3">
                                                 <div>
-                                                    <mat-label class="fw500">Other (Specify)</mat-label>
+                                                    <mat-label class="fw700">Other (Specify)</mat-label>
                                                 </div>
                                             </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Normal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-1">
-                                                <div>
-                                                    <mat-label class="fw500">Abnormal
-                                                        <mat-radio-button class="ml-1" value="1">
-                                                        </mat-radio-button>
-                                                    </mat-label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-2 text-left">
+                                            <!-- <td colspan="2" class="pl-1"> -->
+                                                <!-- <mat-radio-group class="fw500" aria-label="Select an option"
+                                                    color="primary">
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=true>Normal</mat-radio-button>
+                                                    <mat-radio-button class="ml-3 mr-4" [value]=false>Abnormal</mat-radio-button>
+                                                </mat-radio-group> -->
+                                            <!-- </td> -->
+                                            <td colspan="4" class="pl-2 text-left">
                                                 <mat-form-field class="w-100" floatLabel="never">
                                                     <mat-label class="fw600"></mat-label>
-                                                    <input matInput type="text" autocomplete="off">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                    {{ errorState(formControls['patientName'], 'patientName').message }}
-                                  </mat-error> -->
+                                                    <input matInput type="text" autocomplete="off" formControlName="Other">
+                                                    <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                    (click)="clearInput('Other')">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['Other'], 'errorMsg').message">
+                                                    {{ errorState(formControls['Other'], 'errorMsg').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </td>
                                         </tr>
@@ -497,13 +484,19 @@
 
                         <div class="col-sm-12 col-12 py-2 d-flex align-items-center justify-content-center">
                             <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
-                                type="submit">Save</button>
-                            <button type="button"
-                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill">Next</button>
+                                type="submit">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
+                            <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
+                                [routerLink]="['/medical-surveillance', 'status', 'exam-outcome-record', employeeId, employeeTestVisitId]"
+                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                            <button type="button" *ngIf="formControls['Id'].value > 0" [disabled]="!updateNext"
+                                [routerLink]="['/medical-surveillance', 'status', 'exam-outcome-record', employeeId, employeeTestVisitId]"
+                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                            <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
+                                [routerLink]="['/medical-surveillance/list']">Close</button>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </section>

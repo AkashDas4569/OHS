@@ -87,19 +87,19 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
         break;
       }
       case EmployeeMedSurQueueStatus.PhysicalExam: {
-         this.router.navigate(['/medical-surveillance', 'status', 'physical-exam']);
+         this.router.navigate(['/medical-surveillance', 'status', 'physical-exam', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       case EmployeeMedSurQueueStatus.InvestigationEmployeeSign: {
-         this.router.navigate(['/medical-surveillance', 'status', 'investigation']);
+         this.router.navigate(['/medical-surveillance', 'status', 'investigation', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       case EmployeeMedSurQueueStatus.ExamOutcomeRecord: {
-         this.router.navigate(['/medical-surveillance', 'status', 'exam-outcome-record']);
+         this.router.navigate(['/medical-surveillance', 'status', 'exam-outcome-record', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       case EmployeeMedSurQueueStatus.MedicalRecordBook: {
-         this.router.navigate(['/employee', 'status', 'medical-record-book']);
+         this.router.navigate(['/employee', 'status', 'medical-record-book', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       case EmployeeMedSurQueueStatus.FitnessCertificate: {

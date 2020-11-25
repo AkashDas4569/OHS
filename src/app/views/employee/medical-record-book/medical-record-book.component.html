@@ -12,15 +12,12 @@
                                 </div>
 
                                 <div class="row px-3 py-1">
-                                    <div
+                                    <!-- <div
                                         class="col-md-3 col-xs-12 align-items-center justify-content-center pl-4" style="min-width: 100px">
                                         <div
                                             class="mt-2 mb-1 p-square py-2 bg-white border shadow-sm rounded d-block text-center">
                                         <input type="file" id="picUpload" #imageFileUpload (change)="imageFileSelected($event)" hidden accept="image/*">
                                             <div class="mx-auto pt-1" type="button" matSuffix (click)="imageFileUpload.click()">
-                                                <!-- <i class="fa" aria-hidden="true">
-                                                    <img class="icon-width" src="assets/img/plus-icon.png" alt=""> 
-                                                </i> -->
                                                 <i class="fa" aria-hidden="true">
                                                     <img class="icon-width" [class.image-width]="selectedFile" [src]="imageUrl" *ngIf="imageUrl" alt=""> 
                                                 </i>
@@ -29,7 +26,7 @@
                                         <p class="fs14 pl-4 fw700 text-start">
                                             <span>{{selectedName}}</span>
                                         </p>
-                                    </div>
+                                    </div> -->
 
                                     <div class="col-md-9 col-xs-12 text-center" style="min-width: 100px">
                                         <div class="md-form mt-2 pt-3 pl-5">
@@ -58,7 +55,7 @@
 
                     <div class="col-xl-12 col-12 p-0" [collapse]="isCollapsed" [isAnimated]="true" id="collapseBasic">
                         <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap bg-light shadow-sm rounded">
-                            <div class="table-responsive mb-0">
+                            <!-- <div class="table-responsive mb-0">
                                 <table class="table table-sm">
                                     <thead class="bg-color2 text-dark">
                                       <tr>
@@ -72,25 +69,25 @@
                                         <ng-container>
                                             <tr class="border-bottom">
                                                 <td class="border-right pl-3 text-left">
-                                                    <!-- {{list.PanelInsName}} -->11/10/1995
+                                                    11/10/1995
                                                   </td>
                                                   <td class="border-right pl-3 text-left">
-                                                    <!-- {{list.PanelInsName}} -->Blood Level 50 mg/dl
+                                                   Blood Level 50 mg/dl
                                                   </td>
                                                   <td class="border-right pl-3 text-left">
-                                                    <!-- {{list.PanelInsName}} -->
+                                                    
                                                   </td>
                                                   <td class="border-right pl-3 text-left">
-                                                    <!-- {{list.PanelInsName}} -->Dr. ……………………<br> JKKP IH 127/171-1()
+                                                   Dr. ……………………<br> JKKP IH 127/171-1()
                                                   </td>
                                             </tr>
                                         </ng-container>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> -->
 
-                            <!-- <div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 p-0">
+                            <!-- <div> -->
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 p-0">
                                     <div class="heading col-xl-12 col-12 px-3 py-2 bg-primary-blue">
                                         <p class="text-center m-0 text-white fs14 fw500 w-space-nowrap">Date of Medical Examination</p>
                                     </div>
@@ -102,7 +99,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 p-0">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 p-0">
                                     <div class="heading col-xl-12 col-12 px-3 py-2 bg-primary-blue">
                                         <p class="text-center m-0 text-white fs14 fw500 w-space-nowrap">Result of Biological Monitoring</p>
                                     </div>
@@ -113,7 +110,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 p-0">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 p-0">
                                     <div class="heading col-xl-12 col-12 px-3 py-2 bg-primary-blue">
                                         <p class="text-center m-0 text-white fs14 fw500 w-space-nowrap">Fitness To Work (Fit, Further Test Needed)</p>
                                     </div>
@@ -123,7 +120,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 p-0">
+                                <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 p-0">
                                     <div class="heading col-xl-12 col-12 px-3 py-2 bg-primary-blue">
                                         <p class="text-center m-0 text-white fs14 fw500 w-space-nowrap">Name of OHD, DOSH Reg. No.</p>
                                     </div>
@@ -134,8 +131,8 @@
                                                 rows="10">Dr. …………………… JKKP IH 127/171-1()</textarea>
                                         </div>
                                     </div>
-                                </div>
-                            </div> -->
+                                </div> -->
+                            <!-- </div> -->
                         </div>
                     </div>
 
@@ -144,11 +141,17 @@
                 <div class="col-xl-12 col-12 text-center mt-3">
                     <button type="submit"
                         class="btn btn-success min-width btn-sm fs14 fw500 btn-rounded mr-2">Save</button>
-                    <button type="button"
-                        class="btn btn-info btn-sm min-width fs14 fw500 btn-rounded mr-2">Next</button>
-                    <button type="button" class="btn btn-red min-width btn-sm fs14 fw500 btn-rounded">
+                    <!-- <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
+                        [routerLink]="['/medical-surveillance', 'status', 'physical-exam', employeeId, employeeTestVisitId]"
+                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Checkout</button>
+                    <button type="button" *ngIf="formControls['Id'].value > 0" [disabled]="!updateNext"
+                        [routerLink]="['/medical-surveillance', 'status', 'physical-exam', employeeId, employeeTestVisitId]"
+                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Checkout</button> -->
+                    <!-- <button type="button" class="btn btn-red min-width btn-sm fs14 fw500 btn-rounded">
                         <i class="fa fa-print mr-2"></i> Print
-                    </button>
+                    </button> -->
+                    <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
+                                [routerLink]="['/medical-surveillance/list']">Close</button>
                 </div>
             </div>
         </form>

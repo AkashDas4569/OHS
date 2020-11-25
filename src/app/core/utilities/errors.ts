@@ -522,11 +522,13 @@ export const Errors: ErrorsInterface = {
   ],
   BPSystolic: [
     { type: 'required', message: 'BPSystolic is required.' },
-    { type: 'pattern', message: 'Only numbers are allowed.' }
+    { type: 'pattern', message: 'Only numbers are allowed.' },
+    { type: 'maxlength', message: 'Maximum BPSystolic can be 3 digits.' }
   ],
   BPDiastolic: [
     { type: 'required', message: 'BPDiastolic is required.' },
-    { type: 'pattern', message: 'Only numbers are allowed.' }
+    { type: 'pattern', message: 'Only numbers are allowed.' },
+    { type: 'maxlength', message: 'Maximum BPDiastolic can be 3 digits.' }
   ],
   BPAbnormal: [
     { type: 'required', message: 'BPAbnormal is required.' }
@@ -538,7 +540,8 @@ export const Errors: ErrorsInterface = {
     { type: 'pattern', message: 'Only numbers are allowed.' }
   ],
   Pulse: [
-    { type: 'pattern', message: 'Only numbers are allowed.' }
+    { type: 'pattern', message: 'Only numbers are allowed.' },
+    { type: 'maxlength', message: 'Maximum Pulse can be 3 digits.' }
   ],
   Oxygen: [
     { type: 'pattern', message: 'Only numbers are allowed.' },

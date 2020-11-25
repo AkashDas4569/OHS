@@ -125,5 +125,37 @@ export class MedicalSurveillanceService {
                 catchError(this.handleError('addEditChemicalHistory'))
             );
     }
+    getPhysicalExamDetails(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/GetMSPhysicalExam`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('getPhysicalExamDetails'))
+            );
+    }
+    addEditPhysicalExam(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/AddEditMSPhysicalExam`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('addEditPhysicalExam'))
+            );
+    }
+    getInvestigationDetails(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/GetLabInvestigation`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('getInvestigationDetails'))
+            );
+    }
+    addEditInvestigation(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/AddEditLabInvestigation`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('addEditInvestigation'))
+            );
+    }
  
 }

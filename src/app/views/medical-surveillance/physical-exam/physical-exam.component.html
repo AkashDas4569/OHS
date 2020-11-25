@@ -1,13 +1,57 @@
 <section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
     <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-2 mt-2 bg-white shadow-sm rounded w-100">
+                    <div class="row">
+                        <div class="col-xl-12 col-12">
+                            <div
+                                class="pt-3 px-3 pb-1 mb-2 bg-primary-blue text-white text-start rounded-top px-2 py-1 flex-row flex-wrap">
+                                <p class="fw600 fs16 mr-4 text-uppercase">Employee Information</p>
+                            </div>
 
+                            <div class="row px-3 pb-2">
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Employee name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForPE.EmployeeName" placeholder="Enter Employee Name" type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForPE.ICNUmber" placeholder="Enter MyKad/IC No." type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Company Name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForPE.CompanyName" placeholder="Enter Company Name" type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="physical-ExamForm col-xl-12 col-12 p-0" [formGroup]="physicalExamForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="row pt-3">
-
-            <div class="col-xl-12 col-12 pt-1 pb-4 pl-4">
+            <!-- <div class="col-xl-12 col-12 pt-1 pb-4 pl-4">
                 <p class="fw500 text-uppercase"> The Employer must present the Chemical Health Risk Assessment Report to
                     the OHD who<br>
                     will analyse it before conducting Medical Examination</p>
-            </div>
+            </div> -->
 
             <div class="col-xl-12 col-12">
                 <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
@@ -17,7 +61,6 @@
                         </h6>
                     </div>
 
-                    <form class="physical-ExamForm col-xl-12 col-12 p-0" (ngSubmit)="onSubmit()" autocomplete="off">
                         <div class="row">
                             <div class="col-xl-12 col-12">
                                 <!-- <div class="bg-color1 rounded-top px-3 pt-1 pb-1 d-flex justify-content-start flex-row flex-wrap"
@@ -33,89 +76,88 @@
                                 <!-- <div [collapse]="isCollapsedPerson"> -->
                                 <div>
                                     <div class="row pt-2 px-3">
-                                        <div class="col-md-4 col-12 p-2">
+                                        <div class="col-md-2 col-12 p-2">
                                             <div class="bg-light p-2 rounded d-flex">
                                                 <i class="fa" aria-hidden="true"><img src="assets/img/height.png"
                                                         alt=""></i>
-                                                <mat-form-field class="w-100">
+                                                <mat-form-field class="w-100 pb-3">
                                                     <mat-label class="fw600">Height<span class="text-red ml-1">*</span>
                                                     </mat-label>
-                                                    <input autocomplete="off" matInput placeholder="000" type="text">
+                                                    <input autocomplete="off" matInput formControlName="Height" placeholder="000" type="text" (change)="calculateEmployeeBmi()">
                                                     <span matSuffix>cm</span>
-                                                    <!-- <mat-error *ngIf="errorState(vitalSignsGroup.controls['Height'], 'Height').message">
-                                                  {{ errorState(vitalSignsGroup.controls['Height'], 'Height').message }}
-                                                </mat-error> -->
+                                                    <mat-error *ngIf="errorState(formControls['Height'], 'Height').message">
+                                                  {{ errorState(formControls['Height'], 'Height').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 col-12 p-2">
+                                        <div class="col-md-2 col-12 p-2">
                                             <div class="bg-light p-2 rounded d-flex">
                                                 <i class="fa" aria-hidden="true"><img src="assets/img/weight-scale.png"
                                                         alt=""></i>
-                                                <mat-form-field class="w-100">
+                                                <mat-form-field class="w-100 pb-3">
                                                     <mat-label class="fw600">Weight<span class="text-red ml-1">*</span>
                                                     </mat-label>
-                                                    <input autocomplete="off" matInput placeholder="00" type="text">
+                                                    <input autocomplete="off" matInput formControlName="Weight" placeholder="00" type="text" (change)="calculateEmployeeBmi()">
                                                     <span matSuffix>kg</span>
-                                                    <!-- <mat-error *ngIf="errorState(vitalSignsGroup.controls['Height'], 'Height').message">
-                                                  {{ errorState(vitalSignsGroup.controls['Height'], 'Height').message }}
-                                                </mat-error> -->
+                                                    <mat-error *ngIf="errorState(formControls['Weight'], 'Weight').message">
+                                                  {{ errorState(formControls['Weight'], 'Weight').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 col-12 p-2">
+                                        <div class="col-md-3 col-12 p-2">
                                             <div class="bg-color6 p-2 rounded d-flex">
                                                 <i class="fa" aria-hidden="true"><img src="assets/img/weight.png"
                                                         alt=""></i>
-                                                <mat-form-field class="w-100">
+                                                <mat-form-field class="w-100 pb-3">
                                                     <mat-label class="fw600">BMI<span class="text-red ml-1">*</span>
                                                     </mat-label>
-                                                    <input autocomplete="off" matInput placeholder="00.0" type="text">
-                                                    <!-- <span matSuffix class="px-2 py-1 brr4 fs14 fw500 text-white" [ngClass]="bmiClassName" *ngIf="bmiText">{{bmiText}}</span>
-                                                <mat-error *ngIf="errorState(vitalSignsGroup.controls['BMI'], 'BMI').message">
-                                                  {{ errorState(vitalSignsGroup.controls['BMI'], 'BMI').message }}
-                                                </mat-error> -->
+                                                    <input autocomplete="off" matInput formControlName="BMI" placeholder="00.0" type="text" [readonly]="(formControls['Height'].value && formControls['Weight'].value)">
+                                                    <span matSuffix class="px-2 py-1 brr4 fs14 fw500 text-white" [ngClass]="bmiClassName" *ngIf="bmiText">{{bmiText}}</span>
+                                                <mat-error *ngIf="errorState(formControls['BMI'], 'BMI').message">
+                                                  {{ errorState(formControls['BMI'], 'BMI').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 col-12 p-2">
+                                        <div class="col-md-3 col-12 p-2">
                                             <div class="bg-light p-2 rounded d-flex">
                                                 <i class="fa" aria-hidden="true"><img src="assets/img/blood-prssure.png"
                                                         alt=""></i>
                                                 <div class="flex-grow-1">
-                                                    <mat-form-field class="w-25" floatLabel="always">
+                                                    <mat-form-field class="w-25 pb-3" floatLabel="always">
                                                         <mat-label class="fw600">BP<span class="text-red ml-1">*</span>
                                                         </mat-label>
                                                         <input autocomplete="off" matInput placeholder="000" type="text"
-                                                            size="3">
+                                                            size="3" formControlName="BPSys" (change)="calculateBloodPressure()">
                                                         <span matSuffix class="mx-2 ml-2 fw500">/</span>
-                                                        <!-- <span matSuffix class="px-2 py-1 brr4 fs14 fw500 text-white" [ngClass]="bloodPsrClass" *ngIf="bloodPsrText">{{bloodPsrText}}</span> -->
-                                                        <!-- <mat-error *ngIf="errorState(vitalSignsGroup.controls['BPSystolic'], 'BPSystolic').message">
-                                                    {{ errorState(vitalSignsGroup.controls['BPSystolic'], 'BPSystolic').message }}
-                                                  </mat-error> -->
+                                                        <mat-error *ngIf="errorState(formControls['BPSys'], 'BPSystolic').message">
+                                                    {{ errorState(formControls['BPSys'], 'BPSystolic').message }}
+                                                  </mat-error>
                                                     </mat-form-field>
-                                                    <mat-form-field class="w-75 no-label" floatLabel="never">
+                                                    <mat-form-field class="w-75 no-label pb-2" floatLabel="never">
                                                         <!-- <mat-label class="fw500">000<span class="text-red ml-1">*</span></mat-label> -->
                                                         <input autocomplete="off" matInput placeholder="000" type="text"
-                                                            size="3">
-                                                        <!-- <span matSuffix class="px-2 py-1 brr4 fs14 fw500 text-white" [ngClass]="bloodPsrClass" *ngIf="bloodPsrText">{{bloodPsrText}}</span>
-                                                  <mat-error *ngIf="errorState(vitalSignsGroup.controls['BPDiastolic'], 'BPDiastolic').message">
-                                                    {{ errorState(vitalSignsGroup.controls['BPDiastolic'], 'BPDiastolic').message }}
-                                                  </mat-error> -->
+                                                            size="3" formControlName="BPDias" (change)="calculateBloodPressure()">
+                                                        <span matSuffix class="px-2 py-1 brr4 fs14 fw500 text-white" [ngClass]="bloodPsrClass" *ngIf="bloodPsrText">{{bloodPsrText}}</span>
+                                                  <mat-error *ngIf="errorState(formControls['BPDias'], 'BPDiastolic').message">
+                                                    {{ errorState(formControls['BPDias'], 'BPDiastolic').message }}
+                                                  </mat-error>
                                                     </mat-form-field>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 col-12 p-2">
+                                        <div class="col-md-2 col-12 p-2">
                                             <div class="bg-light p-2 rounded d-flex">
                                                 <i class="fa" aria-hidden="true"><img src="assets/img/cardiogram.png"
                                                         alt=""></i>
-                                                <mat-form-field class="w-100">
+                                                <mat-form-field class="w-100 pb-3">
                                                     <mat-label class="fw600">Pulse</mat-label>
-                                                    <input autocomplete="off" matInput placeholder="00" type="text">
-                                                    <!-- <mat-error *ngIf="errorState(vitalSignsGroup.controls['PTName'], 'PTName').message">
-                                                {{ errorState(vitalSignsGroup.controls['PTName'], 'PTName').message }}
-                                              </mat-error> -->
+                                                    <input autocomplete="off" matInput placeholder="00" type="text" size="3" formControlName="Pulse">
+                                                    <mat-error *ngIf="errorState(formControls['Pulse'], 'Pulse').message">
+                                                {{ errorState(formControls['Pulse'], 'Pulse').message }}
+                                              </mat-error>
                                                 </mat-form-field>
                                             </div>
                                         </div>
@@ -1391,14 +1433,20 @@
                         </div>
 
                         <div class="col-sm-12 col-12 py-2 d-flex align-items-center justify-content-center">
-                            <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
-                                type="submit">Save</button>
-                            <button type="button"
-                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill">Next</button>
+                        <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                            type="submit">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
+                        <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
+                            [routerLink]="['/medical-surveillance', 'status', 'investigation', employeeId, employeeTestVisitId]"
+                            class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                        <button type="button" *ngIf="formControls['Id'].value > 0" [disabled]="!updateNext"
+                            [routerLink]="['/medical-surveillance', 'status', 'investigation', employeeId, employeeTestVisitId]"
+                            class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                        <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
+                            [routerLink]="['/medical-surveillance/list']">Close</button>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </section>

@@ -120,7 +120,7 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
             SpecifyTrained: this.chemicalHistoryDetails.SpecifyTrained,
             Symptoms: this.chemicalHistoryDetails.Symptoms,
             SpecifySymptoms: this.chemicalHistoryDetails.SpecifySymptoms,
-            SymptomsDate: moment(this.chemicalHistoryDetails.SymptomsDate),
+            SymptomsDate: moment(this.chemicalHistoryDetails.SymptomsDateStr, 'DD/MM/YYYY'),
             PPEApproved: this.chemicalHistoryDetails.PPEApproved,
             SpecifyPPEApproved: this.chemicalHistoryDetails.SpecifyPPEApproved,
             Exposure: this.chemicalHistoryDetails.Exposure,
@@ -140,12 +140,19 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
       this.formControls[ipField].reset();
       if(dateField) {
         this.formControls[dateField].reset();
+        this.formControls[dateField].clearValidators();
       }
       this.formControls[ipField].clearValidators();
     } else {
       this.formControls[ipField].setValidators(Validators.required);
+      if(dateField) {
+        this.formControls[dateField].setValidators(Validators.required);
+      }
     }
     this.formControls[ipField].updateValueAndValidity();
+    if(dateField) {
+      this.formControls[dateField].updateValueAndValidity();
+    }
   }
   onSelectChangeChemicalExpose(radioBtn: string, ipField: string, ipField2: string, ipField3: string) {
     console.log(radioBtn);

@@ -23,14 +23,14 @@ const routes: Routes = [
     }
   },
   {
-    path: 'status/investigation',
+    path: 'status/investigation/:eId/:eTestVisitId',
     component: InvestigationComponent,
     data: {
       title: 'Investigation'
     }
   },
   {
-    path: 'status/physical-exam',
+    path: 'status/physical-exam/:eId/:eTestVisitId',
     component: PhysicalExamComponent,
     data: {
       title: 'Physical Exam'
@@ -65,7 +65,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'status/exam-outcome-record',
+    path: 'status/exam-outcome-record/:eId/:eTestVisitId',
     component: ExamOutcomeRecordComponent,
     data: {
       title: 'Exam Outcome & Reco.'
