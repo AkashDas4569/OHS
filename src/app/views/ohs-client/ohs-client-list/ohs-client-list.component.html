@@ -1,0 +1,133 @@
+<section class="dashboard pb-5 pt-4">
+  <div class="container-fluid">
+
+    <div class="row pt-2">
+      <div class="col-sm-6 col-6">
+        <p class="h6 text-left font-weight-bold">OHS Client List</p>
+      </div>
+
+      <div class="col-xl-12 col-12" id="ohsClientSearchForm">
+        <div class="pt-1 px-4 pb-4 mb-2 bg-white shadow-sm rounded">
+
+          <form class="ohs-ClientSearchForm col-xl-12 col-12 p-0" [formGroup]="clientSearchForm" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="row pt-2">
+              <div class="col-sm-8 col-12">
+                <div class="md-form">
+                  <mat-form-field floatLabel="always" class="w-100 pb-2">
+                    <mat-label class="fw600">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                      Search
+                    </mat-label>
+                    <input matInput formControlName="companyName" placeholder="Enter Client Name" type="text" autocomplete="off">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-sm-3 col-12">
+                <div class="mx-auto mt-3 pl-6 pt-1">
+                  <button type="submit" class="btn pt-1 pb-1 btn-primary fs16 fw500 btn-lg rounded-pill">
+                    <i class="fa fa-search" aria-hidden="true"></i> <span class="pl-2">Search</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-xl-12 col-12 mt-2 pt-2">
+        <div class="pb-3 mb-2 bg-white shadow-sm rounded w-100">
+          <div class="bg-primary-blue text-white rounded-top px-3 py-2 d-flex justify-content-start flex-row flex-wrap">
+            <h6 class="mr-3 pt-2">
+              <span class="pl-1 fs14 fw700">List of Clients</span>
+            </h6>
+
+            <div class="mx-auto text-right col-sm-10 col-12">
+              <div class="pl-3 pr-2 pt-1 pb-1">
+                <button class="btn btn-success px-3 pt-1 pb-1 rounded" [routerLink]="['/ohs-client/settings']">
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                  <small class="ml-2">Add Client</small>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive mb-0">
+            <table class="table table-sm">
+              <thead class="bg-color3 text-dark">
+                <tr>
+                  <th scope="col" class="border-right pl-3 text-left text-dark">Client Name</th>
+                  <th scope="col" class="border-right pl-2 text-left text-dark">Industry</th>
+                  <!-- <th scope="col" class="pl-2 text-left text-dark">Designation</th> -->
+                  <th scope="col" class="border-right pl-2 text-left text-dark">Contact Person Name</th>
+                  <th scope="col" class="pl-2 text-left text-dark">Contact Person No.</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="clientListData?.length; else noDataFound">
+                  <tr class="border-bottom" *ngFor="let list of clientListData; index as i">
+                    <td class="border-right pl-3 text-left">
+                      {{list.CompanyName}}
+                    </td>
+                    <td class="border-right pl-2 text-left">
+                      {{list.Sector}}
+                    </td>
+                    <!-- <td class="pl-2 text-left">
+                      {{list.CPDesignation}}
+                    </td> -->
+                    <td class="border-right pl-2 text-left">
+                      {{list.ContactPerson}}
+                    </td>
+                    <ng-container *ngIf="(list.CPMobileTel || list.CPOfficeTel)">
+                      <td class="pl-2 text-left">
+                        <span *ngIf="(list.CPMobileTel || list.CPOfficeTel)">{{list.CPMobileTel}} {{list.CPOfficeTel}}</span>
+                      </td>
+                    </ng-container>
+                    <td class="text-right d-flex justify-content-end pr-2">
+                      <button class="btn btn-primary btn-sm p-1 fs14 mr-2" (click)="editClient(list)">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-red btn-sm p-1 fs14" (click)="deleteClient(list)">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- <div *ngIf="pannelListData?.length && (totalDocuments > pageSize)" class="col-xl-12 col-12 pb-3 d-flex justify-content-end">
+                      <div class="d-inline-block">
+                        <ul class="pagination justify-content-end mb-0">
+                          <li class="page-item" [class.disabled]="currentPage == 1">
+                            <a class="page-link badge-yellow fs14" href="javascript:void(0)" (click)="prevPage(60)">
+                              <i class="fas fa-chevron-left"></i>
+                            </a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link badge-yellow fs14 fw600 h-100 p-1">
+                              <input type="number" min="1" [max]="numberOfPages" class="fs14 fw600 text-center p-0 border-none form-control h-100 pagination-input" [(ngModel)]="currentPage" (change)="pageEntered(60)">
+                            </a>
+                          </li>
+                          <li class="page-item" [class.disabled]="currentPage == numberOfPages">
+                            <a class="page-link badge-yellow fs14" href="javascript:void(0)" (click)="nextPage(60)">
+                              <i class="fas fa-chevron-right"></i>
+                            </a>
+                          </li>
+                        </ul>
+                        <p class="fs14 text-darkgrey text-center fw500 m-0">
+                          Page {{currentPage}} of {{numberOfPages}}
+                        </p>
+                      </div>
+                    </div> -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<ng-template #noDataFound>
+  <tr>
+    <td colspan="7" class="text-center">{{noDataText}}</td>
+  </tr>
+</ng-template>

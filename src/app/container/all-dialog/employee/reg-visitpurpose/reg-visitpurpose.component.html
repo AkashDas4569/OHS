@@ -1,0 +1,49 @@
+<ng-template #registerVisitPurpose>
+    <div class="modal-header bg-warning py-2">
+        <p class="modal-title pull-left font-weight-bold">Purose of Visit</p>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <div class="modal-body px-3 py-4">
+    <form class="visitPurpose col-xl-12 col-12" [formGroup]="visitPurpose" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div class="col-xl-12 col-12 mb-2">
+            <mat-radio-group aria-label="Select an option"  formControlName="TestTypeListId">
+              <div class="row">
+                <div class="col-sm-4 my-2" *ngFor="let purpose of allVisitPurposeData">
+                  <mat-radio-button class="mr-3 fs14" [value]="purpose.Id">{{purpose.TestDesc}}</mat-radio-button>
+                </div>
+              </div>
+            </mat-radio-group>
+            <!-- Error Messages -->
+            <p class="pt-2 pb-1 mt-2 fs12">
+            <mat-error *ngIf="errorState(formControls['TestTypeListId'], 'typeTestListId').message">
+              {{ errorState(formControls['TestTypeListId'], 'typeTestListId').message }}
+            </mat-error>
+            </p>
+          </div>
+          <div class="col-sm-12 col-12">
+            <mat-form-field class="w-100 pb-2">
+              <mat-label class="fw600">OHD Doctor <span class="text-danger">*</span></mat-label>
+              <mat-select [typeaheadDebounceInterval]="500" formControlName="OHDDoctorId">
+                <mat-option class="fs12 fw500">Select OHD Doctor</mat-option>
+                <mat-option class="fs12 fw500" *ngFor="let doctor of allOHDDoctorList" [value]="doctor.Id">{{doctor.OHDName}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="errorState(formControls['OHDDoctorId'], 'ohdDoctorId').message">
+                {{ errorState(formControls['OHDDoctorId'], 'ohdDoctorId').message }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-xl-12 col-12 text-center">
+            <button type="submit"
+              class="btn btn-primary btn-sm rounded-pill mr-2 px-5">CheckIn</button>
+            <button type="button"
+              class="btn btn-danger btn-sm rounded-pill px-5" (click)="closeModal()">Close</button>
+          </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

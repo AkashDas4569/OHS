@@ -1,0 +1,31 @@
+<div
+  [class.custom-loader-hidden]="!show && !fullScreenLoaderState"
+  class="custom-loader-wrapper p-1"
+>
+  <!-- [ngClass]="{'p-2 d-flex justify-content-center align-items-center': fullScreenLoaderState}" -->
+  <div class="custom-loader-overlay p-1" *ngIf="show || fullScreenLoaderState"></div>
+  <div class="custom-top-line-loader bg-cyan shadow brr2" *ngIf="show">
+    <div class="progress bg-cyan">
+      <div class="progress-bar bg-cyan fs10" role="progressbar" [ngStyle]="{'width.%': percentage}"></div>
+    </div>
+  </div>
+  <div class="loader bg-color4" *ngIf="fullScreenLoaderState">
+    <svg class="circular" viewBox="30 30 60 60">
+      <circle class="path" cx="60" cy="60" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"/>
+    </svg>
+  </div>
+</div>
+<!-- Dummy -->
+<!-- <div class="custom-loader-wrapper p-1">
+  <div class="custom-loader-overlay p-1"></div>
+  <div class="custom-top-line-loader bg-color4 shadow brr2">
+    <div class="progress bg-color4">
+      <div class="progress-bar bg-blue fs10" role="progressbar" style="width: 25%" aria-valuenow="25"></div>
+    </div>
+  </div>
+  <div class="loader bg-color4">
+    <svg class="circular" viewBox="30 30 60 60">
+      <circle class="path" cx="60" cy="60" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"/>
+    </svg>
+  </div>
+</div> -->

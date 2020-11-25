@@ -1,0 +1,12 @@
+// All Fonts
+@each $fontName, $value in $allFonts {
+  .#{$fontName} {
+    font-family: #{$value} !important;
+  }
+}
+
+@each $lineheight in $lineheights {
+  .lh#{$lineheight} {
+    line-height: $lineheight !important;
+  }
+}

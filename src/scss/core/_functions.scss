@@ -1,0 +1,22 @@
+// Pixels to rem
+@function rem($pixels, $context: $baseFontSize) {
+  @if (unitless($pixels)) {
+      $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+      $context: $context * 1px;
+  }
+  @return $pixels / $context * 1rem;
+}
+// text Color According To Background
+@function textColorAccordingToBackground($color, $textcolor) {
+  @if (lightness($color) > lightness(#aaaaaa)) {
+    @return $verydarkblue; // Lighter backgorund, return dark color
+  } @else {
+    @return $textcolor; // Darker background, return light color
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

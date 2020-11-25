@@ -1,0 +1,10 @@
+// All font colors
+// @each $theme, $map in $application-modes {
+//   @each $key, $submap in $map {
+//     .text-themed-#{$key}{
+//       @include themify($theme, $map) {
+//         color: themed($key) !important;
+//       }
+//     }
+//   }
+// }

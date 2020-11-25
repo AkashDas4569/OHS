@@ -1,0 +1,10 @@
+// Background Colors
+// @each $theme, $map in $application-modes {
+//   @each $key, $submap in $map {
+//     .bg-themed-#{$key}{
+//       @include themify($theme, $map) {
+//         background: themed($key) !important;
+//       }
+//     }
+//   }
+// }

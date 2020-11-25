@@ -1,0 +1,139 @@
+<section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
+    <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-2 mt-2 bg-white shadow-sm rounded w-100">
+                    <div class="row">
+                        <div class="col-xl-12 col-12">
+                            <div
+                                class="pt-3 px-3 pb-1 mb-2 bg-primary-blue text-white text-start rounded-top px-2 py-1 flex-row flex-wrap">
+                                <p class="fw600 fs16 mr-4 text-uppercase">Employee Information</p>
+                            </div>
+
+                            <div class="row px-3 pb-2">
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Employee name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForOH.EmployeeName" placeholder="Enter Employee Name" type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForOH.ICNUmber" placeholder="Enter MyKad/IC No." type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Company Name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForOH.CompanyName" placeholder="Enter Company Name" type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="occupational-HistoryForm col-xl-12 col-12 p-0" [formGroup]="occupationalHistoryForm" (ngSubmit)="onSubmit()"
+                        autocomplete="off">
+        <div class="row pt-3">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                    <div class="bg-primary-blue text-white rounded-top px-3 py-2 text-center flex-row flex-wrap">
+                        <h6 class="mr-3 pt-2 text-uppercase">
+                            <span class="pl-1 fs16 fw600">Occupational History</span>
+                        </h6>
+
+                    </div>
+
+                        <div class="table-responsive mb-2">
+                            <table class="table table-sm table-borderless pl-2 pr-2 text-nowrap text-uppercase">
+                                <thead class="bg-color3 text-dark">
+                                    <tr>
+                                        <th scope="col" class="pl-3 border-right-bold text-left text-dark"></th>
+                                        <th scope="col" class="pl-2 text-center text-dark" style="min-width: 100px;">Past
+                                        </th>
+                                        <th scope="col" class="pl-2 text-center text-dark" style="min-width: 100px;">Present
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">1. Job Titles and Duties</td>
+                                            <td class="pl-3 text-center">
+                                                <textarea class="form-control border" formControlName="JobPast" rows="1" cols="50"></textarea>
+                                            </td>  
+                                            <td class="pl-3 text-center">
+                                                <textarea class="form-control border" formControlName="JobPresent" rows="1" cols="50"></textarea>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">2. Type/Level of Hazards</td>
+                                            <td class="pl-3 text-center">
+                                                <textarea class="form-control border" formControlName="HazardTypePast" rows="1" cols="50"></textarea>
+                                            </td>  
+                                            <td class="pl-3 text-center">
+                                                <textarea class="form-control border" formControlName="HazardTypePresent" rows="1" cols="50"></textarea>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">3. Duration of Employment</td>
+                                            <td class="pl-3 text-center">
+                                                <textarea class="form-control border" formControlName="EmploymentPast" rows="1" cols="50"></textarea>
+                                            </td>  
+                                            <td class="pl-3 text-center">
+                                                <textarea class="form-control border" formControlName="EmploymentPresent" rows="1" cols="50"></textarea>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">4. Have you received training for this job</td>
+                                            <td class="pl-3 text-center">
+                                                <textarea class="form-control border" formControlName="TrainingPast" rows="1" cols="50"></textarea>
+                                            </td>  
+                                            <td class="pl-3 text-center">
+                                                <textarea class="form-control border" formControlName="TrainingPresent" rows="1" cols="50"></textarea>
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">5. Other job-other than this job</td>
+                                            <td class="pl-3 text-center">
+                                                <textarea class="form-control border" formControlName="OtherJobPast" rows="1" cols="50"></textarea>
+                                            </td>  
+                                            <td class="pl-3 text-center">
+                                                <textarea class="form-control border" formControlName="OtherJobPresent" rows="1" cols="50"></textarea>
+                                            </td>  
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-12 col-12 pt-4 py-2 d-flex align-items-center justify-content-center">
+                            <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                type="submit">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
+                            <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
+                                [routerLink]="['/medical-surveillance', 'status', 'chemical-history', employeeId, doctorId, employeeTestVisitId]"
+                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                            <button type="button" *ngIf="formControls['Id'].value > 0" [disabled]="!updateNext"
+                                [routerLink]="['/medical-surveillance', 'status', 'chemical-history', employeeId, doctorId, employeeTestVisitId]"
+                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                            <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
+                                [routerLink]="['/medical-surveillance/list']">Close</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</section>

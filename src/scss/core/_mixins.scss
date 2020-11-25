@@ -1,0 +1,248 @@
+// Button Colors
+@mixin solid-btn($color, $textcolor, $bordercolor: $color, $hovertextcolor: $color) {
+  &:not(:disabled),
+  &:not(.disabled) {
+    color: textColorAccordingToBackground($color, $textcolor);
+    background-color: $color;
+    border-color: $bordercolor;
+    &.no-hover {
+      &:not(.disabled):active:focus,
+      &:not(.disabled).active:focus,
+      .show > .btn-lightblue.dropdown-toggle:focus {
+        background-color: darken($color, 5%);
+        border-color: darken($bordercolor, 5%);
+        // box-shadow: none;
+      }
+    }
+    &:not(.no-hover){
+      &:not(.disabled):active:focus,
+      &:not(.disabled).active:focus,
+      .show > .btn-lightblue.dropdown-toggle:focus,
+      &:hover,
+      &:focus,
+      &.focus,
+      &:active,
+      &.active {
+        background: transparent;
+        text-decoration: none;
+        color: textColorAccordingToBackground($color, $hovertextcolor);
+        border-color: $bordercolor;
+        // color: $color;
+        outline: 0;
+        // box-shadow: 0 0 5px rgba($lightblue, 0.25);
+      }
+    }
+    &.no-shadow {
+      &:hover,
+      &:focus,
+      &.focus,
+      &:active,
+      &.active {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+  }
+  &[disabled],
+  &.disabled {
+    color: textColorAccordingToBackground($color, $textcolor);
+    background-color: $color;
+    border-color: $color;
+    cursor: not-allowed;
+  }
+}
+
+@mixin outline-btn($color, $textcolor: $color, $bordercolor: $color, $hoverbackgroundcolor: $color, $hovertextcolor: $white) {
+  &:not([disabled]),
+  &:not(.disabled) {
+    color: $textcolor;
+    background-color: transparent;
+    border-color: $bordercolor;
+    &:not(.no-hover){
+      &:hover,
+      &:focus,
+      &.focus,
+      &.active {
+        background: $hoverbackgroundcolor;
+        border-color: $hoverbackgroundcolor;
+        text-decoration: none;
+        color: textColorAccordingToBackground($color, $hovertextcolor);
+        outline: 0;
+        // box-shadow: 0 0 5px rgba($lightblue, 0.25);
+      }
+      &.no-shadow {
+        &:hover,
+        &:focus,
+        &.focus,
+        &:active,
+        &.active {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  &[disabled],
+  &.disabled{
+    color: textColorAccordingToBackground($color, $textcolor);
+    background-color: transparent;
+    @if $bordercolor {
+      border-color: $bordercolor;
+    } @else {
+      border-color: $color;
+    }
+    cursor: not-allowed;
+  }
+}
+@mixin gradient($direction, $list) {
+  background-image: -webkit-linear-gradient($list);
+  background-image: -moz-linear-gradient($list);
+  background-image: -o-linear-gradient($list);
+  background-image: linear-gradient($list);
+  @if length($list) > 2 {
+    background-size: 100% 200%;
+  } @else {
+    background-size: contain;
+  }
+  color: textColorAccordingToBackground(nth($list, 1), $white);
+  border: none;
+  transition: all ease 0.3s;
+  &:not(.no-hover){
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-position: 0 100%;
+      color: textColorAccordingToBackground(nth($list, 1), $white);
+      outline: 0;
+    }
+  }
+  &.no-shadow {
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+// Calc
+@mixin calc($property, $expression) {
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+// Badges
+@mixin solid-badge($color, $textcolor) {
+    color: $textcolor;
+    background-color: $color;
+    border-color: $color;
+    &[href]{
+      &:hover,
+      &:focus,
+      &.focus,
+      &.active {
+        background: transparent;
+        text-decoration: none;
+        color: $color;
+        outline: 0;
+        -webkit-box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+      }
+    }
+}
+// Custom Popups Effect
+// No effect
+@mixin no-effect-hidden() {
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(0);
+}
+@mixin no-effect-shown() {
+  visibility: visible;
+  opacity: 1;
+  overflow-y: auto;
+  transform: translate(0);
+}
+// Zoom in out effect
+@mixin zoom-out() {
+  width: calc(100% - 100px);
+  height: calc(100% - 100px);
+  transform: translateX(0%) translateY(50px);
+}
+@mixin zoom-in() {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  transform: translateX(0%) translateY(0%);
+}
+// Slide in out effect
+@mixin slide-out($direction) {
+  @if $direction == 'left' {
+    left: 0;
+    transform: translateX(-100%) translateY(0);
+  }
+  @if $direction == 'right' {
+    right: 0;
+    transform: translateX(100%) translateY(0);
+  }
+  @if $direction == 'bottom' {
+    left: 0;
+    transform: translateX(0) translateY(100%);
+  }
+}
+@mixin slide-in($direction) {
+  @if $direction == 'left' {
+    overflow-y: auto;
+    transform: translateX(0) translateY(0);
+  }
+  @if $direction == 'right' {
+    overflow-y: auto;
+    transform: translateX(0) translateY(0);
+  }
+  @if $direction == 'bottom' {
+    overflow-y: auto;
+    transform: translateX(0) translateY(0);
+  }
+}
+@mixin hr-text($hrcolor: $sdarkgreylight) {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  &::before,
+  &::after {
+    content: '';
+    width: 50%;
+    height: 1px;
+    background: $hrcolor;
+    display: inline-block;
+  }
+  &::before {
+    margin-right: rem(15);
+  }
+  &::after {
+    margin-left: rem(15);
+  }
+}
+@mixin scrollbar-adjust() {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $color10;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color11;
+    border-width: 0px 1px 0px 1px;
+    border-style: solid;
+    border-color: $color10;
+  }
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scrollbar-color: $color11 $color10;
+  scrollbar-width: thin;
+}

@@ -1,0 +1,211 @@
+<!-- Start OHD-Settings Section -->
+<section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
+  <div class="container-fluid">
+    <div class="row pt-3">
+      <div class="col-xl-12 col-12">
+        <div class="pb-1 mb-2 mt-2 bg-white shadow-sm rounded w-100">
+          <div class="bg-primary-blue text-white text-center rounded-top pt-3 px-3 py-1 flex-row flex-wrap">
+            <p class="fs18 fw600 mr-4">OHD Settings</p>
+          </div>
+
+          <form class="ohd-SettingsForm col-xl-12 col-12 p-0" [formGroup]="ohdSettingsForm" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="row px-3 pt-2">
+              <input type="hidden" formControlName="Id">
+              <div class="col-md-4 col-12">
+                <mat-form-field class="w-100 pb-2">
+                  <mat-label class="fw600">Doctor Name <span class="text-danger">*</span></mat-label>
+                  <input matInput formControlName="OHDName" placeholder="Enter Doctor Name" type="text" autocomplete="off">
+                  <mat-error *ngIf="errorState(formControls['OHDName'], 'doctorName').message">
+                {{ errorState(formControls['OHDName'], 'doctorName').message }}
+              </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-4 col-12">
+                <mat-form-field class="w-100 pb-2">
+                  <mat-label class="fw600">OHD Phone Number <span class="text-danger">*</span></mat-label>
+                  <input matInput formControlName="OHDPhone" placeholder="Enter Phone Number" type="text" autocomplete="off">
+                  <mat-error *ngIf="errorState(formControls['OHDPhone'], 'MobilePhone').message">
+                {{ errorState(formControls['OHDPhone'], 'MobilePhone').message }}
+              </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-4 col-12">
+                <mat-form-field class="w-100 pb-2">
+                  <mat-label class="fw600">Email Id <span class="text-danger">*</span></mat-label>
+                  <input matInput formControlName="OHDEmail" placeholder="Enter Email Id" type="text" autocomplete="off">
+                  <mat-error *ngIf="errorState(formControls['OHDEmail'], 'email').message">
+                {{ errorState(formControls['OHDEmail'], 'email').message }}
+              </mat-error>
+                </mat-form-field>
+              </div>
+              
+              <!-- <div class="col-md-4 col-12">
+                <mat-form-field class="w-100 pb-2">
+                  <mat-label class="fw600">Name of the Clinic <span class="text-danger">*</span></mat-label>
+                  <mat-select [typeaheadDebounceInterval]="500" formControlName="OHDClinicId" placeholder="Choose Clinic Name">
+                    <mat-option class="fs12 fw500">Choose Clinic Name</mat-option>
+                    <mat-option class="fs12 fw500" *ngFor="let data of allOhdClinicList" [value]="data.Id">
+                      {{data.cName}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="errorState(formControls['OHDClinicId'], 'clinicName').message">
+                    {{ errorState(formControls['OHDClinicId'], 'clinicName').message }}
+                  </mat-error>
+                </mat-form-field>
+            </div> -->
+              <div class="col-md-4 col-12">
+                <mat-form-field class="w-100 pb-2">
+                  <mat-label class="fw600">Qualification <span class="text-danger">*</span></mat-label>
+                  <input matInput formControlName="OHDQual" placeholder="Enter Phone Number" type="text" autocomplete="off">
+                  <mat-error *ngIf="errorState(formControls['OHDQual'], 'qualification').message">
+                    {{ errorState(formControls['OHDQual'], 'qualification').message }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <!-- <div class="col-md-4 col-12">
+                <mat-form-field class="w-100 pb-2">
+                  <mat-label class="fw600">
+                    Date of Qualification <span class="text-danger">*</span></mat-label>
+                  <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Enter Date of Qualification"
+                  formControlName="OHDQual" autocomplete="off">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error *ngIf="errorState(formControls['OHDQual'], 'qualificationDate').message">
+                    {{ errorState(formControls['OHDQual'], 'qualificationDate').message }}
+                  </mat-error>
+                </mat-form-field>
+              </div> -->
+              <div class="col-md-4 col-12">
+                <mat-form-field class="w-100 pb-2">
+                  <mat-label class="fw600">MMC No. <span class="text-danger">*</span></mat-label>
+                  <input matInput formControlName="OHDmmcNo" placeholder="Enter MMC No." type="text" autocomplete="off">
+                  <mat-error *ngIf="errorState(formControls['OHDmmcNo'], 'mmcNo').message">
+                {{ errorState(formControls['OHDmmcNo'], 'mmcNo').message }}
+              </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-4 col-12">
+                <mat-form-field class="w-100 pb-2">
+                  <mat-label class="fw600">DOSH Registration No. <span class="text-danger">*</span></mat-label>
+                  <input matInput formControlName="DOSHRegNo" placeholder="Enter DOSH Registration No." type="text" autocomplete="off">
+                  <mat-error *ngIf="errorState(formControls['DOSHRegNo'], 'DOSHRegNumber').message">
+                {{ errorState(formControls['DOSHRegNo'], 'DOSHRegNumber').message }}
+              </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="bg-light p-2 rounded d-flex">
+                <mat-form-field class="disable-mat-form w-100 pb-2">
+                  <mat-label class="fw600">Name of the Clinic</mat-label>
+                  <input matInput formControlName="clinicName" placeholder="Enter Clinic Name" type="text" autocomplete="off" readonly>
+                  <mat-error *ngIf="errorState(formControls['clinicName'], 'clinicName').message">
+                    {{ errorState(formControls['clinicName'], 'clinicName').message }}
+                  </mat-error>
+                </mat-form-field>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="bg-light p-2 rounded d-flex">
+                <mat-form-field class="disable-mat-form w-100 pb-2">
+                  <mat-label class="fw600">Clinic Tel. No.</mat-label>
+                  <input matInput formControlName="ClinicTelNumber" placeholder="Enter Clinic Tel. No." type="text" autocomplete="off" readonly>
+                  <mat-error *ngIf="errorState(formControls['ClinicTelNumber'], 'TelNo').message">
+                {{ errorState(formControls['ClinicTelNumber'], 'TelNo').message }}
+              </mat-error>
+                </mat-form-field>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="bg-light p-2 rounded d-flex">
+                <mat-form-field class="disable-mat-form w-100 pb-2">
+                  <mat-label class="fw600">Clinic Email Id</mat-label>
+                  <input matInput formControlName="ClinicEmail" placeholder="Enter Clinic Email Id" type="text" autocomplete="off" readonly>
+                  <mat-error *ngIf="errorState(formControls['ClinicEmail'], 'email').message">
+                {{ errorState(formControls['ClinicEmail'], 'email').message }}
+              </mat-error>
+                </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-12 py-2 d-flex align-items-center justify-content-center">
+                <!-- <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                  type="submit">Save</button> -->
+                  <button type="submit"
+                  class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
+                <button type="button" class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" (click)="resetCancel()">Reset</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="col-xl-12 col-12">
+        <div class="pb-1 my-2 bg-white shadow-sm rounded w-100">
+          <div class="bg-primary-blue text-white text-center rounded-top pt-3 px-2 py-1 flex-row flex-wrap">
+            <p class="mr-4 fs16 fw600">OHD LIST</p>
+          </div>
+
+          <div class="table-responsive mb-0">
+            <table class="table table-sm">
+              <thead class="bg-color2 text-dark">
+                <tr>
+                  <th scope="col" class="border-right text-left text-dark" style="width: 12px;"></th>
+                  <th scope="col" class="pl-4 border-right text-left text-dark">Doctor Name</th>
+                  <th scope="col" class="pl-4 border-right text-left text-dark">MMC No.</th>
+                  <th scope="col" class="pl-4 text-left text-dark">DOSH Registration No.</th>
+                  <th scope="col" class="pr-5 mr-2 text-right text-dark">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="allOhdList?.length; else noDataFound">
+                  <tr class="border-bottom" *ngFor="let data of allOhdList; index as i">
+                    <td class="border-right text-left">
+                      {{i+1}}.
+                    </td>
+                    <td class="pl-4 border-right text-left">
+                      {{data.OHDName}}
+                    </td>
+                    <td class="pl-4 border-right text-left">
+                      {{data.OHDmmcNo}}
+                    </td>
+                    <td class="pl-4 text-left">
+                      {{data.DOSHRegNo}}
+                    </td>
+                    <td class="text-right d-flex justify-content-end pr-5">
+                      <button class="btn btn-primary btn-sm p-1 fs14 mr-2" (click)="clickToEdit(data)">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-red btn-sm p-1 fs14" (click)="openModal(deleteOhdSettings, data)">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- <ul class="pagination justify-content-end pb-4">
+                    <li class="page-item"><a class="page-link"
+                        href="javascript:void(0);">Previous</a></li>
+                    <li class="page-item"><a class="page-link badge-warning"
+                        href="javascript:void(0);">1</a></li>
+                    <li class="page-item"><a class="page-link badge-warning"
+                        href="javascript:void(0);">2</a></li>
+                    <li class="page-item"><a class="page-link"
+                        href="javascript:void(0);">Next</a></li>
+                  </ul> -->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- End OHD-Settings Section -->
+<ng-template #noDataFound>
+  <tr>
+    <td colspan="9" class="text-center">{{noDataText}}</td>
+  </tr>
+</ng-template>
+<ohs-delete-ohd-settings #deleteOhdSettings (deleteOhdSettingsDataEvent)="getDeletedOhdSettings($event)"></ohs-delete-ohd-settings>

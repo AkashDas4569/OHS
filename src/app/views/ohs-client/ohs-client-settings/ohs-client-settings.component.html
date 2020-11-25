@@ -1,0 +1,226 @@
+<!-- Start OhsClientSettings Section -->
+<section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
+    <div class="container-fluid">
+
+        <div class="row pt-3">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-2 mt-2 bg-white shadow-sm bg-white rounded w-100">
+                    <div class="bg-primary-blue text-white text-center rounded-top pt-3 px-3 py-1 flex-row flex-wrap">
+                        <p class="fs18 fw600 mr-4">OHS Client Settings</p>
+                    </div>
+
+                    <form class="ohs-ClientSettingsForm col-xl-12 col-12 p-0" [formGroup]="ohsClientSettingsForm"
+                        (ngSubmit)="onSubmit()" autocomplete="off">
+                        <div class="row px-3 pt-2">
+                            <div class="col-md-3 col-12">
+                                <mat-form-field class="w-100 pb-2">
+                                    <mat-label class="fw600">Company Name <span class="text-danger">*</span></mat-label>
+                                    <input matInput formControlName="CompanyName" placeholder="Enter Name" type="text"
+                                        autocomplete="off">
+                                    <mat-error *ngIf="errorState(formControls['CompanyName'], 'companyName').message">
+                                        {{ errorState(formControls['CompanyName'], 'companyName').message }}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <mat-form-field class="w-100 pb-2">
+                                    <mat-label class="fw600">Industry <span class="text-danger">*</span></mat-label>
+                                    <mat-select [typeaheadDebounceInterval]="500" formControlName="IndSectorListId"
+                                        placeholder="Select Industry">
+                                        <mat-option class="fs12 fw600">Select Industry</mat-option>
+                                        <mat-option *ngFor="let data of allIndustryList" [value]="data.Id">
+                                            {{data.Sector}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="errorState(formControls['IndSectorListId'], 'Industry').message">
+                                        {{ errorState(formControls['IndSectorListId'], 'Industry').message }}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <mat-form-field class="w-100 pb-2">
+                                    <mat-label class="fw600">Address <span class="text-danger">*</span></mat-label>
+                                    <input matInput formControlName="Addr1" placeholder="Enter Address" type="text"
+                                        autocomplete="off">
+                                    <mat-error *ngIf="errorState(formControls['Addr1'], 'address').message">
+                                        {{ errorState(formControls['Addr1'], 'address').message }}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <mat-form-field class="w-100 pb-2">
+                                    <mat-label class="fw600">State <span class="text-danger">*</span></mat-label>
+                                    <mat-select [typeaheadDebounceInterval]="500" formControlName="State"
+                                        placeholder="Select State">
+                                        <mat-option class="fs12 fw600">Select State</mat-option>
+                                        <mat-option *ngFor="let state of allStateList" [value]="state.Id">
+                                            {{state.State}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="errorState(formControls['State'], 'state').message">
+                                        {{ errorState(formControls['State'], 'state').message }}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <a [tooltip]="!formControls['State'].value ? 'Please select State first.' : ''"
+                                    placement="top">
+                                    <mat-form-field class="w-100 pb-2">
+                                        <mat-label class="fw600">City <span class="text-danger">*</span>
+                                        </mat-label>
+                                        <mat-select [typeaheadDebounceInterval]="500" formControlName="City"
+                                            [disabled]="!formControls['State'].value">
+                                            <mat-option class="fs12 fw500">Select City
+                                            </mat-option>
+                                            <mat-option *ngFor="let data of allCityList" value="{{data.City}}">
+                                                {{data.City}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="errorState(formControls['City'], 'city').message">
+                                            {{ errorState(formControls['City'], 'city').message }}
+                                        </mat-error>
+                                    </mat-form-field>
+                                </a>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <mat-form-field class="w-100 pb-2">
+                                    <mat-label class="fw600">Postal Code <span class="text-danger">*</span></mat-label>
+                                    <input matInput formControlName="PostCode" placeholder="Enter Postal Code"
+                                        type="text" autocomplete="off">
+                                    <mat-error *ngIf="errorState(formControls['PostCode'], 'pin').message">
+                                        {{ errorState(formControls['PostCode'], 'pin').message }}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-12 col-12 mt-2">
+                                <!-- <div class="bg-color1 rounded-top px-3 pt-1 pb-1 d-flex justify-content-start flex-row flex-wrap"
+                    (click)="isCollapsedPerson = !isCollapsedPerson"> -->
+                                <div
+                                    class="bg-color2 rounded-top px-3 pt-1 pb-1 d-flex justify-content-start flex-row flex-wrap">
+                                    <h6 class="mr-3">
+                                        <!-- <i class="fas fa-chevron-circle-down" aria-hidden="true"></i> -->
+                                        <!-- <small class="pl-1 fw600">CONTACT PERSON :</small> -->
+                                        <small class="fw700">CONTACT PERSON :</small>
+                                    </h6>
+                                </div>
+
+                                <!-- <div [collapse]="isCollapsedPerson"> -->
+                                <div>
+                                    <div class="row pt-2 px-3">
+                                        <div class="col-sm-2 col-12">
+                                            <mat-form-field class="w-100 pb-2">
+                                                <mat-label class="fw600">Name <span class="text-danger">*</span>
+                                                </mat-label>
+                                                <input matInput formControlName="ContactPerson" placeholder="Enter Name"
+                                                    type="text" autocomplete="off">
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['ContactPerson'], 'contactPersonName').message">
+                                                    {{ errorState(formControls['ContactPerson'], 'contactPersonName').message }}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-sm-3 col-12">
+                                            <mat-form-field class="w-100 pb-2">
+                                                <mat-label class="fw600">Designation</mat-label>
+                                                <input matInput formControlName="CPDesignation"
+                                                    placeholder="Enter Designation" type="text" autocomplete="off">
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['CPDesignation'], 'Designation').message">
+                                                    {{ errorState(formControls['CPDesignation'], 'Designation').message }}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-sm-3 col-12">
+                                            <mat-form-field class="w-100 pb-2">
+                                                <mat-label class="fw600">Office Phone</mat-label>
+                                                <input matInput formControlName="CPOfficeTel"
+                                                    placeholder="Enter Office Phone No." type="text" autocomplete="off">
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['CPOfficeTel'], 'ContactOffice').message">
+                                                    {{ errorState(formControls['CPOfficeTel'], 'ContactOffice').message }}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-sm-2 col-12">
+                                            <mat-form-field class="w-100 pb-2">
+                                                <mat-label class="fw600">Mobile Phone</mat-label>
+                                                <input matInput formControlName="CPMobileTel"
+                                                    placeholder="Enter Mobile No." type="text" autocomplete="off">
+                                                <mat-error
+                                                    *ngIf="errorState(formControls['CPMobileTel'], 'mobile').message">
+                                                    {{ errorState(formControls['CPMobileTel'], 'mobile').message }}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-sm-2 col-12">
+                                            <mat-form-field class="w-100 pb-2">
+                                                <mat-label class="fw600">Email</mat-label>
+                                                <input matInput formControlName="CPEmail" placeholder="Enter Email"
+                                                    type="text" autocomplete="off">
+                                                <mat-error *ngIf="errorState(formControls['CPEmail'], 'email').message">
+                                                    {{ errorState(formControls['CPEmail'], 'email').message }}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Start General Information Section -->
+                        <div class="row mt-2">
+                            <div class="col-xl-12 col-12">
+                                <div class="pb-1 mb-2 mt-2 bg-white shadow-sm bg-white rounded w-100">
+                                    <div
+                                        class="bg-primary-blue text-white text-center rounded-top pt-3 px-3 py-1 flex-row flex-wrap">
+                                        <p class="fs16 fw500 mr-3">Chemical Use</p>
+                                    </div>
+
+                                    <div formArrayName="ClientChemicalUse">
+                                    <div class="table-responsive px-2">
+                                        <table class="table table-sm table-borderless px-2 my-2 text-left">
+                                            <tbody>
+                                                <ng-container *ngIf="allChemicalList?.length; else noDataFound">
+                                                    <div class="d-flex flex-row flex-wrap">
+                                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 p-0"
+                                                            *ngFor="let data of allChemicalList; index as i" [formGroupName]="i">
+                                                            <!-- {{ohsClientSettingsForm.controls['ClientChemicalUse'].controls[i].controls.Active.value}} -->
+                                                            <!-- {{ohsClientSettingsForm.controls[i].ClientChemicalUse.controls.Active.value | json}} -->
+
+                                                           <mat-checkbox class="pl-3 fw500" formControlName="Active">{{data.ChemName}}</mat-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End General Information Section -->
+                        <div class="col-sm-12 col-12 py-2 d-flex align-items-center justify-content-center">
+                            <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                type="submit">Save</button>
+                            <button type="button" class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill"
+                                [routerLink]="['/ohs-client/list']">Close</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End OhsClientSettings Section -->
+<ng-template #noDataFound>
+    <tr>
+        <td colspan="9" class="text-center">{{noDataText}}</td>
+    </tr>
+</ng-template>

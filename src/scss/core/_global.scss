@@ -1,0 +1,255 @@
+/* Universal */
+html, body {
+  min-height: 100%;
+}
+html {
+  font-size: $baseFontSize;
+}
+body{
+	// min-width: 100%;
+	// max-width: 100%;
+	margin: 0;
+	padding: 0;
+  color: $verydarkblue;
+	// overflow-y: auto;
+  // font-family: $roboto;
+  font-family: $montserrat;
+	// transition: all ease 0.3s;
+  position: relative;
+  &.theme-light {
+    color: $verydarkblue;
+  }
+  &.theme-dark {
+    color: $color9;
+  }
+}
+.text-muted {
+  color: rgba($verydarkblue, 0.7) !important;
+}
+:focus {
+  outline: none;
+}
+a {
+	text-decoration: none;
+	color: $verydarkgrey;
+	transition: all ease 0.3s;
+	&:hover,
+  &:focus,
+  &.active{
+		color: $yellow;
+		text-decoration: none;
+		outline: none;
+	}
+}
+img{
+	object-fit: cover;
+}
+button{
+	&:focus{
+		outline: none;
+	}
+}
+hr {
+  border-top: 1px solid $color5;
+}
+.disable-pointer {
+  pointer-events: none;
+}
+.pointer {
+  cursor: pointer;
+}
+// .lh1 {
+//   line-height: 1;
+// }
+.screen-height {
+  height: 100vh;
+}
+.custom-modal-open {
+  overflow: hidden;
+}
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.tooltip-inner{
+  font-family: $montserrat;
+	// font-family: $roboto;
+  font-size: rem(12);
+  font-weight: 500;
+}
+.img-contain {
+  object-fit: contain;
+}
+// User Image Sizes
+.user-thumbnail{
+  width: rem(50);
+  height: rem(50);
+  flex: 0 0 rem(50);
+  position: relative;
+  // overflow: hidden;
+  &.larger{
+    width: rem(90);
+    height: rem(90);
+    flex: 0 0 rem(90);
+  }
+  &.large{
+    width: rem(80);
+    height: rem(80);
+    flex: 0 0 rem(80);
+  }
+  &.medium{
+    width: rem(40);
+    height: rem(40);
+    flex: 0 0 rem(40);
+  }
+  &.semi-medium{
+    width: rem(32);
+    height: rem(32);
+    flex: 0 0 rem(32);
+  }
+  &.small{
+    width: rem(30);
+    height: rem(30);
+    flex: 0 0 rem(30);
+  }
+  img,
+  canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 1px solid rgba($darkgrey, 0.1);
+  }
+  .status {
+    width: rem(12);
+    height: rem(12);
+    border-radius: 50%;
+    border: 1px solid $verydarkblue;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+}
+.user-thumbnail-shadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+// Table
+.table {
+  font-size: rem(14);
+  color: $verydarkblue;
+  font-weight: 500;
+  vertical-align: middle;
+  tr {
+    &:hover {
+      color: $verydarkblue;
+    }
+  }
+  th {
+    font-weight: 600;
+    color: $white;
+    vertical-align: middle;
+  }
+  td {
+    vertical-align: middle;
+  }
+}
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 9999;
+}
+.mat-snack-bar-container {
+  margin-top: rem(76) !important;
+  color: $white;
+  &.success-popup {
+    background: $cyan;
+  }
+  &.error-popup {
+    background: $red;
+  }
+  &.warning-popup {
+    background: $warning;
+  }
+  &.info-popup {
+    background: $info;
+  }
+  .mat-simple-snackbar {
+    font-weight: 600;
+  }
+  .mat-simple-snackbar-action {
+    button {
+      color: $white;
+      background: rgba($black, 0.04);
+    }
+  }
+}
+.prepend-width-100{
+  width: rem(100);
+}
+.take-full-space-left{
+  flex-grow: 1;
+}
+// Mat components
+// .mat-autocomplete-panel,
+// .mat-select-panel {
+//   background-color: $white;
+//   color: $verydarkblue;
+// }
+// .mat-option {
+//   color: $verydarkblue;
+// }
+// // Datepicker
+// .mat-datepicker-content {
+//   background-color: $white;
+//   color: rgba($verydarkblue, 0.87);
+//   .mat-calendar-next-button,
+//   .mat-calendar-previous-button {
+//     color: rgba($verydarkblue, 0.54);
+//   }
+// }
+
+// .mat-datepicker-toggle {
+//   color: rgba($verydarkblue, 0.54);
+// }
+
+// .mat-calendar-table-header {
+//   color: rgba($verydarkblue, 0.38);
+// }
+// .mat-calendar-table-header-divider::after {
+//   background: rgba($verydarkblue, 0.12);
+// }
+// .mat-calendar-body-cell-content {
+//   color: rgba($verydarkblue, 0.87);
+//   border-color: transparent;
+// }
+// .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+//   border-color: rgba($verydarkblue, 0.38);
+// }
+// .mat-calendar-body-disabled>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+//   color: rgba($verydarkblue, 0.38);
+// }
+// .mat-calendar-body-label {
+//   color: rgba($verydarkblue, 0.54);
+// }
+// .mat-calendar-arrow {
+//   border-top-color: rgba($verydarkblue, 0.54);
+// }
+// .mat-calendar-body-selected {
+//   color: $white;
+// }
+// // Global
+// .mat-button.mat-accent[disabled],
+// .mat-button.mat-primary[disabled],
+// .mat-button.mat-warn[disabled],
+// .mat-button[disabled][disabled],
+// .mat-icon-button.mat-accent[disabled],
+// .mat-icon-button.mat-primary[disabled],
+// .mat-icon-button.mat-warn[disabled],
+// .mat-icon-button[disabled][disabled],
+// .mat-stroked-button.mat-accent[disabled],
+// .mat-stroked-button.mat-primary[disabled],
+// .mat-stroked-button.mat-warn[disabled],
+// .mat-stroked-button[disabled][disabled] {
+//   color: rgba($verydarkblue, 0.26);
+// }

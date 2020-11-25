@@ -1,0 +1,207 @@
+.dropdown-toggle{
+	&.no-arrow{
+		&::after {
+			display: none;
+		}
+	}
+	&::after {
+		display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+		border: none;
+		display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		font-family: "Font Awesome 5 Free";
+		font-weight: 900;
+		content: "\f078";
+		font-size: rem(10);
+	}
+	&[aria-expanded="true"] {
+		&::after {
+			content: "\f077";
+		}
+	}
+}
+.dropdown{
+	&.show {
+		.dropdown-toggle{
+			&.menu-arrow {
+				&::before {
+					// display: none;
+					content: "";
+					top: 100%;
+					left: 50%;
+					transform: translateX(-50%);
+					margin: rem(8) 0 0;
+					position: absolute;
+					border-bottom: rem(10) solid $yellow;
+					border-left: rem(10) solid transparent;
+					border-right: rem(10) solid transparent;
+					border-top: none;
+				}
+				&+ .dropdown-menu {
+					margin-top: rem(16);
+				}
+			}
+		}
+	}
+}
+// Menu Style
+.dropdown-menu{
+	border-color: transparent;
+	min-width: rem(220);
+	box-shadow: 0 0 11px rgba($black, 0.16);
+	&.menu-push-horizontally {
+		left: calc(50% - #{rem(21)}) !important;
+	}
+	&.dropdown-menu-right{
+		&.menu-push-horizontally {
+			right: calc(50% - #{rem(21)}) !important;
+			left: auto !important;
+		}
+		&::before{
+			right: rem(10);
+			left: auto;
+		}
+		&::after{
+			right: rem(11);
+			left: auto;
+		}
+	}
+	&:not(.no-indicator) {
+		top: calc(100% + #{rem(10)}) !important;
+		&::before{
+			content: "";
+			border-bottom: rem(10) solid $yellow;
+			border-left: rem(10) solid transparent;
+			border-right: rem(10) solid transparent;
+			height: auto;
+			left: rem(10);
+			top: rem(-10);
+			position: absolute;
+			width: auto;
+		}
+		&::after{
+			content: "";
+			top: rem(-9);
+			left: rem(11);
+			position: absolute;
+			border-left: rem(9) solid transparent;
+			border-right: rem(9) solid transparent;
+			border-bottom: rem(9) solid $white;
+		}
+		&.dropdown-menu-right {
+			&::before{
+				content: "";
+				border-bottom: rem(10) solid $yellow;
+				border-left: rem(10) solid transparent;
+				border-right: rem(10) solid transparent;
+				height: auto;
+				right: rem(10);
+				left: auto;
+				top: rem(-10);
+				position: absolute;
+				width: auto;
+			}
+			&::after{
+				content: "";
+				top: rem(-9);
+				right: rem(11);
+				left: auto;
+				position: absolute;
+				border-left: rem(9) solid transparent;
+				border-right: rem(9) solid transparent;
+				border-bottom: rem(9) solid $yellow;				
+			}
+		}
+	}
+	.dropdown-item{
+		display: block;
+		color: $black;
+		font-size: rem(14);
+		font-weight: 400;
+		padding: 0.5rem rem(16);
+		transition: all ease 0.3s;
+		&:hover,
+		&:focus {
+			background-color: rgba($white, 0.8);
+		}
+		.icon{
+			display: inline-block;
+			margin-right: rem(10);
+      width: rem(15);
+      svg {
+        width: rem(15);
+        height: rem(15);
+      }
+		}
+		&.active,
+		&:active {
+			color: $black !important;
+			text-decoration: none;
+			background-color: $white;
+		}
+	}
+	li {
+		&.active,
+		&:active {
+			.dropdown-item{
+				color: $black !important;
+				text-decoration: none;
+				background-color: $white;
+			}
+		}
+	}
+	&.menu-left-aligned{
+		left: 0 !important;
+	}
+	&.menu-right-aligned{
+		right: 0 !important;
+	}
+	&.mega-menu{
+		width: 100%;
+    // justify-content: flex-start;
+    // align-items: center;
+		&.show {
+			display: flex;
+		}
+		// .dropdown-item {
+		.dropdown-list-item{
+			display: inline-flex;
+			width: auto;
+			margin: 0px rem(6);
+		}
+	}
+}
+// .navbar .dropdown-menu a {
+//   padding: 10px;
+//   font-size: .9375rem;
+//   font-weight: 300;
+//   width: auto;
+//   font-size: 14px;
+//   margin: 0px 6px;
+// }
+// .navbar-nav {
+// 	.dropdown {
+// 		position: static;
+// 	}
+// }
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .dropdown-menu#{$infix}-left {
+      right: auto !important;
+      left: 0 !important;
+    }
+
+    .dropdown-menu#{$infix}-right {
+      right: 0 !important;
+      left: auto !important;
+    }
+  }
+}

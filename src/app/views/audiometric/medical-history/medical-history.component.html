@@ -1,0 +1,106 @@
+<section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
+    <div class="container-fluid">
+        
+        <div class="row pt-3">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                    <div class="bg-primary-blue text-white rounded-top px-3 py-2 text-center flex-row flex-wrap">
+                        <h6 class="mr-3 pt-2 text-uppercase">
+                            <span class="pl-1 fs16 fw600">Medical History</span>
+                        </h6>
+
+                    </div>
+
+                    <form class="occupational-NoiseForm col-xl-12 col-12 p-0" (ngSubmit)="onSubmit()"
+                        autocomplete="off">
+                        <div class="table-responsive mb-2">
+                            <table class="table table-sm table-borderless pl-2 pr-2 text-nowrap text-uppercase">
+                                <thead class="bg-color3 text-dark">
+                                    <tr>
+                                        <th scope="col" class="pl-3 border-right-bold text-left text-dark">Types</th>
+                                        <th scope="col" class="pl-2 text-center text-dark" style="width: 80px;">Yes
+                                        </th>
+                                        <th scope="col" class="pl-2 text-center text-dark" style="width: 80px;">No
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">1. Do you have any disease that affects the hearing?</td>
+                                            <td class="pl-3 text-center">
+                                                <!-- <input type="radio" name="optradio"> -->
+                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
+                                                    <mat-radio-button color="primary" value="1"></mat-radio-button>
+                                                <!-- </mat-radio-group> -->
+                                            </td>  
+                                            <td class="pl-3 text-center">
+                                                <!-- <input type="radio" name="optradio"> -->
+                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
+                                                    <mat-radio-button color="primary" value="2"></mat-radio-button>
+                                                <!-- </mat-radio-group> -->
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">2. Have you had history of ear injury, ear ache or ear discharge?</td>
+                                            <td class="pl-3 text-center">
+                                                <!-- <input type="radio" name="optradio"> -->
+                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
+                                                    <mat-radio-button color="primary" value="1"></mat-radio-button>
+                                                <!-- </mat-radio-group> -->
+                                            </td>  
+                                            <td class="pl-3 text-center">
+                                                <!-- <input type="radio" name="optradio"> -->
+                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
+                                                    <mat-radio-button color="primary" value="2"></mat-radio-button>
+                                                <!-- </mat-radio-group> -->
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">3. Are you having Upper Respiratory Infections (URTI) symptoms?</td>
+                                            <td class="pl-3 text-center">
+                                                <!-- <input type="radio" name="optradio"> -->
+                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
+                                                    <mat-radio-button color="primary" value="1"></mat-radio-button>
+                                                <!-- </mat-radio-group> -->
+                                            </td>  
+                                            <td class="pl-3 text-center">
+                                                <!-- <input type="radio" name="optradio"> -->
+                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
+                                                    <mat-radio-button color="primary" value="2"></mat-radio-button>
+                                                <!-- </mat-radio-group> -->
+                                            </td>  
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">4. Do you have hobbies that involve loud noise exposure?
+                                                (Disco, Jamming, Shooting, etc)</td>
+                                            <td class="pl-3 text-center">
+                                                <!-- <input type="radio" name="optradio"> -->
+                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
+                                                    <mat-radio-button color="primary" value="1"></mat-radio-button>
+                                                <!-- </mat-radio-group> -->
+                                            </td>  
+                                            <td class="pl-3 text-center">
+                                                <!-- <input type="radio" name="optradio"> -->
+                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
+                                                    <mat-radio-button color="primary" value="2"></mat-radio-button>
+                                                <!-- </mat-radio-group> -->
+                                            </td>  
+                                        </tr>
+    
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-12 col-12 pt-3 py-2 d-flex align-items-center justify-content-center">
+                            <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                type="submit">Save</button>
+                            <button type="button"
+                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill">Next</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

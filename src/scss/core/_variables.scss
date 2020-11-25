@@ -1,0 +1,92 @@
+// Project variables
+$baseFontSize : 16px;
+$mdFontSize : 15px;
+$xsFontSize : 14px;
+// Mandatory Colors(Values can be changed but don't remove these)
+$white: #ffffff;
+$black: #000000;
+// $red: #ff4747;
+$red:#eb1a1a;
+$yellow: #FFBB00;
+$cyan: #2199fa;
+$blue: #8cdbf3;
+$darkgrey: #aaaaaa;
+$verydarkgrey: #7e7a7a;
+$verydarkblue: #071e41;
+$green: #21cf3c;
+$lightblue: #3fb8ff;
+$greyishblue: #c9dcee;
+$lightgreyishblue: #e7e9ec;
+$primary-blue: #4285f4;
+// e9ecef
+// Add your colors here like these:
+$color1:#DEDDDD;
+$color2: #c7a7ff;
+$color3: #d3d7ff;
+$color4: #f3f9ff;
+$color5: #8ea4b6;
+$color6: #EBEDFF;
+$color7: #3B68A3;
+$color9: #e9ecef;
+$color10: #f1f1f1;
+$color11: #c1c1c1;
+// $test: #ff6384
+
+$theme-colors: map-merge(
+  (
+    'white': $white,
+    'black': $black,
+    'red' : $red,
+    'cyan': $cyan,
+    'blue': $blue,
+    'primary-blue': $primary-blue,
+    'yellow': $yellow,
+    'darkgrey': $darkgrey,
+    'verydarkgrey': $verydarkgrey,
+    'verydarkblue': $verydarkblue,
+    'green' : $green,
+    'lightblue' : $lightblue,
+    'greyishblue': $greyishblue,
+    'lightgreyishblue': $lightgreyishblue,
+    'color1' : $color1,
+    'color2' : $color2,
+    'color3' : $color3,
+    'color4' : $color4,
+    'color5' : $color5,
+    'color6' : $color6,
+    'color7' : $color7,
+    'color9' : $color9
+  ),
+  $theme-colors
+);
+$spacers: map-merge(
+  (
+    6: ($spacer * 6),
+  ),
+  $spacers
+);
+
+$gradients: (
+  'blue': ($lightblue, $blue, $blue, $lightblue)
+);
+$fontweights: 100, 300, 400, 500, 600, 700, 800, 900;
+$border: none, 1, 2, 3, 4, 6, 8;
+$borderstyles: none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset;
+$borderradius: 0, 2, 4, 5, 6, 8, 10, 15, 16, 30, 50;
+$allfontsize: 6, 10, 12, 13, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 38, 40, 44, 48, 52, 56, 60;
+$lineheights: 1, 2;
+// Fonts
+$montserrat: 'Montserrat', sans-serif;
+// $roboto: 'Roboto', sans-serif;
+// $roboto: 'Comic Sans MS', sans-serif;
+$allFonts: (
+  // 'roboto': $roboto
+  'montserrat': $montserrat
+);
+
+$loader-color:              $blue !default;
+$loader-size:                  56px !default;
+$loader-height:                20px !default;
+$loader-border-size:            8px !default;
+$loader-gap:                   12px !default;
+$loader-animation-duration:      1s !default;

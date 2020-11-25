@@ -1,0 +1,115 @@
+// Button Colors
+.btn{
+	display: inline-flex;
+  justify-content: center;
+  align-items: center;
+	border-width: 2px;
+	padding: rem(8) rem(20);
+	&.min-width {
+		min-width: rem(100);
+	}
+	&.break-word {
+		word-break: break-word;
+	}
+	&.btn-sm{
+		padding: .3rem 1rem;
+	}
+	&.btn-md{
+		padding: 0.4rem 1.3rem;
+	  border-radius: 3px;
+	}
+	&.btn-xs{
+		padding: 0.2rem 0.8rem;
+		font-size: rem(14);
+	}
+	&.btn-rounded{
+		border-radius: 2.4rem;
+	}
+	&.no-hover{
+		&:focus,
+		&.focus{
+			box-shadow: none;
+		}
+	}
+	&:not(.no-hover){
+		&:focus,
+		&.focus{
+			box-shadow: none;
+		}
+	}
+	&.btn-link{
+		// border-radius: 0;
+		&:hover,
+		&:focus,
+		&.focus{
+			color: $blue;
+			text-decoration: none;
+			box-shadow: none;
+		}
+	}
+	img {
+		max-height: rem(26);
+	}
+	&.btn-loader {
+		&::before {
+			content: "";
+			display: inline-block;
+			width: rem(20);
+			height: rem(20);
+			border: 2px solid $white;
+			border-right-color: transparent;
+			border-radius: 50%;
+			margin-right: rem(4);
+			animation: rotate 1s linear infinite;
+		}
+	}
+}
+.mat-multi-part-btn {
+	.mat-button-wrapper {
+		display: flex;
+		align-items: center;
+	}
+}
+// Solid Btns
+@each $color, $value in $theme-colors {
+	@if $color != transparent {
+	  .btn-#{$color}{
+	   	@include solid-btn($value, $white);
+	  }
+	}
+}
+
+// @each $theme, $map in $application-modes {
+//   @each $key, $submap in $map {
+//     .btn-themed-#{$key}{
+//       @include themify($theme, $map) {
+// 				@include solid-btn(themed($key), $white);
+//       }
+//     }
+//   }
+// }
+// Outline Btns
+@each $color, $value in $theme-colors {
+	@if $color != transparent {
+	  .btn-outline-#{$color}{
+	    @include outline-btn($value, $bordercolor: $value);
+	  }
+	}
+}
+// @each $theme, $map in $application-modes {
+//   @each $key, $submap in $map {
+//     .btn-themed-outline-#{$key}{
+//       @include themify($theme, $map) {
+// 				@include outline-btn(themed($key), $bordercolor: themed($key));
+//       }
+//     }
+//   }
+// }
+// Gradient Btns
+// @each $color, $value in $gradients {
+// 	@if $color != transparent {
+// 		.btn-gradient-#{$color} {
+// 			@include gradient(to right, $value);
+// 		}
+// 	}
+// }

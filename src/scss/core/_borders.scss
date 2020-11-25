@@ -1,0 +1,34 @@
+/* Border */
+@each $borderwidth in $border {
+  @if $borderwidth == none {
+    .border-#{$borderwidth} {
+      border: #{$borderwidth} !important;
+    }
+  } @else {
+    .brw#{$borderwidth} {
+      border-width: #{$borderwidth}px !important;
+    }
+  }
+}
+// Border Radius
+@each $borderradiusunit in $borderradius {
+  .brr#{$borderradiusunit} {
+    border-radius: #{$borderradiusunit}px !important;
+  }
+}
+// Border Styles
+@each $style in $borderstyles {
+  .brs-#{$style} {
+    border-style: #{$style} !important;
+  }
+}
+// Border Colors
+// @each $theme, $map in $application-modes {
+//   @each $key, $submap in $map {
+//     .border-themed-#{$key}{
+//       @include themify($theme, $map) {
+//         border-color: themed($key) !important;
+//       }
+//     }
+//   }
+// }

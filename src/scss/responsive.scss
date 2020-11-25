@@ -1,0 +1,81 @@
+@import '../assets/vendors/bootstrap/scss/functions';
+@import '../assets/vendors/bootstrap/scss/variables';
+@import '../assets/vendors/bootstrap/scss/mixins';
+@import './core/functions';
+@import './core/variables';
+@import './core/mixins';
+// Responive Breakpoints
+@include media-breakpoint-down(xs) {
+  // Styles
+  html {
+	  font-size: $xsFontSize;
+	  height: 100%;
+	}
+}
+// @include media-breakpoint-up(xs) {
+
+// }
+// @include media-breakpoint-only(sm) {
+
+// }
+// @include media-breakpoint-between(xs, sm) {
+
+// }
+// @include media-breakpoint-between(xs, md) {
+
+// }
+// @include media-breakpoint-only(sm) {
+
+// }
+// @include media-breakpoint-between(sm, md) {
+
+// }
+// @include media-breakpoint-only(md) {
+
+// }
+@include media-breakpoint-down(sm) {
+	
+}
+@include media-breakpoint-down(md) {
+	
+}
+@include media-breakpoint-up(sm) {
+	
+}
+@include media-breakpoint-up(md) {
+
+}
+@include media-breakpoint-between(xs, lg) {
+
+}
+@include media-breakpoint-down(md) {
+	// .navbar-expand-lg .navbar-collapse {
+	// 	max-height: calc(100vh - 62px);
+	// 	overflow: auto;
+	// }
+	.navbar {
+		&.navbar-expand-lg {
+			max-height: 100vh;
+			overflow: auto;
+		}
+	}
+	.dropdown-menu{	
+		&.mega-menu{
+			// .dropdown-item {
+			.dropdown-list-item {
+				display: flex;
+				width: 100%;
+				margin: 0px;
+			}
+		}
+	}
+}
+@include media-breakpoint-up(lg) {
+	.navbar-expand-lg .navbar-collapse {
+		visibility: visible !important;
+		opacity: 1 !important;
+	}
+}
+// @include media-breakpoint-up(xl) {
+
+// }

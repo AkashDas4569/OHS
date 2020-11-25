@@ -1,0 +1,6 @@
+/* Font Size */
+@each $fontsize in $allfontsize {
+  .fs#{$fontsize} {
+    font-size: rem($fontsize) !important;
+  }
+}

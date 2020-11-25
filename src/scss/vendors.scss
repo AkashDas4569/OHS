@@ -1,0 +1,51 @@
+// Bootstrap function definitions
+@import '../assets/vendors/bootstrap/scss/functions';
+@import '../assets/vendors/bootstrap/scss/variables';
+@import '../assets/vendors/bootstrap/scss/mixins';
+
+// Custom function definitions
+@import './core/functions';
+@import './core/variables';
+@import './core/mixins';
+// Animate
+@import  '../assets/vendors/animate/animate.min.css';
+// Bootstrap CSS
+@import '../assets/vendors/bootstrap/scss/root';
+@import '../assets/vendors/bootstrap/scss/reboot';
+@import '../assets/vendors/bootstrap/scss/type';
+@import '../assets/vendors/bootstrap/scss/images';
+@import '../assets/vendors/bootstrap/scss/code';
+@import '../assets/vendors/bootstrap/scss/grid';
+@import '../assets/vendors/bootstrap/scss/tables';
+@import '../assets/vendors/bootstrap/scss/forms';
+@import '../assets/vendors/bootstrap/scss/buttons';
+@import '../assets/vendors/bootstrap/scss/transitions';
+@import '../assets/vendors/bootstrap/scss/dropdown';
+@import '../assets/vendors/bootstrap/scss/button-group';
+@import '../assets/vendors/bootstrap/scss/input-group';
+@import '../assets/vendors/bootstrap/scss/custom-forms';
+@import '../assets/vendors/bootstrap/scss/nav';
+@import '../assets/vendors/bootstrap/scss/navbar';
+@import '../assets/vendors/bootstrap/scss/card';
+@import '../assets/vendors/bootstrap/scss/breadcrumb';
+@import '../assets/vendors/bootstrap/scss/pagination';
+@import '../assets/vendors/bootstrap/scss/badge';
+@import '../assets/vendors/bootstrap/scss/jumbotron';
+@import '../assets/vendors/bootstrap/scss/alert';
+@import '../assets/vendors/bootstrap/scss/progress';
+@import '../assets/vendors/bootstrap/scss/media';
+@import '../assets/vendors/bootstrap/scss/list-group';
+@import '../assets/vendors/bootstrap/scss/close';
+@import '../assets/vendors/bootstrap/scss/modal';
+@import '../assets/vendors/bootstrap/scss/tooltip';
+@import '../assets/vendors/bootstrap/scss/popover';
+@import '../assets/vendors/bootstrap/scss/carousel';
+@import '../assets/vendors/bootstrap/scss/utilities';
+@import '../assets/vendors/bootstrap/scss/print';
+@import '../assets/vendors/bootstrap/scss/toasts';
+@import '../assets/vendors/bootstrap/scss/spinners';
+// Font Awesome
+@import '../assets/vendors/fontawesome/scss/fontawesome';
+@import '../assets/vendors/fontawesome/scss/brands';
+@import '../assets/vendors/fontawesome/scss/regular';
+@import '../assets/vendors/fontawesome/scss/solid';

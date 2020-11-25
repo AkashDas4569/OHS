@@ -1,0 +1,186 @@
+<section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
+    <div class="container-fluid">
+
+        <div class="row pt-3">
+            <div class="col-xl-12 col-12 pt-1 pb-4 pl-4">
+                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                    <div class="bg-primary-blue text-white rounded-top px-3 py-2 text-center flex-row flex-wrap">
+                        <h6 class="mr-3 pt-2 text-uppercase">
+                            <span class="pl-1 fs16 fw600">Certificate of Fitness</span>
+                        </h6>
+                    </div>
+
+                    <form class="fitness-CertificateForm col-xl-12 col-12 p-0" (ngSubmit)="onSubmit()"
+                        autocomplete="off">
+                        <div class="row px-3 pt-2">
+                            <div class="col-md-12 col-12">
+                                <mat-form-field class="w-100" floatLabel="never">
+                                    <mat-label class="fw600">Name of Person Examined</mat-label>
+                                    <input matInput placeholder="Enter Name of Person Examined" type="text"
+                                        autocomplete="off">
+                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
+                                {{ errorState(formControls['patientName'], 'patientName').message }}
+                              </mat-error> -->
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-4 col-12">
+                                <mat-form-field class="w-100" floatLabel="never">
+                                    <mat-label class="fw600">NRIC/Passport No.</mat-label>
+                                    <input matInput placeholder="Enter NRIC/Passport No." type="text"
+                                        autocomplete="off">
+                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
+                                {{ errorState(formControls['patientName'], 'patientName').message }}
+                              </mat-error> -->
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <mat-form-field class="w-100" floatLabel="never">
+                                    <mat-label class="fw600">Date of Birth</mat-label>
+                                    <input matInput [matDatepicker]="dob" placeholder="Enter Date of Birth"
+                                        autocomplete="off">
+                                    <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                                    <mat-datepicker #dob></mat-datepicker>
+                                    <!-- <mat-error *ngIf="errorState(formControls['DepositDt'], 'depositDt').message">
+                    {{ errorState(formControls['DepositDt'], 'depositDt').message }}
+                  </mat-error> -->
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <mat-form-field class="w-100" floatLabel="never">
+                                    <mat-label class="fw600">Sex</mat-label>
+                                    <mat-select [typeaheadDebounceInterval]="500" placeholder="Select Sex">
+                                        <mat-option class="fs12 fw600" value="">Select Sex Type</mat-option>
+                                        <!-- <mat-option *ngFor="let gender of allMasterData?.getAllMasterEnumsDetails?.Gender" [value]="gender.Id">
+                              {{gender.Title}}
+                            </mat-option> -->
+                                    </mat-select>
+                                    <!-- <mat-error *ngIf="errorState(formControls['Gender'], 'Gender').message">
+                            {{ errorState(formControls['Gender'], 'Gender').message }}
+                          </mat-error> -->
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-5 col-12">
+                                <mat-form-field class="w-100" floatLabel="never">
+                                    <mat-label class="fw600">Name of Employee</mat-label>
+                                    <input matInput placeholder="Enter Name of Employee" type="text" autocomplete="off">
+                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
+                                {{ errorState(formControls['patientName'], 'patientName').message }}
+                              </mat-error> -->
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-7 col-12">
+                                <mat-form-field class="w-100" floatLabel="never">
+                                    <mat-label class="fw600">Address of Employee</mat-label>
+                                    <input matInput placeholder="Enter Address of Employee" type="text"
+                                        autocomplete="off">
+                                    <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
+                                {{ errorState(formControls['patientName'], 'patientName').message }}
+                              </mat-error> -->
+                                </mat-form-field>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-12 col-12 mt-2">
+                                    <!-- <div class="bg-color1 rounded-top px-3 pt-1 pb-1 d-flex justify-content-start flex-row flex-wrap"
+                                        (click)="isCollapsedPerson = !isCollapsedPerson"> -->
+                                    <div
+                                        class="bg-color2 rounded-top px-3 pt-1 pb-1 d-flex justify-content-start flex-row flex-wrap">
+                                        <h6 class="mr-3">
+                                            <!-- <i class="fas fa-chevron-circle-down" aria-hidden="true"></i> -->
+                                            <!-- <small class="pl-1 fw600">CONTACT PERSON :</small> -->
+                                            <small class="fw700">Examination/Test Done And The Results :</small>
+                                        </h6>
+                                    </div>
+
+                                    <!-- <div [collapse]="isCollapsedPerson"> -->
+                                    <div>
+                                        <div class="row pt-2 px-3">
+                                            <div class="col-md-12 col-12">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600">I hereby Certify that I have Examined the
+                                                        above name Person on<span class="text-danger">*</span>
+                                                    </mat-label>
+                                                    <input matInput type="text" autocomplete="off">
+                                                    <!-- <mat-error
+                                                            *ngIf="errorState(formControls['ContactName'], 'contactPersonName').message">
+                                                            {{ errorState(formControls['ContactName'], 'contactPersonName').message }}
+                                                        </mat-error> -->
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-12 col-12">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600">And that He/She is Fit/Not Fit for work
+                                                        which may expose Him/Her to<span class="text-danger">*</span>
+                                                    </mat-label>
+                                                    <input matInput type="text" autocomplete="off">
+                                                    <!-- <mat-error
+                                                        *ngIf="errorState(formControls['ContactName'], 'contactPersonName').message">
+                                                        {{ errorState(formControls['ContactName'], 'contactPersonName').message }}
+                                                    </mat-error> -->
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div class="col-md-3 col-12">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600">Remarks (If Any)</mat-label>
+                                                    <input matInput placeholder="Enter Remarks" type="text"
+                                                        autocomplete="off">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600">Name of Occupational Health Doctor
+                                                    </mat-label>
+                                                    <input matInput
+                                                        placeholder="Enter Name of Occupational Health Doctor"
+                                                        type="text" autocomplete="off">
+                                                    <!-- <mat-error
+                                                            *ngIf="errorState(formControls['ContactMobile'], 'ContactMobile').message">
+                                                            {{ errorState(formControls['ContactMobile'], 'ContactMobile').message }}
+                                                        </mat-error> -->
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-3 col-12">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600">DOSH Reg. No.</mat-label>
+                                                    <input matInput placeholder="Enter DOSH Reg. No." type="text"
+                                                        autocomplete="off">
+                                                    <!-- <mat-error
+                                                            *ngIf="errorState(formControls['ContactEmail'], 'email').message">
+                                                            {{ errorState(formControls['ContactEmail'], 'email').message }}
+                                                        </mat-error> -->
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div class="col-md-12 col-12">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600">Address of Practice</mat-label>
+                                                    <input matInput placeholder="Enter Address of Practice" type="text"
+                                                        autocomplete="off">
+                                                    <!-- <mat-error
+                                                        *ngIf="errorState(formControls['ContactEmail'], 'email').message">
+                                                        {{ errorState(formControls['ContactEmail'], 'email').message }}
+                                                    </mat-error> -->
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-12 text-center mt-3">
+                            <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                    type="submit">Save</button>
+                                <button type="button"
+                                    class="btn btn-warning min-width btn-sm fs14 fw500 rounded-pill">
+                                    <i class="fa fa-print mr-2"></i> Print
+                                </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

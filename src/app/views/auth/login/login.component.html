@@ -1,0 +1,63 @@
+<!-- Start Login Section -->
+<div class="login-section col-xl-12 col-12 d-flex flex-row flex-wrap">
+
+            <div class="login-left col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 p-0 align-items-center d-none d-md-flex">
+                <!-- <div class="login-left"><img src="assets/img/login-left.png" alt=""></div> -->
+            </div>
+
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 px-0 py-3 d-flex flex-row flex-wrap align-items-center justify-content-center">
+                <div class="login-content col-xl-12 col-12 p-0">
+                <div class="loginbox">
+                    <div class="logo-section">
+                        <div class="logoimg"><img src="assets/img/login-logo.png" alt="" class="img-fluid"></div>
+                        <div class="logo-text w-100 p-2">
+                            <p class="fs14 fw600 m-0">Occupational Health System (OHS)</p>
+                        </div>
+                      </div>
+
+                      <div class="loginform">
+                        <form class="login-form col-xl-12 col-12 p-0" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()" autocomplete="off">
+            
+                          <mat-form-field floatLabel="auto" class="w-100 pb-2">
+                            <mat-label class="fw600">User Id</mat-label>
+                            <input matInput placeholder="Enter User Id" formControlName="userID" type="text" autocomplete="off">
+                            <mat-error *ngIf="errorState(formControls['userID'], 'username').message">
+                              {{ errorState(formControls['userID'], 'username').message }}
+                            </mat-error>
+                          </mat-form-field>
+            
+                          <mat-form-field floatLabel="auto" class="w-100 pb-2">
+                            <mat-label class="fw600">Password</mat-label>
+                            <input matInput placeholder="Enter Password" formControlName="password" type="Password" #password autocomplete="nope">
+                            <button mat-icon-button type="button" matSuffix tabindex="-1" [ohsToggleViewPassword]="password">
+                              <mat-icon class="fs24">{{ (password.type == 'password') ? 'visibility' : 'visibility_off' }}
+                              </mat-icon>
+                            </button>
+                            <mat-error *ngIf="errorState(formControls['password'], 'password').message">
+                              {{ errorState(formControls['password'], 'password').message }}
+                            </mat-error>
+                          </mat-form-field>
+            
+                          <!-- <div class="md-form">
+                            <div class="captcha"><img src="assets/img/captcha.png" alt=""></div>
+                          </div> -->
+            
+                          <!-- <div class="md-form mt-0">
+                            <label>
+                              <input type="checkbox" checked="checked" name="remember"> Remember me
+                            </label>
+                            <span class="psw py-0"><a href="#">Forget Password ?</a></span>
+                          </div> -->
+            
+                          <div class="text-center mt-1-half">
+                            <!-- <button class="btn btn-info mb-2" (click)="openModal(chooseClinic)">Log In</button> -->
+                            <button class="btn btn-info mb-2" type="submit">Log In</button>
+                            <!-- <button class="btn btn-info mb-2" (click)="onLogin(chooseClinic)">Log In </button> -->
+                          </div>
+                        </form>
+                      </div>
+                </div>
+                </div>
+            </div>
+</div>
+<!-- End Login Section -->

@@ -1,0 +1,12 @@
+// .badge{
+//     padding: 0.2rem 0.3rem;
+//     transition: all ease 0.3s;
+// }
+// // Badge Variations
+// @each $color, $value in $theme-colors {
+//   @if $color != transparent {
+//     .badge-#{$color} {
+//       @include solid-badge($value, $white);
+//     }    
+//   }
+// }

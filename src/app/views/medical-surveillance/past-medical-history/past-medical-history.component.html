@@ -1,0 +1,533 @@
+<section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
+    <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-2 mt-2 bg-white shadow-sm rounded w-100">
+                    <div class="row">
+                        <div class="col-xl-12 col-12">
+                            <div
+                                class="pt-3 px-3 pb-1 mb-2 bg-primary-blue text-white text-start rounded-top px-2 py-1 flex-row flex-wrap">
+                                <p class="fw600 fs16 mr-4 text-uppercase">Employee Information</p>
+                            </div>
+
+                            <div class="row px-3 pb-2">
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Employee name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForPMH.EmployeeName"
+                                                placeholder="Enter Employee Name" type="text" autocomplete="off"
+                                                readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForPMH.ICNUmber"
+                                                placeholder="Enter MyKad/IC No." type="text" autocomplete="off"
+                                                readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Company Name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForPMH.CompanyName"
+                                                placeholder="Enter Company Name" type="text" autocomplete="off"
+                                                readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="past-MedicalHistoryForm col-xl-12 col-12 p-0" [formGroup]="pastMedicalHistoryForm"
+            (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="row pt-3">
+                <div class="col-xl-12 col-12">
+                    <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                        <div class="bg-primary-blue text-white rounded-top px-3 py-2 text-center flex-row flex-wrap">
+                            <h6 class="mr-3 pt-2 text-uppercase">
+                                <span class="pl-1 fs16 fw600">Past Medical History <span class="pl-1 fs16 fw500">(To be
+                                        filled by Doctor</span>)</span>
+                            </h6>
+
+                        </div>
+
+                        <div class="table-responsive mb-2">
+                            <table class="table table-sm table-borderless pl-2 pr-2 text-nowrap text-uppercase">
+                                <thead class="bg-color3 text-dark">
+                                    <tr>
+                                        <th scope="col" class="pl-3 border-right-bold text-left text-dark">System</th>
+                                        <th scope="col" class="pl-2 text-center text-dark" style="width: 50px;">Yes
+                                        </th>
+                                        <th scope="col" class="pl-2 border-right-bold text-center text-dark"
+                                            style="width: 50px;">No
+                                        </th>
+                                        <th scope="col" class="pl-2 text-center text-dark" style="min-width: 100px;">
+                                            Explain if Yes
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">1. Central Nervous System
+                                            </td>
+                                            <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="CNS"
+                                                    (change)="onSelectChange('CNS', 'SpecifyCNS')">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                            <td class="pl-3 text-center">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600"></mat-label>
+                                                    <input matInput formControlName="SpecifyCNS" type="text"
+                                                        autocomplete="off"
+                                                        [readonly]="!formControls['CNS'].value">
+                                                    <button mat-icon-button *ngIf="formControls['CNS'].value"
+                                                        type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('SpecifyCNS')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['SpecifyCNS'], 'errorMsg').message">
+                                                        {{ errorState(formControls['SpecifyCNS'], 'errorMsg').message }}
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">2. Peripheral Nervous
+                                                System</td>
+                                                <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                    <mat-radio-group class="fs12" aria-label="Select an option"
+                                                        color="primary" formControlName="PNS"
+                                                        (change)="onSelectChange('PNS', 'SpecifyPNS')">
+                                                        <mat-radio-button [value]=true> </mat-radio-button>
+                                                        <mat-radio-button [value]=false> </mat-radio-button>
+                                                    </mat-radio-group>
+                                                </td>
+                                                <td class="pl-3 text-center">
+                                                    <mat-form-field class="w-100" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput formControlName="SpecifyPNS" type="text"
+                                                            autocomplete="off"
+                                                            [readonly]="!formControls['PNS'].value">
+                                                        <button mat-icon-button *ngIf="formControls['PNS'].value"
+                                                            type="button" matSuffix tabindex="-1"
+                                                            (click)="clearInput('SpecifyPNS')">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                        <mat-error
+                                                            *ngIf="errorState(formControls['SpecifyPNS'], 'errorMsg').message">
+                                                            {{ errorState(formControls['SpecifyPNS'], 'errorMsg').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">3. Cardiovascular System
+                                            </td>
+                                            <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="CVS"
+                                                    (change)="onSelectChange('CVS', 'SpecifyCVS')">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                            <td class="pl-3 text-center">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600"></mat-label>
+                                                    <input matInput formControlName="SpecifyCVS" type="text"
+                                                        autocomplete="off"
+                                                        [readonly]="!formControls['CVS'].value">
+                                                    <button mat-icon-button *ngIf="formControls['CVS'].value"
+                                                        type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('SpecifyCVS')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['SpecifyCVS'], 'errorMsg').message">
+                                                        {{ errorState(formControls['SpecifyCVS'], 'errorMsg').message }}
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">4. Respiratory System
+                                            </td>
+                                            <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="RESPsys"
+                                                    (change)="onSelectChange('RESPsys', 'SpecifyRESPsys')">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                            <td class="pl-3 text-center">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600"></mat-label>
+                                                    <input matInput formControlName="SpecifyRESPsys" type="text"
+                                                        autocomplete="off"
+                                                        [readonly]="!formControls['RESPsys'].value">
+                                                    <button mat-icon-button *ngIf="formControls['RESPsys'].value"
+                                                        type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('SpecifyRESPsys')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['SpecifyRESPsys'], 'errorMsg').message">
+                                                        {{ errorState(formControls['SpecifyRESPsys'], 'errorMsg').message }}
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">5. Gastrointestinal</td>
+                                            <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="Gastro"
+                                                    (change)="onSelectChange('Gastro', 'SpecifyGastro')">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                            <td class="pl-3 text-center">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600"></mat-label>
+                                                    <input matInput formControlName="SpecifyGastro" type="text"
+                                                        autocomplete="off"
+                                                        [readonly]="!formControls['Gastro'].value">
+                                                    <button mat-icon-button *ngIf="formControls['Gastro'].value"
+                                                        type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('SpecifyGastro')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['SpecifyGastro'], 'errorMsg').message">
+                                                        {{ errorState(formControls['SpecifyGastro'], 'errorMsg').message }}
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">6. Musculoskeletal</td>
+                                            <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="MuscSke"
+                                                    (change)="onSelectChange('MuscSke', 'SpecifyMuscSke')">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                            <td class="pl-3 text-center">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600"></mat-label>
+                                                    <input matInput formControlName="SpecifyMuscSke" type="text"
+                                                        autocomplete="off"
+                                                        [readonly]="!formControls['MuscSke'].value">
+                                                    <button mat-icon-button *ngIf="formControls['MuscSke'].value"
+                                                        type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('SpecifyMuscSke')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['SpecifyMuscSke'], 'errorMsg').message">
+                                                        {{ errorState(formControls['SpecifyMuscSke'], 'errorMsg').message }}
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">7. Endocrine/Metabolic
+                                            </td>
+                                            <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="Endocrine"
+                                                    (change)="onSelectChange('Endocrine', 'SpecifyEndocrine')">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                            <td class="pl-3 text-center">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600"></mat-label>
+                                                    <input matInput formControlName="SpecifyEndocrine" type="text"
+                                                        autocomplete="off"
+                                                        [readonly]="!formControls['Endocrine'].value">
+                                                    <button mat-icon-button *ngIf="formControls['Endocrine'].value"
+                                                        type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('SpecifyEndocrine')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['SpecifyEndocrine'], 'errorMsg').message">
+                                                        {{ errorState(formControls['SpecifyEndocrine'], 'errorMsg').message }}
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">8. Genitourinary</td>
+                                            <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="Genitourinary"
+                                                    (change)="onSelectChange('Genitourinary', 'SpecifyGenitourinary')">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                            <td class="pl-3 text-center">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600"></mat-label>
+                                                    <input matInput formControlName="SpecifyGenitourinary" type="text"
+                                                        autocomplete="off"
+                                                        [readonly]="!formControls['Genitourinary'].value">
+                                                    <button mat-icon-button *ngIf="formControls['Genitourinary'].value"
+                                                        type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('SpecifyGenitourinary')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['SpecifyGenitourinary'], 'errorMsg').message">
+                                                        {{ errorState(formControls['SpecifyGenitourinary'], 'errorMsg').message }}
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">9. Reproductive</td>
+                                            <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="Reproductive"
+                                                    (change)="onSelectChange('Reproductive', 'SpecifyReproductive')">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                            <td class="pl-3 text-center">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600"></mat-label>
+                                                    <input matInput formControlName="SpecifyReproductive" type="text"
+                                                        autocomplete="off"
+                                                        [readonly]="!formControls['Reproductive'].value">
+                                                    <button mat-icon-button *ngIf="formControls['Reproductive'].value"
+                                                        type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('SpecifyReproductive')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['SpecifyReproductive'], 'errorMsg').message">
+                                                        {{ errorState(formControls['SpecifyReproductive'], 'errorMsg').message }}
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">10. H/o allergy</td>
+                                            <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="Allergy"
+                                                    (change)="onSelectChange('Allergy', 'SpecifyAllergy')">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                            <td class="pl-3 text-center">
+                                                <mat-form-field class="w-100" floatLabel="never">
+                                                    <mat-label class="fw600"></mat-label>
+                                                    <input matInput formControlName="SpecifyAllergy" type="text"
+                                                        autocomplete="off"
+                                                        [readonly]="!formControls['Allergy'].value">
+                                                    <button mat-icon-button *ngIf="formControls['Allergy'].value"
+                                                        type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('SpecifyAllergy')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                    <mat-error
+                                                        *ngIf="errorState(formControls['SpecifyAllergy'], 'errorMsg').message">
+                                                        {{ errorState(formControls['SpecifyAllergy'], 'errorMsg').message }}
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">11. Previous
+                                                Hospitalization</td>
+                                                <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                    <mat-radio-group class="fs12" aria-label="Select an option"
+                                                        color="primary" formControlName="Hospitalization"
+                                                        (change)="onSelectChange('Hospitalization', 'SpecifyHospitalization')">
+                                                        <mat-radio-button [value]=true> </mat-radio-button>
+                                                        <mat-radio-button [value]=false> </mat-radio-button>
+                                                    </mat-radio-group>
+                                                </td>
+                                                <td class="pl-3 text-center">
+                                                    <mat-form-field class="w-100" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput formControlName="SpecifyHospitalization" type="text"
+                                                            autocomplete="off"
+                                                            [readonly]="!formControls['Hospitalization'].value">
+                                                        <button mat-icon-button *ngIf="formControls['Hospitalization'].value"
+                                                            type="button" matSuffix tabindex="-1"
+                                                            (click)="clearInput('SpecifyHospitalization')">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                        <mat-error
+                                                            *ngIf="errorState(formControls['SpecifyHospitalization'], 'errorMsg').message">
+                                                            {{ errorState(formControls['SpecifyHospitalization'], 'errorMsg').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">12. H/o previous
+                                                occupational diseases/injuries</td>
+                                                <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                    <mat-radio-group class="fs12" aria-label="Select an option"
+                                                        color="primary" formControlName="PrevInjury"
+                                                        (change)="onSelectChange('PrevInjury', 'SpecifyPrevInjury')">
+                                                        <mat-radio-button [value]=true> </mat-radio-button>
+                                                        <mat-radio-button [value]=false> </mat-radio-button>
+                                                    </mat-radio-group>
+                                                </td>
+                                                <td class="pl-3 text-center">
+                                                    <mat-form-field class="w-100" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput formControlName="SpecifyPrevInjury" type="text"
+                                                            autocomplete="off"
+                                                            [readonly]="!formControls['PrevInjury'].value">
+                                                        <button mat-icon-button *ngIf="formControls['PrevInjury'].value"
+                                                            type="button" matSuffix tabindex="-1"
+                                                            (click)="clearInput('SpecifyPrevInjury')">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                        <mat-error
+                                                            *ngIf="errorState(formControls['SpecifyPrevInjury'], 'errorMsg').message">
+                                                            {{ errorState(formControls['SpecifyPrevInjury'], 'errorMsg').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">13. Amount compensation
+                                                paid</td>
+                                                <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                    <mat-radio-group class="fs12" aria-label="Select an option"
+                                                        color="primary" formControlName="Compensation"
+                                                        (change)="onSelectChange('Compensation', 'SpecifyCompensation')">
+                                                        <mat-radio-button [value]=true> </mat-radio-button>
+                                                        <mat-radio-button [value]=false> </mat-radio-button>
+                                                    </mat-radio-group>
+                                                </td>
+                                                <td class="pl-3 text-center">
+                                                    <mat-form-field class="w-100" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput formControlName="SpecifyCompensation" type="text"
+                                                            autocomplete="off"
+                                                            [readonly]="!formControls['Compensation'].value">
+                                                        <button mat-icon-button *ngIf="formControls['Compensation'].value"
+                                                            type="button" matSuffix tabindex="-1"
+                                                            (click)="clearInput('SpecifyCompensation')">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                        <mat-error
+                                                            *ngIf="errorState(formControls['SpecifyCompensation'], 'errorMsg').message">
+                                                            {{ errorState(formControls['SpecifyCompensation'], 'errorMsg').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">14. Have any of your
+                                                co-workers experienced <br>
+                                                Occ. diseases/poison/injury</td>
+                                                <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                    <mat-radio-group class="fs12" aria-label="Select an option"
+                                                        color="primary" formControlName="CoWorkers"
+                                                        (change)="onSelectChange('CoWorkers', 'SpecifyCoWorkers')">
+                                                        <mat-radio-button [value]=true> </mat-radio-button>
+                                                        <mat-radio-button [value]=false> </mat-radio-button>
+                                                    </mat-radio-group>
+                                                </td>
+                                                <td class="pl-3 text-center">
+                                                    <mat-form-field class="w-100" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput formControlName="SpecifyCoWorkers" type="text"
+                                                            autocomplete="off"
+                                                            [readonly]="!formControls['CoWorkers'].value">
+                                                        <button mat-icon-button *ngIf="formControls['CoWorkers'].value"
+                                                            type="button" matSuffix tabindex="-1"
+                                                            (click)="clearInput('SpecifyCoWorkers')">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                        <mat-error
+                                                            *ngIf="errorState(formControls['SpecifyCoWorkers'], 'errorMsg').message">
+                                                            {{ errorState(formControls['SpecifyCoWorkers'], 'errorMsg').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">15. Other health problem
+                                                or injuries</td>
+                                                <td colspan="2" class="pl-3 border-right-bold text-center">
+                                                    <mat-radio-group class="fs12" aria-label="Select an option"
+                                                        color="primary" formControlName="OtherProblems"
+                                                        (change)="onSelectChange('OtherProblems', 'SpecifyOtherProblems')">
+                                                        <mat-radio-button [value]=true> </mat-radio-button>
+                                                        <mat-radio-button [value]=false> </mat-radio-button>
+                                                    </mat-radio-group>
+                                                </td>
+                                                <td class="pl-3 text-center">
+                                                    <mat-form-field class="w-100" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput formControlName="SpecifyOtherProblems" type="text"
+                                                            autocomplete="off"
+                                                            [readonly]="!formControls['OtherProblems'].value">
+                                                        <button mat-icon-button *ngIf="formControls['OtherProblems'].value"
+                                                            type="button" matSuffix tabindex="-1"
+                                                            (click)="clearInput('SpecifyOtherProblems')">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                        <mat-error
+                                                            *ngIf="errorState(formControls['SpecifyOtherProblems'], 'errorMsg').message">
+                                                            {{ errorState(formControls['SpecifyOtherProblems'], 'errorMsg').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-12 col-12 pt-4 py-2 d-flex align-items-center justify-content-center">
+                            <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                type="submit">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
+                            <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
+                                [routerLink]="['/medical-surveillance', 'status', 'family-history', employeeId, doctorId, employeeTestVisitId]"
+                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                            <button type="button" *ngIf="formControls['Id'].value > 0" [disabled]="!updateNext"
+                                [routerLink]="['/medical-surveillance', 'status', 'family-history', employeeId, doctorId, employeeTestVisitId]"
+                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                            <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
+                                [routerLink]="['/medical-surveillance/list']">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

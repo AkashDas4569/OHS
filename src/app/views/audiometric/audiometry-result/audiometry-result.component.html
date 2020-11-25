@@ -1,0 +1,663 @@
+<section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
+    <div class="container-fluid">
+        <div class="row pt-1">
+            <div class="col-xl-12 col-12 mt-3">
+                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                    <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                        <h6 class="mr-3 pt-2 text-uppercase">
+                            <span class="pl-1 fs16 fw600 text-normal">Frequencies</span>
+                        </h6>
+                    </div>
+
+                <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
+                    <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
+                      <p class="fs14 fw600 pt-3">Frequency, Hz</p>
+                    </div>
+                    <canvas #frequencyChart class="line-chart col-xl-12 col-12 p-0" height="260"></canvas>
+                  </div>
+            </div>
+            </div>
+            <div class="col-xl-12 col-12 mt-3">
+                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                    <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                        <h6 class="mr-3 pt-2 text-uppercase">
+                            <span class="pl-1 fs16 fw600 text-normal">Results</span>
+                        </h6>
+                    </div>
+
+                    <div class="table-responsive mb-0">
+                        <table class="table table-sm table-borderless px-2 text-left text-nowrap">
+                            <thead class="bg-color7">
+                                <tr>
+                                    <th scope="col" colspan="2" class="text-center border-right">Results</th>
+                                    <th scope="col" colspan="4" class="text-center border-right-bold" style="min-width: 150px;">Average (0.5, 1, 2, 3) KHz</th>
+                                    <th scope="col" colspan="4" class="text-center" style="min-width: 150px;">Average (2, 3, 4, 6) KHz</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container>
+                                    <tr class="text-uppercase">
+                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">Right Ear</mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">0.5</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">1</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right-bold border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">3</mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">3</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">4</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">6</mat-label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="text-uppercase">
+                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">Left Ear</mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">0.5</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">1</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right-bold border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">3</mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">3</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">4</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">6</mat-label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="col-xl-12 col-12 mt-3">
+                <p class="fs20 fw600 pt-3">Month to Date Metrics</p>
+                <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
+                    <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
+                      <p class="fs14 fw600 pt-3">Sales</p>
+                      <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-success px-4 py-2">
+                        Daily Sales
+                      </div>
+                    </div>
+                    <canvas #monthSalesChart class="bar-chart col-xl-12 col-12 p-0" height="260"></canvas>
+                  </div>
+                  <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white mt-4">
+                    <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
+                      <p class="fs14 fw600 pt-3">Patients</p>
+                      <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-primary px-4 py-2">
+                        Daily Patient Count
+                      </div>
+                    </div>
+                    <canvas #monthPatientsChart class="bar-chart col-xl-12 col-12 p-0" height="260"></canvas>
+                  </div>
+            </div> -->
+
+            <div class="col-xl-12 col-12 mt-2">
+                <!-- <p class="fs20 fw600 pt-3 mb-0">Year to Date Metrics</p> -->
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pt-3">
+                        <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                            <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                                <h6 class="mr-3 pt-2 text-uppercase">
+                                    <span class="pl-1 fs16 fw600 text-normal">Left Ear Audiogram</span>
+                                </h6>
+                            </div>
+
+                        <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
+                          <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
+                            <p class="fs14 fw600 pt-3">Frequency</p>
+                            <!-- <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-yellow px-4 py-2">
+                              Monthly Sales
+                            </div> -->
+                          </div>
+                          <canvas #yearSalesChart class="bar-chart col-xl-12 col-12 p-0" height="260"></canvas>
+                          <!-- <canvas #yearSalesChart id="canvas"></canvas> -->
+                        </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pt-3">
+                        <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                            <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                                <h6 class="mr-3 pt-2 text-uppercase">
+                                    <span class="pl-1 fs16 fw600 text-normal">Right Ear Audiogram</span>
+                                </h6>
+                            </div>
+                        <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
+                          <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
+                            <p class="fs14 fw600 pt-3">Frequency</p>
+                            <!-- <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-yellow px-4 py-2">
+                              Monthly Patient Count
+                            </div> -->
+                          </div>
+                          <canvas #yearPatientsChart class="bar-chart col-xl-12 col-12 p-0" height="260"></canvas>
+                        </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+
+            <div class="col-xl-12 col-12 mt-3">
+                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                    <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                        <h6 class="mr-3 pt-2 text-uppercase">
+                            <span class="pl-1 fs16 fw600 text-normal">Interpretation</span>
+                        </h6>
+                    </div>
+
+                    <div class="table-responsive mb-0">
+                        <table class="table table-sm table-borderless px-2 text-left text-nowrap">
+                            <thead class="bg-color3">
+                                <tr>
+                                    <th scope="col" colspan="2" class="pl-4 text-left border-right text-dark">Audiogram Key</th>
+                                    <th scope="col" colspan="3" class="text-center border-right text-dark" style="min-width: 150px;">Right Ear</th>
+                                    <th scope="col" colspan="3" class="text-center text-dark" style="min-width: 150px;">Left Ear</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container>
+                                    <tr class="text-uppercase">
+                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">AC (Unmasked)</mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td> -->
+                                        
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">4</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">6</mat-label>
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                    <tr class="text-uppercase">
+                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">AC (Masked)</mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td> -->
+                                        
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">4</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">6</mat-label>
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                    <tr class="text-uppercase">
+                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">BC (Unmasked)</mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td> -->
+                                        
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">4</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">6</mat-label>
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                    <tr class="text-uppercase">
+                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">BC (Masked)</mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td> -->
+                                        
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">4</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">6</mat-label>
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                    <tr class="text-uppercase">
+                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">No Response (On any Symbol)</mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td> -->
+                                        
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">4</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">6</mat-label>
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                    <tr class="text-uppercase">
+                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">Sound-Field (On Ear Specific)</mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td> -->
+                                        
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">4</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">6</mat-label>
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-12 col-12 mt-3">
+                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                    <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                        <h6 class="mr-3 pt-2 text-uppercase">
+                            <span class="pl-1 fs16 fw600 text-normal">Results</span>
+                        </h6>
+                    </div>
+
+                    <div class="table-responsive mb-0">
+                        <table class="table table-sm table-borderless px-2 text-left text-nowrap">
+                            <thead class="bg-color3">
+                                <tr>
+                                    <th scope="col" colspan="2" class="pl-4 text-left border-right text-dark">Average</th>
+                                    <th scope="col" colspan="3" class="text-center border-right text-dark" style="min-width: 150px;">Right Ear</th>
+                                    <th scope="col" colspan="3" class="text-center text-dark" style="min-width: 150px;">Left Ear</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container>
+                                    <tr class="text-uppercase">
+                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td> -->
+                                        
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">4</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">6</mat-label>
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                    <tr class="text-uppercase">
+                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">2</mat-label>
+                                            </div>
+                                        </td> -->
+                                        
+
+                                        <td colspan="3" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10"></mat-label>
+                                            </div>
+                                        </td>
+                                        <!-- <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">4</mat-label>
+                                            </div>
+                                        </td>
+                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                            <div class="text-muted w-10">
+                                                <mat-label class="fw700 w-10">6</mat-label>
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 my-2 bg-white shadow-sm rounded w-100">
+                  <div class="bg-primary-blue text-white text-uppercase text-center rounded-top pt-3 px-2 py-1 flex-row flex-wrap">
+                    <p class="mr-4 fs16 fw600">Summary Results of Right Ear</p>
+                  </div>
+            <div class="table-responsive mb-0">
+                <table class="table table-sm">
+                  <thead class="bg-color3 text-dark">
+                    <tr>
+                      <th scope="col" class="border-right text-left text-dark">Normal</th>
+                      <th scope="col" class="border-right pl-2 text-left text-dark">Hearing Loss</th>
+                      <th scope="col" class="border-right pl-2 text-left text-dark">Hearing Impairment</th>
+                      <th scope="col" class="pl-2 text-left text-dark">Standard Threshold Shifts</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container>
+                    <tr class="border-bottom">
+                      <td class="border-right text-left">
+                          <!-- {{i+1}}. -->
+                        </td>
+                      <td class="border-right pl-2 text-left">
+                          <!-- {{data.UsrName}} -->
+                        </td>
+                      <td class="border-right pl-2 text-left">
+                          <!-- {{data.UserID}} -->
+                    </td>
+                       <td class="text-right d-flex justify-content-end pr-2"></td>
+                    </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 my-2 bg-white shadow-sm rounded w-100">
+                  <div class="bg-primary-blue text-white text-uppercase text-center rounded-top pt-3 px-2 py-1 flex-row flex-wrap">
+                    <p class="mr-4 fs16 fw600">Summary Results of Left Ear</p>
+                  </div>
+            <div class="table-responsive mb-0">
+                <table class="table table-sm">
+                  <thead class="bg-color3 text-dark">
+                    <tr>
+                      <th scope="col" class="border-right text-left text-dark">Normal</th>
+                      <th scope="col" class="border-right pl-2 text-left text-dark">Hearing Loss</th>
+                      <th scope="col" class="border-right pl-2 text-left text-dark">Hearing Impairment</th>
+                      <th scope="col" class="pl-2 text-left text-dark">Standard Threshold Shifts</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container>
+                    <tr class="border-bottom">
+                      <td class="border-right text-left">
+                          <!-- {{i+1}}. -->
+                        </td>
+                      <td class="border-right pl-2 text-left">
+                          <!-- {{data.UsrName}} -->
+                        </td>
+                      <td class="border-right pl-2 text-left">
+                          <!-- {{data.UserID}} -->
+                    </td>
+                       <td class="text-right d-flex justify-content-end pr-2"></td>
+                    </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+
+            <div class="col-xl-12 col-12 text-center mt-3 pt-2">
+                <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                    type="submit">Save</button>
+                <!-- <button type="button"
+                    class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill">Next</button> -->
+            </div>
+        </div>
+    </div>
+</section>

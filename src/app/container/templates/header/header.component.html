@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-yellow header-nav sticky-top py-0">
+  <div class="col-xl-12 col-12 px-0 d-flex">
+    <div class="left-header-parts d-inline-flex align-items-center">
+      <button class="side-menu-btn btn btn-link text-white d-inline-flex p-2 btn-rounded" type="button"
+        (click)="openCustomSidenav('mainNavSidenav')" matRipple>
+        <i class="material-icons">menu</i>
+      </button>
+    </div>
+
+
+    <div class="pt-3 pb-3 flex-grow-1 text-center">
+      <a class="navbar-brand fw600 text-white w-space-normal" routerLinkActive="active">
+        Medical Surveillance Module
+      </a>
+    </div>
+
+    <ul class="navbar-nav mt-0 pb-3 pb-lg-0">
+      <li class="nav-item mx-lg-2 dropdown" dropdown [routerLinkActive]="['active']">
+        <a placement="bottom" class="nav-link d-flex align-items-center px-0 pl-lg-3 dropdown-toggle menu-arrow" href
+          id="basic-link" dropdownToggle (click)="false" id="navbardrop">
+          <div class="linkimg mx-0 d-inline-block fs0">
+            <i class="fas fa-user-circle fs30"></i>
+          </div>
+          <!-- <span class="d-inline-block ml-2 fs14 fw600 text-capitalize">{{headerDetails?.BasicInfo.UserName}}</span> -->
+          <span class="d-block ml-2">
+            <span class="d-block text-capitalize fw600 fs14">
+              <!-- {{headerDetails?.BasicInfo.UserName}} -->Welcome
+            </span>
+            <span class="fs12 fw600 d-block">
+              {{userName}}
+            </span>
+          </span>
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right no-indicator flex-row flex-wrap text-end justify-content-end bg-warning-Light"
+          *dropdownMenu>
+          <a class="dropdown-item d-flex align-items-end w-100 px-3 py-2 fw600" href="javascript:void(0)">
+            <div class="linkimg mx-0 d-inline-block fs0">
+              <i class="fas fa-user-circle fs30"></i>
+            </div>
+            <span class="d-block ml-2">
+              <span class="d-block text-capitalize fw600">
+                <!-- {{headerDetails?.BasicInfo.UserName}} -->Welcome
+              </span>
+              <span class="fs12 fw600 d-block">
+                {{userName}}
+              </span>
+            </span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <!-- <a [routerLink]="['']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" class="dropdown-item fs14 fw600 w-lg-auto">Help</a> -->
+          <a [routerLink]="['/ohd-settings/change-password']" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact: true }" class="dropdown-item fs14 fw600 w-lg-auto">Change Password</a>
+          <a href="javascript:void(0)" class="dropdown-item fs14 fw600 w-lg-auto" (click)="logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Side Menu Custom popup -->
+<ohs-custom-popup #mainNavSidenav
+  [config]="{'id': 'mainNavSidenav', 'type': 'sidebar', 'class': 'feed-nav-sidenav', 'innerClasses': '', 'direction': 'left', 'backdrop': true}">
+  <ohs-sidebar (closeSideNav)="closeAllCustomSidenav()"></ohs-sidebar>
+</ohs-custom-popup>

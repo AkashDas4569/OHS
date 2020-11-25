@@ -1,0 +1,6 @@
+/* Font Weights */
+@each $fontweight in $fontweights {
+  .fw#{$fontweight} {
+    font-weight: #{$fontweight} !important;
+  }
+}

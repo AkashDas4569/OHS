@@ -1,0 +1,6 @@
+<div class="custom-popup-content-container" [class.align-items-end]="config.type == 'bottom-bar'" [class.overflow-hidden]="config.type == 'bottom-bar'" #popupContent>
+  <div class="custom-popup-content" [ngClass]="[config.type, config.direction, config.innerClasses]">
+    <ng-content></ng-content>
+  </div>
+</div>
+<div class="custom-popup-background" *ngIf="config.backdrop"></div>
