@@ -10,6 +10,7 @@ import {
   MedicalHistoryComponent, 
   AudiometryResultComponent 
 } from './';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
@@ -18,7 +19,7 @@ import {
     AudiometricTestComponent, 
     OccupationalNoiseExposureComponent, 
     MedicalHistoryComponent, 
-    AudiometryResultComponent
+    AudiometryResultComponent, CheckoutComponent
   ],
   imports: [
     CommonModule,

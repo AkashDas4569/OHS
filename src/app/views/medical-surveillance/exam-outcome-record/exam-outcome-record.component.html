@@ -1,101 +1,144 @@
 <section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
     <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-2 mt-2 bg-white shadow-sm rounded w-100">
+                    <div class="row">
+                        <div class="col-xl-12 col-12">
+                            <div
+                                class="pt-3 px-3 pb-1 mb-2 bg-primary-blue text-white text-start rounded-top px-2 py-1 flex-row flex-wrap">
+                                <p class="fw600 fs16 mr-4 text-uppercase">Employee Information</p>
+                            </div>
 
+                            <div class="row px-3 pb-2">
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Employee name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForEOR.EmployeeName" placeholder="Enter Employee Name" type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForEOR.ICNUmber" placeholder="Enter MyKad/IC No." type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Company Name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForEOR.CompanyName" placeholder="Enter Company Name" type="text"
+                                                autocomplete="off" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="exam-OutcomeRecordForm col-xl-12 col-12 p-0" [formGroup]="examOutcomeForm" (ngSubmit)="onSubmit()"
+                        autocomplete="off">
         <div class="row pt-3">
-
             <div class="col-xl-12 col-12">
                 <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
                     <div class="bg-primary-blue text-white rounded-top px-3 py-2 text-center flex-row flex-wrap">
                         <h6 class="mr-3 pt-2 text-uppercase">
                             <span class="pl-1 fs16 fw600">Outcome of Examination</span>
                         </h6>
-
                     </div>
 
-                    <form class="exam-OutcomeRecordForm col-xl-12 col-12 p-0" (ngSubmit)="onSubmit()"
-                        autocomplete="off">
                         <div class="table-responsive mb-2">
                             <table class="table table-sm table-borderless pl-2 pr-2 text-nowrap text-uppercase">
                                 <thead class="bg-color3 text-dark">
                                     <tr>
-                                        <th scope="col" class="pl-3 border-right text-left"></th>
-                                        <th scope="col" class="pl-2 text-center" style="min-width: 60px;">
-                                        </th>
+                                        <th scope="col" class="pl-3 text-left"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <ng-container>
                                         <tr>
-                                            <td class="pl-3 border-right text-left fw500">1. Medical removal protection
-                                            </td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pl-3 border-right text-left fw500">2. STILL EXPOSED IN THE SAME
-                                                JOB</td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="MedRemove" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">Medical removal protection</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right text-left fw500">3. STILL IN THE SAME JOB BUT
-                                                USING PPE</td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="Exposed" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">STILL EXPOSED IN THE SAME JOB</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right text-left fw500">4. NO MORE EXPOSED, SHIFTED TO
-                                                DIFFERENT SECTION</td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="UsePPE" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">STILL IN THE SAME JOB BUT
+                                                    USING PPE</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right text-left fw500">5. CHANGE JOB/ALTERNATIVE
-                                                EMPLOYMENT</td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="NoMoreExpose" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">NO MORE EXPOSED, SHIFTED TO
+                                                    DIFFERENT SECTION</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right text-left fw500">6. AWAY FROM WORK DUE TO
-                                                ILLNESS</td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="ChangeJob" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">CHANGE JOB/ALTERNATIVE
+                                                    EMPLOYMENT</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right text-left fw500">7. EARLY RETIREMENT</td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="AwayFromWork" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">AWAY FROM WORK DUE TO
+                                                    ILLNESS</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right text-left fw500">8. UNEMPLOYED</td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="EarlyRetire" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">EARLY RETIREMENT</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right text-left fw500">9. REFERRED FOR FURTHER
-                                                INVESTIGATION & CONFIRMATION</td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="Unemployed" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">UNEMPLOYED</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right text-left fw500">10. COMPENSATION PAID</td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="Refer" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">REFERRED FOR FURTHER
+                                                    INVESTIGATION & CONFIRMATION</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right text-left fw500">11. OTHERS(SPECIFY)</td>
-                                            <td class="pl-3 text-center">
-                                                <mat-checkbox color="primary"></mat-checkbox>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="Compensation" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">COMPENSATION PAID</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 text-start">
+                                                <mat-checkbox formControlName="Other" color="primary" class="mr-3"></mat-checkbox>
+                                                <span class="">OTHERS (SPECIFY)</span>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="formControls['Other'].value">
+                                            <td class="pl-3 text-start">
+                                                <textarea formControlName="OtherSpecify" class="form-control border" rows="2" cols="80"></textarea>
                                             </td>
                                         </tr>
 
@@ -116,65 +159,65 @@
                             </div>
 
                             <div class="row px-3 pt-2">
-                                <div class="col-md-6 col-12">
-                                    <mat-form-field class="w-100" floatLabel="never">
-                                        <mat-label class="fw600">Employeer</mat-label>
-                                        <input matInput placeholder="Enter Employeer" type="text" autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
+                                <div class="col-md-12 col-12">
+                                        <mat-form-field class="w-100 pb-2">
+                                            <mat-label class="fw600">Employer <span
+                                                class="text-red ml-1">*</span></mat-label>
+                                            <input matInput formControlName="RecosEmployer" placeholder="Enter Employer" type="text" autocomplete="off">
+                                            <mat-error *ngIf="errorState(formControls['RecosEmployer'], 'RecosEmployer').message">
+                                    {{ errorState(formControls['RecosEmployer'], 'RecosEmployer').message }}
+                                  </mat-error>
+                                        </mat-form-field>
+                                </div>
+                                <div class="col-md-12 col-12">
+                                    <mat-form-field class="w-100 pb-2">
+                                        <mat-label class="fw600">Employee <span
+                                            class="text-red ml-1">*</span></mat-label>
+                                        <input matInput formControlName="RecosEmployee" placeholder="Enter Employee" type="text" autocomplete="off">
+                                        <mat-error *ngIf="errorState(formControls['RecosEmployee'], 'RecosEmployee').message">
+                                {{ errorState(formControls['RecosEmployee'], 'RecosEmployee').message }}
+                              </mat-error>
                                     </mat-form-field>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <mat-form-field class="w-100" floatLabel="never">
-                                        <mat-label class="fw600">Employee</mat-label>
-                                        <input matInput placeholder="Enter Employee" type="text" autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
+                                <div class="col-md-12 col-12">
+                                    <mat-form-field class="w-100 pb-2">
+                                        <mat-label class="fw600">Accessor/Industrial Hygenist <span
+                                            class="text-red ml-1">*</span></mat-label>
+                                        <input matInput formControlName="RecosAssessor" placeholder="Enter Accessor/Industrial Hygenist" type="text"
+                                            autocomplete="off">
+                                        <mat-error *ngIf="errorState(formControls['RecosAssessor'], 'RecosAssessor').message">
+                                {{ errorState(formControls['RecosAssessor'], 'RecosAssessor').message }}
+                              </mat-error>
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-12 col-12">
-                                    <mat-form-field class="w-100" floatLabel="never">
-                                        <mat-label class="fw600">Accessor/Industrial Hygenist</mat-label>
-                                        <input matInput placeholder="Enter Accessor/Industrial Hygenist" type="text"
+                                    <mat-form-field class="w-100 pb-2">
+                                        <mat-label class="fw600">Refer to Specialist <span
+                                            class="text-red ml-1">*</span></mat-label>
+                                        <input matInput formControlName="RecosRefer" placeholder="Enter Refer to Specialist" type="text"
                                             autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
+                                        <mat-error *ngIf="errorState(formControls['RecosRefer'], 'RecosRefer').message">
+                                {{ errorState(formControls['RecosRefer'], 'RecosRefer').message }}
+                              </mat-error>
                                     </mat-form-field>
                                 </div>
-
-                                <div class="col-md-6 col-12">
-                                    <mat-form-field class="w-100" floatLabel="never">
-                                        <mat-label class="fw600">Refer to Specialist</mat-label>
-                                        <input matInput placeholder="Enter Refer to Specialist" type="text"
-                                            autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <mat-form-field class="w-100" floatLabel="never">
+                                <div class="col-md-12 col-12">
+                                    <mat-form-field class="w-100 pb-2">
                                         <mat-label class="fw600">Others (Specific)</mat-label>
-                                        <input matInput placeholder="Enter Others (Specific)" type="text"
+                                        <input matInput formControlName="RecosOthers" placeholder="Enter Others (Specific)" type="text"
                                             autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
+                                        <mat-error *ngIf="errorState(formControls['RecosOthers'], 'RecosOthers').message">
+                                {{ errorState(formControls['RecosOthers'], 'RecosOthers').message }}
+                              </mat-error>
                                     </mat-form-field>
                                 </div>
 
-                                <div class="col-md-4 col-12">
-                                    <mat-form-field class="w-100" floatLabel="never">
+                                <!-- <div class="col-md-4 col-12">
+                                    <mat-form-field class="w-100">
                                         <mat-label class="fw600">Name of Occupational Doctor</mat-label>
                                         <input matInput placeholder="Enter Name of Occupational Doctor" type="text"
                                             autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4 col-12">
@@ -182,29 +225,19 @@
                                         <mat-label class="fw600">Name of Clinic</mat-label>
                                         <input matInput placeholder="Enter Name of Clinic" type="text"
                                             autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <mat-form-field class="w-100" floatLabel="never">
                                         <mat-label class="fw600">MMC No.</mat-label>
                                         <input matInput placeholder="Enter MMC No." type="text" autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
                                     </mat-form-field>
                                 </div>
-
                                 <div class="col-md-3 col-12">
                                     <mat-form-field class="w-100" floatLabel="never">
                                         <mat-label class="fw600">DOSH Reg. No.</mat-label>
                                         <input matInput placeholder="Enter DOSH Reg. No." type="text"
                                             autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3 col-12">
@@ -212,42 +245,38 @@
                                         <mat-label class="fw600">Clinic Tel. No.</mat-label>
                                         <input matInput placeholder="Enter Clinic Tel. No." type="text"
                                             autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3 col-12">
                                     <mat-form-field class="w-100" floatLabel="never">
                                         <mat-label class="fw600">Fax No.</mat-label>
                                         <input matInput placeholder="Enter Fax No." type="text" autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3 col-12">
                                     <mat-form-field class="w-100" floatLabel="never">
                                         <mat-label class="fw600">Email Id</mat-label>
                                         <input matInput placeholder="Enter Email Id" type="text" autocomplete="off">
-                                        <!-- <mat-error *ngIf="errorState(formControls['patientName'], 'patientName').message">
-                                {{ errorState(formControls['patientName'], 'patientName').message }}
-                              </mat-error> -->
                                     </mat-form-field>
-                                </div>
-
+                                </div> -->
                             </div>
                         </div>
 
                         <div class="col-xl-12 col-12 text-center mt-3">
-                            <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
-                                type="submit">Save</button>
-                            <button type="button"
-                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill">Next</button>
+                        <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                type="submit">{{((formControls['Id'] && formControls['Id'].value > 0) && (formControls['RecosId'] && formControls['RecosId'].value > 0)) ? 'Update' : 'Save'}}</button>
+                        <button type="button" *ngIf="(formControls['Id'].value == 0 && formControls['RecosId'].value == 0)" [disabled]="!saveNext"
+                            [routerLink]="['/employee', 'status', 'medical-record-book', employeeId, employeeTestVisitId]"
+                            class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                        <button type="button" *ngIf="(formControls['Id'].value > 0 && formControls['RecosId'].value > 0)" [disabled]="!updateNext"
+                            [routerLink]="['/employee', 'status', 'medical-record-book', employeeId, employeeTestVisitId]"
+                            class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                        <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
+                            [routerLink]="['/medical-surveillance/list']">Close</button>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </section>

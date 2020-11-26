@@ -1,0 +1,210 @@
+<section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
+    <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-2 mt-2 bg-white shadow-sm rounded w-100">
+                    <div class="row">
+                        <div class="col-xl-12 col-12">
+                            <div
+                                class="pt-3 px-3 pb-1 mb-2 bg-primary-blue text-white text-start rounded-top px-2 py-1 flex-row flex-wrap">
+                                <p class="fw600 fs16 mr-4 text-uppercase">Employee Information</p>
+                            </div>
+
+                            <div class="row px-3 pb-2">
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Employee name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForchkout.EmployeeName"
+                                                placeholder="Enter Employee Name" type="text" autocomplete="off"
+                                                readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForchkout.ICNUmber"
+                                                placeholder="Enter MyKad/IC No." type="text" autocomplete="off"
+                                                readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="bg-light p-2 rounded d-flex">
+                                        <mat-form-field class="disable-mat-form w-100">
+                                            <mat-label class="fw600">Company Name</mat-label>
+                                            <input matInput [(ngModel)]="employeeDetailsForchkout.CompanyName"
+                                                placeholder="Enter Company Name" type="text" autocomplete="off"
+                                                readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                    <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                        <h6 class="mr-3 pt-2 text-uppercase">
+                            <span class="pl-1 fs16 fw600 text-normal">Check Out</span>
+                        </h6>
+                    </div>
+
+                    <form class="checkout-Form col-xl-12 col-12 p-0" (ngSubmit)="onSubmit()" autocomplete="off">
+                        <div class="row px-3">
+                            <div class="col-xl-12 col-12 d-flex flex-row flex-row flex-wrap mb-2 bg-color1">
+                                <ng-container>
+                                    <div class="pl-3 row">
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2">
+                                            <i class="fas fa-check-circle text-green fs22"></i>
+                                            <!-- <i class="fas fa-times-circle text-red fs22"></i> -->
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <a class="nav-link text-themed-verydarkblue t14" [routerLink]="">
+                                                <span class="feed-menu-icon mr-2">
+                                                    <img src="assets/img/medical_condition.png"
+                                                        alt="medical_condition-Icon">
+                                                </span>
+                                                <span class="feed-menu-text fs14 fw500">Medical Condition</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2">
+                                            <i class="fas fa-check-circle text-green fs22"></i>
+                                            <!-- <i class="fas fa-times-circle text-red fs22"></i> -->
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <a class="nav-link text-themed-verydarkblue t14" [routerLink]="">
+                                                <span class="feed-menu-icon mr-1">
+                                                    <img src="assets/img/drug.png" alt="drug-Icon">
+                                                </span>
+                                                <span class="feed-menu-text fs14 fw500">Past Medical
+                                                    History</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2">
+                                            <i class="fas fa-check-circle text-green fs22"></i>
+                                            <!-- <i class="fas fa-times-circle text-red fs22"></i> -->
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <a class="nav-link text-themed-verydarkblue t14" [routerLink]="">
+                                                <span class="feed-menu-icon mr-1">
+                                                    <img src="assets/img/familyhistory.png"
+                                                        alt="familyhistory-Icon">
+                                                </span>
+                                                <span class="feed-menu-text fs14 fw500">Family History</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2">
+                                            <i class="fas fa-check-circle text-green fs22"></i>
+                                            <!-- <i class="fas fa-times-circle text-red fs22"></i> -->
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <a class="nav-link text-themed-verydarkblue t14" [routerLink]="">
+                                                <span class="feed-menu-icon mr-1">
+                                                    <img src="assets/img/form.png" alt="form-Icon">
+                                                </span>
+                                                <span class="feed-menu-text fs14 fw500">Occupational
+                                                    History</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2">
+                                            <i class="fas fa-check-circle text-green fs22"></i>
+                                            <!-- <i class="fas fa-times-circle text-red fs22"></i> -->
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <a class="nav-link text-themed-verydarkblue t14" [routerLink]="">
+                                                <span class="feed-menu-icon mr-1">
+                                                    <img src="assets/img/lab.png" alt="lab-Icon">
+                                                </span>
+                                                <span class="feed-menu-text fs14 fw500">Present Chemical History
+                                                    & Exposure</span>
+                                            </a>
+                                        </div>
+                                            <div class="col-sm-2 col-md-2 col-2 pt-2">
+                                                <!-- <i class="fas fa-check-circle text-green fs22"></i> -->
+                                                <i class="fas fa-times-circle text-red fs22"></i>
+                                            </div>
+                                            <div class="col-sm-10 col-md-10 col-10">
+                                                <div class="row">
+                                                    <div class="col-sm-4 col-md-4 col-4">
+                                                        <a class="nav-link text-themed-verydarkblue t14" [routerLink]="">
+                                                            <span class="feed-menu-icon mr-1">
+                                                                <img src="assets/img/task.png" alt="task-Icon">
+                                                            </span>
+                                                            <span class="feed-menu-text fs14 fw500">Physical Exam</span>
+                                                        </a>
+                                                    </div>
+                                                    <!-- <div class="col-sm-6 col-md-6 col-6">
+                                                        <button class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                                    type="submit">Go To Page</button>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2">
+                                            <i class="fas fa-check-circle text-green fs22"></i>
+                                            <!-- <i class="fas fa-times-circle text-red fs22"></i> -->
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <a class="nav-link text-themed-verydarkblue t14" [routerLink]="">
+                                                <span class="feed-menu-icon mr-1">
+                                                    <img src="assets/img/add.png" alt="add-Icon">
+                                                </span>
+                                                <span class="feed-menu-text fs14 fw500">Investigation
+                                                    <br><span class="feed-menu-text fs14 fw500">(Signature of
+                                                        Employee)</span></span>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2">
+                                            <!-- <i class="fas fa-check-circle text-green fs22"></i> -->
+                                            <i class="fas fa-times-circle text-red fs22"></i>
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <a class="nav-link text-themed-verydarkblue t14" [routerLink]="">
+                                                <span class="feed-menu-icon mr-1">
+                                                    <img src="assets/img/result.png" alt="result-Icon">
+                                                </span>
+                                                <span class="feed-menu-text fs14 fw500">Exam Outcome &
+                                                    Record</span>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2">
+                                            <!-- <i class="fas fa-check-circle text-green fs22"></i> -->
+                                            <i class="fas fa-times-circle text-red fs22"></i>
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <a class="nav-link text-themed-verydarkblue t14" [routerLink]="">
+                                                <span class="feed-menu-icon mr-1">
+                                                    <img src="assets/img/patient.png" alt="patient-Icon">
+                                                </span>
+                                                <span class="feed-menu-text fs14 fw500">Employee Medical Record
+                                                    Book</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+
+                            <div class="col-sm-12 col-12 py-2 d-flex align-items-start justify-content-start">
+                                <mat-checkbox color="primary" class="mr-3">I hereby certify that, <span class="fw600">{{employeeDetailsForchkout.EmployeeName}}</span> is Fit to work.</mat-checkbox>
+                            </div>
+                            <div class="col-sm-12 col-12 py-2 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                    type="submit">Checkout</button>
+                                <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
+                                    [routerLink]="['/medical-surveillance/list']">Close</button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

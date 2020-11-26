@@ -9,6 +9,26 @@ export const Errors: ErrorsInterface = {
     { type: 'required', message: 'User Id is required.' },
     { type: 'pattern', message: 'No empty space is allowed.' },
   ],
+  RecosEmployer: [
+    { type: 'required', message: 'Employer Name is required.' },
+    { type: 'pattern', message: 'No empty space is allowed.' },
+  ],
+  RecosEmployee: [
+    { type: 'required', message: 'Employee Name is required.' },
+    { type: 'pattern', message: 'No empty space is allowed.' },
+  ],
+  RecosAssessor: [
+    { type: 'required', message: 'Accessor/Industrial Hygenist is required.' },
+    { type: 'pattern', message: 'No empty space is allowed.' },
+  ],
+  RecosRefer: [
+    { type: 'required', message: 'Refer to Specialist is required.' },
+    { type: 'pattern', message: 'No empty space is allowed.' },
+  ],
+  RecosOthers: [
+    // { type: 'required', message: 'Refer to Specialist is required.' },
+    { type: 'pattern', message: 'No empty space is allowed.' },
+  ],
   clinicName: [
     { type: 'required', message: 'Clinic Name is required.' },
   ],

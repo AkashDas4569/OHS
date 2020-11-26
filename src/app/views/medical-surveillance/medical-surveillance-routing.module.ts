@@ -10,30 +10,24 @@ import {
   OccupationalHistoryComponent, 
   ChemicalHistoryComponent, 
   MedicalSurveillanceListComponent, 
-  FitnessCertificateComponent, 
-  ExamOutcomeRecordComponent 
+  // FitnessCertificateComponent, 
+  ExamOutcomeRecordComponent,
+  CheckoutComponent 
 } from './';
 
 const routes: Routes = [
+  {
+    path: 'list',
+    component: MedicalSurveillanceListComponent,
+    data: {
+      title: 'Medical Surveillance List'
+    }
+  },
   {
     path: 'status/medical-condition/:eId/:dId/:eTestVisitId/:sex',
     component: MedicalConditionComponent,
     data: {
       title: 'Medical Condition'
-    }
-  },
-  {
-    path: 'status/investigation/:eId/:eTestVisitId',
-    component: InvestigationComponent,
-    data: {
-      title: 'Investigation'
-    }
-  },
-  {
-    path: 'status/physical-exam/:eId/:eTestVisitId',
-    component: PhysicalExamComponent,
-    data: {
-      title: 'Physical Exam'
     }
   },
   {
@@ -65,24 +59,38 @@ const routes: Routes = [
     }
   },
   {
+    path: 'status/physical-exam/:eId/:eTestVisitId',
+    component: PhysicalExamComponent,
+    data: {
+      title: 'Physical Exam'
+    }
+  },
+  {
+    path: 'status/investigation/:eId/:eTestVisitId',
+    component: InvestigationComponent,
+    data: {
+      title: 'Investigation'
+    }
+  },
+  {
     path: 'status/exam-outcome-record/:eId/:eTestVisitId',
     component: ExamOutcomeRecordComponent,
     data: {
       title: 'Exam Outcome & Reco.'
     }
   },
+  // {
+  //   path: 'status/fitness-certificate',
+  //   component: FitnessCertificateComponent,
+  //   data: {
+  //     title: 'Fitness Certificate'
+  //   }
+  // }
   {
-    path: 'list',
-    component: MedicalSurveillanceListComponent,
+    path: 'status/checkout/:eId/:dId/:eTestVisitId',
+    component: CheckoutComponent,
     data: {
-      title: 'Medical Surveillance List'
-    }
-  },
-  {
-    path: 'status/fitness-certificate',
-    component: FitnessCertificateComponent,
-    data: {
-      title: 'Fitness Certificate'
+      title: 'Checkout'
     }
   }
 ];

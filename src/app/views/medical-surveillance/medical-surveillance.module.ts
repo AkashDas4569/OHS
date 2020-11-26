@@ -13,8 +13,9 @@ import {
   OccupationalHistoryComponent, 
   ChemicalHistoryComponent, 
   MedicalSurveillanceListComponent, 
-  FitnessCertificateComponent, 
-  ExamOutcomeRecordComponent 
+  // FitnessCertificateComponent, 
+  ExamOutcomeRecordComponent,
+  CheckoutComponent 
 } from './';
 
 @NgModule({
@@ -27,8 +28,9 @@ import {
     OccupationalHistoryComponent, 
     ChemicalHistoryComponent, 
     MedicalSurveillanceListComponent, 
-    FitnessCertificateComponent, 
-    ExamOutcomeRecordComponent
+    // FitnessCertificateComponent, 
+    ExamOutcomeRecordComponent, 
+    CheckoutComponent
   ],
   imports: [
     CommonModule,

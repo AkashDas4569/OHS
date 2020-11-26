@@ -4,8 +4,7 @@ import { AuthenticationService, MedicalSurveillanceService, EmployeeService } fr
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, AbstractControl, Validators, AsyncValidatorFn, FormGroupDirective } from '@angular/forms';
 import { FormControlValidator } from '../../../core/validators';
-import * as _moment from 'moment';
-const moment = _moment;
+
 // RxJs
 import { Subject, forkJoin } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -119,7 +118,6 @@ export class InvestigationComponent implements OnInit, OnDestroy {
     this.medicalSurveillanceService.getInvestigationDetails(investigation)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((investigationData: any) => {
-        console.log(investigationData);
         if (investigationData['status'] == 200) {
           this.investigationDetails = investigationData['labInvestigation'];
           console.log(this.investigationDetails);
@@ -161,13 +159,19 @@ export class InvestigationComponent implements OnInit, OnDestroy {
   }
   clearInput(ipField: string){
     console.log(ipField);
-    if((ipField === 'OtherSpecify') || (ipField === 'Immunization') || (ipField === 'Other')) {
+    // if((ipField === 'OtherSpecify') || (ipField === 'Immunization') || (ipField === 'Other')) {
+    //   this.formControls[ipField].reset();
+    //   this.formControls[ipField].clearValidators();
+    // } else if(ipField) {
+    // this.formControls[ipField].reset();
+    // this.formControls[ipField].setValidators(Validators.required);
+    // } else {
+    //   this.formControls[ipField].clearValidators();
+    // }
+    // this.formControls[ipField].updateValueAndValidity();
+
+    if(ipField) {
       this.formControls[ipField].reset();
-      this.formControls[ipField].clearValidators();
-    } else if(ipField) {
-    this.formControls[ipField].reset();
-    this.formControls[ipField].setValidators(Validators.required);
-    } else {
       this.formControls[ipField].clearValidators();
     }
     this.formControls[ipField].updateValueAndValidity();

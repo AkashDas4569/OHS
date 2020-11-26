@@ -40,7 +40,7 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
     this.loadEmployeeMedSurQueue('1');
     this.refreshEmployeeQueue = setInterval(() => {
       this.loadEmployeeMedSurQueue('0');
-    },180000)
+    }, 180000)
   }
 
   ngOnDestroy() {
@@ -62,10 +62,6 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
   private queueNavigate(employeeMedQueue: any) {
     console.log(employeeMedQueue.SelectedStatus);
     switch(employeeMedQueue.SelectedStatus) {
-      // case EmployeeMedSurQueueStatus.CheckIn: {
-      //   console.log('case 1')
-      //   break;
-      // }
       case EmployeeMedSurQueueStatus.MedicalCondition: {
         this.router.navigate(['/medical-surveillance', 'status', 'medical-condition', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID, employeeMedQueue.Gender]);
         break;
@@ -102,12 +98,12 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
          this.router.navigate(['/employee', 'status', 'medical-record-book', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
-      case EmployeeMedSurQueueStatus.FitnessCertificate: {
-         this.router.navigate(['/medical-surveillance', 'status', 'fitness-certificate']);
-        break;
-      }
+      // case EmployeeMedSurQueueStatus.FitnessCertificate: {
+      //    this.router.navigate(['/medical-surveillance', 'status', 'fitness-certificate']);
+      //   break;
+      // }
       case EmployeeMedSurQueueStatus.CheckOut: {
-        console.log('case 12')
+        this.router.navigate(['/medical-surveillance', 'status', 'checkout', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       default:
@@ -131,6 +127,13 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
     this.lookupService.getMedicalSurveillanceStatusList()
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((result: any) => {
+      //  result['AudTstStatusList'].forEach((value : any, index: any) => {
+      //     if(value.QStatus === 'CheckIn' || value.QStatus === 'Checkout') {
+      //       // const data = {Id: 1, QStatus: "Akash"}
+      //       result['AudTstStatusList'].splice(index, 1);
+      //     }
+      //   });
+        
         this.queueStatus = result['AudTstStatusList'];
         console.log(this.queueStatus);
     });

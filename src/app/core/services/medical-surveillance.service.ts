@@ -157,5 +157,37 @@ export class MedicalSurveillanceService {
                 catchError(this.handleError('addEditInvestigation'))
             );
     }
+    getExamOutComeDetails(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/GetExamOutcome`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('getExamOutComeDetails'))
+            );
+    }
+    addEditExamOutCome(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/AddEditExamOutcome`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('addEditExamOutCome'))
+            );
+    }
+    getRecordBookDetails(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/GetMSRecordbook`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('getRecordBookDetails'))
+            );
+    }
+    addEditRecordBook(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/AddEditMSRecordBook`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('addEditRecordBook'))
+            );
+    }
  
 }
