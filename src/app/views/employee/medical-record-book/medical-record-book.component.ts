@@ -1,17 +1,33 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, Input } from '@angular/core';
+import { ENTER, COMMA, TAB } from '@angular/cdk/keycodes';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { AuthenticationService, MedicalSurveillanceService, EmployeeService } from '../../../core/services';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormGroup, FormBuilder, AbstractControl, Validators, AsyncValidatorFn, FormGroupDirective } from '@angular/forms';
+import { FormControlValidator } from '../../../core/validators';
+import * as _moment from 'moment';
+const moment = _moment;
 // RxJs
 import { Subject, forkJoin } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
 @Component({
   selector: 'ohs-medical-record-book',
   templateUrl: './medical-record-book.component.html',
   styleUrls: ['./medical-record-book.component.scss']
 })
 export class MedicalRecordBookComponent implements OnInit, OnDestroy {
+  @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
   private onDestroyUnSubscribe = new Subject<void>();
+  public medicalRecordBookForm!: FormGroup;
+
+  public employeeId: number = 0;
+  // public doctorId: number = 0;
+  public employeeTestVisitId: number = 0;
+  public medicalRecordBookDetails: any;
+  public employeeDetailsForMRB: any = {};
+  public saveNext: boolean = false;
+  public updateNext: boolean = true;
 
   public isCollapsed = false;
   public imageUrl: any = 'assets/img/plus-icon.png';
@@ -24,20 +40,47 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
   public imageId: any;
 
   constructor(
+    private fb: FormBuilder,
     public snackBar: MatSnackBar,
     private router: Router,
     private route: ActivatedRoute,
+    private authenticationService: AuthenticationService,
+    private employeeService: EmployeeService,
+    private medicalSurveillanceService: MedicalSurveillanceService
   ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.employeeId = +params['eId'];
+      this.employeeTestVisitId = +params['eTestVisitId'];
+      // this.doctorId = +params['dId'];
+
+      console.log('employeeId: ', this.employeeId);
+      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('doctorId: ', this.doctorId);
+    });
   }
 
+  get formControls() {
+    return this.medicalRecordBookForm.controls;
+  }
+  errorState(field: AbstractControl, validatorFieldName: string) {
+    return FormControlValidator(field, validatorFieldName);
+  }
   ngOnDestroy() {
     // UnSubscribe Subscriptions
     this.onDestroyUnSubscribe.next();
     this.onDestroyUnSubscribe.complete();
   }
 
+  getEmployeeById() {
+    this.employeeService.getEmployeeById({ employeeID: this.employeeId })
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((result: any) => {
+        this.employeeDetailsForMRB = result['employeeDataForMedicalConditionModel'];
+        console.log(this.employeeDetailsForMRB);
+      });
+  }
   imageFileSelected(event: any) {
     console.log(event.target.files);
     if (event.target.files && event.target.files[0]) {
