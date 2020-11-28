@@ -1,6 +1,6 @@
 <section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
     <div class="container-fluid">
-        <form class="medical-RecordBookForm col-xl-12 col-12 p-0" (ngSubmit)="onSubmit()" autocomplete="off">
+        <form class="medical-RecordBookForm col-xl-12 col-12 p-0" [formGroup]="medicalRecordBookForm" (ngSubmit)="onSubmit()" autocomplete="off">
             <div class="row pt-3">
                 <div class="col-xl-12 col-12">
                     <div class="pb-1 mb-2 mt-2 bg-white shadow-sm rounded w-100">
@@ -8,14 +8,12 @@
                             <div class="col-xl-12 col-12">
                                 <div
                                     class="pt-3 px-3 pb-1 mb-2 bg-primary-blue text-white text-center rounded-top px-2 py-1 flex-row flex-wrap">
-                                    <p class="fw600 fs16 mr-4 text-uppercase">Employee Medical Record Book</p>
+                                    <p class="fw600 fs16 mr-4 text-uppercase">Medical Surveillance - Employee Medical Record Book</p>
                                 </div>
 
                                 <div class="row px-3 py-1">
-                                    <!-- <div
-                                        class="col-md-3 col-xs-12 align-items-center justify-content-center pl-4" style="min-width: 100px">
-                                        <div
-                                            class="mt-2 mb-1 p-square py-2 bg-white border shadow-sm rounded d-block text-center">
+                                    <!-- <div class="col-md-12 col-12 align-items-center justify-content-center pl-4 pb-3" style="min-width: 100px">
+                                        <div class="mt-2 mb-1 p-square py-2 bg-white border shadow-sm rounded d-flex flex-row flex-wrap text-center">
                                         <input type="file" id="picUpload" #imageFileUpload (change)="imageFileSelected($event)" hidden accept="image/*">
                                             <div class="mx-auto pt-1" type="button" matSuffix (click)="imageFileUpload.click()">
                                                 <i class="fa" aria-hidden="true">
@@ -28,11 +26,29 @@
                                         </p>
                                     </div> -->
 
-                                    <div class="col-md-9 col-xs-12 text-center" style="min-width: 100px">
-                                        <div class="md-form mt-2 pt-3 pl-5">
-                                            <mat-form-field class="w-100">
+                                    <div class="col-md-4 col-12">
+                                        <div class="bg-light p-2 rounded d-flex">
+                                            <mat-form-field class="disable-mat-form w-100">
+                                                <mat-label class="fw600">Employee name</mat-label>
+                                                <input matInput [(ngModel)]="employeeDetailsForMRB.EmployeeName" [ngModelOptions]="{standalone: true}" placeholder="Enter Employee Name" type="text"
+                                                    autocomplete="off" readonly>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12 text-center">
+                                        <div class="bg-light p-2 rounded d-flex">
+                                            <mat-form-field class="disable-mat-form w-100">
+                                                <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                                <input matInput [(ngModel)]="employeeDetailsForMRB.ICNUmber" [ngModelOptions]="{standalone: true}" placeholder="Enter MyKad/IC No." type="text"
+                                                    autocomplete="off">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12 text-center">
+                                        <div class="bg-light p-2 rounded d-flex">
+                                            <mat-form-field class="disable-mat-form w-100">
                                                 <mat-label class="fw600">Name of the Company</mat-label>
-                                                <input matInput placeholder="Enter Name of the Company" type="text"
+                                                <input matInput [(ngModel)]="employeeDetailsForMRB.CompanyName" [ngModelOptions]="{standalone: true}" placeholder="Enter Name of the Company" type="text"
                                                     autocomplete="off">
                                             </mat-form-field>
                                         </div>
@@ -93,9 +109,9 @@
                                     </div>
                                     <div class="col-xl-12 col-12 p-0">
                                         <div class="form-group w-100">
-                                            <textarea autocomplete="off" placeholder="Date of Medical Examination"
+                                            <textarea autocomplete="off" placeholder="Date of Medical Examination" formControlName="MedExamDt"
                                                 class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30"
-                                                rows="10">11/10/1995</textarea>
+                                                rows="10" readonly></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -105,8 +121,8 @@
                                     </div>
                                     <div class="col-xl-12 col-12 p-0">
                                         <div class="form-group w-100">
-                                            <textarea autocomplete="off" placeholder="Result of Biological Monitoring"
-                                                class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10">Blood Level 50 mg/dl</textarea>
+                                            <textarea autocomplete="off" placeholder="Result of Biological Monitoring" formControlName="ResultOfBioMonitor"
+                                                class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10" (focusout)="checkedTrue()"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +132,7 @@
                                     </div>
                                     <div class="col-xl-12 col-12 p-0">
                                         <div class="form-group w-100">
-                                            <textarea autocomplete="off" placeholder="Fitness To Work (Fit, Further Test Needed)" class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10"></textarea>
+                                            <textarea autocomplete="off" placeholder="Fitness To Work (Fit, Further Test Needed)" formControlName="FitToWork" class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10" (focusout)="checkedTrue()"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -138,15 +154,19 @@
 
                 </div>
 
+                <div class="col-sm-12 col-12 py-2 d-flex align-items-start justify-content-start">
+                    <mat-checkbox formControlName="Fit" color="primary" class="mr-3">I hereby certify that, <span class="fw600">{{employeeDetailsForMRB.EmployeeName}}</span> is Fit to work.</mat-checkbox>
+                </div>
+
                 <div class="col-xl-12 col-12 text-center mt-3">
                     <button type="submit"
-                        class="btn btn-success min-width btn-sm fs14 fw500 btn-rounded mr-2">Save</button>
-                    <!-- <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
-                        [routerLink]="['/medical-surveillance', 'status', 'physical-exam', employeeId, employeeTestVisitId]"
+                        class="btn btn-success min-width btn-sm fs14 fw500 btn-rounded mr-3" [disabled]="!formControls['Fit'].value">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
+                    <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
+                        [routerLink]="['/medical-surveillance', 'status', 'checkout', employeeId, employeeTestVisitId]"
                         class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Checkout</button>
                     <button type="button" *ngIf="formControls['Id'].value > 0" [disabled]="!updateNext"
-                        [routerLink]="['/medical-surveillance', 'status', 'physical-exam', employeeId, employeeTestVisitId]"
-                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Checkout</button> -->
+                        [routerLink]="['/medical-surveillance', 'status', 'checkout', employeeId, employeeTestVisitId]"
+                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Checkout</button>
                     <!-- <button type="button" class="btn btn-red min-width btn-sm fs14 fw500 btn-rounded">
                         <i class="fa fa-print mr-2"></i> Print
                     </button> -->

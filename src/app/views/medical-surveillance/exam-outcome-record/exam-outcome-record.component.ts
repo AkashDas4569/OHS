@@ -121,7 +121,7 @@ export class ExamOutcomeRecordComponent implements OnInit, OnDestroy {
             EmployeeOHSTestVisitId: this.examOutcomeDetails.EmployeeOHSTestVisitId,
             MedRemove: this.examOutcomeDetails.MedRemove,
             Exposed: this.examOutcomeDetails.Exposed,
-            UsePPE: this.examOutcomeDetails.NoMoreExpose,
+            UsePPE: this.examOutcomeDetails.UsePPE,
             NoMoreExpose: this.examOutcomeDetails.NoMoreExpose,
             ChangeJob: this.examOutcomeDetails.ChangeJob,
             AwayFromWork: this.examOutcomeDetails.AwayFromWork,

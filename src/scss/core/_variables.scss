@@ -5,8 +5,8 @@ $xsFontSize : 14px;
 // Mandatory Colors(Values can be changed but don't remove these)
 $white: #ffffff;
 $black: #000000;
-// $red: #ff4747;
 $red:#eb1a1a;
+$softred: #F74A50;
 $yellow: #FFBB00;
 $orange: #ffab73;
 $cyan: #2199fa;
@@ -38,6 +38,7 @@ $theme-colors: map-merge(
     'white': $white,
     'black': $black,
     'red' : $red,
+    'softred': $softred,
     'cyan': $cyan,
     'blue': $blue,
     'primary-blue': $primary-blue,

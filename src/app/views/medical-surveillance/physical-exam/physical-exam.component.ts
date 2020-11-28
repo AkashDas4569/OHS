@@ -73,63 +73,91 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
       BPSys: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(3)]],
       BPDias: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(3)]],
       Pulse: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(3)]],
-      "GenAppearance": null,
-      "LeftEyeVision": null,
-      "LeftEyeVisionProblem": null,
-      "RightEyeVision": null,
-      "RightEyeVisionProblem": null,
-      "LeftFieldVision": null,
-      "LeftFieldVisionProblem": null,
-      "RightFieldVision": null,
-      "RightFieldVisionProblem": null,
-      "LeftColorVision": null,
-      "LeftColorVisionProblem": null,
-      "RightColorVision": null,
-      "RightColorVisionProblem": null,
-      "LeftFundoscopy": null,
-      "LeftFundoscopyProblem": null,
-      "RightFundoscopy": null,
-      "RightFundoscopyProblem": null,
-      "LeftEarCanal": null,
-      "LeftEarCanalProblem": null,
-      "RightEarCanal": null,
-      "RightEarCanalProblem": null,
-      "LeftEarDrum": null,
-      "LeftEarDrumProblem": null,
-      "RightEarDrum": null,
-      "RightEarDrumProblem": null,
-      "LeftAirConduction": null,
-      "LeftAirConductionProblem": null,
-      "RightAirConduction": null,
-      "RightAirConductionProblem": null,
-      "LeftBoneConduction": null,
-      "LeftBoneConductionProblem": null,
-      "RightBoneConduction": null,
-      "RightBoneConductionProblem": null,
-      "LeftNose": null,
-      "LeftNoseProblem": null,
-      "RightNose": null,
-      "RightNoseProblem": null,
-      "Throat": null,
-      "ThroatProblem": null,
-      "Nails": null,
-      "NailsProblem": null,
-      "Skin": null,
-      "SkinProblem": null,
-      "Lymphatics": null,
-      "LymphaticsProblem": null,
-      "VericoseVein": null,
-      "VericoseVeinProblem": null,
-      "CNSOrientation": null,
-      "CNSOrientationProblem": null,
-      "CNSPlacePerson": null,
-      "CNSPlacePersonProblem": null,
-      "CNSOther": null,
-      "CNSOtherProblem": null,
-      "CVSdrnm": null,
-      "CVSdrnmProblem": null,
-      "CVSOther": null,
-      "CVSOtherProblem": null
+      GenAppearance: [''],
+
+      LeftEyeVision: [''],
+      LeftEyeVisionProblem: [''],
+      RightEyeVision: [''],
+      RightEyeVisionProblem: [''],
+      LeftFieldVision: [''],
+      LeftFieldVisionProblem: [''],
+      RightFieldVision: [''],
+      RightFieldVisionProblem: [''],
+      LeftColorVision: [''],
+      LeftColorVisionProblem: [''],
+      RightColorVision: [''],
+      RightColorVisionProblem: [''],
+      LeftFundoscopy: [''],
+      LeftFundoscopyProblem: [''],
+      RightFundoscopy: [''],
+      RightFundoscopyProblem: [''],
+      LeftEarCanal: [''],
+      LeftEarCanalProblem: [''],
+      RightEarCanal: [''],
+      RightEarCanalProblem: [''],
+      LeftEarDrum: [''],
+      LeftEarDrumProblem: [''],
+      RightEarDrum: [''],
+      RightEarDrumProblem: [''],
+      LeftAirConduction: [''],
+      LeftAirConductionProblem: [''],
+      RightAirConduction: [''],
+      RightAirConductionProblem: [''],
+      LeftBoneConduction: [''],
+      LeftBoneConductionProblem: [''],
+      RightBoneConduction: [''],
+      RightBoneConductionProblem: [''],
+      LeftNose: [''],
+      LeftNoseProblem: [''],
+      RightNose: [''],
+      RightNoseProblem: [''],
+      Throat: [''],
+      ThroatProblem: [''],
+      Nails: [''],
+      NailsProblem: [''],
+      Skin: [''],
+      SkinProblem: [''],
+      Lymphatics: [''],
+      LymphaticsProblem: [''],
+      VericoseVein: [''],
+      VericoseVeinProblem: [''],
+      CNSOrientation: [''],
+      CNSOrientationProblem: [''],
+      CNSPlacePerson: [''],
+      CNSPlacePersonProblem: [''],
+      CNSOther: [''],
+      CNSOtherProblem: [''],
+      CVSdrnm: [''],
+      CVSdrnmProblem: [''],
+      CVSOther: [''],
+      CVSOtherProblem: [''],
+
+      RSChestExpension: [''],
+      RSAirEntry: [''],
+      RSCrepitations: [''],
+      RSWheeze: [''],
+      RSOthers: [''],
+      GSLiver: [''],
+      GSSpleen: [''],
+      GSAbdomen: [''],
+      GSOthers: [''],
+      GenKidney: [''],
+      GenBladder: [''],
+      GenUterus: [''],
+      GenOthers: [''],
+      MusLLPower: [''],
+      MusLLReflex: [''],
+      MusLLSensation: [''],
+      MusRLPower: [''],
+      MusRLReflex: [''],
+      MusRLSensation: [''],
+      MusULPower: [''],
+      MusULReflex:  [''],
+      MusULSensation: [''],
+      MusURLPower: [''],
+      MusURLReflex:  [''],
+      MusURLSensation: [''],
+      MusOther: ['']
     });
 
     this.calculateEmployeeBmi();
@@ -166,13 +194,114 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
       employeeID: this.physicalExamForm.value.EmployeeId,
       employeeOHSTestVisitId: this.physicalExamForm.value.EmployeeOHSTestVisitId
     }
-    console.log(physicalExam);
+    // console.log(physicalExam);
 
     this.medicalSurveillanceService.getPhysicalExamDetails(physicalExam)
     .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((physicalExamData: any) => {
-        console.log(physicalExamData);
+        if(physicalExamData['status'] == 200) {
+            this.physicalExamDetails = physicalExamData['msPhysicalExam'];
+            console.log(this.physicalExamDetails);
+            
+            this.physicalExamForm.patchValue({
+              Id: this.physicalExamDetails.Id,
+              EmployeeId: this.physicalExamDetails.EmployeeId,
+              EmployeeOHSTestVisitId: this.physicalExamDetails.EmployeeOHSTestVisitId,
+              Weight: +(this.physicalExamDetails.Weight),
+              Height: +(this.physicalExamDetails.Height),
+              BMI: +(this.physicalExamDetails.BMI),
+              BPSys: +(this.physicalExamDetails.BPSys),
+              BPDias: +(this.physicalExamDetails.BPDias),
+              Pulse: +(this.physicalExamDetails.Pulse),
+              GenAppearance: this.physicalExamDetails.GenAppearance,
         
+              LeftEyeVision: this.physicalExamDetails.LeftEyeVision,
+              LeftEyeVisionProblem: this.physicalExamDetails.LeftEyeVisionProblem,
+              RightEyeVision: this.physicalExamDetails.RightEyeVision,
+              RightEyeVisionProblem: this.physicalExamDetails.RightEyeVisionProblem,
+              LeftFieldVision: this.physicalExamDetails.LeftFieldVision,
+              LeftFieldVisionProblem: this.physicalExamDetails.LeftFieldVisionProblem,
+              RightFieldVision: this.physicalExamDetails.RightFieldVision,
+              RightFieldVisionProblem: this.physicalExamDetails.RightFieldVisionProblem,
+              LeftColorVision: this.physicalExamDetails.LeftColorVision,
+              LeftColorVisionProblem: this.physicalExamDetails.LeftColorVisionProblem,
+              RightColorVision: this.physicalExamDetails.RightColorVision,
+              RightColorVisionProblem: this.physicalExamDetails.RightColorVisionProblem,
+              LeftFundoscopy: this.physicalExamDetails.LeftFundoscopy,
+              LeftFundoscopyProblem: this.physicalExamDetails.LeftFundoscopyProblem,
+              RightFundoscopy: this.physicalExamDetails.RightFundoscopy,
+              RightFundoscopyProblem: this.physicalExamDetails.RightFundoscopyProblem,
+              LeftEarCanal: this.physicalExamDetails.LeftEarCanal,
+              LeftEarCanalProblem: this.physicalExamDetails.LeftEarCanalProblem,
+              RightEarCanal: this.physicalExamDetails.RightEarCanal,
+              RightEarCanalProblem: this.physicalExamDetails.RightEarCanalProblem,
+              LeftEarDrum: this.physicalExamDetails.LeftEarDrum,
+              LeftEarDrumProblem: this.physicalExamDetails.LeftEarDrumProblem,
+              RightEarDrum: this.physicalExamDetails.RightEarDrum,
+              RightEarDrumProblem: this.physicalExamDetails.RightEarDrumProblem,
+              LeftAirConduction: this.physicalExamDetails.LeftAirConduction,
+              LeftAirConductionProblem: this.physicalExamDetails.LeftAirConductionProblem,
+              RightAirConduction: this.physicalExamDetails.RightAirConduction,
+              RightAirConductionProblem: this.physicalExamDetails.RightAirConductionProblem,
+              LeftBoneConduction: this.physicalExamDetails.LeftBoneConduction,
+              LeftBoneConductionProblem: this.physicalExamDetails.LeftBoneConductionProblem,
+              RightBoneConduction: this.physicalExamDetails.RightBoneConduction,
+              RightBoneConductionProblem: this.physicalExamDetails.RightBoneConductionProblem,
+              LeftNose: this.physicalExamDetails.LeftNose,
+              LeftNoseProblem: this.physicalExamDetails.LeftNoseProblem,
+              RightNose: this.physicalExamDetails.RightNose,
+              RightNoseProblem: this.physicalExamDetails.RightNoseProblem,
+              Throat: this.physicalExamDetails.Throat,
+              ThroatProblem: this.physicalExamDetails.ThroatProblem,
+              Nails: this.physicalExamDetails.Nails,
+              NailsProblem: this.physicalExamDetails.NailsProblem,
+              Skin: this.physicalExamDetails.Skin,
+              SkinProblem: this.physicalExamDetails.SkinProblem,
+              Lymphatics: this.physicalExamDetails.Lymphatics,
+              LymphaticsProblem: this.physicalExamDetails.LymphaticsProblem,
+              VericoseVein: this.physicalExamDetails.VericoseVein,
+              VericoseVeinProblem: this.physicalExamDetails.VericoseVeinProblem,
+              CNSOrientation: this.physicalExamDetails.CNSOrientation,
+              CNSOrientationProblem: this.physicalExamDetails.CNSOrientationProblem,
+              CNSPlacePerson: this.physicalExamDetails.CNSPlacePerson,
+              CNSPlacePersonProblem: this.physicalExamDetails.CNSPlacePersonProblem,
+              CNSOther: this.physicalExamDetails.CNSOther,
+              CNSOtherProblem: this.physicalExamDetails.CNSOtherProblem,
+              CVSdrnm: this.physicalExamDetails.CVSdrnm,
+              CVSdrnmProblem: this.physicalExamDetails.CVSdrnmProblem,
+              CVSOther: this.physicalExamDetails.CVSOther,
+              CVSOtherProblem: this.physicalExamDetails.CVSOtherProblem,
+        
+              RSChestExpension: this.physicalExamDetails.RSChestExpension,
+              RSAirEntry: this.physicalExamDetails.RSAirEntry,
+              RSCrepitations: this.physicalExamDetails.RSCrepitations,
+              RSWheeze: this.physicalExamDetails.RSWheeze,
+              RSOthers: this.physicalExamDetails.RSOthers,
+              GSLiver: this.physicalExamDetails.GSLiver,
+              GSSpleen: this.physicalExamDetails.GSSpleen,
+              GSAbdomen: this.physicalExamDetails.GSAbdomen,
+              GSOthers: this.physicalExamDetails.GSOthers,
+              GenKidney: this.physicalExamDetails.GenKidney,
+              GenBladder: this.physicalExamDetails.GenBladder,
+              GenUterus: this.physicalExamDetails.GenUterus,
+              GenOthers: this.physicalExamDetails.GenOthers,
+              MusLLPower: this.physicalExamDetails.MusLLPower,
+              MusLLReflex: this.physicalExamDetails.MusLLReflex,
+              MusLLSensation: this.physicalExamDetails.MusLLSensation,
+              MusRLPower: this.physicalExamDetails.MusRLPower,
+              MusRLReflex: this.physicalExamDetails.MusRLReflex,
+              MusRLSensation: this.physicalExamDetails.MusRLSensation,
+              MusULPower: this.physicalExamDetails.MusULPower,
+              MusULReflex:  this.physicalExamDetails.MusULReflex,
+              MusULSensation: this.physicalExamDetails.MusULSensation,
+              MusURLPower: this.physicalExamDetails.MusURLPower,
+              MusURLReflex:  this.physicalExamDetails.MusURLReflex,
+              MusURLSensation: this.physicalExamDetails.MusURLSensation,
+              MusOther: this.physicalExamDetails.MusOther
+            });
+            this.calculateEmployeeBmi();
+            this.calculateBloodPressure();
+        }
       });
   }
 
@@ -246,6 +375,25 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
       this.bloodPsrText = '';
     }
   }
+  clearInput(ipField: string){
+    console.log(ipField);
+    // if((ipField === 'OtherSpecify') || (ipField === 'Immunization') || (ipField === 'Other')) {
+    //   this.formControls[ipField].reset();
+    //   this.formControls[ipField].clearValidators();
+    // } else if(ipField) {
+    // this.formControls[ipField].reset();
+    // this.formControls[ipField].setValidators(Validators.required);
+    // } else {
+    //   this.formControls[ipField].clearValidators();
+    // }
+    // this.formControls[ipField].updateValueAndValidity();
+
+    if(ipField) {
+      this.formControls[ipField].reset();
+      this.formControls[ipField].clearValidators();
+    }
+    this.formControls[ipField].updateValueAndValidity();
+  }
 
   onSubmit() {
     this.physicalExamForm.markAllAsTouched();
@@ -253,12 +401,38 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
 
     if (this.physicalExamForm.valid) {
       const physicalExamDataPayLoad = {
-        labInvestigation: {
+        msPhysicalExam: {
           ...this.physicalExamForm.value
         }
       }
       console.log(physicalExamDataPayLoad);
 
+      this.medicalSurveillanceService.addEditPhysicalExam(physicalExamDataPayLoad)
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response['status'] == 200) {
+          if (this.physicalExamForm.value.Id > 0) {
+            this.snackBar.open('Updated Successfully', 'Close', {
+              panelClass: 'success-popup',
+            });
+
+            this.getPhysicalExamDetails();
+            this.updateNext = true;
+          } else {
+            this.snackBar.open('Saved Successfully', 'Close', {
+              panelClass: 'success-popup',
+            });
+
+            this.getPhysicalExamDetails();
+            this.saveNext = true;
+          }
+        }else {
+          this.snackBar.open('Something went wrong! Please try again.', 'Close', {
+            panelClass: 'error-popup',
+          });
+        }
+      });
     }
   }
 }

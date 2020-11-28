@@ -87,7 +87,7 @@ const routes: Routes = [
   //   }
   // }
   {
-    path: 'status/checkout/:eId/:dId/:eTestVisitId',
+    path: 'status/checkout/:eId/:eTestVisitId',
     component: CheckoutComponent,
     data: {
       title: 'Checkout'

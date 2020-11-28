@@ -2,46 +2,58 @@
     <div class="container-fluid">
         <div class="row pt-2">
             <div class="col-xl-12 col-12">
-                <div class="pb-1 mb-2 mt-2 bg-white shadow-sm rounded w-100">
+                <div class="bg-white shadow-sm rounded w-100">
                     <div class="row">
                         <div class="col-xl-12 col-12">
                             <div
-                                class="pt-3 px-3 pb-1 mb-2 bg-primary-blue text-white text-start rounded-top px-2 py-1 flex-row flex-wrap">
-                                <p class="fw600 fs16 mr-4 text-uppercase">Employee Information</p>
+                                class="pt-3 px-3 bg-primary-blue text-white text-center rounded-top px-2 py-1 flex-row flex-wrap">
+                                <p class="fw600 fs16 mr-4 text-uppercase">Medical Surveillance - Present Chemical History and Exposure</p>
                             </div>
 
-                            <div class="row px-3 pb-2">
-                                <div class="col-md-4 col-12">
-                                    <div class="bg-light p-2 rounded d-flex">
-                                        <mat-form-field class="disable-mat-form w-100">
-                                            <mat-label class="fw600">Employee name</mat-label>
-                                            <input matInput [(ngModel)]="employeeDetailsForCH.EmployeeName"
-                                                placeholder="Enter Employee Name" type="text" autocomplete="off"
-                                                readonly>
-                                        </mat-form-field>
+                            <div class="row">
+                                <div class="col-xl-12 col-12">
+                                    <div
+                                        class="bg-color2 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                        <h6 class="mr-3">
+                                            <small class="fw700 fs16">Employee Information</small>
+                                        </h6>
                                     </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="bg-light p-2 rounded d-flex">
-                                        <mat-form-field class="disable-mat-form w-100">
-                                            <mat-label class="fw600">MyKad/IC No.</mat-label>
-                                            <input matInput [(ngModel)]="employeeDetailsForCH.ICNUmber"
-                                                placeholder="Enter MyKad/IC No." type="text" autocomplete="off"
-                                                readonly>
-                                        </mat-form-field>
+                                    
+                                    <div class="row px-3 pb-3 pt-3">
+                                        <div class="col-md-4 col-12">
+                                            <div class="bg-light p-2 rounded d-flex">
+                                                <mat-form-field class="disable-mat-form w-100">
+                                                    <mat-label class="fw600">Employee name</mat-label>
+                                                    <input matInput [(ngModel)]="employeeDetailsForCH.EmployeeName"
+                                                        placeholder="Enter Employee Name" type="text" autocomplete="off"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="bg-light p-2 rounded d-flex">
+                                                <mat-form-field class="disable-mat-form w-100">
+                                                    <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                                    <input matInput [(ngModel)]="employeeDetailsForCH.ICNUmber"
+                                                        placeholder="Enter MyKad/IC No." type="text" autocomplete="off"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="bg-light p-2 rounded d-flex">
+                                                <mat-form-field class="disable-mat-form w-100">
+                                                    <mat-label class="fw600">Company Name</mat-label>
+                                                    <input matInput [(ngModel)]="employeeDetailsForCH.CompanyName"
+                                                        placeholder="Enter Company Name" type="text" autocomplete="off"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="bg-light p-2 rounded d-flex">
-                                        <mat-form-field class="disable-mat-form w-100">
-                                            <mat-label class="fw600">Company Name</mat-label>
-                                            <input matInput [(ngModel)]="employeeDetailsForCH.CompanyName"
-                                                placeholder="Enter Company Name" type="text" autocomplete="off"
-                                                readonly>
-                                        </mat-form-field>
                                     </div>
-                                </div>
-                            </div>
+                                    </div>
+    
                         </div>
                     </div>
                 </div>
@@ -61,7 +73,7 @@
                 <div class="col-xl-12 col-12">
                     <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
                         <div class="bg-primary-blue text-white rounded-top px-3 py-2 text-center flex-row flex-wrap">
-                            <h6 class="mr-3 pt-2 text-uppercase">
+                            <h6 class="mr-3 pt-2">
                                 <span class="pl-1 fs16 fw600">Present Chemical History and Exposure</span>
                             </h6>
 

@@ -103,7 +103,7 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
       //   break;
       // }
       case EmployeeMedSurQueueStatus.CheckOut: {
-        this.router.navigate(['/medical-surveillance', 'status', 'checkout', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID]);
+        this.router.navigate(['/medical-surveillance', 'status', 'checkout', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       default:
