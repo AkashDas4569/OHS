@@ -25,7 +25,7 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
   separatorKeysCodes: number[] = [ENTER, COMMA, TAB];
 
   public employeeId: number = 0;
-  // public doctorId: number = 0;
+  public doctorId: number = 0;
   public employeeTestVisitId: number = 0;
   public physicalExamDetails: any;
   public employeeDetailsForPE: any = {};
@@ -56,11 +56,11 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
     this.route.params.subscribe(params => {
       this.employeeId = +params['eId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
-      // this.doctorId = +params['dId'];
+      this.doctorId = +params['dId'];
 
       console.log('employeeId: ', this.employeeId);
       console.log('employeeTestVisitId: ', this.employeeTestVisitId);
-      // console.log('doctorId: ', this.doctorId);
+      console.log('doctorId: ', this.doctorId);
     });
 
     this.physicalExamForm = this.fb.group({

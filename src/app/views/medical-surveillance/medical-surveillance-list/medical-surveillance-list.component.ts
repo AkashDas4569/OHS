@@ -22,9 +22,12 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
   public datestr: string = '';
   public date = new Date().toISOString();
   public allEmployeeQueues: any;
+  public allEmployeeCheckoutQueues: any;
   public queueStatus: any;
   public noDataText: string = `Please wait while we're fetching your data...`;
   public refreshEmployeeQueue: any;
+  public status!: string;
+  public searchTitle!: string;
 
   constructor(
     public snackBar: MatSnackBar,
@@ -38,9 +41,13 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadMedicalSurStatus();
     this.loadEmployeeMedSurQueue('1');
+    this.loadEmployeeMedSurQueueCheckout();
     this.refreshEmployeeQueue = setInterval(() => {
       this.loadEmployeeMedSurQueue('0');
-    }, 180000)
+      // this.loadEmployeeMedSurQueueCheckout();
+    }, 180000);
+
+    this.loadMedicalSurQueueStatus();
   }
 
   ngOnDestroy() {
@@ -56,6 +63,10 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
       // if (patientQueue.SelectedStatus === patientQueue.CurrentStatus) {
         this.queueNavigate(employeeMedQueue);
       // }
+    } else {
+      this.snackBar.open('Please Select a Status to Proceed.', 'Close', {
+        panelClass: 'error-popup',
+      });
     }
   }
 
@@ -63,7 +74,7 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
     console.log(employeeMedQueue.SelectedStatus);
     switch(employeeMedQueue.SelectedStatus) {
       case EmployeeMedSurQueueStatus.MedicalCondition: {
-        this.router.navigate(['/medical-surveillance', 'status', 'medical-condition', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID, employeeMedQueue.Gender]);
+        this.router.navigate(['/medical-surveillance', 'status', 'medical-condition', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       case EmployeeMedSurQueueStatus.PastMedicalHistory: {
@@ -83,19 +94,19 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
         break;
       }
       case EmployeeMedSurQueueStatus.PhysicalExam: {
-         this.router.navigate(['/medical-surveillance', 'status', 'physical-exam', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
+         this.router.navigate(['/medical-surveillance', 'status', 'physical-exam', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       case EmployeeMedSurQueueStatus.InvestigationEmployeeSign: {
-         this.router.navigate(['/medical-surveillance', 'status', 'investigation', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
+         this.router.navigate(['/medical-surveillance', 'status', 'investigation', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       case EmployeeMedSurQueueStatus.ExamOutcomeRecord: {
-         this.router.navigate(['/medical-surveillance', 'status', 'exam-outcome-record', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
+         this.router.navigate(['/medical-surveillance', 'status', 'exam-outcome-record', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       case EmployeeMedSurQueueStatus.MedicalRecordBook: {
-         this.router.navigate(['/employee', 'status', 'medical-record-book', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
+         this.router.navigate(['/employee', 'status', 'medical-record-book', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       // case EmployeeMedSurQueueStatus.FitnessCertificate: {
@@ -103,13 +114,36 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
       //   break;
       // }
       case EmployeeMedSurQueueStatus.CheckOut: {
-        this.router.navigate(['/medical-surveillance', 'status', 'checkout', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
+        this.router.navigate(['/medical-surveillance', 'status', 'checkout', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID]);
         break;
       }
       default:
         this.loadEmployeeMedSurQueue('1');
     }
   }
+  loadMedicalSurStatus() {
+    this.lookupService.getMedicalSurveillanceStatusList()
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((result: any) => {
+       result['AudTstStatusList'].forEach((value : any, index: any) => {
+          if(value.QStatus === 'CheckIn') {
+            // const data = {Id: 1, QStatus: "Akash"}
+            result['AudTstStatusList'].splice(index, 1);
+          }
+        });
+        
+        this.queueStatus = result['AudTstStatusList'];
+        console.log(this.queueStatus);
+    });
+  }
+  loadMedicalSurQueueStatus() {
+    this.lookupService.getMedicalSurveillanceQueueStatusList()
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((result: any) => {
+        console.log(result);
+    });
+  }
+  
   loadEmployeeMedSurQueue(loader: string) {
     const data = {
       employeeName: '',
@@ -123,20 +157,17 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
           this.noDataText = 'No Data Found';
         });
   }
-  loadMedicalSurStatus() {
-    this.lookupService.getMedicalSurveillanceStatusList()
-      .pipe(takeUntil(this.onDestroyUnSubscribe))
-      .subscribe((result: any) => {
-      //  result['AudTstStatusList'].forEach((value : any, index: any) => {
-      //     if(value.QStatus === 'CheckIn' || value.QStatus === 'Checkout') {
-      //       // const data = {Id: 1, QStatus: "Akash"}
-      //       result['AudTstStatusList'].splice(index, 1);
-      //     }
-      //   });
-        
-        this.queueStatus = result['AudTstStatusList'];
-        console.log(this.queueStatus);
-    });
+  loadEmployeeMedSurQueueCheckout() {
+    const data = {
+      employeeName: ''
+    }
+    this.medicalSurveillanceService.getAllCheckOutMedSurQueue(data)
+    .pipe(takeUntil(this.onDestroyUnSubscribe))
+        .subscribe((employeeMedSurCheckoutData: any) => {
+          this.allEmployeeCheckoutQueues = employeeMedSurCheckoutData['checkOutMedQ'];
+          console.log(this.allEmployeeCheckoutQueues);
+          this.noDataText = 'No Data Found';
+        });
   }
   onSubmit() {}
 }

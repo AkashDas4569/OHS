@@ -19,7 +19,8 @@ import {
 } from '../directives';
 
 import {
-  FormatDatePipe
+  FormatDatePipe,
+  SearchFilterPipe
 } from '../pipes';
 import {
   MainLayoutComponent,
@@ -46,6 +47,7 @@ const allDialogTemplates = [
     ToggleViewPasswordDirective,
     // Pipes
     FormatDatePipe,
+    SearchFilterPipe,
     MainLayoutComponent,
     // All Dialog Component
     ...allDialogTemplates,
@@ -93,6 +95,7 @@ const allDialogTemplates = [
     ToggleViewPasswordDirective,
     // Pipes
     FormatDatePipe,
+    SearchFilterPipe,
     MainLayoutComponent,
     // Templates
     SidebarComponent,

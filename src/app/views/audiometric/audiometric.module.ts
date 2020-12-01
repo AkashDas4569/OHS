@@ -8,18 +8,17 @@ import {
   AudiometricTestComponent,
   OccupationalNoiseExposureComponent, 
   MedicalHistoryComponent, 
-  AudiometryResultComponent 
+  AudiometryResultComponent,
+  CheckoutComponent 
 } from './';
-import { CheckoutComponent } from './checkout/checkout.component';
-
-
 
 @NgModule({
   declarations: [
     AudiometricTestComponent, 
     OccupationalNoiseExposureComponent, 
     MedicalHistoryComponent, 
-    AudiometryResultComponent, CheckoutComponent
+    AudiometryResultComponent, 
+    CheckoutComponent
   ],
   imports: [
     CommonModule,

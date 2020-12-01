@@ -189,5 +189,29 @@ export class MedicalSurveillanceService {
                 catchError(this.handleError('addEditRecordBook'))
             );
     }
+    getCheckoutDetails(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/GetCheckOutStatus`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('getCheckoutDetails'))
+            );
+    }
+    addEditCheckout(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/MedSurCheckOut`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('addEditCheckout'))
+            );
+    }
+    getAllCheckOutMedSurQueue(data: object) {
+        const apiPath = `${this.apiUrl}/MedSurOHSModule/GetAllCheckOutMedQ`;
+        return this.http.post(apiPath, data, httpOptions)
+            .pipe(
+                map(response => response),
+                catchError(this.handleError('getAllCheckOutMedSurQueue'))
+            );
+    }
  
 }

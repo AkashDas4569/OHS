@@ -3,7 +3,7 @@
 
         <div class="row pt-2">
             <div class="col-sm-6 col-6">
-              <p class="h6 text-left font-weight-bold">Medical Surveillance - Test Employee Queue</p>
+              <p class="h6 text-left font-weight-bold w-space-nowrap">Medical Surveillance - Test Queue</p>
             </div>
 
             <div class="col-xl-12 col-12" id="medicalSurveillanceQueueForm">
@@ -11,7 +11,7 @@
         
                   <form class="medical-SurveillanceQueueForm col-xl-12 col-12 p-0" (ngSubmit)="onSubmit()" autocomplete="off">
                     <div class="row pt-2">
-                      <div class="col-sm-3 col-12 d-flex align-items-center pb-3">
+                      <div class="col-sm-3 col-12 d-flex align-items-center pb-3 pt-2">
                         <i class="fs22 far fa-calendar-alt mr-2" aria-hidden="true"></i>
                         <p class="fs14 fw600 m-0">
                           {{ date | formatDate:{ type: 'format', format: 'LL' } }}
@@ -25,7 +25,7 @@
                               <i class="fa fa-search" aria-hidden="true"></i>
                               Search
                             </mat-label>
-                            <input matInput placeholder="Enter Employee Name" type="text" autocomplete="off">
+                            <input matInput [(ngModel)]="searchTitle" [ngModelOptions]="{standalone: true}" placeholder="Enter Employee Name" type="text" autocomplete="off">
                           </mat-form-field>
                         </div>
                       </div>
@@ -63,8 +63,8 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <ng-container *ngIf="allEmployeeQueues?.length; else noDataFound">
-                            <tr *ngFor="let queue of allEmployeeQueues; index as i">
+                          <ng-container *ngIf="(allEmployeeQueues | filterSearch : searchTitle)?.length; else noDataFound">
+                            <tr *ngFor="let queue of allEmployeeQueues | filterSearch : searchTitle; index as i">
                               <td class="pl-2">{{i+1}}. </td>
                               <!-- <td>{{ queue.VisitDate }}, {{queue.CheckInTime}}</td> -->
                               <td>{{queue.CheckInTS}}</td>
@@ -151,45 +151,45 @@
                         <thead class="bg-primary text-white">
                           <tr>
                             <th scope="col" class="fs14 fw600 text-white"></th>
-                            <th scope="col" class="fs14 fw600 text-white">CheckIn Date/Time</th>
+                            <th scope="col" class="fs14 fw600 text-white">CheckOut Date</th>
                             <th scope="col" class="fs14 fw600 text-white">Employee Name</th>
                             <th scope="col" class="fs14 fw600 text-white">IC No.</th>
                             <th scope="col" class="fs14 fw600 text-white">OHD</th>
-                            <th scope="col" class="fs14 fw600 text-white">Client Name</th>
+                            <th scope="col" class="fs14 fw600 text-white">Company Name</th>
                             <th scope="col" class="fs14 fw600 text-white">Current Status</th>
-                            <th scope="col" class="fs14 fw600 text-white">Check out Time</th>
+                            <!-- <th scope="col" class="fs14 fw600 text-white">CheckOut Date/Time</th> -->
                           </tr>
                         </thead>
                         <tbody>
-                          <ng-container>
-                            <tr>
+                          <ng-container *ngIf="(allEmployeeCheckoutQueues | filterSearch : searchTitle)?.length; else noDataFound">
+                            <tr *ngFor="let queue of allEmployeeCheckoutQueues | filterSearch : searchTitle; index as i">
                               <td class="pl-2">
-                                  <!-- {{ i + 1 }} -->1.
+                                  {{i + 1}}.
                                 </td>
                                 <td>
-                                    <!-- {{ queue.VisitDate }}, {{queue.CheckInTime}} -->18/Jan/1994, 12:34 PM
+                                    {{queue.CheckOutTS}}
                                   </td>
                                 <td>
                                   <a class="text-black">
-                                    <!-- {{ queue.PatientName }} -->Subhajit Das
+                                    {{queue.EmpName}}
                                   </a>
                                 </td>
                                 <td>
-                                  <!-- {{ queue.Purpose }}  --> 10002345
-                                  <span><i class="fas fa-circle text-red"></i></span>
+                                  {{queue.ICNum}}
+                                  <!-- <span><i class="fas fa-circle text-red"></i></span> -->
                                 </td>
                                 <td>
-                                    <!-- {{ queue.MRN }} -->Dr. Arlo
+                                    {{queue.DoctorName}}
                                   </td>
                                 <td>
-                                    <!-- {{ queue.ProviderName }} -->Dr. Nabila
+                                    {{queue.CompanyName}}
                                   </td>
                                 <td>
-                                    <!-- {{ queue.PanelInsName }} --> Cash
+                                    {{queue.QStatus}}
                                 </td>
-                                <td>
-                                    <!-- {{ queue.VisitDate }}, {{queue.CheckInTime}} -->17:34 PM
-                                </td>
+                                <!-- <td>
+                                    {{ queue.VisitDate }}, {{queue.CheckInTime}}
+                                </td> -->
                             </tr>
                           </ng-container>
                         </tbody>

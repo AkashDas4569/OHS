@@ -22,7 +22,7 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
   public medicalRecordBookForm!: FormGroup;
 
   public employeeId: number = 0;
-  // public doctorId: number = 0;
+  public doctorId: number = 0;
   public userId: number = 0;
   public employeeTestVisitId: number = 0;
   public medicalRecordBookDetails: any;
@@ -54,11 +54,11 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
     this.route.params.subscribe(params => {
       this.employeeId = +params['eId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
-      // this.doctorId = +params['dId'];
+      this.doctorId = +params['dId'];
 
       console.log('employeeId: ', this.employeeId);
       console.log('employeeTestVisitId: ', this.employeeTestVisitId);
-      // console.log('doctorId: ', this.doctorId);
+      console.log('doctorId: ', this.doctorId);
     });
     this.userId = Number(this.authenticationService.getUserLoggedInID());
     console.log(this.userId);
@@ -71,7 +71,7 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
       MedExamDt: [moment().format('DD/MM/YYYY'), Validators.required],
       ResultOfBioMonitor: [''],
       FitToWork: [''],
-      Fit: [{value: false, disabled: true}],
+      // Fit: [{value: false, disabled: true}],
     });
 
     this.formControls.EmployeeId.setValue(this.employeeId);
@@ -80,7 +80,7 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
 
     this.getEmployeeById();
     this.getRecordBookDetails();
-    this.checkedTrue();
+    // this.checkedTrue();
   }
 
   get formControls() {
@@ -125,22 +125,22 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
             MedExamDt: moment(this.medicalRecordBookDetails.MedExamDt).format('DD/MM/YYYY'),
             ResultOfBioMonitor: this.medicalRecordBookDetails.ResultOfBioMonitor,
             FitToWork: this.medicalRecordBookDetails.FitToWork,
-            Fit: this.medicalRecordBookDetails.Fit
+            // Fit: this.medicalRecordBookDetails.Fit
           });
 
-          this.checkedTrue();
+          // this.checkedTrue();
         }
       });
   }
   
-  checkedTrue() {
-    if((this.formControls.MedExamDt.value) && (this.formControls.ResultOfBioMonitor.value) && (this.formControls.FitToWork.value)) {
-      this.medicalRecordBookForm.get('Fit')?.enable();
-      this.formControls.Fit.setValue(true);
-    } else {
-      this.medicalRecordBookForm.get('Fit')?.disable();
-    }
-  }
+  // checkedTrue() {
+  //   if((this.formControls.MedExamDt.value) && (this.formControls.ResultOfBioMonitor.value) && (this.formControls.FitToWork.value)) {
+  //     this.medicalRecordBookForm.get('Fit')?.enable();
+  //     this.formControls.Fit.setValue(true);
+  //   } else {
+  //     this.medicalRecordBookForm.get('Fit')?.disable();
+  //   }
+  // }
   imageFileSelected(event: any) {
     console.log(event.target.files);
     if (event.target.files && event.target.files[0]) {

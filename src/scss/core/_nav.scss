@@ -136,3 +136,100 @@ nav{
   }
 }
 
+// Feed Header
+// .feed-header{
+//   nav{
+//     padding-top: 0;
+//     padding-bottom: 0;
+//     z-index: 99999;
+//   }
+//   .side-menu-btn{
+//     position: relative;
+//   }
+//   .has-new-notification{
+//     position: absolute;
+//     top: rem(10);
+//     right: rem(12);
+//     border: 2px solid $white;
+//     width: rem(12);
+//     height: rem(12);
+//     border-radius: 50%;
+//     background: $green;
+//   }
+//   .navbar-brand{
+//     padding: 0;
+//     margin: 0;
+//     // position: absolute;
+//   //   left: 50%;
+//   //   top: 0;
+//     position: relative;
+//     z-index: 99;
+//     // transform: translateX(-50%);
+//   }
+//   .logo{
+//     // max-width: rem(200);
+//     height: rem(56);
+//     object-fit: contain;
+//     padding: rem(8);
+//     max-width: rem(190);
+//   }
+//   .logo-name{
+//     font-size: rem(30);
+//     line-height: rem(50);
+//     font-weight: 500;
+//     margin-left: 0;
+//     vertical-align: middle;
+//     display: inline-block;
+//   }
+//   .scroll-nav-container{
+//     justify-content: space-between;
+//   }
+//   .feed-center-header{
+//     flex: 1;
+//     flex-basis: 0.01px;
+//   }
+//   .feed-right-header{
+//     .nav-item{
+//       height: rem(56);
+//       min-width: rem(56);
+//       &.show,
+//       &.active{
+//         > .nav-link{
+//           outline: none;
+//           color: $white;
+//           border-bottom-color: $white;
+//         }
+//       }
+//     }
+//     .dropdown-toggle::after{
+//       // display: none;
+//     }
+//     .nav-timer {
+//       padding: rem(2) rem(15);
+//     }
+//     .nav-link{
+//       font-size: rem(18);
+//       color: $white;
+//       padding: rem(2) rem(15) !important;
+//       height: 100%;
+//       display: inline-flex;
+//       justify-content: center;
+//       align-items: center;
+//       border: none;
+//       border-bottom: 3px solid transparent;
+//       -webkit-transition: all ease .3s;
+//       transition: all ease .3s;
+//       .user-img{
+//         max-width: rem(32);
+//       }
+//       &:hover,
+//       &:focus,
+//       &.active{
+//         outline: none;
+//         color: $white !important;
+//         border-bottom-color: $white;
+//       }
+//     }
+//   }
+// }
+

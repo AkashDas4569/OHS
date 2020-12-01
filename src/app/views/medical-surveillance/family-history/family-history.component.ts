@@ -152,14 +152,14 @@ export class FamilyHistoryComponent implements OnInit, OnDestroy {
       const familyHistoryDataPayLoad = {
         familyHistory: {
           ...this.familyHistoryForm.value
-        }
+        },
+        employeeOHSTestVisitId: this.employeeTestVisitId
       }
       console.log(familyHistoryDataPayLoad);
 
       this.medicalSurveillanceService.addEditFamilyHistory(familyHistoryDataPayLoad)
         .pipe(takeUntil(this.onDestroyUnSubscribe))
         .subscribe((response: any) => {
-          console.log(response);
           if (response['status'] == 200) {
             if (this.familyHistoryForm.value.Id > 0) {
               this.snackBar.open('Updated Successfully', 'Close', {

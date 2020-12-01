@@ -125,6 +125,7 @@ export class OhsClientSettingsComponent implements OnChanges, OnInit, OnDestroy 
         })
         // console.log(this.allChemicalList);
         this.noDataText = 'No Data Found';
+        this.getClientDetails();
       });
   }
   nationalityChange() {

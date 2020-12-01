@@ -1,9 +1,12 @@
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService, AudiometricService, EmployeeService } from '../../../core/services';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormGroup, FormBuilder, AbstractControl, Validators, AsyncValidatorFn, FormGroupDirective } from '@angular/forms';
+import { FormControlValidator } from '../../../core/validators';
 // RxJs
 import { Subject, forkJoin } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
 // import { Chart } from 'chart.js';
 import * as Chart from 'chart.js';
 
@@ -18,9 +21,18 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
   @ViewChild('yearSalesChart', { static: true }) yearSalesChart!: ElementRef;
   @ViewChild('yearPatientsChart', { static: true }) yearPatientsChart!: ElementRef;
   @ViewChild('frequencyChart', { static: true }) frequencyChart!: ElementRef;
-
-
+  @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
   private onDestroyUnSubscribe = new Subject<void>();
+  public audiometryResultForm!: FormGroup;
+
+  public employeeId: number = 0;
+  // public doctorId: number = 0;
+  public userId: number = 0;
+  public employeeTestVisitId: number = 0;
+  public audiometryResultDetails: any;
+  public employeeDetailsForAR: any = {};
+  public saveNext: boolean = false;
+  public updateNext: boolean = true;
   public canvas: any;
   public ctx: any;
   // private months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -77,12 +89,29 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
   };
 
   constructor(
+    private fb: FormBuilder,
     public snackBar: MatSnackBar,
     private router: Router,
     private route: ActivatedRoute,
+    private authenticationService: AuthenticationService,
+    private employeeService: EmployeeService,
+    private audiometricService: AudiometricService,
   ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.employeeId = +params['eId'];
+      this.employeeTestVisitId = +params['eTestVisitId'];
+      // this.doctorId = +params['dId'];
+
+      console.log('employeeId: ', this.employeeId);
+      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('doctorId: ', this.doctorId);
+    });
+    this.userId = Number(this.authenticationService.getUserLoggedInID());
+    console.log(this.userId);
+
+    this.getEmployeeById();
     // this.noDataCanvas(this.monthPatientsChart);
     // this.noDataCanvas(this.monthSalesChart);
     this.noDataCanvas(this.yearSalesChart);
@@ -91,6 +120,27 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
 
     this.noDataCanvas(this.frequencyChart);
     this.viewLineChart();
+  }
+
+  get formControls() {
+    return this.audiometryResultForm.controls;
+  }
+  errorState(field: AbstractControl, validatorFieldName: string) {
+    return FormControlValidator(field, validatorFieldName);
+  }
+  ngOnDestroy() {
+    // UnSubscribe Subscriptions
+    this.onDestroyUnSubscribe.next();
+    this.onDestroyUnSubscribe.complete();
+  }
+
+  getEmployeeById() {
+    this.employeeService.getEmployeeById({ employeeID: this.employeeId })
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((result: any) => {
+        this.employeeDetailsForAR = result['employeeDataForMedicalConditionModel'];
+        // console.log(this.employeeDetailsForAR);
+      });
   }
 
   noDataCanvas(element: ElementRef) {
@@ -102,12 +152,6 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
     element.nativeElement.height = element.nativeElement.height * dpi;
     this.ctx.font = '18px Montserrat, sans-serif';
     this.ctx.fillText(this.noDataText, canvasLeft, canvasTop);
-  }
-
-  ngOnDestroy() {
-    // UnSubscribe Subscriptions
-    this.onDestroyUnSubscribe.next();
-    this.onDestroyUnSubscribe.complete();
   }
 
   createBarChart(element: ElementRef, chartData: any, chartOption: any) {

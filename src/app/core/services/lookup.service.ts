@@ -109,4 +109,29 @@ export class LookupService {
         catchError(this.handleError('getMedicalSurveillanceStatusList'))
       );
   }
+  getMedicalSurveillanceQueueStatusList() {
+    const apiPath = `${this.apiUrl}/LookupOHSModule/GetMedSurQStatusList`;
+    return this.http.post(apiPath, httpOptions)
+      .pipe(
+        map(response => response),
+        catchError(this.handleError('getMedicalSurveillanceQueueStatusList'))
+      );
+  }
+  getAudiometricStatusList() {
+    const apiPath = `${this.apiUrl}/LookupOHSModule/GetAudTstStatusList`;
+    return this.http.post(apiPath, httpOptions)
+      .pipe(
+        map(response => response),
+        catchError(this.handleError('getAudiometricStatusList'))
+      );
+  }
+  getAudiometricQueueStatusList() {
+    const apiPath = `${this.apiUrl}/LookupOHSModule/GetAudioQStatusList`;
+    return this.http.post(apiPath, httpOptions)
+      .pipe(
+        map(response => response), 
+        catchError(this.handleError('getAudiometricQueueStatusList'))
+      );
+  }
+
 }

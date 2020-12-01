@@ -1,91 +1,191 @@
 <section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
     <div class="container-fluid">
-        
+        <div class="row pt-2">
+            <div class="col-xl-12 col-12">
+                <div class="bg-white shadow-sm rounded w-100">
+                    <div class="row">
+                        <div class="col-xl-12 col-12">
+                            <div
+                                class="pt-3 px-3 bg-primary-blue text-white text-center rounded-top px-2 py-1 flex-row flex-wrap">
+                                <p class="fw600 fs16 mr-4 text-uppercase">Audiometric - Medical History</p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-12 col-12">
+                                    <div
+                                        class="bg-color2 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                        <h6 class="mr-3">
+                                            <small class="fw700 fs16">Employee Information</small>
+                                        </h6>
+                                    </div>
+
+                                    <div class="row px-3 pb-3 pt-3">
+                                        <div class="col-md-4 col-12">
+                                            <div class="bg-light p-2 rounded d-flex">
+                                                <mat-form-field class="disable-mat-form w-100">
+                                                    <mat-label class="fw600">Employee name</mat-label>
+                                                    <input matInput [(ngModel)]="employeeDetailsForMH.EmployeeName"
+                                                        placeholder="Enter Employee Name" type="text" autocomplete="off"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="bg-light p-2 rounded d-flex">
+                                                <mat-form-field class="disable-mat-form w-100">
+                                                    <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                                    <input matInput [(ngModel)]="employeeDetailsForMH.ICNUmber"
+                                                        placeholder="Enter MyKad/IC No." type="text" autocomplete="off"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="bg-light p-2 rounded d-flex">
+                                                <mat-form-field class="disable-mat-form w-100">
+                                                    <mat-label class="fw600">Company Name</mat-label>
+                                                    <input matInput [(ngModel)]="employeeDetailsForMH.CompanyName"
+                                                        placeholder="Enter Company Name" type="text" autocomplete="off"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="medical-HistoryForm col-xl-12 col-12 p-0" [formGroup]="medicalHistoryForm" (ngSubmit)="onSubmit()"
+        autocomplete="off">
         <div class="row pt-3">
             <div class="col-xl-12 col-12">
                 <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
                     <div class="bg-primary-blue text-white rounded-top px-3 py-2 text-center flex-row flex-wrap">
-                        <h6 class="mr-3 pt-2 text-uppercase">
+                        <h6 class="mr-3 pt-2">
                             <span class="pl-1 fs16 fw600">Medical History</span>
                         </h6>
 
                     </div>
 
-                    <form class="occupational-NoiseForm col-xl-12 col-12 p-0" (ngSubmit)="onSubmit()"
-                        autocomplete="off">
-                        <div class="table-responsive mb-2">
+                    <div class="table-responsive mb-2">
                             <table class="table table-sm table-borderless pl-2 pr-2 text-nowrap text-uppercase">
                                 <thead class="bg-color3 text-dark">
                                     <tr>
                                         <th scope="col" class="pl-3 border-right-bold text-left text-dark">Types</th>
-                                        <th scope="col" class="pl-2 text-center text-dark" style="width: 80px;">Yes
+                                        <th scope="col" class="pl-2 text-center text-dark" style="width: 60px;">Yes
                                         </th>
-                                        <th scope="col" class="pl-2 text-center text-dark" style="width: 80px;">No
+                                        <th scope="col" class="pl-2 text-center text-dark" style="width: 60px;">No
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <ng-container>
                                         <tr>
-                                            <td class="pl-3 border-right-bold text-left fw500">1. Do you have any disease that affects the hearing?</td>
-                                            <td class="pl-3 text-center">
-                                                <!-- <input type="radio" name="optradio"> -->
-                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
-                                                    <mat-radio-button color="primary" value="1"></mat-radio-button>
-                                                <!-- </mat-radio-group> -->
-                                            </td>  
-                                            <td class="pl-3 text-center">
-                                                <!-- <input type="radio" name="optradio"> -->
-                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
-                                                    <mat-radio-button color="primary" value="2"></mat-radio-button>
-                                                <!-- </mat-radio-group> -->
-                                            </td>  
+                                            <td class="pl-3 border-right-bold text-left fw500">1. Have you ever had history of ear injury, ear ache or ear discharge ?</td>
+                                            <td colspan="3" class="pl-2 text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="InjuryHistory">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right-bold text-left fw500">2. Have you had history of ear injury, ear ache or ear discharge?</td>
-                                            <td class="pl-3 text-center">
-                                                <!-- <input type="radio" name="optradio"> -->
-                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
-                                                    <mat-radio-button color="primary" value="1"></mat-radio-button>
-                                                <!-- </mat-radio-group> -->
-                                            </td>  
-                                            <td class="pl-3 text-center">
-                                                <!-- <input type="radio" name="optradio"> -->
-                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
-                                                    <mat-radio-button color="primary" value="2"></mat-radio-button>
-                                                <!-- </mat-radio-group> -->
-                                            </td>  
+                                            <td class="pl-3 border-right-bold text-left fw500">2. Are you having Upper Respiratory Infections (URTI) symptoms ?</td>
+                                            <td colspan="3" class="pl-2 text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="URTIsymptoms">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right-bold text-left fw500">3. Are you having Upper Respiratory Infections (URTI) symptoms?</td>
-                                            <td class="pl-3 text-center">
-                                                <!-- <input type="radio" name="optradio"> -->
-                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
-                                                    <mat-radio-button color="primary" value="1"></mat-radio-button>
-                                                <!-- </mat-radio-group> -->
-                                            </td>  
-                                            <td class="pl-3 text-center">
-                                                <!-- <input type="radio" name="optradio"> -->
-                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
-                                                    <mat-radio-button color="primary" value="2"></mat-radio-button>
-                                                <!-- </mat-radio-group> -->
-                                            </td>  
+                                            <td class="pl-3 border-right-bold text-left fw500">3. Do you ever had history of buzzing/ringing in the ears ?</td>
+                                            <td colspan="3" class="pl-2 text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="BuzzHistory">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-3 border-right-bold text-left fw500">4. Do you have hobbies that involve loud noise exposure?
+                                            <td class="pl-3 border-right-bold text-left fw500">4. Do you have any disease that affects the hearing ?</td>
+                                            <td colspan="3" class="pl-2 text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="DiseaseAffect">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">5. Have you ever been certified by a medical doctor as hearing loss ?</td>
+                                            <td colspan="3" class="pl-2 text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="CertHearingLoss">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">6. Have you taken any medications that can cause hearing issues ?
+                                                (Antibiotics)</td>
+                                            <td colspan="3" class="pl-2 text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="Antibiotics">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">7. Do you have hobbies that involve loud noise exposure ?
                                                 (Disco, Jamming, Shooting, etc)</td>
-                                            <td class="pl-3 text-center">
-                                                <!-- <input type="radio" name="optradio"> -->
-                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
-                                                    <mat-radio-button color="primary" value="1"></mat-radio-button>
-                                                <!-- </mat-radio-group> -->
-                                            </td>  
-                                            <td class="pl-3 text-center">
-                                                <!-- <input type="radio" name="optradio"> -->
-                                                <!-- <mat-radio-group class="ml-2" aria-label="Select an option" color="primary"> -->
-                                                    <mat-radio-button color="primary" value="2"></mat-radio-button>
-                                                <!-- </mat-radio-group> -->
-                                            </td>  
+                                            <td colspan="3" class="pl-2 text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="LoudNoiseHobby">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">8. Do you do deep sea underwater scuba dive (more than 3 meters depth) ?</td>
+                                            <td colspan="3" class="pl-2 text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="scubaDiving">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">9. Have you ever exposed to loud noise explosion ?</td>
+                                            <td colspan="3" class="pl-2 text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="ExpoExplosion">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-3 border-right-bold text-left fw500">10. Are you exposed to noise in the last 14 hours prior to this audiometric test ?</td>
+                                            <td colspan="3" class="pl-2 text-center">
+                                                <mat-radio-group class="fs12" aria-label="Select an option"
+                                                    color="primary" formControlName="Expo14hoursPrior">
+                                                    <mat-radio-button [value]=true> </mat-radio-button>
+                                                    <mat-radio-button [value]=false> </mat-radio-button>
+                                                </mat-radio-group>
+                                            </td>
                                         </tr>
     
                                     </ng-container>
@@ -94,13 +194,19 @@
                         </div>
                         <div class="col-sm-12 col-12 pt-3 py-2 d-flex align-items-center justify-content-center">
                             <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
-                                type="submit">Save</button>
-                            <button type="button"
-                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill">Next</button>
+                                type="submit">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
+                            <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
+                                [routerLink]="['/audiometric', 'status', 'audiometry-result', employeeId, employeeTestVisitId]"
+                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                            <button type="button" *ngIf="formControls['Id'].value > 0" [disabled]="!updateNext"
+                                [routerLink]="['/audiometric', 'status', 'audiometry-result', employeeId, employeeTestVisitId]"
+                                class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                            <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
+                                [routerLink]="['/audiometric/list']">Close</button>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </section>

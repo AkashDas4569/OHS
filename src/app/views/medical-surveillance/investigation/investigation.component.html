@@ -501,10 +501,10 @@
                             <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
                                 type="submit">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
                             <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
-                                [routerLink]="['/medical-surveillance', 'status', 'exam-outcome-record', employeeId, employeeTestVisitId]"
+                                [routerLink]="['/medical-surveillance', 'status', 'exam-outcome-record', employeeId, doctorId, employeeTestVisitId]"
                                 class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
                             <button type="button" *ngIf="formControls['Id'].value > 0" [disabled]="!updateNext"
-                                [routerLink]="['/medical-surveillance', 'status', 'exam-outcome-record', employeeId, employeeTestVisitId]"
+                                [routerLink]="['/medical-surveillance', 'status', 'exam-outcome-record', employeeId, doctorId, employeeTestVisitId]"
                                 class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
                             <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
                                 [routerLink]="['/medical-surveillance/list']">Close</button>

@@ -25,6 +25,9 @@ export const Errors: ErrorsInterface = {
     { type: 'required', message: 'Refer to Specialist is required.' },
     { type: 'pattern', message: 'No empty space is allowed.' },
   ],
+  Fit: [
+    { type: 'required', message: 'Fit/ Unfit field is required.' },
+  ],
   RecosOthers: [
     // { type: 'required', message: 'Refer to Specialist is required.' },
     { type: 'pattern', message: 'No empty space is allowed.' },

@@ -3,7 +3,7 @@
 
         <div class="row pt-2">
             <div class="col-sm-6 col-6">
-              <p class="h6 text-left font-weight-bold">Audiometric Test Queue</p>
+              <p class="h6 text-left font-weight-bold w-space-nowrap">Audiometric - Test Queue</p>
             </div>
 
             <div class="col-xl-12 col-12" id="audiometricTestQueueForm">
@@ -11,67 +11,172 @@
         
                   <form class="audiometric-TestQueueForm col-xl-12 col-12 p-0" (ngSubmit)="onSubmit()" autocomplete="off">
                     <div class="row pt-2">
-                      <div class="col-sm-5 col-12">
+                      <div class="col-sm-3 col-12 d-flex align-items-center pb-3 pt-2">
+                        <i class="fs22 far fa-calendar-alt mr-2" aria-hidden="true"></i>
+                        <p class="fs14 fw600 m-0">
+                          {{ date | formatDate:{ type: 'format', format: 'LL' } }}
+                        </p>
+                      </div>
+
+                      <div class="col-sm-8 col-12">
                         <div class="md-form">
                           <mat-form-field floatLabel="always" class="w-100">
                             <mat-label class="fw600">
                               <i class="fa fa-search" aria-hidden="true"></i>
                               Search
                             </mat-label>
-                            <input matInput placeholder="Enter Employee Name" type="text" autocomplete="off">
+                            <input matInput [(ngModel)]="searchTitle" [ngModelOptions]="{standalone: true}" placeholder="Enter Employee Name" type="text" autocomplete="off">
                           </mat-form-field>
                         </div>
                       </div>
-                      <div class="col-sm-5 col-12">
+                      <!-- <div class="col-sm-3 col-12">
                         <mat-form-field floatLabel="always" class="w-100">
                             <mat-label class="fw600">Status</mat-label>
                             <mat-select [typeaheadDebounceInterval]="500" placeholder="Select Status">
-                                <mat-option class="fs12 fw600" value="">Select Status</mat-option>
+                                <mat-option class="fs12 fw600" value="">Select Status</mat-option> -->
                                 <!-- <mat-option *ngFor="let status of allMasterData?.getAllMasterEnumsDetails?.MaritalStatus" [value]="status.Id">
         {{status.Title}}
         </mat-option> -->
-                            </mat-select>
+                            <!-- </mat-select>
                         </mat-form-field>
-                    </div>
-                      <div class="col-sm-2 col-12">
+                    </div> -->
+                      <!-- <div class="col-sm-2 col-12">
                         <div class="mx-auto mt-3 pl-4 pt-1 text-center">
                           <button type="submit" class="btn pt-1 pb-1 btn-primary fs16 fw500 btn-lg rounded-pill">
                             <i class="fa fa-search" aria-hidden="true"></i> <span class="pl-2">Search</span>
                           </button>
                         </div>
-                    </div>
+                    </div> -->
                     </div>
                   </form>
                 </div>
             </div>
 
             <div class="col-xl-12 col-12">
-                <!-- <div> -->
-                <tabset [justified]="true">
-                  <tab id="checkedIn">
-                    <ng-template tabHeading>
-                      <p class="fs14 fw600 text-uppercase m-0">EMPLOYEE CHECKED IN INFO</p>
-                    </ng-template>
-                    <div class="table-responsive bg-white shadow-sm rounded">
-                      <table class="table table-sm m-0">
-                        <thead class="bg-primary-blue text-white">
-                          <tr>
-                            <th scope="col" class="fs14 fw600 text-white pl-3">Sr No.</th>
-                            <th scope="col" class="fs14 fw600 text-white">CheckIn Date/Time</th>
-                            <th scope="col" class="fs14 fw600 text-white">Employee Name</th>
-                            <th scope="col" class="fs14 fw600 text-white">IC No.</th>
-                            <th scope="col" class="fs14 fw600 text-white">OHD</th>
-                            <th scope="col" class="fs14 fw600 text-white">Client Name</th>
-                            <th scope="col" class="fs14 fw600 text-white">Current Status</th>
-                            <th scope="col" class="fs14 fw600 text-white">Select Status</th>
+              <tabset [justified]="true">
+                <tab id="checkedIn">
+                  <ng-template tabHeading>
+                    <p class="fs14 fw600 text-uppercase m-0">EMPLOYEE CHECKED IN INFO</p>
+                  </ng-template>
+                  <div class="table-responsive bg-white shadow-sm rounded">
+                    <table class="table table-sm m-0">
+                      <thead class="bg-primary-blue text-white">
+                        <tr>
+                          <th scope="col" class="fs14 fw600 text-white"></th>
+                          <!-- <th scope="col" class="fs14 fw600 text-white pl-2">CheckIn Date/Time</th> -->
+                          <th scope="col" class="fs14 fw600 text-white pl-2">CheckIn Date</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">Employee Name</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">IC No.</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">OHD</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">Company Name</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">Current Status</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">Select Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngIf="(allEmployeeQueues | filterSearch : searchTitle)?.length; else noDataFound">
+                          <tr *ngFor="let queue of allEmployeeQueues | filterSearch : searchTitle; index as i">
+                            <td class="pl-2">{{i+1}}. </td>
+                            <!-- <td>{{ queue.VisitDate }}, {{queue.CheckInTime}}</td> -->
+                            <td>{{queue.CheckInTS}}</td>
+                            <td class="pr-3">
+                              <a href="javascript:void(0)" class="rounded mt-0 pl-1 pr-1 pt-1 pb-1" [routerLink]="">
+                                <span class="fw500">{{queue.EmpName}}</span>
+                              </a>
+                            </td>
+                            <td class="pl-2">{{queue.ICNum}}
+                              <!-- <span><i class="fas fa-circle text-red"></i></span> -->
+                            </td>
+                            <td class="pl-2">{{queue.DoctorName}}</td>
+                            <td class="pl-2">{{queue.CompanyName}}</td>
+                            <td class="pl-2">{{queue.QStatus}}</td>
+                            <!-- .replace(/([A-Z])/g, ' $1').trim() -->
+                            <td class="d-flex pl-2">
+                              <select [(ngModel)]="queue.SelectedStatus" class="flex-grow-1">
+                                <option *ngFor="let status of queueStatus" [ngValue]="status.Id">
+                                  {{status.QStatus}}
+                                </option>
+                              </select>
+                              <!-- <select class="flex-grow-1">
+                                <ng-container> -->
+                                  <!-- <option [ngValue]="2">Vital</option>
+                                  <option [ngValue]="11">Vital & CheckOut</option> -->
+                                <!-- </ng-container> -->
+                                <!-- <ng-container> -->
+                                  <!-- <option [ngValue]="12">Lab Result</option>
+                                  <option [ngValue]="4">Consult</option>
+                                  <option [ngValue]="9">Pharmacy</option>
+                                  <option [ngValue]="15">Billing</option> -->
+                                <!-- </ng-container> -->
+                                <!-- <ng-container> -->
+                                  <!-- <option [ngValue]="9">Pharmacy</option> -->
+                                  <!--<option [ngValue]="15">Billing</option>-->
+                                <!-- </ng-container> -->
+                                <!-- <ng-container> -->
+                                  <!-- <option [ngValue]="2">Vital</option>
+                                  <option [ngValue]="4">Consult</option>
+                                  <option [ngValue]="8">Hold</option>
+                                  <option [ngValue]="12">Lab Result</option>
+                                  <option [ngValue]="14">Counselling</option>
+                                  <option [ngValue]="9">Pharmacy</option>
+                                  <option [ngValue]="15">Billing</option> -->
+                                <!-- </ng-container> -->
+                              <!-- </select> -->
+      
+                              <button class="btn btn-warning ml-2 px-2" type="button" (click)="onChangeStatus(queue)">
+                                <i class="fa fa-play"></i>
+                              </button>
+                            </td>
                           </tr>
-                        </thead>
-                        <tbody>
-                          <ng-container>
-                            <tr>
-                              <td class="pl-3">
-                                  <!-- {{ i + 1 }} -->1.
-                                </td>
+                        </ng-container>
+                        <!-- <tr class="bg-success-Light">
+                            <td>1</td>
+                            <td>18/Mar/2020 ,08:29 PM</td>
+                            <td>CHRISTOPHER JOHN</td>
+                            <td class="d-flex justify-content-center border-0">Health Camp <input type="radio"
+                                class="ml-1 mt-1" name="optradio"></td>
+                            <td>KLBB1969</td>
+                            <td>Dr. Nabila</td>
+                            <td>Cash</td>
+                            <td>Pharmacy</td>
+                            <td class="d-flex">
+                              <select class="form-control form-control-sm border" (change)="getStatus($event)">
+                                <option value="">Please Select</option>
+                                <option *ngFor="let status of queueStatus" [value]="status.Id">{{ status.Name }}</option>
+                              </select>
+                              <button class="btn btn-green ml-2 px-2" (click)="gotoPage()">
+                                <i class="fa fa-play"></i>
+                              </button>
+                            </td>
+                          </tr> -->
+                      </tbody>
+                    </table>
+                  </div>
+                </tab>
+                <tab id="checkedOut">
+                  <ng-template tabHeading>
+                    <p class="fs14 fw600 text-uppercase m-0">EMPLOYEE CHECKED OUT INFO</p>
+                  </ng-template>
+                  <div class="table-responsive bg-white shadow-sm rounded">
+                    <table class="table table-sm m-0">
+                      <thead class="bg-primary text-white">
+                        <tr>
+                          <th scope="col" class="fs14 fw600 text-white"></th>
+                          <th scope="col" class="fs14 fw600 text-white">CheckIn Date/Time</th>
+                          <th scope="col" class="fs14 fw600 text-white">Employee Name</th>
+                          <th scope="col" class="fs14 fw600 text-white">IC No.</th>
+                          <th scope="col" class="fs14 fw600 text-white">OHD</th>
+                          <th scope="col" class="fs14 fw600 text-white">Client Name</th>
+                          <th scope="col" class="fs14 fw600 text-white">Current Status</th>
+                          <th scope="col" class="fs14 fw600 text-white">Check out Time</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container>
+                          <tr>
+                            <td class="pl-2">
+                                <!-- {{ i + 1 }} -->1.
+                              </td>
                               <td>
                                   <!-- {{ queue.VisitDate }}, {{queue.CheckInTime}} -->18/Jan/1994, 12:34 PM
                                 </td>
@@ -93,131 +198,23 @@
                               <td>
                                   <!-- {{ queue.PanelInsName }} --> Cash
                               </td>
-                              <!-- .replace(/([A-Z])/g, ' $1').trim() -->
-                              <td class="d-flex">
-                                <!-- <select class="form-control form-control-sm border" (change)="getStatus($event)">
-                                  <option value="">Please Select</option>
-                                  <option *ngFor="let status of queueStatus" [value]="status.Id">{{ status.Name }}</option>
-                                </select> -->
-                                <select class="flex-grow-1">
-                                  <!-- <option *ngFor="let status of queueStatus" [ngValue]="status.Id">
-                                    {{status.Name}}
-                                  </option> -->
-                                </select>
-                                <select class="flex-grow-1">
-                                  <ng-container>
-                                    <!-- <option [ngValue]="2">Vital</option>
-                                    <option [ngValue]="11">Vital & CheckOut</option> -->
-                                  </ng-container>
-                                  <ng-container>
-                                    <!-- <option [ngValue]="12">Lab Result</option>
-                                    <option [ngValue]="4">Consult</option>
-                                    <option [ngValue]="9">Pharmacy</option>
-                                    <option [ngValue]="15">Billing</option> -->
-                                  </ng-container>
-                                  <ng-container>
-                                    <!-- <option [ngValue]="9">Pharmacy</option> -->
-                                    <!--<option [ngValue]="15">Billing</option>-->
-                                  </ng-container>
-                                  <ng-container>
-                                    <!-- <option [ngValue]="2">Vital</option>
-                                    <option [ngValue]="4">Consult</option>
-                                    <option [ngValue]="8">Hold</option>
-                                    <option [ngValue]="12">Lab Result</option>
-                                    <option [ngValue]="14">Counselling</option>
-                                    <option [ngValue]="9">Pharmacy</option>
-                                    <option [ngValue]="15">Billing</option> -->
-                                  </ng-container>
-                                </select>
-        
-                                <button class="btn btn-warning ml-2 px-2" type="button">
-                                  <i class="fa fa-play"></i>
-                                </button>
+                              <td>
+                                  <!-- {{ queue.VisitDate }}, {{queue.CheckInTime}} -->17:34 PM
                               </td>
-                            </tr>
-                          </ng-container>
-                          <!-- <tr class="bg-success-Light">
-                              <td>1</td>
-                              <td>18/Mar/2020 ,08:29 PM</td>
-                              <td>CHRISTOPHER JOHN</td>
-                              <td class="d-flex justify-content-center border-0">Health Camp <input type="radio"
-                                  class="ml-1 mt-1" name="optradio"></td>
-                              <td>KLBB1969</td>
-                              <td>Dr. Nabila</td>
-                              <td>Cash</td>
-                              <td>Pharmacy</td>
-                              <td class="d-flex">
-                                <select class="form-control form-control-sm border" (change)="getStatus($event)">
-                                  <option value="">Please Select</option>
-                                  <option *ngFor="let status of queueStatus" [value]="status.Id">{{ status.Name }}</option>
-                                </select>
-                                <button class="btn btn-green ml-2 px-2" (click)="gotoPage()">
-                                  <i class="fa fa-play"></i>
-                                </button>
-                              </td>
-                            </tr> -->
-                        </tbody>
-                      </table>
-                    </div>
-                  </tab>
-                  <tab id="checkedOut">
-                    <ng-template tabHeading>
-                      <p class="fs14 fw600 text-uppercase m-0">EMPLOYEE CHECKED OUT INFO</p>
-                    </ng-template>
-                    <div class="table-responsive bg-white shadow-sm rounded">
-                      <table class="table table-sm m-0">
-                        <thead class="bg-primary text-white">
-                          <tr>
-                            <th scope="col" class="fs14 fw600 text-white pl-3">Sr No.</th>
-                            <th scope="col" class="fs14 fw600 text-white">CheckIn Date/Time</th>
-                            <th scope="col" class="fs14 fw600 text-white">Employee Name</th>
-                            <th scope="col" class="fs14 fw600 text-white">IC No.</th>
-                            <th scope="col" class="fs14 fw600 text-white">OHD</th>
-                            <th scope="col" class="fs14 fw600 text-white">Client Name</th>
-                            <th scope="col" class="fs14 fw600 text-white">Current Status</th>
-                            <th scope="col" class="fs14 fw600 text-white">Check out Time</th>
                           </tr>
-                        </thead>
-                        <tbody>
-                          <ng-container>
-                            <tr>
-                              <td class="pl-3">
-                                  <!-- {{ i + 1 }} -->1.
-                                </td>
-                                <td>
-                                    <!-- {{ queue.VisitDate }}, {{queue.CheckInTime}} -->18/Jan/1994, 12:34 PM
-                                  </td>
-                                <td>
-                                  <a class="text-black">
-                                    <!-- {{ queue.PatientName }} -->Subhajit Das
-                                  </a>
-                                </td>
-                                <td>
-                                  <!-- {{ queue.Purpose }}  --> 10002345
-                                  <span><i class="fas fa-circle text-red"></i></span>
-                                </td>
-                                <td>
-                                    <!-- {{ queue.MRN }} -->Dr. Arlo
-                                  </td>
-                                <td>
-                                    <!-- {{ queue.ProviderName }} -->Dr. Nabila
-                                  </td>
-                                <td>
-                                    <!-- {{ queue.PanelInsName }} --> Cash
-                                </td>
-                                <td>
-                                    <!-- {{ queue.VisitDate }}, {{queue.CheckInTime}} -->17:34 PM
-                                </td>
-                            </tr>
-                          </ng-container>
-                        </tbody>
-                      </table>
-                    </div>
-                  </tab>
-                </tabset>
-                <!-- </div> -->
-              </div>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
+                </tab>
+              </tabset>
+            </div>
 
         </div> 
     </div>
 </section>
+<ng-template #noDataFound>
+  <tr>
+    <td colspan="9" class="text-center">{{noDataText}}</td>
+  </tr>
+</ng-template>

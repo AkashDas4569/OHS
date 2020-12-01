@@ -5,36 +5,44 @@ import {
   AudiometricTestComponent,
   OccupationalNoiseExposureComponent, 
   MedicalHistoryComponent, 
-  AudiometryResultComponent 
+  AudiometryResultComponent,
+  CheckoutComponent 
 } from './';
 
 const routes: Routes = [
   {
-    path: 'audiometric-test-queue',
+    path: 'list',
     component: AudiometricTestComponent,
     data: {
-      title: 'Audiometric Test'
+      title: 'Audiometric List'
     }
   },
   {
-    path: 'occupational-noise-exposure',
+    path: 'status/occupational-noise-exposure/:eId/:eTestVisitId',
     component: OccupationalNoiseExposureComponent,
     data: {
       title: 'Occupational Noise Exposure'
     }
   },
   {
-    path: 'medical-history',
+    path: 'status/medical-history/:eId/:eTestVisitId',
     component: MedicalHistoryComponent,
     data: {
       title: 'Medical History'
     }
   },
   {
-    path: 'audiometry-result',
+    path: 'status/audiometry-result/:eId/:eTestVisitId',
     component: AudiometryResultComponent,
     data: {
       title: 'Audiometry Result'
+    }
+  },
+  {
+    path: 'status/checkout',
+    component: CheckoutComponent,
+    data: {
+      title: 'Checkout'
     }
   }
 ];

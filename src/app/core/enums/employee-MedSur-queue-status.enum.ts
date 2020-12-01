@@ -9,6 +9,6 @@ export enum EmployeeMedSurQueueStatus {
     InvestigationEmployeeSign = 8,
     ExamOutcomeRecord = 9,
     MedicalRecordBook = 10,
-    FitnessCertificate = 11,
-    CheckOut = 12
+    // FitnessCertificate = 11,
+    CheckOut = 11
 }

@@ -10,3 +10,5 @@ export { CookiesService } from './cookies.service';
 export { LookupService } from './lookup.service';
 export { EmployeeService } from './employee.service';
 export { MedicalSurveillanceService } from './medical-surveillance.service';
+export { AudiometricService } from './audiometric.service';
+export { RouteService } from './route.service';

@@ -121,8 +121,10 @@
                                     </div>
                                     <div class="col-xl-12 col-12 p-0">
                                         <div class="form-group w-100">
-                                            <textarea autocomplete="off" placeholder="Result of Biological Monitoring" formControlName="ResultOfBioMonitor"
-                                                class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10" (focusout)="checkedTrue()"></textarea>
+                                            <!-- <textarea autocomplete="off" placeholder="Result of Biological Monitoring" formControlName="ResultOfBioMonitor"
+                                                class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10" (focusout)="checkedTrue()"></textarea> -->
+                                            <textarea autocomplete="off" placeholder="Enter Result of Biological Monitoring" formControlName="ResultOfBioMonitor"
+                                                class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -132,7 +134,8 @@
                                     </div>
                                     <div class="col-xl-12 col-12 p-0">
                                         <div class="form-group w-100">
-                                            <textarea autocomplete="off" placeholder="Fitness To Work (Fit, Further Test Needed)" formControlName="FitToWork" class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10" (focusout)="checkedTrue()"></textarea>
+                                            <!-- <textarea autocomplete="off" placeholder="Fitness To Work (Fit, Further Test Needed)" formControlName="FitToWork" class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10" (focusout)="checkedTrue()"></textarea> -->
+                                            <textarea autocomplete="off" placeholder="Enter Fitness To Work" formControlName="FitToWork" class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -154,19 +157,21 @@
 
                 </div>
 
-                <div class="col-sm-12 col-12 py-2 d-flex align-items-start justify-content-start">
+                <!-- <div class="col-sm-12 col-12 py-2 d-flex align-items-start justify-content-start">
                     <mat-checkbox formControlName="Fit" color="primary" class="mr-3">I hereby certify that, <span class="fw600">{{employeeDetailsForMRB.EmployeeName}}</span> is Fit to work.</mat-checkbox>
-                </div>
+                </div> -->
 
                 <div class="col-xl-12 col-12 text-center mt-3">
-                    <button type="submit"
-                        class="btn btn-success min-width btn-sm fs14 fw500 btn-rounded mr-3" [disabled]="!formControls['Fit'].value">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
-                    <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
-                        [routerLink]="['/medical-surveillance', 'status', 'checkout', employeeId, employeeTestVisitId]"
-                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Checkout</button>
+                    <!-- <button type="submit"
+                        class="btn btn-success min-width btn-sm fs14 fw500 btn-rounded mr-3" [disabled]="!formControls['Fit'].value">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button> -->
+                        <button type="submit"
+                        class="btn btn-success min-width btn-sm fs14 fw500 btn-rounded mr-3">{{formControls['Id'] && formControls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
+                        <button type="button" *ngIf="formControls['Id'].value == 0" [disabled]="!saveNext"
+                        [routerLink]="['/medical-surveillance', 'status', 'checkout', employeeId, doctorId, employeeTestVisitId]"
+                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
                     <button type="button" *ngIf="formControls['Id'].value > 0" [disabled]="!updateNext"
-                        [routerLink]="['/medical-surveillance', 'status', 'checkout', employeeId, employeeTestVisitId]"
-                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Checkout</button>
+                        [routerLink]="['/medical-surveillance', 'status', 'checkout', employeeId, doctorId, employeeTestVisitId]"
+                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
                     <!-- <button type="button" class="btn btn-red min-width btn-sm fs14 fw500 btn-rounded">
                         <i class="fa fa-print mr-2"></i> Print
                     </button> -->

@@ -24,7 +24,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'status/medical-condition/:eId/:dId/:eTestVisitId/:sex',
+    path: 'status/medical-condition/:eId/:dId/:eTestVisitId',
     component: MedicalConditionComponent,
     data: {
       title: 'Medical Condition'
@@ -59,21 +59,21 @@ const routes: Routes = [
     }
   },
   {
-    path: 'status/physical-exam/:eId/:eTestVisitId',
+    path: 'status/physical-exam/:eId/:dId/:eTestVisitId',
     component: PhysicalExamComponent,
     data: {
       title: 'Physical Exam'
     }
   },
   {
-    path: 'status/investigation/:eId/:eTestVisitId',
+    path: 'status/investigation/:eId/:dId/:eTestVisitId',
     component: InvestigationComponent,
     data: {
       title: 'Investigation'
     }
   },
   {
-    path: 'status/exam-outcome-record/:eId/:eTestVisitId',
+    path: 'status/exam-outcome-record/:eId/:dId/:eTestVisitId',
     component: ExamOutcomeRecordComponent,
     data: {
       title: 'Exam Outcome & Reco.'
@@ -87,7 +87,7 @@ const routes: Routes = [
   //   }
   // }
   {
-    path: 'status/checkout/:eId/:eTestVisitId',
+    path: 'status/checkout/:eId/:dId/:eTestVisitId',
     component: CheckoutComponent,
     data: {
       title: 'Checkout'

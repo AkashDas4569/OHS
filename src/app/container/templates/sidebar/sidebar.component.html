@@ -1,13 +1,18 @@
 <div class="custom-sidebar-body bg-color1">
   <div class="sidebar-user-details d-flex col-xl-12 col-12 justify-content-start align-items-center bg-yellow pr-0">
     <div class="pl-2">
-      <span class="fs22 text-white fw600">Sihatku - OHS</span>
+      <span class="fs22 text-white fw600">
+        Sihatku - OHS
+      </span>
     </div>
     <div class="arrow-left justify-content-end align-items-end">
       <button class="side-menu-btn btn btn-link text-white d-inline-flex btn-rounded fw700 p-2" type="button"
         (click)="closeSidenav('mainNavSidenav')" matRipple>
         <i class="material-icons">arrow_back_ios</i>
       </button>
+      <!-- <a class="navbar-brand" [routerLink]="['']" routerLinkActive="active">
+        <img src="assets/img/Logo.png" alt="Sihatku" class="logo">
+      </a> -->
     </div>
   </div>
 
@@ -153,8 +158,16 @@
       </ul>
     </div>
     <div class="feed-list-menu col-xl-12 col-12 p-0">
-      <ul class="nav flex-column">
-        <div (click)="isCollapsedAudiometric = !isCollapsedAudiometric" [attr.aria-expanded]="!isCollapsedAudiometric"
+      <ul class="nav flex-column w-space-nowrap">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/audiometric/list']">
+            <span class="feed-menu-icon mr-1">
+              <img src="assets/img/radio.png" alt="radio-Icon">
+            </span>
+            <span class="feed-menu-text fs16 fw700 pl-2 pt-2">Audiometric</span>
+          </a>
+        </li>
+        <!-- <div (click)="isCollapsedAudiometric = !isCollapsedAudiometric" [attr.aria-expanded]="!isCollapsedAudiometric"
           type="button">
           <li class="nav-item" routerLinkActive="active">
             <span [routerLink]="['/audiometric']" class="d-none"></span>
@@ -170,7 +183,7 @@
 
           <div class="ml-4 w-space-normal" [collapse]="isCollapsedAudiometric">
             <li class="nav-item" routerLinkActive="active">
-              <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/audiometric/audiometric-test-queue']">
+              <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/audiometric/list']">
                 <span class="feed-menu-icon mr-2">
                   <img src="assets/img/radio.png" alt="radio-Icon">
                 </span>
@@ -179,7 +192,7 @@
             </li>
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link text-themed-verydarkblue t14"
-                [routerLink]="['/audiometric/occupational-noise-exposure']">
+                [routerLink]="['/audiometric/status/occupational-noise-exposure']">
                 <span class="feed-menu-icon mr-1">
                   <img src="assets/img/speaker.png" alt="speaker-Icon">
                 </span>
@@ -203,7 +216,7 @@
               </a>
             </li>
           </div>
-        </div>
+        </div> -->
         <!-- Divider -->
         <li class="divider dropdown-divider m-0"></li>
       </ul>

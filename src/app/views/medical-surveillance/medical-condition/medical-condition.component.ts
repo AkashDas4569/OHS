@@ -20,7 +20,7 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
 
   public employeeId: number = 0;
   public doctorId: number = 0;
-  public gender: string = '';
+  // public gender: string = '';
   public employeeTestVisitId: number = 0;
   public medicalConditionDetails: any;
   public employeeDetailsForMC: any = {};
@@ -42,12 +42,12 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
       this.employeeId = +params['eId'];
       this.doctorId = +params['dId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
-      this.gender = params['sex'];
+      // this.gender = params['sex'];
 
       console.log('employeeId: ', this.employeeId);
       console.log('doctorId: ', this.doctorId);
       console.log('employeeTestVisitId: ', this.employeeTestVisitId);
-      console.log('Gender: ', this.gender);
+      // console.log('Gender: ', this.gender);
     });
 
 
@@ -112,7 +112,7 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
     this.formControls.EmployeeId.setValue(this.employeeId);
     this.formControls.EmployeeOHSTestVisitId.setValue(this.employeeTestVisitId);
     this.formControls.OHDoctorId.setValue(this.doctorId);
-    this.formControls.Gender.setValue(this.gender);
+    // this.formControls.Gender.setValue(this.gender);
 
     this.getEmployeeById();
     this.getMedicalConditionDetails();
@@ -137,6 +137,7 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
       .subscribe((result: any) => {
         this.employeeDetailsForMC = result['employeeDataForMedicalConditionModel'];
         // console.log(this.employeeDetailsForMC);
+        this.formControls.Gender.setValue(this.employeeDetailsForMC.Gender);
       });
   }
   getMedicalConditionDetails() {
@@ -145,6 +146,7 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
       employeeOHSTestVisitId: this.medicalConditionForm.value.EmployeeOHSTestVisitId
     }
     // console.log(medicalConditionDataPayLoad);
+
 
     this.medicalSurveillanceService.getMedicalConditionDetails(medicalConditionDataPayLoad)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
@@ -157,7 +159,7 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
             EmployeeId: this.medicalConditionDetails.EmployeeId,
             EmployeeOHSTestVisitId: this.medicalConditionDetails.EmployeeOHSTestVisitId,
             OHDoctorId: this.medicalConditionDetails.OHDoctorId,
-            Gender: this.gender,
+            // Gender: this.gender,
             SmokingId: this.medicalConditionDetails.SmokingId,
             MsMedConId: this.medicalConditionDetails.MsMedConId,
             MSMensesHistoryId: this.medicalConditionDetails.MSMensesHistoryId,

@@ -21,7 +21,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public checkoutForm!: FormGroup;
 
   public employeeId: number = 0;
-  // public doctorId: number = 0;
+  public doctorId: number = 0;
+  public userId: number = 0;
   public employeeTestVisitId: number = 0;
   public checkoutDetails: any;
   public employeeDetailsForchkout: any = {};
@@ -42,18 +43,31 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.route.params.subscribe(params => {
       this.employeeId = +params['eId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
-      // this.doctorId = +params['dId'];
+      this.doctorId = +params['dId'];
 
       console.log('employeeId: ', this.employeeId);
       console.log('employeeTestVisitId: ', this.employeeTestVisitId);
-      // console.log('doctorId: ', this.doctorId);
+      console.log('doctorId: ', this.doctorId);
+    });
+    this.userId = Number(this.authenticationService.getUserLoggedInID());
+    console.log(this.userId);
+
+    this.checkoutForm = this.fb.group({
+      // Id: [0],
+      EmployeeId: ['', Validators.required],
+      EmployeeOHSTestVisitId: ['', Validators.required],
+      CheckOutUserId: ['', Validators.required],
+      MedSurStatusListId: [11, Validators.required],
+      Checkout: [true],
+      Fit: [{value: '', disabled: true}, Validators.required],
     });
 
-    // this.formControls.EmployeeId.setValue(this.employeeId);
-    // this.formControls.EmployeeOHSTestVisitId.setValue(this.employeeTestVisitId);
-    // this.formControls.OHDoctorId.setValue(this.doctorId);
+    this.formControls.EmployeeId.setValue(this.employeeId);
+    this.formControls.EmployeeOHSTestVisitId.setValue(this.employeeTestVisitId);
+    this.formControls.CheckOutUserId.setValue(this.userId);
 
     this.getEmployeeById();
+    this.getCheckoutDetails();
   }
 
   get formControls() {
@@ -76,7 +90,53 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         // console.log(this.employeeDetailsForchkout);
       });
   }
+  getCheckoutDetails() {
+    const checkoutHistory = {
+      employeeID: this.checkoutForm.value.EmployeeId,
+      employeeOHSTestVisitId: this.checkoutForm.value.EmployeeOHSTestVisitId
+    }
+    // console.log(checkoutHistory);
 
-  onSubmit() {}
+    this.medicalSurveillanceService.getCheckoutDetails(checkoutHistory)
+    .pipe(takeUntil(this.onDestroyUnSubscribe))
+    .subscribe((checkoutData: any) => {
+      if (checkoutData['status'] == 200) {
+        this.checkoutDetails = checkoutData['medSurCheckOut'];
+          console.log(this.checkoutDetails);
 
+          this.checkedTrue();
+      }
+    });
+  }
+  checkedTrue() {
+    if(((this.checkoutDetails.MedicalCondition === true) && (this.checkoutDetails.PastMedicalHistory === true) && (this.checkoutDetails.FamilyHistory === true) && (this.checkoutDetails.OccupationalHistory === true) && (this.checkoutDetails.PresentChemicalHistory === true) && (this.checkoutDetails.PhysicalExam === true) && (this.checkoutDetails.LabInvestigation === true) && (this.checkoutDetails.ExamOutcomeAndRecord === true) && (this.checkoutDetails.EmployeeMedicalRecordBook === true))) {
+      this.checkoutForm.get('Fit')?.enable();
+    } else {
+      this.checkoutForm.get('Fit')?.disable();
+    }
+  }
+
+  onSubmit() {
+    this.checkoutForm.markAllAsTouched();
+    console.log(this.checkoutForm);
+
+    if (this.checkoutForm.valid) {
+      const checkoutDataPayLoad = {
+        medSurCheckOut: {
+          ...this.checkoutForm.value
+        }
+      }
+      console.log(checkoutDataPayLoad);
+
+      this.medicalSurveillanceService.addEditCheckout(checkoutDataPayLoad)
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((response: any) => {
+        console.log(response);
+        if(response['status'] == 200) {
+          this.getCheckoutDetails();
+          this.router.navigate(['/medical-surveillance', 'list']);
+        }
+      });
+    }
+  }
 }

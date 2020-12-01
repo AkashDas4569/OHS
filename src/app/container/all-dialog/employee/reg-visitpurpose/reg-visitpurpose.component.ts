@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { FormBuilder, Validators, FormGroup, FormControl, FormArray, AbstractControl } from '@angular/forms';
 import { FormControlValidator } from '../../../../core/validators';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService, LookupService, MedicalSurveillanceService } from '../../../../core/services';
+import { AuthenticationService, LookupService, MedicalSurveillanceService, AudiometricService } from '../../../../core/services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -18,6 +18,7 @@ export class RegVisitpurposeComponent implements OnInit {
   private onDestroyUnSubscribe = new Subject<void>();
   modalRef!: BsModalRef;
   public visitPurpose!: FormGroup;
+  purposeId: any;
   public allVisitPurposeData: any;
   public allOHDDoctorList: any;
   public regFormData: any;
@@ -30,7 +31,8 @@ export class RegVisitpurposeComponent implements OnInit {
     public snackBar: MatSnackBar,
     private authenticationService: AuthenticationService,
     private lookupService: LookupService,
-    private medicalSurveillanceService: MedicalSurveillanceService
+    private medicalSurveillanceService: MedicalSurveillanceService,
+    private audiometricService: AudiometricService
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +40,7 @@ export class RegVisitpurposeComponent implements OnInit {
         EmployeeId: ['', Validators.required],
         ClientId: ['', Validators.required],
         MedSurStatusListId: [1, Validators.required],
+        AudometricStatusListId: [1, Validators.required],
         CheckInTS: [''],
         CheckInUserId: ['', Validators.required],
         OHDClinicId: ['', Validators.required],
@@ -73,42 +76,78 @@ export class RegVisitpurposeComponent implements OnInit {
     });
   }
 
+  onSelectChange(event: any) {
+    // console.log(event);
+    this.purposeId = event.value;
+    console.log('Purpose Id:', this.purposeId);
+  }
   onSubmit() {
     this.visitPurpose.markAllAsTouched();
     this.formControls.CheckInUserId.setValue(Number(this.authenticationService.getUserLoggedInID()));
     this.formControls.OHDClinicId.setValue(Number(this.authenticationService.getClinicId()));
     // console.log(this.visitPurpose);
+    // console.log(this.purposeId);
     
     if (this.visitPurpose.valid) {
-      const visitPurposeDataPayLoad = {
-        medSur: {
-        EmployeeId: this.visitPurpose.value.EmployeeId,
-        ClientId: this.visitPurpose.value.ClientId,
-        MedSurStatusListId: this.visitPurpose.value.MedSurStatusListId,
-        CheckInTS: this.visitPurpose.value.CheckInTS,
-        CheckInUserId: this.visitPurpose.value.CheckInUserId,
-        OHDClinicId: this.visitPurpose.value.OHDClinicId,
-        TestTypeListId: this.visitPurpose.value.TestTypeListId,
-        OHDDoctorId: +(this.visitPurpose.value.OHDDoctorId)
+      if(this.purposeId === 2) {
+        const visitPurposeDataPayLoadForMedicalSurveillance = {
+          medSur: {
+          EmployeeId: this.visitPurpose.value.EmployeeId,
+          ClientId: this.visitPurpose.value.ClientId,
+          MedSurStatusListId: this.visitPurpose.value.MedSurStatusListId,
+          CheckInTS: this.visitPurpose.value.CheckInTS,
+          CheckInUserId: this.visitPurpose.value.CheckInUserId,
+          OHDClinicId: this.visitPurpose.value.OHDClinicId,
+          TestTypeListId: this.visitPurpose.value.TestTypeListId,
+          OHDDoctorId: +(this.visitPurpose.value.OHDDoctorId)
+          }
         }
+        console.log(visitPurposeDataPayLoadForMedicalSurveillance);
+
+        this.medicalSurveillanceService.addMedicalSurveillance(visitPurposeDataPayLoadForMedicalSurveillance)
+            .pipe(takeUntil(this.onDestroyUnSubscribe))
+            .subscribe((checkIn: any) => {
+              if (checkIn['status'] == 200) {
+                this.modalRef.hide();
+                this.router.navigate(['/medical-surveillance/list']);
+              } 
+              else if (checkIn['status'] == 406) {
+                // this.modalRef.hide();
+                this.snackBar.open('Employee already CheckedIn', 'Close', {
+                  panelClass: 'error-popup',
+                });
+              }
+            });
+      } else {
+        const visitPurposeDataPayLoadForAudiometric = {
+          audioMetric: {
+          EmployeeId: this.visitPurpose.value.EmployeeId,
+          ClientId: this.visitPurpose.value.ClientId,
+          AudometricStatusListId: this.visitPurpose.value.AudometricStatusListId,
+          CheckInTS: this.visitPurpose.value.CheckInTS,
+          CheckInUserId: this.visitPurpose.value.CheckInUserId,
+          OHDClinicId: this.visitPurpose.value.OHDClinicId,
+          TestTypeListId: this.visitPurpose.value.TestTypeListId,
+          OHDDoctorId: +(this.visitPurpose.value.OHDDoctorId)
+          }
+        }
+        console.log(visitPurposeDataPayLoadForAudiometric);
+
+      this.audiometricService.addAudiometric(visitPurposeDataPayLoadForAudiometric)
+            .pipe(takeUntil(this.onDestroyUnSubscribe))
+            .subscribe((checkIn: any) => {
+              if (checkIn['status'] == 200) {
+                this.modalRef.hide();
+                this.router.navigate(['/audiometric/list']);
+              } 
+              else if (checkIn['status'] == 406) {
+              // this.modalRef.hide();
+                this.snackBar.open('Employee already CheckedIn', 'Close', {
+                  panelClass: 'error-popup',
+                });
+              }
+            });
       }
-
-      console.log(visitPurposeDataPayLoad);
-
-      this.medicalSurveillanceService.addMedicalSurveillance(visitPurposeDataPayLoad)
-      .pipe(takeUntil(this.onDestroyUnSubscribe))
-      .subscribe((checkIn: any) => {
-        if (checkIn['status'] == 200) {
-          this.modalRef.hide();
-          this.router.navigate(['/medical-surveillance/list']);
-        } 
-        else if (checkIn['status'] == 406) {
-         // this.modalRef.hide();
-          this.snackBar.open('Employee already CheckedIn', 'Close', {
-            panelClass: 'error-popup',
-          });
-        }
-      });
     }
   }
 
