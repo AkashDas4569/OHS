@@ -1,1 +1,197 @@
-<p>checkout works!</p>
+<section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
+    <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-xl-12 col-12">
+                <div class="bg-white shadow-sm rounded w-100">
+                    <div class="row">
+                        <div class="col-xl-12 col-12">
+                            <div
+                                class="pt-3 px-3 bg-primary-blue text-white text-center rounded-top px-2 py-1 flex-row flex-wrap">
+                                <p class="fw600 fs16 mr-4 text-uppercase">Audiometric - Checkout</p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-12 col-12">
+                                    <div
+                                        class="bg-color2 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                        <h6 class="mr-3">
+                                            <small class="fw700 fs16">Employee Information</small>
+                                        </h6>
+                                    </div>
+
+                                    <div class="row px-3 pb-3 pt-3">
+                                        <div class="col-md-4 col-12">
+                                            <div class="bg-light p-2 rounded d-flex">
+                                                <mat-form-field class="disable-mat-form w-100">
+                                                    <mat-label class="fw600">Employee name</mat-label>
+                                                    <input matInput [(ngModel)]="employeeDetailsForchkout.EmployeeName"
+                                                        placeholder="Enter Employee Name" type="text" autocomplete="off"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="bg-light p-2 rounded d-flex">
+                                                <mat-form-field class="disable-mat-form w-100">
+                                                    <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                                    <input matInput [(ngModel)]="employeeDetailsForchkout.ICNUmber"
+                                                        placeholder="Enter MyKad/IC No." type="text" autocomplete="off"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="bg-light p-2 rounded d-flex">
+                                                <mat-form-field class="disable-mat-form w-100">
+                                                    <mat-label class="fw600">Company Name</mat-label>
+                                                    <input matInput [(ngModel)]="employeeDetailsForchkout.CompanyName"
+                                                        placeholder="Enter Company Name" type="text" autocomplete="off"
+                                                        readonly>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-xl-12 col-12">
+                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                    <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                        <h6 class="mr-3 pt-2">
+                            <span class="pl-1 fs16 fw600 text-normal">Check Out</span>
+                        </h6>
+                    </div>
+
+                    <form class="checkout-Form col-xl-12 col-12 p-0" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()"
+                        autocomplete="off">
+                        <div class="row px-3">
+                            <div class="col-xl-12 col-12 d-flex flex-row flex-row flex-wrap mb-2 bg-color1">
+                                <ng-container>
+                                    <div class="pl-3 row pt-3 pb-3">
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2 text-center">
+                                            <i class="fas fa-check-circle text-green fs22"
+                                                *ngIf="checkoutDetails?.NoiseExposure === true"></i>
+                                            <i class="fas fa-times-circle text-red fs22"
+                                                *ngIf="checkoutDetails?.NoiseExposure === false"></i>
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <div class="row">
+                                                <div class="col-sm-4 col-md-4 col-4 text-start">
+                                                    <a class="nav-link text-themed-verydarkblue t14">
+                                                        <span class="feed-menu-icon mr-2">
+                                                            <img src="assets/img/speaker.png" alt="speaker-Icon">
+                                                          </span>
+                                                        <span class="feed-menu-text fs14 fw500">Occupational Noise Exposure</span>
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-6 text-right pl-6"
+                                                    *ngIf="checkoutDetails?.NoiseExposure === false">
+                                                    <button
+                                                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                                        type="button"
+                                                        [routerLink]="['/audiometric', 'status', 'occupational-noise-exposure', employeeId, employeeTestVisitId]">Go
+                                                        To Page</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2 text-center">
+                                            <i class="fas fa-check-circle text-green fs22"
+                                                *ngIf="checkoutDetails?.MedicalHistory === true"></i>
+                                            <i class="fas fa-times-circle text-red fs22"
+                                                *ngIf="checkoutDetails?.MedicalHistory === false"></i>
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <div class="row">
+                                                <div class="col-sm-4 col-md-4 col-4 text-start">
+                                                    <a class="nav-link text-themed-verydarkblue t14">
+                                                        <span class="feed-menu-icon mr-2">
+                                                            <img src="assets/img/form.png" alt="Form-Icon">
+                                                          </span>
+                                                        <span class="feed-menu-text fs14 fw500">Medical
+                                                            History</span>
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-6 text-right pl-6"
+                                                    *ngIf="checkoutDetails?.MedicalHistory === false">
+                                                    <button
+                                                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                                        type="button"
+                                                        [routerLink]="['/audiometric', 'status', 'medical-history', employeeId, employeeTestVisitId]">Go
+                                                        To Page</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2 col-2 pt-2 text-center">
+                                            <i class="fas fa-check-circle text-green fs22"
+                                                *ngIf="checkoutDetails?.Results === true"></i>
+                                            <i class="fas fa-times-circle text-red fs22"
+                                                *ngIf="checkoutDetails?.Results === false"></i>
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-10">
+                                            <div class="row">
+                                                <div class="col-sm-4 col-md-4 col-4 text-start">
+                                                    <a class="nav-link text-themed-verydarkblue t14">
+                                                        <span class="feed-menu-icon mr-2">
+                                                            <img src="assets/img/notepad.png" alt="notepad-Icon">
+                                                          </span>
+                                                        <span class="feed-menu-text fs14 fw500">Audiometry Results</span>
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-6 text-right pl-6"
+                                                    *ngIf="checkoutDetails?.Results === false">
+                                                    <button
+                                                        class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                                        type="button"
+                                                        [routerLink]="['/audiometric', 'status', 'audiometry-result', employeeId, employeeTestVisitId]">Go
+                                                        To Page</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </ng-container>
+                            </div>
+
+                            <!-- <div class="col-sm-12 col-md-12 col-12 py-2 d-flex align-items-start justify-content-start">
+                               <span class="mr-3">I hereby certify that, <span
+                                        class="fw600">{{employeeDetailsForchkout.EmployeeName}}</span> <span
+                                        class="mr-2"> is </span>
+                                    <span class="p-0">
+                                        <mat-radio-group class="pt-0 pl-0 pb-0" aria-label="Select an option"
+                                            formControlName="Fit">
+                                            <mat-radio-button class="pt-0 pl-0 pb-0" [value]=true> Fit
+                                            </mat-radio-button>
+                                            <mat-radio-button class="pt-0 pl-0 pb-0" [value]=false> Unfit
+                                            </mat-radio-button>
+                                        </mat-radio-group>
+                                    </span>
+                                    <span class="ml-2"> to work.</span> -->
+
+                                    <!-- Error Messages -->
+                                    <!-- <p class="pt-1 pb-2 mt-2 fs12 fw700">
+                                        <mat-error *ngIf="errorState(formControls['Fit'], 'Fit').message">
+                                            {{ errorState(formControls['Fit'], 'Fit').message }}
+                                        </mat-error>
+                                    </p>
+                                </span>
+                            </div> -->
+                            <div class="col-sm-12 col-12 py-2 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                    type="submit" id="checkOutBtn">Checkout</button>
+                                <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
+                                    [routerLink]="['/audiometric/list']">Close</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

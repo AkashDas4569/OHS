@@ -310,6 +310,9 @@ export class OhsClientSettingsComponent implements OnChanges, OnInit, OnDestroy 
     } else {
       console.log('In-Valid', this.ohsClientSettingsForm);
       console.log(this.addEditOhsClientDataPayLoad);
+      this.snackBar.open('Error!! Required fields need to be filled before Submit.', 'Close', {
+        panelClass: 'error-popup',
+      });
     }
   }
 

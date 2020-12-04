@@ -28,6 +28,32 @@ export const Errors: ErrorsInterface = {
   Fit: [
     { type: 'required', message: 'Fit/ Unfit field is required.' },
   ],
+  DateOfTest: [
+    { type: 'required', message: 'Date of Test is required.' },
+  ],
+  TypeOfAudiogram: [
+    { type: 'required', message: 'Type of Audiogram is required.' },
+  ],
+  baseLineRight: [
+    { type: 'required', message: 'Field is required.' },
+    { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
+    { type: 'maxlength', message: 'Should not be more than 6 Characters.' }
+  ],
+  baseLineLeft: [
+    { type: 'required', message: 'Field is required.' },
+    { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
+    { type: 'maxlength', message: 'Should not be more than 6 Characters.' }
+  ],
+  annualRight: [
+    { type: 'required', message: 'Field is required.' },
+    { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
+    { type: 'maxlength', message: 'Should not be more than 6 Characters.' }
+  ],
+  annualLeft: [
+    { type: 'required', message: 'Field is required.' },
+    { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
+    { type: 'maxlength', message: 'Should not be more than 6 Characters.' }
+  ],
   RecosOthers: [
     // { type: 'required', message: 'Refer to Specialist is required.' },
     { type: 'pattern', message: 'No empty space is allowed.' },

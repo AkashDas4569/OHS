@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _moment from 'moment';
@@ -15,7 +15,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './medical-surveillance-list.component.html',
   styleUrls: ['./medical-surveillance-list.component.scss']
 })
-export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
+export class MedicalSurveillanceListComponent implements OnInit, AfterViewInit, OnDestroy {
   private onDestroyUnSubscribe = new Subject<void>();
   link: any;
 
@@ -41,13 +41,14 @@ export class MedicalSurveillanceListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadMedicalSurStatus();
     this.loadEmployeeMedSurQueue('1');
-    this.loadEmployeeMedSurQueueCheckout();
     this.refreshEmployeeQueue = setInterval(() => {
       this.loadEmployeeMedSurQueue('0');
-      // this.loadEmployeeMedSurQueueCheckout();
     }, 180000);
 
     this.loadMedicalSurQueueStatus();
+  }
+  ngAfterViewInit() : void {
+    this.loadEmployeeMedSurQueueCheckout();
   }
 
   ngOnDestroy() {

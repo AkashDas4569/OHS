@@ -28,6 +28,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public employeeDetailsForchkout: any = {};
   public saveNext: boolean = false;
   public updateNext: boolean = true;
+  public btnAction: any;
 
   constructor(
     private fb: FormBuilder,
@@ -40,6 +41,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.btnAction = document.getElementById('checkOutBtn');
+
     this.route.params.subscribe(params => {
       this.employeeId = +params['eId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
@@ -111,8 +114,10 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   checkedTrue() {
     if(((this.checkoutDetails.MedicalCondition === true) && (this.checkoutDetails.PastMedicalHistory === true) && (this.checkoutDetails.FamilyHistory === true) && (this.checkoutDetails.OccupationalHistory === true) && (this.checkoutDetails.PresentChemicalHistory === true) && (this.checkoutDetails.PhysicalExam === true) && (this.checkoutDetails.LabInvestigation === true) && (this.checkoutDetails.ExamOutcomeAndRecord === true) && (this.checkoutDetails.EmployeeMedicalRecordBook === true))) {
       this.checkoutForm.get('Fit')?.enable();
+      this.btnAction.disabled = false;
     } else {
       this.checkoutForm.get('Fit')?.disable();
+      this.btnAction.disabled = true;
     }
   }
 
@@ -133,8 +138,16 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       .subscribe((response: any) => {
         console.log(response);
         if(response['status'] == 200) {
-          this.getCheckoutDetails();
+          this.snackBar.open('Employee CheckOut Successfully', 'Close', {
+            panelClass: 'success-popup',
+          });
+
+          // this.getCheckoutDetails();
           this.router.navigate(['/medical-surveillance', 'list']);
+        } else {
+          this.snackBar.open('Something went wrong! Please try again.', 'Close', {
+            panelClass: 'error-popup',
+          });
         }
       });
     }

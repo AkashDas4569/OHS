@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _moment from 'moment';
@@ -14,13 +14,14 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './audiometric-test.component.html',
   styleUrls: ['./audiometric-test.component.scss']
 })
-export class AudiometricTestComponent implements OnInit, OnDestroy {
+export class AudiometricTestComponent implements OnInit, AfterViewInit, OnDestroy {
   private onDestroyUnSubscribe = new Subject<void>();
   link: any;
 
   public datestr: string = '';
   public date = new Date().toISOString();
   public allEmployeeQueues: any;
+  public allEmployeeCheckoutQueues: any;
   public queueStatus: any;
   public noDataText: string = `Please wait while we're fetching your data...`;
   public refreshEmployeeQueue: any;
@@ -33,7 +34,7 @@ export class AudiometricTestComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private lookupService: LookupService,
-    private AudiometricService: AudiometricService,
+    private audiometricService: AudiometricService,
     private routeService: RouteService
   ) { }
 
@@ -45,6 +46,9 @@ export class AudiometricTestComponent implements OnInit, OnDestroy {
     }, 180000);
 
     this.loadAudiometricQueueStatus();
+  }
+  ngAfterViewInit() : void {
+    this.loadEmployeeAudiometricQueueCheckout();
   }
 
   ngOnDestroy() {
@@ -84,30 +88,12 @@ export class AudiometricTestComponent implements OnInit, OnDestroy {
         break;
       }
       case EmployeeAudiometricQueueStatus.CheckOut: {
-        this.router.navigate(['/audiometric', 'status', 'checkout']);
+        this.router.navigate(['/audiometric', 'status', 'checkout', employeeAudiometricQueue.EmpId, employeeAudiometricQueue.EmployeeTestVisitID]);
         break;
       }
-      // case EmployeeMedSurQueueStatus.CheckOut: {
-      //   this.router.navigate(['/medical-surveillance', 'status', 'checkout', employeeMedQueue.EmpId, employeeMedQueue.EmployeeTestVisitID]);
-      //   break;
-      // }
       default:
         this.loadEmployeeAudiometricQueue('1');
     }
-  }
-  loadEmployeeAudiometricQueue(loader: string) {
-    const data = {
-      employeeName: '',
-      loader
-    }
-    this.AudiometricService.getAllCheckInAudiometricQueue(data)
-      .pipe(takeUntil(this.onDestroyUnSubscribe))
-      .subscribe((employeeAudiometricData: any) => {
-        this.allEmployeeQueues = employeeAudiometricData['checkInAud'];
-        console.log(this.allEmployeeQueues);
-
-        this.noDataText = 'No Data Found';
-      });
   }
   loadAudiometricStatus() {
     this.lookupService.getAudiometricStatusList()
@@ -131,6 +117,32 @@ export class AudiometricTestComponent implements OnInit, OnDestroy {
         console.log(result);
       });
   }
+  loadEmployeeAudiometricQueue(loader: string) {
+    const data = {
+      employeeName: '',
+      loader
+    }
+    this.audiometricService.getAllCheckInAudiometricQueue(data)
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((employeeAudiometricData: any) => {
+        this.allEmployeeQueues = employeeAudiometricData['checkInAud'];
+        console.log(this.allEmployeeQueues);
 
+        this.noDataText = 'No Data Found';
+      });
+  }
+  loadEmployeeAudiometricQueueCheckout() {
+    const data = {
+      employeeName: ''
+    }
+    this.audiometricService.getAllCheckOutAudiometricQueue(data)
+    .pipe(takeUntil(this.onDestroyUnSubscribe))
+        .subscribe((employeeMedSurCheckoutData: any) => {
+          this.allEmployeeCheckoutQueues = employeeMedSurCheckoutData['checkOutAud'];
+          console.log(this.allEmployeeCheckoutQueues);
+          this.noDataText = 'No Data Found';
+        });
+  }
+ 
   onSubmit() { }
 }

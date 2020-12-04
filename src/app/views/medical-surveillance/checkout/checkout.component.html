@@ -350,7 +350,7 @@
                             </div>
                             <div class="col-sm-12 col-12 py-2 d-flex align-items-center justify-content-center">
                                 <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
-                                    type="submit" [disabled]="!((this.checkoutDetails.MedicalCondition === true) && (this.checkoutDetails.PastMedicalHistory === true) && (this.checkoutDetails.FamilyHistory === true) && (this.checkoutDetails.OccupationalHistory === true) && (this.checkoutDetails.PresentChemicalHistory === true) && (this.checkoutDetails.PhysicalExam === true) && (this.checkoutDetails.LabInvestigation === true) && (this.checkoutDetails.ExamOutcomeAndRecord === true) && (this.checkoutDetails.EmployeeMedicalRecordBook === true))">Checkout</button>
+                                    type="submit" id="checkOutBtn" >Checkout</button>
                                 <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
                                     [routerLink]="['/medical-surveillance/list']">Close</button>
                             </div>
@@ -361,3 +361,7 @@
         </div>
     </div>
 </section>
+
+
+
+<!-- [disabled]="!((this.checkoutDetails.MedicalCondition === true) && (this.checkoutDetails.PastMedicalHistory === true) && (this.checkoutDetails.FamilyHistory === true) && (this.checkoutDetails.OccupationalHistory === true) && (this.checkoutDetails.PresentChemicalHistory === true) && (this.checkoutDetails.PhysicalExam === true) && (this.checkoutDetails.LabInvestigation === true) && (this.checkoutDetails.ExamOutcomeAndRecord === true) && (this.checkoutDetails.EmployeeMedicalRecordBook === true))" -->

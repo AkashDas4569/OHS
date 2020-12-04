@@ -159,48 +159,48 @@
                   </ng-template>
                   <div class="table-responsive bg-white shadow-sm rounded">
                     <table class="table table-sm m-0">
-                      <thead class="bg-primary text-white">
+                      <thead class="text-white" [ngClass]="(allEmployeeCheckoutQueues?.length) ? 'bg-primary-blue' : 'bg-red'">
                         <tr>
                           <th scope="col" class="fs14 fw600 text-white"></th>
-                          <th scope="col" class="fs14 fw600 text-white">CheckIn Date/Time</th>
-                          <th scope="col" class="fs14 fw600 text-white">Employee Name</th>
-                          <th scope="col" class="fs14 fw600 text-white">IC No.</th>
-                          <th scope="col" class="fs14 fw600 text-white">OHD</th>
-                          <th scope="col" class="fs14 fw600 text-white">Client Name</th>
-                          <th scope="col" class="fs14 fw600 text-white">Current Status</th>
-                          <th scope="col" class="fs14 fw600 text-white">Check out Time</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">CheckIn Date</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">Employee Name</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">IC No.</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">OHD</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">Company Name</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">Current Status</th>
+                          <th scope="col" class="fs14 fw600 text-white pl-2">CheckOut Date</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <ng-container>
-                          <tr>
+                        <ng-container *ngIf="(allEmployeeCheckoutQueues | filterSearch : searchTitle)?.length; else noDataFound">
+                          <tr *ngFor="let queue of allEmployeeCheckoutQueues | filterSearch : searchTitle; index as i">
                             <td class="pl-2">
-                                <!-- {{ i + 1 }} -->1.
-                              </td>
-                              <td>
-                                  <!-- {{ queue.VisitDate }}, {{queue.CheckInTime}} -->18/Jan/1994, 12:34 PM
-                                </td>
-                              <td>
-                                <a class="text-black">
-                                  <!-- {{ queue.PatientName }} -->Subhajit Das
-                                </a>
-                              </td>
-                              <td>
-                                <!-- {{ queue.Purpose }}  --> 10002345
-                                <span><i class="fas fa-circle text-red"></i></span>
-                              </td>
-                              <td>
-                                  <!-- {{ queue.MRN }} -->Dr. Arlo
-                                </td>
-                              <td>
-                                  <!-- {{ queue.ProviderName }} -->Dr. Nabila
-                                </td>
-                              <td>
-                                  <!-- {{ queue.PanelInsName }} --> Cash
-                              </td>
-                              <td>
-                                  <!-- {{ queue.VisitDate }}, {{queue.CheckInTime}} -->17:34 PM
-                              </td>
+                              {{i + 1}}.
+                            </td>
+                            <td>
+                              {{queue.CheckInTS}}
+                            </td>
+                            <td class="pr-3">
+                              <a class="text-black">
+                                {{queue.EmpName}}
+                              </a>
+                            </td>
+                            <td class="pl-2">
+                              {{queue.ICNum}}
+                              <!-- <span><i class="fas fa-circle text-red"></i></span> -->
+                            </td>
+                            <td class="pl-2">
+                              {{queue.DoctorName}}
+                            </td>
+                            <td class="pl-2">
+                              {{queue.CompanyName}}
+                            </td>
+                            <td class="pl-2">
+                              {{queue.QStatus}}
+                            </td>
+                            <td>
+                              {{queue.CheckOutTS}}
+                            </td>
                           </tr>
                         </ng-container>
                       </tbody>

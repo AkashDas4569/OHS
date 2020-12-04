@@ -1,95 +1,111 @@
 <section class="dashboard pt-1 pb-2 pl-0 animated fadeIn">
     <div class="container-fluid">
-        <div class="row pt-2">
-            <div class="col-xl-12 col-12">
-                <div class="bg-white shadow-sm rounded w-100">
-                    <div class="row">
-                        <div class="col-xl-12 col-12">
-                            <div
-                                class="pt-3 px-3 bg-primary-blue text-white text-center rounded-top px-2 py-1 flex-row flex-wrap">
-                                <p class="fw600 fs16 mr-4 text-uppercase">Audiometric - Test Results</p>
-                            </div>
+        <form class="audiometry-ResultForm col-xl-12 col-12 p-0" [formGroup]="audiometryResultForm"
+            (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="row pt-2">
+                <div class="col-xl-12 col-12">
+                    <div class="bg-white shadow-sm rounded w-100">
+                        <div class="row">
+                            <div class="col-xl-12 col-12">
+                                <div
+                                    class="pt-3 px-3 bg-primary-blue text-white text-center rounded-top px-2 py-1 flex-row flex-wrap">
+                                    <p class="fw600 fs16 mr-4 text-uppercase">Audiometric - Test Results</p>
+                                </div>
 
-                            <div class="row">
-                                <div class="col-xl-12 col-12">
-                                    <div
-                                        class="bg-color2 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
-                                        <h6 class="mr-3">
-                                            <small class="fw700 fs16">Employee Information</small>
-                                        </h6>
-                                    </div>
+                                <div class="row">
+                                    <div class="col-xl-12 col-12">
+                                        <div
+                                            class="bg-color2 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                            <h6 class="mr-3">
+                                                <small class="fw700 fs16">Employee Information</small>
+                                            </h6>
+                                        </div>
 
-                                    <div class="row px-3 pb-3 pt-3">
-                                        <div class="col-md-4 col-12">
-                                            <div class="bg-light p-2 rounded d-flex">
-                                                <mat-form-field class="disable-mat-form w-100">
-                                                    <mat-label class="fw600">Employee name</mat-label>
-                                                    <input matInput [(ngModel)]="employeeDetailsForAR.EmployeeName"
-                                                        placeholder="Enter Employee Name" type="text" autocomplete="off"
-                                                        readonly>
-                                                </mat-form-field>
+                                        <div class="row px-3 pb-3 pt-3">
+                                            <div class="col-md-4 col-12">
+                                                <div class="bg-light p-2 rounded d-flex">
+                                                    <mat-form-field class="disable-mat-form w-100">
+                                                        <mat-label class="fw600">Employee name</mat-label>
+                                                        <input matInput [(ngModel)]="employeeDetailsForAR.EmployeeName"
+                                                            [ngModelOptions]="{standalone: true}"
+                                                            placeholder="Enter Employee Name" type="text"
+                                                            autocomplete="off" readonly>
+                                                    </mat-form-field>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-4 col-12">
-                                            <div class="bg-light p-2 rounded d-flex">
-                                                <mat-form-field class="disable-mat-form w-100">
-                                                    <mat-label class="fw600">MyKad/IC No.</mat-label>
-                                                    <input matInput [(ngModel)]="employeeDetailsForAR.ICNUmber"
-                                                        placeholder="Enter MyKad/IC No." type="text" autocomplete="off"
-                                                        readonly>
-                                                </mat-form-field>
+                                            <div class="col-md-4 col-12">
+                                                <div class="bg-light p-2 rounded d-flex">
+                                                    <mat-form-field class="disable-mat-form w-100">
+                                                        <mat-label class="fw600">MyKad/IC No.</mat-label>
+                                                        <input matInput [(ngModel)]="employeeDetailsForAR.ICNUmber"
+                                                            [ngModelOptions]="{standalone: true}"
+                                                            placeholder="Enter MyKad/IC No." type="text"
+                                                            autocomplete="off" readonly>
+                                                    </mat-form-field>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-4 col-12">
-                                            <div class="bg-light p-2 rounded d-flex">
-                                                <mat-form-field class="disable-mat-form w-100">
-                                                    <mat-label class="fw600">Company Name</mat-label>
-                                                    <input matInput [(ngModel)]="employeeDetailsForAR.CompanyName"
-                                                        placeholder="Enter Company Name" type="text" autocomplete="off"
-                                                        readonly>
-                                                </mat-form-field>
+                                            <div class="col-md-4 col-12">
+                                                <div class="bg-light p-2 rounded d-flex">
+                                                    <mat-form-field class="disable-mat-form w-100">
+                                                        <mat-label class="fw600">Company Name</mat-label>
+                                                        <input matInput [(ngModel)]="employeeDetailsForAR.CompanyName"
+                                                            [ngModelOptions]="{standalone: true}"
+                                                            placeholder="Enter Company Name" type="text"
+                                                            autocomplete="off" readonly>
+                                                    </mat-form-field>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-xl-12 col-12">
-                                    <div
-                                        class="bg-color6 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
-                                        <h6 class="mr-3">
-                                            <small class="fw700 fs16">Test Information</small>
-                                        </h6>
-                                    </div>
-
-                                    <div class="row px-3 pb-3 pt-3">
-                                        <div class="col-sm-3 col-12">
-                                            <mat-form-field class="w-100 pb-2">
-                                                <mat-label class="fw600">Date of Test<span
-                                                        class="text-red ml-1">*</span></mat-label>
-                                                <input autocomplete="off" matInput
-                                                    [matDatepicker]="picker" placeholder="Enter Test Date">
-                                                <mat-datepicker-toggle matSuffix [for]="picker" class="fs24">
-                                                </mat-datepicker-toggle>
-                                                <mat-datepicker #picker disabled="false"></mat-datepicker>
-                                                <!-- <mat-error *ngIf="errorState(formControls['DOB'], 'DOB').message">
-                                                    {{ errorState(formControls['DOB'], 'DOB').message }}
-                                                </mat-error> -->
-                                            </mat-form-field>
+                                <div class="row" formGroupName="audiometricResult">
+                                    <div class="col-xl-12 col-12">
+                                        <div
+                                            class="bg-color6 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                            <h6 class="mr-3">
+                                                <small class="fw700 fs16">Test Information</small>
+                                            </h6>
                                         </div>
-                                        <div class="col-sm-2 col-12">
-                                            <mat-form-field class="w-100 pb-2">
-                                                <mat-label class="fw600">Maximum Exposure
-                                                </mat-label>
-                                                <input autocomplete="off" matInput
-                                                    placeholder="Enter Maximum Exposure" type="text">
-                                                <!-- <mat-error *ngIf="errorState(formControls['EmpName'], 'name').message">
+
+                                        <div class="row px-3 pb-3 pt-3">
+                                            <div class="col-sm-3 col-12">
+                                                <mat-form-field class="w-100 pb-2">
+                                                    <mat-label class="fw600">Date of Test<span
+                                                            class="text-red ml-1">*</span></mat-label>
+                                                    <input autocomplete="off" formControlName="DateOfTest" matInput [min]="minDate" [max]="maxDate"
+                                                        [matDatepicker]="picker" placeholder="Enter Test Date">
+                                                    <mat-datepicker-toggle matSuffix [for]="picker" class="fs24">
+                                                    </mat-datepicker-toggle>
+                                                    <mat-datepicker #picker disabled="false"></mat-datepicker>
+                                                    <mat-error *ngIf="errorState(audiometricTestGroup.controls['DateOfTest'], 'DateOfTest').message">
+                                                    {{ errorState(audiometricTestGroup.controls['DateOfTest'], 'DateOfTest').message }}
+                                                </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-sm-2 col-12">
+                                                <mat-form-field class="w-100 pb-2">
+                                                    <mat-label class="fw600">Exposure
+                                                    </mat-label>
+                                                    <input autocomplete="off" formControlName="Exposure" matInput
+                                                        placeholder="Enter Exposure" type="text">
+                                                    <!-- <mat-error *ngIf="errorState(formControls['EmpName'], 'name').message">
                                                     {{ errorState(formControls['EmpName'], 'name').message }}
                                                 </mat-error> -->
-                                            </mat-form-field>
-                                        </div>
-                                        <!-- <div class="col-sm-3 col-12">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-sm-2 col-12">
+                                                <mat-form-field class="w-100 pb-2">
+                                                    <mat-label class="fw600">Maximum Exposure
+                                                    </mat-label>
+                                                    <input autocomplete="off" formControlName="MaxExposure" matInput
+                                                        placeholder="Enter Maximum Exposure" type="text">
+                                                    <!-- <mat-error *ngIf="errorState(formControls['EmpName'], 'name').message">
+                                                    {{ errorState(formControls['EmpName'], 'name').message }}
+                                                </mat-error> -->
+                                                </mat-form-field>
+                                            </div>
+                                            <!-- <div class="col-sm-3 col-12">
                                             <mat-form-field class="w-100 pb-2">
                                                 <mat-label class="fw600">Serial No.
                                                 </mat-label>
@@ -97,37 +113,40 @@
                                                     placeholder="Enter Serial No." type="text">
                                             </mat-form-field>
                                         </div> -->
-                                        <div class="col-sm-3 col-12">
-                                            <mat-form-field class="w-100 pb-1">
-                                                <mat-label class="fw600">Type of Audiogram<span class="text-red ml-1">*</span>
-                                                </mat-label>
-                                                <mat-select [typeaheadDebounceInterval]="500">
-                                                    <mat-option class="fs12 fw600">Select Audiogram Type
-                                                    </mat-option>
-                                                    <mat-option class="fs12 fw600" value="A">
-                                                       Annual Audiogram
-                                                    </mat-option>
-                                                    <mat-option class="fs12 fw600" value="B">
-                                                        Baseline Audiogram
-                                                     </mat-option>
-                                                </mat-select>
-                                                <!-- <mat-error *ngIf="errorState(formControls['State'], 'state').message">
-                                                    {{ errorState(formControls['State'], 'state').message }}
-                                                </mat-error> -->
-                                            </mat-form-field>
-                                        </div>
-                                        <div class="col-sm-2 col-12">
-                                            <mat-form-field class="w-100 pb-2">
-                                                <mat-label class="fw600">Audiometer
-                                                </mat-label>
-                                                <input autocomplete="off" matInput
-                                                    placeholder="Enter Audiometer" type="text">
-                                                <!-- <mat-error *ngIf="errorState(formControls['EmpName'], 'name').message">
+                                            <div class="col-sm-3 col-12">
+                                                <mat-form-field class="w-100 pb-1">
+                                                    <mat-label class="fw600">Type of Audiogram<span
+                                                            class="text-red ml-1">*</span>
+                                                    </mat-label>
+                                                    <mat-select [typeaheadDebounceInterval]="500"
+                                                        formControlName="TypeOfAudiogram" (selectionChange)="onSelectChange()">
+                                                        <mat-option class="fs12 fw600">Select Audiogram Type
+                                                        </mat-option>
+                                                        <mat-option class="fs12 fw600 text-uppercase" value="B">
+                                                            BASELINE AUDIOGRAM
+                                                        </mat-option>
+                                                        <mat-option class="fs12 fw600 text-uppercase" value="A">
+                                                            ANNUAL AUDIOGRAM
+                                                        </mat-option>
+                                                    </mat-select>
+                                                    <mat-error
+                                                        *ngIf="errorState(audiometricTestGroup.controls['TypeOfAudiogram'], 'TypeOfAudiogram').message">
+                                                        {{ errorState(audiometricTestGroup.controls['TypeOfAudiogram'], 'TypeOfAudiogram').message }}
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-sm-2 col-12">
+                                                <mat-form-field class="w-100 pb-2">
+                                                    <mat-label class="fw600">Audiometer
+                                                    </mat-label>
+                                                    <input autocomplete="off" matInput placeholder="Enter Audiometer" formControlName="Audiometer"
+                                                        type="text">
+                                                    <!-- <mat-error *ngIf="errorState(formControls['EmpName'], 'name').message">
                                                     {{ errorState(formControls['EmpName'], 'name').message }}
                                                 </mat-error> -->
-                                            </mat-form-field>
-                                        </div>
-                                        <!-- <div class="col-sm-3 col-12">
+                                                </mat-form-field>
+                                            </div>
+                                            <!-- <div class="col-sm-3 col-12">
                                             <mat-form-field class="w-100 pb-2">
                                                 <mat-label class="fw600">Calibration Date<span
                                                         class="text-red ml-1">*</span></mat-label>
@@ -138,18 +157,7 @@
                                                 <mat-datepicker #picker2 disabled="false"></mat-datepicker>
                                             </mat-form-field>
                                         </div> -->
-                                        <div class="col-sm-2 col-12">
-                                            <mat-form-field class="w-100 pb-2">
-                                                <mat-label class="fw600">Exposure
-                                                </mat-label>
-                                                <input autocomplete="off" matInput
-                                                    placeholder="Enter Exposure" type="text">
-                                                <!-- <mat-error *ngIf="errorState(formControls['EmpName'], 'name').message">
-                                                    {{ errorState(formControls['EmpName'], 'name').message }}
-                                                </mat-error> -->
-                                            </mat-form-field>
-                                        </div>
-                                        <!-- <div class="col-sm-3 col-12">
+                                            <!-- <div class="col-sm-3 col-12">
                                             <mat-form-field class="w-100 pb-2">
                                                 <mat-label class="fw600">Model No.
                                                 </mat-label>
@@ -158,25 +166,26 @@
                                             </mat-form-field>
                                         </div> -->
 
-                                        <div class="col-sm-12 col-12">
-                                            <mat-form-field class="w-100 pb-2">
-                                              <mat-label class="fw600">Results</mat-label>
-                                              <textarea matInput rows="5" cols="80" placeholder="Enter Results..."
-                                                autocomplete="off"></textarea>
-                                              <!-- <mat-error *ngIf="errorState(formControls['ExpenseDesc'], 'expenseDesc').message">
+                                            <div class="col-sm-12 col-12">
+                                                <mat-form-field class="w-100 pb-2">
+                                                    <mat-label class="fw600">Results</mat-label>
+                                                    <textarea matInput rows="5" cols="80" placeholder="Enter Results..."
+                                                        formControlName="Results" autocomplete="off"></textarea>
+                                                    <!-- <mat-error *ngIf="errorState(formControls['ExpenseDesc'], 'expenseDesc').message">
                                                 {{ errorState(formControls['ExpenseDesc'], 'expenseDesc').message }}
                                               </mat-error> -->
-                                            </mat-form-field>
-                                        </div>
-                                        <div class="col-sm-12 col-12">
-                                            <mat-form-field class="w-100 pb-2">
-                                              <mat-label class="fw600">Remarks</mat-label>
-                                              <textarea matInput rows="2" cols="60" placeholder="Enter Remarks..."
-                                                autocomplete="off"></textarea>
-                                              <!-- <mat-error *ngIf="errorState(formControls['ExpenseDesc'], 'expenseDesc').message">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-sm-12 col-12">
+                                                <mat-form-field class="w-100 pb-2">
+                                                    <mat-label class="fw600">Remarks</mat-label>
+                                                    <textarea matInput rows="2" cols="60" placeholder="Enter Remarks..."
+                                                        formControlName="Remarks" autocomplete="off"></textarea>
+                                                    <!-- <mat-error *ngIf="errorState(formControls['ExpenseDesc'], 'expenseDesc').message">
                                                 {{ errorState(formControls['ExpenseDesc'], 'expenseDesc').message }}
                                               </mat-error> -->
-                                            </mat-form-field>
+                                                </mat-form-field>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -185,174 +194,722 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row pt-2">
-            <div class="col-xl-12 col-12 mt-3">
-                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
-                    <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
-                        <h6 class="mr-3 pt-2 text-uppercase">
-                            <span class="pl-1 fs16 fw600 text-normal">Frequencies</span>
-                        </h6>
-                    </div>
+            <div class="row pt-2">
+                <div class="col-xl-12 col-12 mt-3">
+                    <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                        <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                            <h6 class="mr-3 pt-2 text-uppercase">
+                                <span class="pl-1 fs16 fw600 text-normal">Frequencies</span>
+                            </h6>
+                        </div>
 
-                <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
-                    <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
-                      <p class="fs14 fw600 pt-3">Frequency, Hz</p>
-                    </div>
-                    <canvas #frequencyChart class="line-chart col-xl-12 col-12 p-0" height="260"></canvas>
-                  </div>
-            </div>
-            </div>
-            <div class="col-xl-12 col-12 mt-3">
-                <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
-                    <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
-                        <h6 class="mr-3 pt-2 text-uppercase">
-                            <span class="pl-1 fs16 fw600 text-normal">Results</span>
-                        </h6>
-                    </div>
-
-                    <div class="table-responsive mb-0">
-                        <table class="table table-sm table-borderless px-2 text-left text-nowrap">
-                            <thead class="bg-color7">
-                                <tr>
-                                    <th scope="col" colspan="2" class="text-center border-right">Results</th>
-                                    <th scope="col" colspan="4" class="text-center border-right-bold" style="min-width: 150px;">Average (0.5, 1, 2, 3) KHz</th>
-                                    <th scope="col" colspan="4" class="text-center" style="min-width: 150px;">Average (2, 3, 4, 6) KHz</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <ng-container>
-                                    <tr class="text-uppercase">
-                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">Right Ear</mat-label>
-                                            </div>
-                                        </td>
-
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">0.5</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">1</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">2</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right-bold border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">3</mat-label>
-                                            </div>
-                                        </td>
-
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">2</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">3</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">4</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">6</mat-label>
-                                            </div>
-                                        </td>
+                        <div class="table-responsive mb-0">
+                            <table class="table table-sm table-borderless px-2 text-left text-nowrap">
+                                <thead class="bg-color7">
+                                    <tr>
+                                        <th scope="col" colspan="2" class="text-center border-right">Frequency, Hz</th>
+                                        <th scope="col" class="text-center border-right-bold" style="min-width: 100px;">
+                                            500</th>
+                                        <th scope="col" class="text-center border-right-bold" style="min-width: 100px;">
+                                            1000</th>
+                                        <th scope="col" class="text-center border-right-bold" style="min-width: 100px;">
+                                            2000</th>
+                                        <th scope="col" class="text-center border-right-bold" style="min-width: 100px;">
+                                            3000</th>
+                                        <th scope="col" class="text-center border-right-bold" style="min-width: 100px;">
+                                            4000</th>
+                                        <th scope="col" class="text-center" style="min-width: 100px;">6000</th>
                                     </tr>
-                                    <tr class="text-uppercase">
-                                        <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">Left Ear</mat-label>
-                                            </div>
-                                        </td>
+                                </thead>
 
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">0.5</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">1</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">2</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right-bold border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">3</mat-label>
-                                            </div>
-                                        </td>
-
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">2</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">3</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">4</mat-label>
-                                            </div>
-                                        </td>
-                                        <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
-                                            <div class="text-muted w-10">
-                                                <mat-label class="fw700 w-10">6</mat-label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </ng-container>
-                            </tbody>
-                        </table>
+                                <tbody>
+                                    <ng-container formGroupName="audiometricBaseline">
+                                        <tr class="text-uppercase">
+                                            <td colspan="8">
+                                                <div
+                                                    class="bg-color6 rounded-top px-3 pt-2 pb-1 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                                    <mat-label class="fw700 fs16">BaseLine :</mat-label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                <div class="text-muted w-10">
+                                                    <mat-label class="fw700 w-10">Right Ear (dB)</mat-label>
+                                                </div>
+                                            </td>
+                                    
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R500" (change)="calculateBaseLineAvgRight()">
+                                                        <!-- <button mat-icon-button type="button" matSuffix tabindex="-1"
+                                                        (click)="clearInput('')">
+                                                        <i class="fas fa-times"></i>
+                                                    </button> -->
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['R500'], 'baseLineRight').message">
+                                                            {{ errorState(baseLineGroup.controls['R500'], 'baseLineRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R1000" (change)="calculateBaseLineAvgRight()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['R1000'], 'baseLineRight').message">
+                                                            {{ errorState(baseLineGroup.controls['R1000'], 'baseLineRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R2000" (change)="calculateBaseLineAvgRight()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['R2000'], 'baseLineRight').message">
+                                                            {{ errorState(baseLineGroup.controls['R2000'], 'baseLineRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R3000" (change)="calculateBaseLineAvgRight()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['R3000'], 'baseLineRight').message">
+                                                            {{ errorState(baseLineGroup.controls['R3000'], 'baseLineRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R4000" (change)="calculateBaseLineAvgRight()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['R4000'], 'baseLineRight').message">
+                                                            {{ errorState(baseLineGroup.controls['R4000'], 'baseLineRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R6000">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['R6000'], 'baseLineRight').message">
+                                                            {{ errorState(baseLineGroup.controls['R6000'], 'baseLineRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                <div class="text-muted w-10">
+                                                    <mat-label class="fw700 w-10">Left Ear (dB)</mat-label>
+                                                </div>
+                                            </td>
+                                    
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L500" (change)="calculateBaseLineAvgLeft()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['L500'], 'baseLineLeft').message">
+                                                            {{ errorState(baseLineGroup.controls['L500'], 'baseLineLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L1000" (change)="calculateBaseLineAvgLeft()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['L1000'], 'baseLineLeft').message">
+                                                            {{ errorState(baseLineGroup.controls['L1000'], 'baseLineLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L2000" (change)="calculateBaseLineAvgLeft()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['L2000'], 'baseLineLeft').message">
+                                                            {{ errorState(baseLineGroup.controls['L2000'], 'baseLineLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L3000" (change)="calculateBaseLineAvgLeft()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['L3000'], 'baseLineLeft').message">
+                                                            {{ errorState(baseLineGroup.controls['L3000'], 'baseLineLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L4000" (change)="calculateBaseLineAvgLeft()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['L4000'], 'baseLineLeft').message">
+                                                            {{ errorState(baseLineGroup.controls['L4000'], 'baseLineLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L6000">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['L6000'], 'baseLineLeft').message">
+                                                            {{ errorState(baseLineGroup.controls['L6000'], 'baseLineLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                    <ng-container *ngIf="audiometricTestGroup.controls['TypeOfAudiogram'].value === 'A'" formGroupName="audiometricAnnual">
+                                        <tr class="text-uppercase">
+                                            <td colspan="8">
+                                                <div
+                                                    class="bg-color6 rounded-top px-3 pt-2 pb-1 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                                    <mat-label class="fw700 fs16">Annual :</mat-label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                <div class="text-muted w-10">
+                                                    <mat-label class="fw700 w-10">Right Ear (dB)</mat-label>
+                                                </div>
+                                            </td>
+                                    
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R500" (change)="calculateAnnualAvgRight()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['R500'], 'annualRight').message">
+                                                            {{ errorState(annualGroup.controls['R500'], 'annualRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R1000" (change)="calculateAnnualAvgRight()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['R1000'], 'annualRight').message">
+                                                            {{ errorState(annualGroup.controls['R1000'], 'annualRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R2000" (change)="calculateAnnualAvgRight()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['R2000'], 'annualRight').message">
+                                                            {{ errorState(annualGroup.controls['R2000'], 'annualRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R3000" (change)="calculateAnnualAvgRight()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['R3000'], 'annualRight').message">
+                                                            {{ errorState(annualGroup.controls['R3000'], 'annualRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R4000" (change)="calculateAnnualAvgRight()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['R4000'], 'annualRight').message">
+                                                            {{ errorState(annualGroup.controls['R4000'], 'annualRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="R6000">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['R6000'], 'annualRight').message">
+                                                            {{ errorState(annualGroup.controls['R6000'], 'annualRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                <div class="text-muted w-10">
+                                                    <mat-label class="fw700 w-10">Left Ear (dB)</mat-label>
+                                                </div>
+                                            </td>
+                                    
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L500" (change)="calculateAnnualAvgLeft()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['L500'], 'annualLeft').message">
+                                                            {{ errorState(annualGroup.controls['L500'], 'annualLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L1000" (change)="calculateAnnualAvgLeft()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['L1000'], 'annualLeft').message">
+                                                            {{ errorState(annualGroup.controls['L1000'], 'annualLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L2000" (change)="calculateAnnualAvgLeft()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['L2000'], 'annualLeft').message">
+                                                            {{ errorState(annualGroup.controls['L2000'], 'annualLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L3000" (change)="calculateAnnualAvgLeft()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['L3000'], 'annualLeft').message">
+                                                            {{ errorState(annualGroup.controls['L3000'], 'annualLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L4000" (change)="calculateAnnualAvgLeft()">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['L4000'], 'annualLeft').message">
+                                                            {{ errorState(annualGroup.controls['L4000'], 'annualLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-right-bold border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="text" autocomplete="off"
+                                                            formControlName="L6000">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['L6000'], 'annualLeft').message">
+                                                            {{ errorState(annualGroup.controls['L6000'], 'annualLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-xl-12 col-12 mt-3">
+                    <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                        <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                            <h6 class="mr-3 pt-2 text-uppercase">
+                                <span class="pl-1 fs16 fw600 text-normal">Results</span>
+                            </h6>
+                        </div>
+
+                        <div id="BaseLine" formGroupName="audiometricBaseline">
+                            <div class="row">
+                                <div class="col-xl-12 col-12">
+                                    <div
+                                        class="bg-color6 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                        <h6 class="mr-3">
+                                            <small class="fw700 fs16 text-uppercase">BaseLine :</small>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive mb-0">
+                                <table class="table table-sm table-borderless px-2 text-left text-nowrap">
+                                    <thead class="bg-color7">
+                                        <tr>
+                                            <th scope="col" colspan="1" class="text-center border-right">Results</th>
+                                            <th scope="col" colspan="2" class="text-center border-right-bold"
+                                                style="min-width: 100px;">Average (0.5, 1, 2, 3) kHz</th>
+                                            <th scope="col" colspan="2" class="text-center" style="min-width: 100px;">
+                                                Average (2, 3, 4) kHz</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container>
+                                            <tr>
+                                                <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                    <div class="text-muted w-10">
+                                                        <mat-label class="fw700 w-10">Right Ear (dB)</mat-label>
+                                                    </div>
+                                                </td>
+
+                                                <!-- <td colspan="2"
+                                                    class="pr-3 pl-3 border-right-bold border-bottom text-center">
+                                                    <div class="text-muted">
+                                                        <mat-label class="fw700 text-center">{{baseLineAvgRight1}}</mat-label>
+                                                    </div>
+                                                </td> -->
+                                                <td colspan="2" class="border-right-bold border-bottom text-center w-10">
+                                                    <div class="text-muted w-10" style="min-width: 70px">
+                                                        <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                            <mat-label class="fw600"></mat-label>
+                                                            <input matInput type="text" autocomplete="off"
+                                                                formControlName="AvgR1" readonly>
+                                                            <mat-error class="w-space-normal"
+                                                                *ngIf="errorState(baseLineGroup.controls['AvgR1'], 'baseLineRight').message">
+                                                                {{ errorState(baseLineGroup.controls['AvgR1'], 'baseLineRight').message }}
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </td>
+                                                <td colspan="2" class="border-bottom text-center w-10">
+                                                    <div class="text-muted w-10" style="min-width: 70px">
+                                                        <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                            <mat-label class="fw600"></mat-label>
+                                                            <input matInput type="text" autocomplete="off"
+                                                                formControlName="AvgR2" readonly>
+                                                            <mat-error class="w-space-normal"
+                                                                *ngIf="errorState(baseLineGroup.controls['AvgR2'], 'baseLineRight').message">
+                                                                {{ errorState(baseLineGroup.controls['AvgR2'], 'baseLineRight').message }}
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </td>
+                                                <!-- <td colspan="2" class="pr-3 pl-3 border-bottom text-center">
+                                                    <div class="text-muted">
+                                                        <mat-label class="fw700 text-right">{{baseLineAvgRight2}}</mat-label>
+                                                    </div>
+                                                </td> -->
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                    <div class="text-muted w-10">
+                                                        <mat-label class="fw700 w-10">Left Ear (dB)</mat-label>
+                                                    </div>
+                                                </td>
+
+                                                <td colspan="2" class="border-right-bold border-bottom text-center w-10">
+                                                    <div class="text-muted w-10" style="min-width: 70px">
+                                                        <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                            <mat-label class="fw600"></mat-label>
+                                                            <input matInput type="text" autocomplete="off"
+                                                                formControlName="AvgL1" readonly>
+                                                            <mat-error class="w-space-normal"
+                                                                *ngIf="errorState(baseLineGroup.controls['AvgL1'], 'baseLineLeft').message">
+                                                                {{ errorState(baseLineGroup.controls['AvgL1'], 'baseLineLeft').message }}
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </td>
+                                                <td colspan="2" class="border-bottom text-center w-10">
+                                                    <div class="text-muted w-10" style="min-width: 70px">
+                                                        <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                            <mat-label class="fw600"></mat-label>
+                                                            <input matInput type="text" autocomplete="off"
+                                                                formControlName="AvgL2" readonly>
+                                                            <mat-error class="w-space-normal"
+                                                                *ngIf="errorState(baseLineGroup.controls['AvgL2'], 'baseLineLeft').message">
+                                                                {{ errorState(baseLineGroup.controls['AvgL2'], 'baseLineLeft').message }}
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </td>
+                                                <!-- <td colspan="2"
+                                                    class="pr-3 pl-3 border-right-bold border-bottom text-center">
+                                                    <div class="text-muted">
+                                                        <mat-label class="fw700">{{baseLineAvgLeft1}}</mat-label>
+                                                    </div>
+                                                </td>
+                                                <td colspan="2" class="pr-3 pl-3 border-bottom text-center">
+                                                    <div class="text-muted">
+                                                        <mat-label class="fw700">{{baseLineAvgLeft2}}</mat-label>
+                                                    </div>
+                                                </td> -->
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="Annual" formGroupName="audiometricAnnual" *ngIf="audiometricTestGroup.controls['TypeOfAudiogram'].value === 'A'">
+                            <div class="row">
+                                <div class="col-xl-12 col-12">
+                                    <div
+                                        class="bg-color6 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                        <h6 class="mr-3">
+                                            <small class="fw700 fs16 text-uppercase">Annual :</small>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive mb-0">
+                                <table class="table table-sm table-borderless px-2 text-left text-nowrap">
+                                    <thead class="bg-color7">
+                                        <tr>
+                                            <th scope="col" colspan="1" class="text-center border-right">Results</th>
+                                            <th scope="col" colspan="2" class="text-center border-right-bold"
+                                                style="min-width: 100px;">Average (0.5, 1, 2, 3) kHz</th>
+                                            <th scope="col" colspan="2" class="text-center" style="min-width: 100px;">
+                                                Average (2, 3, 4) kHz</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container>
+                                            <tr>
+                                                <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                    <div class="text-muted w-10">
+                                                        <mat-label class="fw700 w-10">Right Ear (dB)</mat-label>
+                                                    </div>
+                                                </td>
+
+                                                <td colspan="2" class="border-right-bold border-bottom text-center w-10">
+                                                    <div class="text-muted w-10" style="min-width: 70px">
+                                                        <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                            <mat-label class="fw600"></mat-label>
+                                                            <input matInput type="text" autocomplete="off"
+                                                                formControlName="AvgR1" readonly>
+                                                            <mat-error class="w-space-normal"
+                                                                *ngIf="errorState(annualGroup.controls['AvgR1'], 'annualRight').message">
+                                                                {{ errorState(annualGroup.controls['AvgR1'], 'annualRight').message }}
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </td>
+                                                <td colspan="2" class="border-bottom text-center w-10">
+                                                    <div class="text-muted w-10" style="min-width: 70px">
+                                                        <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                            <mat-label class="fw600"></mat-label>
+                                                            <input matInput type="text" autocomplete="off"
+                                                                formControlName="AvgR2" readonly>
+                                                            <mat-error class="w-space-normal"
+                                                                *ngIf="errorState(annualGroup.controls['AvgR2'], 'annualRight').message">
+                                                                {{ errorState(annualGroup.controls['AvgR2'], 'annualRight').message }}
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </td>
+                                                <!-- <td colspan="2"
+                                                    class="pr-3 pl-3 border-right-bold border-bottom text-center">
+                                                    <div class="text-muted">
+                                                        <mat-label class="fw700 text-center">{{annualAvgRight1}}</mat-label>
+                                                    </div>
+                                                </td>
+                                                <td colspan="2" class="pr-3 pl-3 border-bottom text-center">
+                                                    <div class="text-muted">
+                                                        <mat-label class="fw700 text-right">{{annualAvgRight2}}</mat-label>
+                                                    </div>
+                                                </td> -->
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1" class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                    <div class="text-muted w-10">
+                                                        <mat-label class="fw700 w-10">Left Ear (dB)</mat-label>
+                                                    </div>
+                                                </td>
+
+                                                <td colspan="2" class="border-right-bold border-bottom text-center w-10">
+                                                    <div class="text-muted w-10" style="min-width: 70px">
+                                                        <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                            <mat-label class="fw600"></mat-label>
+                                                            <input matInput type="text" autocomplete="off"
+                                                                formControlName="AvgL1" readonly>
+                                                            <mat-error class="w-space-normal"
+                                                                *ngIf="errorState(annualGroup.controls['AvgL1'], 'annualLeft').message">
+                                                                {{ errorState(annualGroup.controls['AvgL1'], 'annualLeft').message }}
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </td>
+                                                <td colspan="2" class="border-bottom text-center w-10">
+                                                    <div class="text-muted w-10" style="min-width: 70px">
+                                                        <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                            <mat-label class="fw600"></mat-label>
+                                                            <input matInput type="text" autocomplete="off"
+                                                                formControlName="AvgL2" readonly>
+                                                            <mat-error class="w-space-normal"
+                                                                *ngIf="errorState(annualGroup.controls['AvgL2'], 'annualLeft').message">
+                                                                {{ errorState(annualGroup.controls['AvgL2'], 'annualLeft').message }}
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </td>
+                                                <!-- <td colspan="2"
+                                                    class="pr-3 pl-3 border-right-bold border-bottom text-center">
+                                                    <div class="text-muted">
+                                                        <mat-label class="fw700">{{annualAvgLeft1}}</mat-label>
+                                                    </div>
+                                                </td>
+                                                <td colspan="2" class="pr-3 pl-3 border-bottom text-center">
+                                                    <div class="text-muted">
+                                                        <mat-label class="fw700">{{annualAvgLeft2}}</mat-label>
+                                                    </div>
+                                                </td> -->
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
 
-            <!-- <div class="col-xl-12 col-12 mt-3">
-                <p class="fs20 fw600 pt-3">Month to Date Metrics</p>
-                <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
-                    <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
-                      <p class="fs14 fw600 pt-3">Sales</p>
-                      <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-success px-4 py-2">
-                        Daily Sales
-                      </div>
+                        <div class="col-xl-12 col-12 text-center mt-3 pt-2 pb-2">
+                            <!-- <a [tooltip]="true ? 'Please select State first.' : ''"
+                            placement="bottom"> -->
+                            <button id="graphBtn" class="btn min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                                [ngClass]="(showHide) ? 'btn-info' : 'btn-warning'" type="button"
+                                (click)="btnToggle()">{{btnText}}</button>
+                            <!-- </a>     -->
+                        </div>
                     </div>
-                    <canvas #monthSalesChart class="bar-chart col-xl-12 col-12 p-0" height="260"></canvas>
-                  </div>
-                  <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white mt-4">
-                    <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
-                      <p class="fs14 fw600 pt-3">Patients</p>
-                      <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-primary px-4 py-2">
-                        Daily Patient Count
-                      </div>
-                    </div>
-                    <canvas #monthPatientsChart class="bar-chart col-xl-12 col-12 p-0" height="260"></canvas>
-                  </div>
-            </div> -->
+                </div>
 
-            <div class="col-xl-12 col-12 mt-2">
-                <!-- <p class="fs20 fw600 pt-3 mb-0">Year to Date Metrics</p> -->
+                <div class="col-xl-12 col-12 mt-2 pt-3" id="audiogramGraph" [style.display]="(!showHide) ? 'block' : 'none'">
+                    <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-yellow px-4 py-2 pt-3">
+                        <span class="fs20 fw600 mb-0">Audiometry Results <span class="fs14">(Graph)</span> :</span>
+                    </div>
+                    <div class="row">
+                        <!-- Right Ear -->
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pt-3">
+                            <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                                <div
+                                    class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                                    <h6 class="mr-3 pt-2 text-uppercase">
+                                        <span class="pl-1 fs16 fw600 text-normal">Right Ear Audiogram</span>
+                                    </h6>
+                                </div>
+                                <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
+                                    <div
+                                        class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
+                                        <!-- <p class="fs14 fw600 pt-3">Frequency</p> -->
+                                        <p class="pt-3"></p>
+                                    </div>
+                                    <canvas #frequencyChartRightEar class="line-chart col-xl-12 col-12 p-0"
+                                        height="260"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Left Ear -->
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pt-3">
+                            <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                                <div
+                                    class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                                    <h6 class="mr-3 pt-2 text-uppercase">
+                                        <span class="pl-1 fs16 fw600 text-normal">Left Ear Audiogram</span>
+                                    </h6>
+                                </div>
+
+                                <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
+                                    <div
+                                        class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
+                                        <!-- <p class="fs14 fw600 pt-3">Frequency</p> -->
+                                        <p class="pt-3"></p>
+                                    </div>
+                                    <canvas #frequencyChartLeftEar class="line-chart col-xl-12 col-12 p-0"
+                                        height="260"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="col-xl-12 col-12 mt-2">
+                <p class="fs20 fw600 pt-3 mb-0">Year to Date Metrics</p>
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pt-3">
                         <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
@@ -365,12 +922,11 @@
                         <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
                           <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
                             <p class="fs14 fw600 pt-3">Frequency</p>
-                            <!-- <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-yellow px-4 py-2">
+                            <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-yellow px-4 py-2">
                               Monthly Sales
-                            </div> -->
+                            </div>
                           </div>
                           <canvas #yearSalesChart class="bar-chart col-xl-12 col-12 p-0" height="260"></canvas>
-                          <!-- <canvas #yearSalesChart id="canvas"></canvas> -->
                         </div>
                         </div>
                       </div>
@@ -385,18 +941,17 @@
                         <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
                           <div class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
                             <p class="fs14 fw600 pt-3">Frequency</p>
-                            <!-- <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-yellow px-4 py-2">
+                            <div class="badge badge-pill fs12 fw500 mat-elevation-z2 badge-yellow px-4 py-2">
                               Monthly Patient Count
-                            </div> -->
+                            </div>
                           </div>
                           <canvas #yearPatientsChart class="bar-chart col-xl-12 col-12 p-0" height="260"></canvas>
                         </div>
                         </div>
                       </div>
                 </div>
-            </div>
-
-            <!-- <div class="col-xl-12 col-12 mt-3">
+            </div> -->
+                <!-- <div class="col-xl-12 col-12 mt-3">
                 <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
                     <div class="bg-primary-blue text-white rounded-top px-3 py-1 text-center flex-row flex-wrap">
                         <h6 class="mr-3 pt-2 text-uppercase">
@@ -674,12 +1229,19 @@
               </div>
             </div> -->
 
-            <div class="col-xl-12 col-12 text-center mt-3 pt-2">
-                <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
-                    type="submit">Save</button>
-                    <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
+                <div class="col-xl-12 col-12 text-center mt-3 pt-2">
+                    <button class="btn btn-success min-width btn-sm fs14 fw500 rounded-pill mr-3"
+                    type="submit">{{audiometricTestGroup.controls['Id'] && audiometricTestGroup.controls['Id'].value > 0 ? 'Update' : 'Save'}}</button>
+                <button type="button" *ngIf="audiometricTestGroup.controls['Id'].value == 0" [disabled]="!saveNext"
+                    [routerLink]="['/audiometric', 'status', 'checkout', employeeId, employeeTestVisitId]"
+                    class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                <button type="button" *ngIf="audiometricTestGroup.controls['Id'].value > 0" [disabled]="!updateNext"
+                    [routerLink]="['/audiometric', 'status', 'checkout', employeeId, employeeTestVisitId]"
+                    class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill mr-3">Next</button>
+                <button class="btn btn-red min-width btn-sm fs14 fw500 rounded-pill" type="submit"
                     [routerLink]="['/audiometric/list']">Close</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </section>
