@@ -29,6 +29,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
 
   public minDate = moment().subtract(1, 'month').startOf('month');
   public maxDate = moment();
+  public checkInDate: any;
   public employeeId: number = 0;
   // public doctorId: number = 0;
   public userId: number = 0;
@@ -114,7 +115,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         EnteredUserId: ['', Validators.required],
         EmployeeId: ['', Validators.required],
         EmployeeOHSTestVisitId: ['', Validators.required],
-        DateOfTest: [moment(), Validators.required],
+        DateOfTest: ['', Validators.required],
         TypeOfAudiogram: ['', Validators.required],
         Audiometer: [''],
         Exposure: [''],
@@ -177,6 +178,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
     this.annualGroup.controls.EnteredUserId.setValue(this.userId);
 
     this.getEmployeeById();
+    // this.getCheckInDateForAudiometric();
     this.getAudiometricResultDetails();
 
     this.noDataCanvas(this.frequencyChartLeftEar);
@@ -337,6 +339,26 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
           // this.viewLineChart();
           this.onSelectChange();
         }
+        if(audiometryResultData['status'] == 404) {
+          this.getCheckInDateForAudiometric();
+        }
+      });
+  }
+  getCheckInDateForAudiometric() {
+    const data = {
+      employeeID: this.audiometryResultForm.value.audiometricResult.EmployeeId,
+      employeeOHSTestVisitId: this.audiometryResultForm.value.audiometricResult.EmployeeOHSTestVisitId
+    }
+    // console.log(data);
+
+    this.audiometricService.getCheckInDateForAudiometric(data)
+    .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((checkInDateResult: any) => {
+        console.log(checkInDateResult);
+        this.checkInDate = checkInDateResult['DOT'];
+        let checkInDt = moment(this.checkInDate, 'DD/MM/YYYY');
+        this.audiometricTestGroup.controls.DateOfTest.setValue(checkInDt);
+        // console.log(checkInDt);
       });
   }
 
@@ -556,9 +578,9 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         .subscribe((response: any) => {
           if (response['status'] == 200) {
             if (this.audiometryResultForm.value.audiometricResult.Id > 0) {
-              this.snackBar.open('Updated Successfully', 'Close', {
-                panelClass: 'success-popup',
-              });
+              // this.snackBar.open('Updated Successfully', 'Close', {
+              //   panelClass: 'success-popup',
+              // });
 
               this.getAudiometricResultDetails();
               this.updateNext = true;

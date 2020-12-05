@@ -27,12 +27,10 @@ export class OhdSettingsComponent implements OnInit, OnDestroy {
   public editData: any;
   public ohdSettingsDataPayLoad: any = {};
   public customArray = Array;
-  // public numberOfPages = 0;
-  // public currentPage = 0;
-  // pageSize: number = 10;
   public numberOfPages = 0;
   public currentPage = 1;
   pageSize: number = 25;
+  public totalDocuments: number = 25;
   public noDataText: string = `Please wait while we're fetching your data...`;
 
   constructor(
@@ -73,7 +71,6 @@ export class OhdSettingsComponent implements OnInit, OnDestroy {
 
     this.getOhdClinic();
     this.getOhdList(this.pageSize, 0);
-    // this.getOhdList();
   }
 
   get formControls() {
@@ -101,14 +98,13 @@ export class OhdSettingsComponent implements OnInit, OnDestroy {
         this.formControls.ClinicEmail.setValue(this.allOhdClinic.cEmail);
       });
   }
-  getOhdList(pageSize: number, page: number, total?: number) {
+  getOhdList(pageSize: number, page: number) {
     this.pageSize = pageSize;
     page -= 1;
-    const pageNumber = (page <= 0 ? 0 : (page * pageSize));
+    const pageNumber = (page <= 0 ? 0 : (page * this.pageSize));
     const doctorDataPayLoad = {
       skip: pageNumber,
-      take: pageSize,
-      total: pageNumber
+      take: this.pageSize
     };
     this.noDataText = `Please wait while we're fetching your data...`;
 
@@ -117,28 +113,32 @@ export class OhdSettingsComponent implements OnInit, OnDestroy {
       .subscribe((allOhdList: any) => {
         console.log(allOhdList);
         this.allOhdList = allOhdList['ohdDoctor'];
+        this.totalDocuments = allOhdList['totalNumber'];
+        this.numberOfPages = Math.ceil(this.totalDocuments/this.pageSize);
+        console.log('No. of Pages: ', this.numberOfPages);
+        console.log('Total Number: ', this.totalDocuments);
+        
         console.log(this.allOhdList);
         this.noDataText = 'No Data Found';
       });
   }
 
-  // prevPage(pageSize: any) {
-  //   this.currentPage = this.currentPage - 1;
-  //   this.pannelList(pageSize, this.currentPage);
-  // }
-  // nextPage(pageSize: any) {
-  //   this.currentPage = this.currentPage + 1;
-  //   this.pannelList(pageSize, this.currentPage);
-  // }
+  prevPage(pageSize: any) {
+    this.currentPage = this.currentPage - 1;
+    this.getOhdList(pageSize, this.currentPage);
+  }
+  nextPage(pageSize: any) {
+    this.currentPage = this.currentPage + 1;
+    this.getOhdList(pageSize, this.currentPage);
+  }
   pageEntered(pageSize: any) {
-      
     if (this.currentPage < 1) {
       this.currentPage = 1;
     }
     if (this.currentPage > this.numberOfPages) {
       this.currentPage = this.numberOfPages;
     }
-    // this.pannelList(pageSize, this.currentPage);
+    this.getOhdList(pageSize, this.currentPage);
 }
 
   onSubmit() {
@@ -178,7 +178,7 @@ export class OhdSettingsComponent implements OnInit, OnDestroy {
 
     console.log(this.ohdSettingsDataPayLoad);
   }
-    this.currentPage = 0;
+    this.currentPage = 1;
     if (this.ohdSettingsForm.valid) {
       // console.log(this.ohdSettingsForm);
       
@@ -242,7 +242,7 @@ export class OhdSettingsComponent implements OnInit, OnDestroy {
     template.openModal(data);
   }
   getDeletedOhdSettings(event: any) {
-    this.currentPage = 0;
+    this.currentPage = 1;
 
     this.getOhdList(this.pageSize, this.currentPage);
   }

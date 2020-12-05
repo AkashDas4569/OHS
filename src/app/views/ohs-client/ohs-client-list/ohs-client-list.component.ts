@@ -18,13 +18,10 @@ export class OhsClientListComponent implements OnInit, OnDestroy {
 
   public clientListData: any;
   public customArray = Array;
-  // public numberOfPages = 0;
-  // public currentPage = 0;
-  // pageSize: number = 10;
   public numberOfPages = 0;
   public currentPage = 1;
   pageSize: number = 25;
-  public totalDocuments: number = 60;
+  public totalDocuments: number = 25;
   public noDataText: string = `Please wait while we're fetching your data...`;
 
   constructor(
@@ -40,12 +37,10 @@ export class OhsClientListComponent implements OnInit, OnDestroy {
     this.clientSearchForm = this.fb.group({
       skip: [0],
       take: [10],
-      total: [0],
       companyName: ['']
     });
 
     this.clientList(this.pageSize, 0);
-    // this.clientList();
   }
 
   get formControls() {
@@ -60,49 +55,48 @@ export class OhsClientListComponent implements OnInit, OnDestroy {
     this.onDestroyUnSubscribe.complete();
   }
 
-  clientList(pageSize: number, page: number, search?: any, total?: number) {
+  clientList(pageSize: number, page: number, search?: any) {
     this.pageSize = pageSize;
     page -= 1;
-    const pageNumber = (page <= 0 ? 0 : (page * pageSize));
+    const pageNumber = (page <= 0 ? 0 : (page * this.pageSize));
     const clientDataPayLoad = {
       companyName: (search ? search : ''),
       skip: pageNumber,
-      take: pageSize,
-      total: pageNumber
+      take: this.pageSize
     };
     this.noDataText = `Please wait while we're fetching your data...`;
-    // console.log(clientDataPayLoad);
     
     this.ohsClientService.getAllClientList(clientDataPayLoad)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((clientListData: any) => {
         this.clientListData = clientListData['clients'];
+        this.totalDocuments = clientListData['totalNumber'];
+        this.numberOfPages = Math.ceil(this.totalDocuments/this.pageSize);
+        console.log('No. of Pages: ', this.numberOfPages);
+        console.log('Total Number: ', this.totalDocuments);
+
         console.log(this.clientListData);
-        
-        // this.numberOfPages = Math.ceil(pannelListData['Total'] / pageSize);
-        // this.totalDocuments = pannelListData['Total'];
         this.noDataText = 'No Data Found';
       });
   }
 
-  // prevPage(pageSize: any) {
-  //   this.currentPage = this.currentPage - 1;
-  //   this.pannelList(pageSize, this.currentPage);
-  // }
-  // nextPage(pageSize: any) {
-  //   this.currentPage = this.currentPage + 1;
-  //   this.pannelList(pageSize, this.currentPage);
-  // }
-  pageEntered(pageSize: any) {
-      
-      if (this.currentPage < 1) {
-        this.currentPage = 1;
-      }
-      if (this.currentPage > this.numberOfPages) {
-        this.currentPage = this.numberOfPages;
-      }
-      // this.pannelList(pageSize, this.currentPage);
+  prevPage(pageSize: any) {
+    this.currentPage = this.currentPage - 1;
+    this.clientList(pageSize, this.currentPage);
   }
+  nextPage(pageSize: any) {
+    this.currentPage = this.currentPage + 1;
+    this.clientList(pageSize, this.currentPage);
+  }
+  pageEntered(pageSize: any) {
+    if (this.currentPage < 1) {
+      this.currentPage = 1;
+    }
+    if (this.currentPage > this.numberOfPages) {
+      this.currentPage = this.numberOfPages;
+    }
+    this.clientList(pageSize, this.currentPage);
+}
 
   editClient(data: any) {
     console.log(data);
@@ -133,7 +127,7 @@ export class OhsClientListComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.clientSearchForm.markAllAsTouched();
-    this.currentPage = 0;
+    this.currentPage = 1;
     if (this.clientSearchForm.valid) {
       // console.log('Valid', this.clientSearchForm);
         this.clientList(this.pageSize, this.currentPage, this.clientSearchForm.value.companyName);

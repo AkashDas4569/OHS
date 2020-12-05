@@ -95,25 +95,33 @@ export class AudiometricService {
   getCheckoutDetails(data: object) {
     const apiPath = `${this.apiUrl}/AudiometricOHSModule/GetCheckOutStatus`;
     return this.http.post(apiPath, data, httpOptions)
-        .pipe(
-            map(response => response),
-            catchError(this.handleError('getCheckoutDetails'))
-        );
-}
-addEditCheckout(data: object) {
+      .pipe(
+        map(response => response),
+        catchError(this.handleError('getCheckoutDetails'))
+      );
+  }
+  addEditCheckout(data: object) {
     const apiPath = `${this.apiUrl}/AudiometricOHSModule/AudiometricCheckOut`;
     return this.http.post(apiPath, data, httpOptions)
-        .pipe(
-            map(response => response),
-            catchError(this.handleError('addEditCheckout'))
-        );
-}
-getAllCheckOutAudiometricQueue(data: object) {
+      .pipe(
+        map(response => response),
+        catchError(this.handleError('addEditCheckout'))
+      );
+  }
+  getAllCheckOutAudiometricQueue(data: object) {
     const apiPath = `${this.apiUrl}/AudiometricOHSModule/GetAllCheckOutAudQ`;
     return this.http.post(apiPath, data, httpOptions)
-        .pipe(
-            map(response => response),
-            catchError(this.handleError('getAllCheckOutAudiometricQueue'))
-        );
-}
+      .pipe(
+        map(response => response),
+        catchError(this.handleError('getAllCheckOutAudiometricQueue'))
+      );
+  }
+  getCheckInDateForAudiometric(data: object) {
+    const apiPath = `${this.apiUrl}/AudiometricOHSModule/AMResultDOT`;
+    return this.http.post(apiPath, data, httpOptions)
+      .pipe(
+        map(response => response),
+        catchError(this.handleError('getCheckInDateForAudiometric'))
+      );
+  }
 }
