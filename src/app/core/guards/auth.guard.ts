@@ -19,7 +19,7 @@ import { Title } from '@angular/platform-browser';
   providedIn: 'root'
 })
 // CanActivateChild, CanDeactivate<unknown>, CanLoad
-export class AuthGuard implements CanActivate, OnDestroy {
+export class AuthGuard implements CanActivate, CanActivateChild, OnDestroy {
   private onDestroyUnSubscribe = new Subject<void>();
 
   constructor(
@@ -31,17 +31,34 @@ export class AuthGuard implements CanActivate, OnDestroy {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.authenticationService.getToken()) {
+    // console.log(state.url, next.data.title);
     // const data = localStorage.getItem('logged-in');
     // if (data) {
       // this.titleService.setTitle(`${next.data.title} - OHS`);
       // logged in so return true
       return true;
     } else {
+      this.logout();
+      this.router.navigate(['/login']);
+      return false;
+    }
+  }
+  canActivateChild(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    console.log(state.url, next.data.title);
+    if (this.authenticationService.getToken()) {
+      this.titleService.setTitle(`${next.data.title} - OHS`);
+      // Not logged so return true
+      return true;
+    } else {
+      this.logout();
       this.router.navigate(['/login']);
       return false;
     }
   }
   private logout() {
+    console.log('Logout');
     this.authenticationService.logOut({})
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((loggedOut: any) => {

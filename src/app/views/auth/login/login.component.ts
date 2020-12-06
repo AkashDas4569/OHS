@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             localStorage.setItem('UserRoleId', loggedIn['user']['UserRoleId']);
             localStorage.setItem('UserID', loggedIn['user']['LoginId']);
             localStorage.setItem('UserName', loggedIn['user']['UserName']);
-            this.router.navigate(['/employee', 'registration']);
+            this.router.navigate(['/user', 'dashboard']);
           }  else {
             // this.snackBar.open(loggedIn['Errors']['Invalid'], 'Close', {
               this.snackBar.open('User does not exist!', 'Close', {
