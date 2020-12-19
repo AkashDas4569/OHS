@@ -813,3 +813,28 @@ ul {
   position: relative;
   left: 50px;
 }
+
+@media print {
+  body { 
+    -webkit-print-color-adjust: exact; 
+  }
+}
+@media print {
+  .no-print {
+    display: none;
+  }
+  .bg-adjust {
+    -webkit-print-color-adjust: exact;
+  }
+}
+@media print {
+  pre, blockquote {page-break-inside: avoid;}
+}
+@page {
+  size: portrait;
+  margin: 0cm;
+  size: 8.34in 11.69in;
+}
+@page rotated {
+  size: portrait;
+}

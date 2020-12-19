@@ -19,6 +19,7 @@ $lightblue: #3fb8ff;
 $greyishblue: #c9dcee;
 $lightgreyishblue: #e7e9ec;
 $primary-blue: #4285f4;
+$violet: #3f51b5;
 // e9ecef
 // Add your colors here like these:
 $color1:#DEDDDD;
@@ -42,6 +43,7 @@ $theme-colors: map-merge(
     'cyan': $cyan,
     'blue': $blue,
     'primary-blue': $primary-blue,
+    'violet': $violet,
     'yellow': $yellow,
     'orange': $orange,
     'darkgrey': $darkgrey,

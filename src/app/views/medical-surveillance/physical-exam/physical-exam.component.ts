@@ -433,6 +433,10 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
           });
         }
       });
+    } else{
+      this.snackBar.open('Error!! Required fields need to be filled before Submit.', 'Close', {
+        panelClass: 'error-popup',
+      });
     }
   }
 }

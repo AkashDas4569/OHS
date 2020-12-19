@@ -97,6 +97,9 @@ export class ExamOutcomeRecordComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((result: any) => {
         this.employeeDetailsForEOR = result['employeeDataForMedicalConditionModel'];
+
+        this.formControls.RecosEmployer.setValue(this.employeeDetailsForEOR.CompanyName);
+        this.formControls.RecosEmployee.setValue(this.employeeDetailsForEOR.EmployeeName);
         // console.log(this.employeeDetailsForEOR);
       });
   }

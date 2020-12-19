@@ -46,7 +46,7 @@
         <tabset [justified]="true">
           <tab id="checkedIn">
             <ng-template tabHeading>
-              <p class="fs14 fw600 text-uppercase m-0">EMPLOYEE CHECKED IN INFO</p>
+              <p class="fs14 fw600 text-uppercase m-0">MS - EMPLOYEE CHECKED IN INFO</p>
             </ng-template>
             <div class="table-responsive bg-white shadow-sm rounded">
               <table class="table table-sm m-0">
@@ -70,7 +70,7 @@
                       <!-- <td>{{ queue.VisitDate }}, {{queue.CheckInTime}}</td> -->
                       <td>{{queue.CheckInTS}}</td>
                       <td class="pr-3">
-                        <a href="javascript:void(0)" class="rounded mt-0 pl-1 pr-1 pt-1 pb-1" [routerLink]="">
+                        <a href="javascript:void(0)" class="rounded mt-0 pl-1 pr-1 pt-1 pb-1 text-uppercase" [routerLink]="">
                           <span class="fw500">{{queue.EmpName}}</span>
                         </a>
                       </td>
@@ -145,7 +145,7 @@
           </tab>
           <tab id="checkedOut">
             <ng-template tabHeading>
-              <p class="fs14 fw600 text-uppercase m-0">EMPLOYEE CHECKED OUT INFO</p>
+              <p class="fs14 fw600 text-uppercase m-0">MS - EMPLOYEE CHECKED OUT INFO</p>
             </ng-template>
             <div class="table-responsive bg-white shadow-sm rounded">
               <table class="table table-sm m-0">
@@ -173,7 +173,7 @@
                         {{queue.CheckInTS}}
                       </td>
                       <td class="pr-3">
-                        <a class="text-black">
+                        <a class="text-black text-uppercase">
                           {{queue.EmpName}}
                         </a>
                       </td>

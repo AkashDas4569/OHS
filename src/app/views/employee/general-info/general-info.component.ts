@@ -47,63 +47,7 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.employeeId = +params['id'];
-      if(isNaN(this.employeeId)) {
-        this.employeeId = 0;
-      }
-      console.log(this.employeeId);
-
-      if (this.employeeId && !isNaN(this.employeeId)) { 
-        this.employeeService.getEmployeeDetailsById({ employeeID: this.employeeId })
-        .pipe(takeUntil(this.onDestroyUnSubscribe))
-        .subscribe((response: any) => {
-          if(response['status'] == 200) {
-            this.employeeDetails = response['employeeDetails'];
-            console.log(this.employeeDetails);
-
-            this.employeeRegistrationForm.patchValue({
-              Id: this.employeeDetails.Id,
-              clientId: this.employeeDetails.ClientId,
-              egcId: this.employeeDetails.egcId,
-              EmergencyContactName: this.employeeDetails.egcName,
-              EmergencyContactRelationship: this.employeeDetails.egcRelationship,
-              EmergencyContactTel: this.employeeDetails.egcTelNo,
-              EmergencyContactAddress: this.employeeDetails.egcAddress,
-              EmployeerName: this.employeeDetails.egcNameOfEmployer,
-              EmergencyContactEmail: this.employeeDetails.egcEmail,
-              // egcEmployerAddr: null,
-              EmergencyContactPostcode: this.employeeDetails.egcPostcode,
-              EmergencyContactPhone: this.employeeDetails.egcContactNumber,
-              EmergencyContactFax: this.employeeDetails.egcFax,
-    
-              EmpName: this.employeeDetails.EmpName,
-              Address: this.employeeDetails.Addr1,
-              // Addr2: null,
-              District:  this.employeeDetails.District,
-              State:  this.employeeDetails.State,
-              Postcode:  this.employeeDetails.Postcode,
-              contactNo:  this.employeeDetails.PhoneNumber,
-              ICNum:  this.employeeDetails.ICNum.replace(/[\+\- )(]/g,''),
-              DOB: moment(this.employeeDetails.DateOfBirth, 'DD/MM/YYYY'),
-              Age:  this.employeeDetails.Age,
-              SOCSONum:  this.employeeDetails.SOCSONum,
-              WorkPermitNo: this.employeeDetails.WorkPermitNo,
-              WorkerCompNo: this.employeeDetails.WorkCompensationNo,
-              Gender:  this.employeeDetails.Gender,
-              MartialStatus:  this.employeeDetails.MartialStatus,
-              NoOfChild:  this.employeeDetails.NoOfChild,
-              NoYrsMarried:  this.employeeDetails.NoYrsMarried,
-              Ethnic:  +(this.employeeDetails.Ethnic),
-              Nationality:  this.employeeDetails.Nationality,
-            });
-          }
-        });
-      }
-    });
-
-
-
+    // console.log('Router Name: ', this.router.url.split('/')[2]);
     this.employeeRegistrationForm = this.fb.group({
       clientId: ['', Validators.required],
       Id: [''],
@@ -158,6 +102,16 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
     this.getCompanyList();
     this.getCountryList();
     this.getEthnicList();
+
+    this.route.params.subscribe(params => {
+      this.employeeId = +params['id'];
+      if(isNaN(this.employeeId)) {
+        this.employeeId = 0;
+      }
+      console.log(this.employeeId);
+
+      this.getEmployeeDetails();
+    });
   }
 
   get formControls() {
@@ -196,7 +150,7 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
         // return if another validator has already found an error on the matchingControl
         return of(null);
       }
-      if ((this.employeeDetails.ICNum === this.formControls.ICNum.value)) {
+      if (this.router.url.split('/')[2] === 'update-general-info' && (this.employeeDetails.ICNum === this.formControls.ICNum.value)) {
         return of(null);
       } else {
         return this.employeeService.isValidMykadIcNumber(myKadData)
@@ -268,6 +222,54 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
       });
   }
 
+  getEmployeeDetails() {
+    if (this.employeeId && !isNaN(this.employeeId)) { 
+      this.employeeService.getEmployeeDetailsById({ employeeID: this.employeeId })
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((response: any) => {
+        if(response['status'] == 200) {
+          this.employeeDetails = response['employeeDetails'];
+          console.log(this.employeeDetails);
+
+          this.employeeRegistrationForm.patchValue({
+            Id: this.employeeDetails.Id,
+            clientId: this.employeeDetails.ClientId,
+            egcId: this.employeeDetails.egcId,
+            EmergencyContactName: this.employeeDetails.egcName,
+            EmergencyContactRelationship: this.employeeDetails.egcRelationship,
+            EmergencyContactTel: this.employeeDetails.egcTelNo,
+            EmergencyContactAddress: this.employeeDetails.egcAddress,
+            EmployeerName: this.employeeDetails.egcNameOfEmployer,
+            EmergencyContactEmail: this.employeeDetails.egcEmail,
+            // egcEmployerAddr: null,
+            EmergencyContactPostcode: this.employeeDetails.egcPostcode,
+            EmergencyContactPhone: this.employeeDetails.egcContactNumber,
+            EmergencyContactFax: this.employeeDetails.egcFax,
+  
+            EmpName: this.employeeDetails.EmpName,
+            Address: this.employeeDetails.Addr1,
+            // Addr2: null,
+            District:  this.employeeDetails.District,
+            State:  this.employeeDetails.State,
+            Postcode:  this.employeeDetails.Postcode,
+            contactNo:  this.employeeDetails.PhoneNumber,
+            ICNum:  this.employeeDetails.ICNum.replace(/[\+\- )(]/g,''),
+            DOB: moment(this.employeeDetails.DateOfBirth, 'DD/MM/YYYY'),
+            Age:  this.employeeDetails.Age,
+            SOCSONum:  this.employeeDetails.SOCSONum,
+            WorkPermitNo: this.employeeDetails.WorkPermitNo,
+            WorkerCompNo: this.employeeDetails.WorkCompensationNo,
+            Gender:  this.employeeDetails.Gender,
+            MartialStatus:  this.employeeDetails.MartialStatus,
+            NoOfChild:  this.employeeDetails.NoOfChild,
+            NoYrsMarried:  this.employeeDetails.NoYrsMarried,
+            Ethnic:  +(this.employeeDetails.Ethnic),
+            Nationality:  this.employeeDetails.Nationality,
+          });
+        }
+      });
+    }
+  }
 
   onSubmit(registerVisitPurpose: any) {
     this.employeeRegistrationForm.markAllAsTouched();

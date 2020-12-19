@@ -143,6 +143,7 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
   // }
   imageFileSelected(event: any) {
     console.log(event.target.files);
+
     if (event.target.files && event.target.files[0]) {
       this.imageFile = event.target.files[0];
       console.log(this.imageFile);

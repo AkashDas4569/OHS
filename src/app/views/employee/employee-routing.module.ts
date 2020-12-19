@@ -23,6 +23,13 @@ const routes: Routes = [
     }
   },
   {
+    path: 'update-general-info/:id',
+    component: GeneralInfoComponent,
+    data: {
+      title: 'Update Employee General Info'
+    }
+  },
+  {
     path: 'status/medical-record-book/:eId/:dId/:eTestVisitId',
     component:  MedicalRecordBookComponent,
     data: {

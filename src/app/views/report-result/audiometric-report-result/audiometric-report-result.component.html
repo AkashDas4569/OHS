@@ -1,0 +1,792 @@
+<!-- PDF Viewer -->
+<style>
+    .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0px !important;
+}
+</style>
+<body style="background-color: #fff !important;">
+<section class="dashboard pb-2 pt-2 bg-adjust">
+            <div class="text-center pt-2 no-print">
+                <div class="btn btn-primary min-width btn-sm fs14 fw500 rounded-pill mr-2" type="button"
+                    (click)="downloadPdf()">
+                    <span>Print</span>
+                </div>
+                <div class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill" type="button"
+                    [routerLink]="['/report/audiometric-report']">
+                    <span>Back</span>
+                </div>
+            </div>
+        
+            <div id="pdfTable" #pdfTable>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-12 dashboard pt-4">
+                    <div class="row m-0" style="page-break-after: always !important">
+                        <div class="col-sm-12 col-xs-12 pt-5">
+                            <div class="pb-2 mb-2 mt-4 bg-white shadow-sm rounded w-100"
+                                style="width:100%; border:2px solid #000; margin-top: 50px;">
+                                <div class="text-right pt-3 pb-3 pr-3">
+                                    <img [src]="websiteLogo" alt="Sihatku" class="logo">
+                                </div>
+                                <div class="clearfix w-100 mt-1"></div>
+        
+                                <div class="row pl-4 pr-4 pt-3">
+                                    <div class="col-sm-12 col-xs-12 text-center mb-0">
+                                        <p class="fw700 fs22 pt-0 pb-0 mt-0 mb-3">
+                                            <span style="border-bottom: 2px solid #000;">Diagnostic Audiometry Results</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                    <div class="col-sm-12 col-xs-12 pt-0 pb-1">
+                                        <div class="table-responsive mb-0 mt-0">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="fw600" style="padding: 3px 4px;">Company Name</td>
+                                                        <td class="fw400" style="padding: 3px 4px;">{{employeeDetailsById?.CompanyName}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw600" style="padding: 3px 4px;">Examination Date/ Date of Test</td>
+                                                        <td class="fw400" style="padding: 3px 4px;">{{audiometryResultDetails?.DOT}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12 mb-2">
+                                        <p class="fw700 fs18 pt-0 pb-0 mt-0 mb-3">
+                                            <span style="border-bottom: 2px solid #000;">Personal Data:</span>
+                                        </p>
+                                        <div class="table-responsive mb-0 mt-1">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="fw600" style="padding: 3px 4px;">Employee Name</td>
+                                                        <td class="fw400" style="padding: 3px 4px;">{{employeeDetails?.EmpName}}</td>
+                                                        <td class="fw600" style="padding: 3px 4px;">Age</td>
+                                                        <td class="fw400" style="padding: 3px 4px;">{{employeeDetails?.Age}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw600" style="padding: 3px 4px;">IC No.</td>
+                                                        <td class="fw400" style="padding: 3px 4px;">{{employeeDetails?.ICNum}}</td>
+                                                        <td class="fw600" style="padding: 3px 4px;">Gender</td>
+                                                        <td class="fw400" style="padding: 3px 4px;">{{gender}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-sm-12 col-xs-12 mb-2">
+                                        <p class="fw700 fs18 pt-0 pb-0 mt-0 mb-3">
+                                            <span style="border-bottom: 2px solid #000;">Occupational Noise Exposure:</span>
+                                        </p>
+                                        <div class="table-responsive mb-0 mt-1">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="padding: 3px 4px;" class="fw600">i). EXCEEDING NOISE EXPOSURE LEVEL BASED ON NRA</td>
+                                                        <td style="padding: 3px 4px;" class="fw600">{{ (occupationalNoiseDetails?.ExceedNoiseExpo ===
+                                                            true) ? 'Y' : 'N' }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="table-responsive mb-0 mt-1">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="padding: 3px 4px;" class="fw600 w-50">ii). EXPOSURE TO LOUD NOISE AT :</td>
+                                                        <td style="padding: 3px 4px;" class="p-0">
+                                                            <table class="w-100">
+                                                                <tr>
+                                                                    <td style="padding: 3px 4px;" class="fw600">PREVIOUS EMPLOYMENT</td>
+                                                                    <td style="padding: 3px 4px;" class="fw600">{{
+                                                                        (occupationalNoiseDetails?.ExpoLoudPreEmp === true) ?
+                                                                        'Y' : 'N' }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="padding: 3px 4px;" class="fw600">CURRENT EMPLOYMENT</td>
+                                                                    <td style="padding: 3px 4px;" class="fw600">{{
+                                                                        (occupationalNoiseDetails?.ExpoLoudCurEmp === true) ?
+                                                                        'Y' : 'N' }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="padding: 3px 4px;" class="fw600">PART TIME JOB/HOBBIES</td>
+                                                                    <td style="padding: 3px 4px;" class="fw600">{{ (occupationalNoiseDetails?.ExpoLoudPart
+                                                                        === true) ? 'Y' : 'N' }}</td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="table-responsive mb-0 mt-1">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="padding: 3px 4px;" class="fw600 w-50">iii). USING HEARING PROTECTIVE DEVICES AT :</td>
+                                                        <td style="padding: 3px 4px;" class="p-0">
+                                                            <table class="w-100">
+                                                                <tr>
+                                                                    <td style="padding: 3px 4px;" class="fw600">PREVIOUS EMPLOYMENT</td>
+                                                                    <td style="padding: 3px 4px;" class="fw600">{{
+                                                                        (occupationalNoiseDetails?.ProtectPreEmp === true) ? 'Y'
+                                                                        : 'N' }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="padding: 3px 4px;" class="fw600">CURRENT EMPLOYMENT</td>
+                                                                    <td style="padding: 3px 4px;" class="fw600">{{
+                                                                        (occupationalNoiseDetails?.ProtectCurEmp === true) ? 'Y'
+                                                                        : 'N' }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="padding: 3px 4px;" class="fw600">PART TIME JOB/HOBBIES</td>
+                                                                    <td style="padding: 3px 4px;" class="fw600">{{ (occupationalNoiseDetails?.ProtectPart
+                                                                        === true) ? 'Y' : 'N' }}</td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xs-12 mb-2">
+                                        <p class="fw700 fs18 pt-0 pb-0 mt-0 mb-3">
+                                            <span style="border-bottom: 2px solid #000;">Medical History:</span>
+                                        </p>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="padding: 3px 4px;" class="fw600">i). HAVE YOU EVER HAD HISTORY OF EAR INJURY, EAR ACHE OR
+                                                        EAR DISCHARGE ?</td>
+                                                    <td style="padding: 3px 4px;" class="fw600">{{ (medicalHistoryDetails?.InjuryHistory === true) ? 'Y' :
+                                                        'N' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 3px 4px;" class="fw600">ii). ARE YOU HAVING UPPER RESPIRATORY INFECTIONS (URTI)
+                                                        SYMPTOMS ?</td>
+                                                    <td style="padding: 3px 4px;" class="fw600">{{ (medicalHistoryDetails?.URTIsymptoms === true) ? 'Y' :
+                                                        'N' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 3px 4px;" class="fw600">iii). DO YOU EVER HAD HISTORY OF BUZZING/RINGING IN THE
+                                                        EARS ?</td>
+                                                    <td style="padding: 3px 4px;" class="fw600">{{ (medicalHistoryDetails?.BuzzHistory === true) ? 'Y' :
+                                                        'N' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 3px 4px;" class="fw600">iv). DO YOU HAVE ANY DISEASE THAT AFFECTS THE HEARING ?
+                                                    </td>
+                                                    <td style="padding: 3px 4px;" class="fw600">{{ (medicalHistoryDetails?.DiseaseAffect === true) ? 'Y' :
+                                                        'N' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 3px 4px;" class="fw600">v). HAVE YOU EVER BEEN CERTIFIED BY A MEDICAL DOCTOR AS
+                                                        HEARING LOSS ?</td>
+                                                    <td style="padding: 3px 4px;" class="fw600">{{ (medicalHistoryDetails?.CertHearingLoss === true) ? 'Y'
+                                                        : 'N' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 3px 4px;" class="fw600">vi). HAVE YOU TAKEN ANY MEDICATIONS THAT CAN CAUSE HEARING
+                                                        ISSUES ? (ANTIBIOTICS)</td>
+                                                    <td style="padding: 3px 4px;" class="fw600">{{ (medicalHistoryDetails?.Antibiotics === true) ? 'Y' :
+                                                        'N' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 3px 4px;" class="fw600">vii). DO YOU HAVE HOBBIES THAT INVOLVE LOUD NOISE EXPOSURE
+                                                        ? (DISCO, JAMMING, SHOOTING, ETC)</td>
+                                                    <td style="padding: 3px 4px;" class="fw600">{{ (medicalHistoryDetails?.LoudNoiseHobby === true) ? 'Y'
+                                                        : 'N' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 3px 4px;" class="fw600">viii). DO YOU DO DEEP SEA UNDERWATER SCUBA DIVE (MORE THAN
+                                                        3 METERS DEPTH) ?</td>
+                                                    <td style="padding: 3px 4px;" class="fw600">{{ (medicalHistoryDetails?.scubaDiving === true) ? 'Y' :
+                                                        'N' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 3px 4px;" class="fw600">ix). HAVE YOU EVER EXPOSED TO LOUD NOISE EXPLOSION ?</td>
+                                                    <td style="padding: 3px 4px;" class="fw600">{{ (medicalHistoryDetails?.ExpoExplosion === true) ? 'Y' :
+                                                        'N' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 3px 4px;" class="fw600">x). ARE YOU EXPOSED TO NOISE IN THE LAST 14 HOURS PRIOR TO
+                                                        THIS AUDIOMETRIC TEST ?</td>
+                                                    <td style="padding: 3px 4px;" class="fw600">{{ (medicalHistoryDetails?.Expo14hoursPrior === true) ?
+                                                        'Y' : 'N' }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+        
+                    <div class="row m-0" style="page-break-after: always !important">
+                        <div class="col-sm-12 col-xs-12 pt-5 mt-4">
+                            <div class="pb-2 mb-2 mt-4 bg-white shadow-sm rounded w-100"
+                                style="width:100%; border:2px solid #000; margin-top: 50px;">
+                                <!-- <div class="text-right pt-3 pb-4 pr-3">
+                                    <img [src]="websiteLogo" alt="Sihatku" class="logo">
+                                </div> -->
+                                <div class="text-center pt-3 pb-1">
+                                    <p class="text-muted fw700 fs16 pt-0 pb-3 mt-0 mb-1" style="border-bottom: 1px solid #000;">
+                                       <span class="mr-4">{{employeeDetailsById?.CompanyName}}</span> 
+                                       <span class="mr-4">{{employeeDetails?.EmpName}}</span> 
+                                       <span>{{employeeDetails?.ICNum}}</span> 
+                                    </p>
+                                </div>
+        
+                                <div class="row pl-4 pr-4 pt-2">
+                                    <div class="col-sm-12 col-xs-12 mb-1 pb-0">
+                                        <p class="fw700 fs22 pt-0 pb-0 mt-0 mb-3">
+                                            <span style="border-bottom: 2px solid #000;">Audiometric Test Results:</span>
+                                        </p>
+                                        <div class="col-sm-12 col-xs-12 mb-2">
+                                            <p class="fw600 fs16 pt-0 pb-0 mt-0 mb-3">
+                                                <span style="border-bottom: 2px solid #000;">Test Information:</span>
+                                            </p>
+                                            <div class="table-responsive mb-0 mt-1">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="padding: 3px 4px;" class="fw600">Exposure</td>
+                                                            <td style="padding: 3px 4px;" class="fw400">{{ (audiometryResultDetails?.Exposure === null) ?
+                                                                'Nil' : audiometryResultDetails?.Exposure }}</td>
+                                                            <td style="padding: 3px 4px;" class="fw600">Maximum Exposure</td>
+                                                            <td style="padding: 3px 4px;" class="fw400">{{ (audiometryResultDetails?.MaxExposure === null)
+                                                                ? 'Nil' : audiometryResultDetails?.MaxExposure }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 3px 4px;" class="fw600">Type of Audiogram</td>
+                                                            <td style="padding: 3px 4px;" class="fw400">{{ (audiometryResultDetails?.TypeOfAudiogram ===
+                                                                'B') ? 'BASELINE AUDIOGRAM' :
+                                                                (audiometryResultDetails?.TypeOfAudiogram === 'A') ? 'ANNUAL
+                                                                AUDIOGRAM' : 'NA' }}</td>
+                                                            <td style="padding: 3px 4px;" class="fw600">Audiometer</td>
+                                                            <td style="padding: 3px 4px;" class="fw400">{{audiometryResultDetails?.Audiometer}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 3px 4px;" colspan="1" class="fw600">Results:</td>
+                                                            <td style="padding: 3px 4px;" colspan="3" class="fw400">{{audiometryResultDetails?.Results}}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 3px 4px;" colspan="1" class="fw600">Remarks:</td>
+                                                            <td style="padding: 3px 4px;" colspan="3" class="fw400">{{audiometryResultDetails?.Remarks}}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div div class="row pl-4 pr-4">
+                                    <div class="col-sm-12 col-xs-12 mb-1">
+                                        <p class="fw600 fs16 pt-0 pb-0 mt-0 mb-3">
+                                            <span style="border-bottom: 2px solid #000;">Frequencies:</span>
+                                        </p>
+                                        <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+        
+                                            <div class="table-responsive mb-0 mt-1">
+                                                <table class="table table-sm table-border px-2 text-left text-nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col" colspan="2" class="text-center text-black">
+                                                                Frequency, Hz</th>
+                                                            <th scope="col" class="text-center border-right-bold text-black"
+                                                                style="min-width: 100px;">
+                                                                500</th>
+                                                            <th scope="col" class="text-center border-right-bold text-black"
+                                                                style="min-width: 100px;">
+                                                                1000</th>
+                                                            <th scope="col" class="text-center border-right-bold text-black"
+                                                                style="min-width: 100px;">
+                                                                2000</th>
+                                                            <th scope="col" class="text-center border-right-bold text-black"
+                                                                style="min-width: 100px;">
+                                                                3000</th>
+                                                            <th scope="col" class="text-center border-right-bold text-black"
+                                                                style="min-width: 100px;">
+                                                                4000</th>
+                                                            <th scope="col" class="text-center text-black"
+                                                                style="min-width: 100px;">6000</th>
+                                                        </tr>
+                                                    </thead>
+        
+                                                    <tbody>
+                                                        <ng-container>
+                                                            <tr class="text-uppercase">
+                                                                <td style="padding: 2px 4px;" colspan="8">
+                                                                    <div
+                                                                        class="bg-color1 rounded-top px-3 pt-2 pb-1 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                                                        <mat-label class="fw700 fs16">BaseLine :</mat-label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding: 2px 4px;" colspan="2"
+                                                                    class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                                    <div class="text-muted w-10">
+                                                                        <mat-label class="fw700 w-10">Right Ear (dB)</mat-label>
+                                                                    </div>
+                                                                </td>
+        
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.R500}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.R1000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.R2000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.R3000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.R4000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.R6000}}
+                                                                    </span>
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding: 2px 4px;" colspan="2"
+                                                                    class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                                    <div class="text-muted w-10">
+                                                                        <mat-label class="fw700 w-10">Left Ear (dB)</mat-label>
+                                                                    </div>
+                                                                </td>
+        
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.L500}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.L1000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.L2000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.L3000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.L4000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.L6000}}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </ng-container>
+        
+                                                        <ng-container *ngIf="audiometryResultDetails?.TypeOfAudiogram === 'A'">
+                                                            <tr class="text-uppercase">
+                                                                <td style="padding: 2px 4px;" colspan="8">
+                                                                    <div
+                                                                        class="bg-color1 rounded-top px-3 pt-2 pb-1 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                                                        <mat-label class="fw700 fs16">Annual :</mat-label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding: 2px 4px;" colspan="2"
+                                                                    class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                                    <div class="text-muted w-10">
+                                                                        <mat-label class="fw700 w-10">Right Ear (dB)</mat-label>
+                                                                    </div>
+                                                                </td>
+        
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.R500}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.R1000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.R2000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.R3000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.R4000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.R6000}}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding: 1px 4px;" colspan="2"
+                                                                    class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                                    <div class="text-muted w-10">
+                                                                        <mat-label class="fw700 w-10">Left Ear (dB)</mat-label>
+                                                                    </div>
+                                                                </td>
+        
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.L500}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.L1000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.L2000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.L3000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.L4000}}
+                                                                    </span>
+                                                                </td>
+                                                                <td style="padding: 2px 4px;" class="border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.L6000}}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </ng-container>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div div class="row pl-4 pr-4">
+                                    <div class="col-sm-12 col-xs-12 mb-1">
+                                        <p class="fw600 fs16 pt-0 pb-0 mt-0 mb-3">
+                                            <span style="border-bottom: 2px solid #000;">Results:</span>
+                                        </p>
+                                        <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                                            <div class="row">
+                                                <div class="col-xl-12 col-12">
+                                                    <div
+                                                        class="bg-color1 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                                        <h6 class="mr-3">
+                                                            <small class="fw700 fs16 text-uppercase">BaseLine :</small>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive mb-0">
+                                                <table class="table table-sm table-border px-2 text-left text-nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col" colspan="1"
+                                                                class="text-center text-black border-right">Results</th>
+                                                            <th scope="col" colspan="2"
+                                                                class="text-center border-right-bold text-black"
+                                                                style="min-width: 100px;">Average (0.5, 1, 2, 3) kHz</th>
+                                                            <th scope="col" colspan="2" class="text-center text-black"
+                                                                style="min-width: 100px;">
+                                                                Average (2, 3, 4) kHz</th>
+                                                        </tr>
+                                                    </thead>
+        
+                                                    <tbody>
+                                                        <ng-container>
+                                                            <tr>
+                                                                <td colspan="1"
+                                                                    class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                                    <div class="text-muted w-10">
+                                                                        <mat-label class="fw700 w-10">Right Ear (dB)</mat-label>
+                                                                    </div>
+                                                                </td>
+        
+                                                                <td colspan="2" style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.AvgR1}}
+                                                                    </span>
+                                                                </td>
+                                                                <td colspan="2" style="padding: 2px 4px;" class="border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.AvgR2}}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="1"
+                                                                    class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                                    <div class="text-muted w-10">
+                                                                        <mat-label class="fw700 w-10">Left Ear (dB)</mat-label>
+                                                                    </div>
+                                                                </td>
+        
+                                                                <td colspan="2" style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.AvgL1}}
+                                                                    </span>
+                                                                </td>
+                                                                <td colspan="2" style="padding: 2px 4px;" class="border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultBaseLineDetails.AvgL2}}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </ng-container>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div div class="row pl-4 pr-4" *ngIf="audiometryResultDetails.TypeOfAudiogram === 'A'">
+                                    <div class="col-sm-12 col-xs-12 mb-1">
+                                        <p class="fw600 fs16 mb-3">
+                                            <span style="border-bottom: 2px solid #000;">Results:</span>
+                                        </p>
+                                        <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                                            <div class="row">
+                                                <div class="col-xl-12 col-12">
+                                                    <div
+                                                        class="bg-color1 rounded-top px-3 pt-2 mb-1 d-flex justify-content-start flex-row flex-wrap">
+                                                        <h6 class="mr-3">
+                                                            <small class="fw700 fs16 text-uppercase">Annual :</small>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive mb-0">
+                                                <table class="table table-sm table-border px-2 text-left text-nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col" colspan="1"
+                                                                class="text-center text-black border-right">Results</th>
+                                                            <th scope="col" colspan="2"
+                                                                class="text-center border-right-bold text-black"
+                                                                style="min-width: 100px;">Average (0.5, 1, 2, 3) kHz</th>
+                                                            <th scope="col" colspan="2" class="text-center text-black"
+                                                                style="min-width: 100px;">
+                                                                Average (2, 3, 4) kHz</th>
+                                                        </tr>
+                                                    </thead>
+        
+                                                    <tbody>
+                                                        <ng-container>
+                                                            <tr>
+                                                                <td colspan="1"
+                                                                    class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                                    <div class="text-muted w-10">
+                                                                        <mat-label class="fw700 w-10">Right Ear (dB)</mat-label>
+                                                                    </div>
+                                                                </td>
+        
+                                                                <td colspan="2" style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.AvgR1}}
+                                                                    </span>
+                                                                </td>
+                                                                <td colspan="2" style="padding: 2px 4px;" class="border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.AvgR2}}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="1"
+                                                                    class="pr-3 pl-3 w-10 border-right border-bottom">
+                                                                    <div class="text-muted w-10">
+                                                                        <mat-label class="fw700 w-10">Left Ear (dB)</mat-label>
+                                                                    </div>
+                                                                </td>
+        
+                                                                <td colspan="2" style="padding: 2px 4px;" class="border-right-bold border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.AvgL1}}
+                                                                    </span>
+                                                                </td>
+                                                                <td colspan="2" style="padding: 2px 4px;" class="border-bottom text-center w-10">
+                                                                    <span class="text-muted w-10" style="min-width: 70px;">
+                                                                        {{audiometryResultAnnualDetails.AvgL2}}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </ng-container>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+        
+                    <div class="row m-0">
+                        <div class="col-sm-12 col-xs-12 pt-5 mt-4">
+                            <div class="pb-2 mb-2 mt-4 bg-white shadow-sm rounded w-100"
+                                style="width:100%; border:2px solid #000; margin-top: 50px;">
+                                <!-- <div class="text-right pt-3 pb-4 pr-3">
+                                    <img [src]="websiteLogo" alt="Sihatku" class="logo">
+                                </div> -->
+                                <div class="text-center pt-3 pb-1">
+                                    <p class="text-muted fw700 fs16 pt-0 pb-3 mt-0 mb-1" style="border-bottom: 1px solid #000;">
+                                       <span class="mr-4">{{employeeDetailsById?.CompanyName}}</span> 
+                                       <span class="mr-4">{{employeeDetails?.EmpName}}</span> 
+                                       <span>{{employeeDetails?.ICNum}}</span> 
+                                    </p>
+                                </div>
+        
+                                <div class="row pl-4 pr-4 pt-3">
+                                    <!-- <div class="row"> -->
+                                    <!-- Right Ear -->
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pt-3">
+                                        <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                                            <div
+                                                class="bg-color1 text-black rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                                                <h6 class="mr-3 pt-2 text-uppercase">
+                                                    <span class="pl-1 fs16 fw600 text-normal">Right Ear Audiogram</span>
+                                                </h6>
+                                            </div>
+                                            <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
+                                                <div
+                                                    class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
+                                                    <!-- <p class="fs14 fw600 pt-3">Frequency</p> -->
+                                                    <p class="pt-3"></p>
+                                                </div>
+                                                <canvas #frequencyChartRightEar class="line-chart col-xl-12 col-12 p-0"
+                                                    height="260"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <!-- Left Ear -->
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pt-3">
+                                        <div class="pb-1 mb-1 mt-1 bg-white shadow-sm rounded w-100">
+                                            <div
+                                                class="bg-color1 text-black rounded-top px-3 py-1 text-center flex-row flex-wrap">
+                                                <h6 class="mr-3 pt-2 text-uppercase">
+                                                    <span class="pl-1 fs16 fw600 text-normal">Left Ear Audiogram</span>
+                                                </h6>
+                                            </div>
+        
+                                            <div class="col-xl-12 col-12 pb-3 mat-elevation-z4 bg-white">
+                                                <div
+                                                    class="col-xl-12 col-12 p-0 d-flex flex-row flex-wrap justify-content-between align-items-center">
+                                                    <!-- <p class="fs14 fw600 pt-3">Frequency</p> -->
+                                                    <p class="pt-3"></p>
+                                                </div>
+                                                <canvas #frequencyChartLeftEar class="line-chart col-xl-12 col-12 p-0"
+                                                    height="260"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                </div>
+        
+                                <div class="col-sm-12 col-xs-12 mb-4 pt-4">
+                                    <h5 class="font-weight-bold mb-4">Recommendation</h5>
+                                    <div class="table-responsive mb-0 mt-3">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="p-4">The patient has been seen by the OHD. The audiometry report
+                                                        with the readings of air and bone conductance shows a Bilateral Ear
+                                                        Noise Induced Hearing Loss. Therefore, this employee needs to be
+                                                        notified to DOSH. The employee also will need to undergo retraining of
+                                                        wearing the hearing protective devices. It is also suggested that the
+                                                        employee should be repurposed into a different work unit to safeguard
+                                                        his hearing. If the employee is still working in the same work unit, a
+                                                        yearly audiometry should be done for him.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix w-100"></div>
+                                <div class="row">
+                                          <div class="col-sm-6 col-xs-12 text-left text-muted">
+                                            <span class="pl-4">
+                                            Tested By..........................................
+                                            </span>
+                                            <br>
+                                          </div>
+                                          <div class="col-sm-6 col-xs-12 text-right text-muted">
+                                            <span class="pr-4">
+                                            Received By........................................
+                                            </span>
+                                            <br>
+                                          </div>
+                                 
+                                          <div class="col-sm-12 col-xs-12 pt-5 mb-3 text-center text-muted">
+                                            <small>
+                                                Wholly owned by <span>Malaysian Urgent Care Clinics Sdn. Bhd.</span><br>
+                                                <span>9G, Jalan Hentian 1, Pusat Hentian Kajang, 43000 Kajang, Selangor</span><br>
+                                                <span>88A, Jalan Alor, 50200 Kuala Lumpur</span><br>
+                                                <span>3G, Wisma Koperasi, Jalan Koperasi Labu 1, Labu, 71900 Negeri
+                                                    Sembilan.</span>
+                                            </small>
+                                            <!-- <small>
+                                                Wholly owned by <span>{{allOhdClinic.cName}}</span><br>
+                                                <span>{{allOhdClinic.cName}}</span><br>
+                                                <span>88A, Jalan Alor, 50200 Kuala Lumpur</span><br>
+                                                <span>3G, Wisma Koperasi, Jalan Koperasi Labu 1, Labu, 71900 Negeri
+                                                    Sembilan.</span>
+                                            </small> -->
+                                          </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+</body>

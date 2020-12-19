@@ -118,8 +118,8 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         DateOfTest: ['', Validators.required],
         TypeOfAudiogram: ['', Validators.required],
         Audiometer: [''],
-        Exposure: [''],
-        MaxExposure: [''],
+        Exposure: ['', Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/)],
+        MaxExposure: ['', Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/)],
         Results: [''],
         Remarks: [''],
       }),
@@ -327,8 +327,8 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
               L4000: this.audiometryResultBaseLineDetails?.L4000,
               L6000: this.audiometryResultBaseLineDetails?.L6000,
               AvgR1: this.audiometryResultBaseLineDetails?.AvgR1,
-              AvgL1: this.audiometryResultBaseLineDetails?.AvgL1,
               AvgR2: this.audiometryResultBaseLineDetails?.AvgR2,
+              AvgL1: this.audiometryResultBaseLineDetails?.AvgL1,
               AvgL2: this.audiometryResultBaseLineDetails?.AvgL2
             },
           });
@@ -368,6 +368,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       const avgBaseLineRightValue1 = parseFloat((calculatedValue1).toFixed(2));
       this.baseLineAvgRight1 = avgBaseLineRightValue1;
 
+      // console.log('baseLineAvgRight1:', this.baseLineAvgRight1)
       this.baseLineGroup.controls.AvgR1.setValue(this.baseLineAvgRight1);
       this.baseLineGroup.controls.AvgR1.enable();
     }
@@ -376,6 +377,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       const avgBaseLineRightValue2 = parseFloat((calculatedValue2).toFixed(2));
       this.baseLineAvgRight2 = avgBaseLineRightValue2;
 
+      // console.log('baseLineAvgRight2:', this.baseLineAvgRight2)
       this.baseLineGroup.controls.AvgR2.setValue(this.baseLineAvgRight2);
       this.baseLineGroup.controls.AvgR2.enable();
     }
@@ -386,6 +388,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       const avgBaseLineLeftValue1 = parseFloat((calculatedValue1).toFixed(2));
       this.baseLineAvgLeft1 = avgBaseLineLeftValue1;
 
+      // console.log('baseLineAvgLeft1:', this.baseLineAvgLeft1)
       this.baseLineGroup.controls.AvgL1.setValue(this.baseLineAvgLeft1);
       this.baseLineGroup.controls.AvgL1.enable();
     }
@@ -394,6 +397,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       const avgBaseLineLeftValue2 = parseFloat((calculatedValue2).toFixed(2));
       this.baseLineAvgLeft2 = avgBaseLineLeftValue2;
 
+      // console.log('baseLineAvgLeft2:', this.baseLineAvgLeft2)
       this.baseLineGroup.controls.AvgL2.setValue(this.baseLineAvgLeft2);
       this.baseLineGroup.controls.AvgL2.enable();
     }

@@ -133,7 +133,7 @@
                                                         <i class="fa fa-credit-card mr-2" aria-hidden="true"></i>
                                                         Payment</button> -->
                                                     <button type="button"
-                                                        class="btn btn-success btn-sm rounded-pill fs14 fw600 text-uppercase" [routerLink]="['/employee/general-info', data.Id]">
+                                                        class="btn btn-success btn-sm rounded-pill fs14 fw600 text-uppercase" [routerLink]="['/employee/update-general-info', data.Id]">
                                                         <i class="fa fa-check-circle mr-2" aria-hidden="true"></i>
                                                         Checkin</button>
                                                 </td>
@@ -158,14 +158,14 @@
                                     <th scope="col">MyKad/IC No.</th>
                                     <th scope="col">LastTestDate</th>
                                     <!-- <th scope="col">Purpose</th> -->
-                                    <th scope="col">Employer Name</th>
+                                    <th scope="col">Employer</th>
                                     <th scope="col">Employees Info</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <ng-container *ngIf="employeeData?.length; else noDataFound">
                                     <tr *ngFor="let data of employeeData">
-                                        <td><a class="text-black" [routerLink]="['/']">
+                                        <td><a class="text-black text-uppercase" [routerLink]="">
                                                 {{data.EmpName}}
                                             </a></td>
                                         <td>

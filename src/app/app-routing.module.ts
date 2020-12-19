@@ -18,6 +18,11 @@ const routes: Routes = [
     canActivateChild: [NoAuthGuard]
   },
   {
+    path: 'report-result',
+    loadChildren: () => import('./views/report-result/report-result.module').then(mod => mod.ReportResultModule),
+    canActivateChild: [AuthGuard]
+  },
+  {
     path: '',
     component: MainLayoutComponent,
     canActivate: [AuthGuard],

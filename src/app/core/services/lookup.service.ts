@@ -134,4 +134,12 @@ export class LookupService {
       );
   }
 
+  downloadAbnormalReport(data: Object) {
+    const apiPath = `${this.apiUrl}/LookupOHSModule/DownloadAbnormalReport`;
+    return this.http.post(apiPath, data, httpOptions)
+      .pipe(
+        map(response => response), 
+        catchError(this.handleError('downloadAbnormalReport'))
+      );
+  }
 }

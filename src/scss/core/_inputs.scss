@@ -495,7 +495,7 @@ input:-internal-autofill-selected {
 }
 .mat-radio-button.mat-radio-disabled .mat-radio-inner-circle,
 .mat-radio-button.mat-radio-disabled .mat-radio-ripple .mat-ripple-element {
-  background: rgba($verydarkblue, 0.54);
+  background: rgba($black, 0.54);
 }
 .mat-checkbox-disabled .mat-checkbox-label,
 .mat-radio-button.mat-radio-disabled .mat-radio-label-content{
@@ -528,4 +528,21 @@ label{
     color: $white;
     border-radius: 0 2px 2px 0;
   }
+}
+.mat-checkbox {
+  label {
+    margin: 0;
+  }
+}
+
+input[type=number] {
+  // &.pagination-input {
+  min-width: rem(50);
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  // }
 }

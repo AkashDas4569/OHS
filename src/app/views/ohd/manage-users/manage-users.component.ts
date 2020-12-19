@@ -69,7 +69,7 @@ export class ManageUsersComponent implements OnInit, OnDestroy {
         // return if another validator has already found an error on the matchingControl
         return of(null);
       }
-      if ((this.allUserList.UserID === this.formControls.userId.value)) {
+      if ((this.allUserList.LoginId === this.formControls.userId.value)) {
         return of(null);
       } else {
         return this.authenticationService.checkIsValidUserId(UserIdData)

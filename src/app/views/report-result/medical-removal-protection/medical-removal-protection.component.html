@@ -1,0 +1,297 @@
+<!-- PDF Viewer -->
+
+<body style="background-color: #fff !important;">
+    <section class="dashboard pb-5 pt-4 bg-adjust">
+        <div class="text-center pt-2 no-print">
+            <div class="btn btn-primary min-width btn-sm fs14 fw500 rounded-pill mr-2" type="button"
+                (click)="downloadPdf()">
+                <span>Print</span>
+            </div>
+            <div class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill" type="button"
+                [routerLink]="['/report/medical-surveillance-summary']">
+                <span>Back</span>
+            </div>
+        </div>
+
+        <div id="pdfTable">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-12 dashboard pt-1">
+                <div class="row m-0">
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="pb-2 mb-2 pt-2 mt-3 bg-white shadow-sm rounded w-100"
+                            style="width:100%; border:2px solid #000; margin-top: 50px;">
+                            <div class="text-right pt-2 pb-3 pr-3">
+                                <img [src]="websiteLogo" alt="Sihatku" class="logo">
+                            </div>
+
+                            <div class="row pl-4 pr-4 pt-1">
+                                <div class="col-sm-12 col-xs-12 d-flex justify-content-center pt-2">
+                                    <p class="fw500 fs16 text-center text-black">Occupational Safety and Health Act 1994
+                                        (Act 514)
+                                    </p>
+                                </div>
+
+                                <div class="col-sm-12 col-xs-12 pt-0 pb-1">
+                                    <p class="fw500 fs16 text-center text-black">Use and Standard of Exposure of
+                                        Chemicals Hazardous to Health Regulations 2000
+                                    </p>
+
+                                    <p class="fw700 fs20 text-center pt-2 text-black">
+                                        MEDICAL REMOVAL PROTECTION
+                                    </p>
+                                </div>
+
+                                <div class="col-sm-12 col-xs-12 mt-2 mb-3">
+                                    <div class="d-flex justify-content-between w-100 pt-2" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">1). Name of Worker : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                            {{medicalRemovalProtectionReportDetails?.EmpName}}</p>
+
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">2). IC No : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                            {{medicalRemovalProtectionReportDetails?.ICNum}}</p>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between w-100 pt-2" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">3). Socso No : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                            {{medicalRemovalProtectionReportDetails?.SOCSONum}}</p>
+
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">4). Date of Birth : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                            {{medicalRemovalProtectionReportDetails?.DOB}}</p>
+
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">5). Sex : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                            {{(medicalRemovalProtectionReportDetails?.Gender === 'M') ? 'Male' :
+                                            (medicalRemovalProtectionReportDetails?.Gender === 'F') ? 'Female' : '' }}
+                                        </p>
+                                    </div>
+
+                                    <div class="d-flex w-100 pt-2" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">6). Name and Address of Workplace :
+                                            </span>
+                                        </p>
+                                        <p class="flex-grow-1 fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                            <span
+                                                class="fs16 bg-color1">{{medicalRemovalProtectionReportDetails?.CompanyName}}</span>,
+                                            {{clientAddress}}</p>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between w-100 pt-2" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">7). Date of starting employment : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;"></p>
+
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap"> Duration of Employment (years) : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;"></p>
+                                    </div>
+
+                                    <div class="d-flex w-100 pt-2" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">8). Health Hazard Present <span
+                                                    class="fw500" style="font-style: italic;">(Use one form for one
+                                                    chemical)</span> : </span>
+                                        </p>
+                                        <p class="flex-grow-1 fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                        </p>
+                                    </div>
+
+                                    <div class="d-flex w-100 pt-3" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap"> I certify that the above named person
+                                                examined by me on <span class="fw500"
+                                                    style="font-style: italic;">(dd/mm/yy)</span> : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-50" style="border-bottom: 1px solid #000;">
+                                            {{medicalRemovalProtectionReportDetails?.TestDate}}</p>
+                                    </div>
+
+                                    <div class="d-flex w-100 pt-0" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap"> should not continue to work as <span
+                                                    class="fw500" style="font-style: italic;">(designated)</span> :
+                                            </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;"></p>
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap"> in <span class="fw500"
+                                                    style="font-style: italic;">(place of work)</span> : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;"></p>
+                                    </div>
+
+                                    <div class="d-flex w-100 pt-0" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap"> department/ section for : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;"></p>
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap"> months, subject to a review on <span
+                                                    class="fw500" style="font-style: italic;">(dd/mm/yy)</span> :
+                                            </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;"></p>
+
+                                    </div>
+
+                                    <div class="d-flex w-100 pt-3" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14 flex-grow-1">
+                                            <span class="pl-2 w-space-nowrap"> In the mean time, he should be given
+                                                alternative work in another department / section which does not </span>
+                                        </p>
+                                    </div>
+                                    <div class="d-flex w-100 pt-0" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap"> expose him to <span class="fw500"
+                                                    style="font-style: italic;">(name of individual chemical)</span> :
+                                            </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;"></p>
+                                    </div>
+
+                                    <div class="d-flex w-100" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14 flex-grow-1">
+                                            <span class="pl-2 w-space-nowrap"> The reasons for my recommendations are as
+                                                follows (please <i class="fas fa-check"></i>): </span>
+                                        </p>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="form-check-inline">
+                                            <mat-label class="fs14 fw600">
+                                                <mat-checkbox color="primary" disabled="true">Pregnancy</mat-checkbox>
+                                            </mat-label>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <mat-label class="fs14 fw600">
+                                                <mat-checkbox color="primary" disabled="true">Breast Feeding
+                                                </mat-checkbox>
+                                            </mat-label>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <mat-label class="fs14 fw600">
+                                                <mat-checkbox color="primary" disabled="true">Abnormal Result
+                                                </mat-checkbox>
+                                            </mat-label>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <mat-label class="fs14 fw600">
+                                                <mat-checkbox color="primary" disabled="true">Toxicity based on History
+                                                    & Physical Examination</mat-checkbox>
+                                            </mat-label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="form-check-inline">
+                                            <mat-label class="fs14 fw600">
+                                                <mat-checkbox color="primary" disabled="true">Specifies Others:
+                                                </mat-checkbox>
+                                            </mat-label>
+                                        </div>
+
+                                        <div class="d-flex justify-content-end">
+                                            <span class="fw600 fs14 w-100"
+                                                style="border-bottom: 1px solid #000;"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between w-100 pt-4" style="min-width: 200px;">
+                                        <p class="mr-2 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">Name of Occupational Health Doctor (in
+                                                BLOCK Letters): </span>
+                                        </p>
+                                        <p class="fw600 fs12 w-100 text-uppercase"
+                                            style="border-bottom: 1px solid #000;">
+                                            {{medicalRemovalProtectionReportDetails?.OHDName}}</p>
+
+                                        <p class="mr-2 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">OHD_DOSH Registration No. : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                            {{medicalRemovalProtectionReportDetails?.DOSHRegNo}}</p>
+                                    </div>
+                                    <div class="d-flex w-100 pt-0" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">Practice Address : </span>
+                                        </p>
+                                        <p class="flex-grow-1 fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                            {{clinicAddress}}</p>
+                                    </div>
+                                    <div class="d-flex w-100 pt-0" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">Email Address : </span>
+                                        </p>
+                                        <p class="flex-grow-1 fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                            {{allOhdClinic?.cEmail}}</p>
+
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">H/P : </span>
+                                        </p>
+                                        <p class="flex-grow-1 fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                            {{allOhdClinic?.cTel}}</p>
+                                    </div>
+                                    <div class="d-flex w-100 pt-0" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">Tel. No : </span>
+                                        </p>
+                                        <p class="flex-grow-1 fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                        </p>
+
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">Fax : </span>
+                                        </p>
+                                        <p class="flex-grow-1 fw600 fs14 w-100" style="border-bottom: 1px solid #000;">
+                                        </p>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between w-100 pt-5 mb-2"
+                                        style="min-width: 200px;">
+                                        <p class="pl-2 mr-3 fw600 fs14 w-100" style="border-top: 1px solid #000;">
+                                            <span class="pl-2 w-space-nowrap text-center">OHD Signature</span>
+                                        </p>
+                                        <p class="pl-2 mr-3 fw600 fs14 w-100" style="border-top: 1px solid #000;">
+                                            <span class="pl-2 w-space-nowrap text-center">Date</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xs-12 pt-3">
+                                        <div class="md-form text-center">
+                                            <small>
+                                                Note: This certificate should be completed in triplicate and the
+                                                original copy forwarded to the Director General,
+                                                Department of Occupational Safety and Health , Level 2, 3 & 4, Block D3,
+                                                Parcel D, Federal Government
+                                                Administrative Centre, 62530 Putrajaya and must include the actual
+                                                results of the relevant examination/tests.
+                                                The quantitative results (e.g. blood lead) the exact figures and
+                                                measurements units must be clearly stated. Also
+                                                include copy of qualitative results (eg Chest X-ray). Incomplete form
+                                                will be returned.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>

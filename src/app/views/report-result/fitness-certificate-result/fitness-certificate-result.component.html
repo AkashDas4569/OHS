@@ -1,0 +1,132 @@
+<!-- PDF Viewer -->
+<body style="background-color: #fff !important;">
+    <section class="dashboard pb-5 pt-4 bg-adjust">
+        <div class="text-center pt-2 no-print">
+            <div class="btn btn-primary min-width btn-sm fs14 fw500 rounded-pill mr-2" type="button"
+                (click)="downloadPdf()">
+                <span>Print</span>
+            </div>
+            <div class="btn btn-info min-width btn-sm fs14 fw500 rounded-pill" type="button"
+                [routerLink]="['/report/medical-surveillance-summary']">
+                <span>Back</span>
+            </div>
+        </div>
+
+        <div id="pdfTable">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-12 dashboard pt-3">
+                <div class="row m-0">
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="pb-5 mb-2 pt-4 mt-5 bg-white shadow-sm rounded w-100" style="width:100%; border:2px solid #000; margin-top: 50px;">
+                            <div class="text-right pt-3 pb-4 pr-3">
+                                <img [src]="websiteLogo" alt="Sihatku" class="logo">
+                            </div>
+
+                            <div class="row pl-4 pr-4 pt-4">
+                                <div class="col-sm-12 col-xs-12 d-flex justify-content-center">
+                                    <p class="fw500 fs16 text-center text-black">Occupational Safety and Health Act 1994 <br>(Act 514)
+                                    </p>
+                                </div>
+    
+                                <div class="col-sm-12 col-xs-12 pt-2 pb-3">
+                                    <p class="fw500 fs16 text-center text-black">Occupational Safety and Health (Use and Standard of Exposure of Chemicals<br>
+                                        Hazardous to Health) Regulations 2000
+                                    </p>
+    
+                                    <p class="fw700 fs20 text-center pt-2 text-black">
+                                        CERTIFICATE OF FITNESS
+                                    </p>
+                                </div>
+
+                                <div class="col-sm-12 col-xs-12 mt-2 mb-5">
+                                    <div class="d-flex w-100 pt-2" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">Name of Person examined : </span>
+                                        </p>
+                                        <p class="flex-grow-1 fw600 fs14 w-100" style="border-bottom: 1px solid #000;">{{medicalCertificateFitnessDetails?.EmpName}}</p>
+                                      </div>
+
+                                      <div class="d-flex justify-content-between w-100 pt-2" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">IC No. : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">{{medicalCertificateFitnessDetails?.ICNum}}</p>
+
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">Date of Birth : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">{{medicalCertificateFitnessDetails?.DOB}}</p>
+
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">Sex : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">{{(medicalCertificateFitnessDetails?.Gender === 'M') ? 'Male' : (medicalCertificateFitnessDetails?.Gender === 'F') ? 'Female' : '' }}</p>
+                                      </div>
+
+                                      <div class="d-flex w-100 pt-2" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">Address of Employee : </span>
+                                        </p>
+                                        <p class="flex-grow-1 fw600 fs14 w-100" style="border-bottom: 1px solid #000;">{{empAddress}}</p>
+                                      </div>
+
+                                      <div class="d-flex w-100 pt-4" style="min-width: 200px;">
+                                        <p class="mr-3 fw700 fs16">
+                                            <span class="pl-2 w-space-nowrap">Examination/Tests done and the results : </span>
+                                        </p>
+                                      </div>
+
+                                      <div class="d-flex w-100 pt-3" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">I hereby certify that I have examined the above named person on : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">{{medicalCertificateFitnessDetails?.TestDate}}</p>
+                                      </div>
+                                      <div class="d-flex w-100" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14">
+                                            <span class="pl-2 w-space-nowrap">and that he is fit/not fit for work which may expose him to : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-100" style="border-bottom: 1px solid #000;">{{medicalCertificateFitnessDetails?.Addr1}}</p>
+                                      </div>
+
+                                      <div class="d-flex justify-content-start w-100 pt-4 pb-2" style="min-width: 200px;">
+                                        <p class="mr-3 fw700 fs14">
+                                            <span class="pl-2 w-space-nowrap">Remarks (if any) : </span>
+                                        </p>
+                                      </div>
+
+                                      <div class="d-flex justify-content-end w-100 pt-4 mb-3" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14 w-60" style="border-top: 1px solid #000;">
+                                            <span class="pl-2 w-space-nowrap">Signature & Date</span>
+                                        </p>
+                                      </div>
+                                      <div class="d-flex justify-content-end w-100 pt-2" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14 w-60">
+                                            <span class="pl-4 ml-2 w-space-nowrap text-center">Name of Occupational Health Doctor (in BLOCK Letters): </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-80 pr-4 text-uppercase" style="border-bottom: 1px solid #000;">{{medicalCertificateFitnessDetails?.OHDName}}</p>
+                                      </div>
+                                      <div class="d-flex justify-content-end w-100 pt-2 pr-4" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14 w-60">
+                                            <span class="pl-4 ml-2 w-space-nowrap text-center">DOSH Reg. No. : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-80 pr-4" style="border-bottom: 1px solid #000;">{{medicalCertificateFitnessDetails?.DOSHRegNo}}</p>
+                                      </div>
+                                      <div class="d-flex justify-content-end w-100 pt-3 mb-3" style="min-width: 200px;">
+                                        <p class="mr-3 fw600 fs14 w-60">
+                                            <span class="pl-4 ml-2 w-space-nowrap text-center">Address of Practice : </span>
+                                        </p>
+                                        <p class="fw600 fs14 w-80 pr-4" style="border-bottom: 1px solid #000;">{{clinicAddress}}</p>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-xs-12 text-start mt-5 mb-2" style="width:100%; border-top: 2px solid #000 !important;">
+                            <p class="text-black fs16 pt-1 pl-0">Department of Occupational Safety and Health (DOSH) Malaysia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

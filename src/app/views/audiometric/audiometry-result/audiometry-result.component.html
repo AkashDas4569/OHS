@@ -89,9 +89,9 @@
                                                     </mat-label>
                                                     <input autocomplete="off" formControlName="Exposure" matInput
                                                         placeholder="Enter Exposure" type="text">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['EmpName'], 'name').message">
-                                                    {{ errorState(formControls['EmpName'], 'name').message }}
-                                                </mat-error> -->
+                                                    <mat-error *ngIf="errorState(audiometricTestGroup.controls['Exposure'], 'Exposure').message">
+                                                    {{ errorState(audiometricTestGroup.controls['Exposure'], 'Exposure').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </div>
                                             <div class="col-sm-2 col-12">
@@ -100,9 +100,9 @@
                                                     </mat-label>
                                                     <input autocomplete="off" formControlName="MaxExposure" matInput
                                                         placeholder="Enter Maximum Exposure" type="text">
-                                                    <!-- <mat-error *ngIf="errorState(formControls['EmpName'], 'name').message">
-                                                    {{ errorState(formControls['EmpName'], 'name').message }}
-                                                </mat-error> -->
+                                                    <mat-error *ngIf="errorState(audiometricTestGroup.controls['MaxExposure'], 'MaxExposure').message">
+                                                    {{ errorState(audiometricTestGroup.controls['MaxExposure'], 'MaxExposure').message }}
+                                                </mat-error>
                                                 </mat-form-field>
                                             </div>
                                             <!-- <div class="col-sm-3 col-12">

@@ -34,6 +34,12 @@ export const Errors: ErrorsInterface = {
   TypeOfAudiogram: [
     { type: 'required', message: 'Type of Audiogram is required.' },
   ],
+  Exposure: [
+    { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
+  ],
+  MaxExposure: [
+    { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
+  ],
   baseLineRight: [
     { type: 'required', message: 'Field is required.' },
     { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
