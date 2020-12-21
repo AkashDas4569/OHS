@@ -21,7 +21,7 @@
       <ul class="nav flex-column w-space-nowrap">
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/employee/registration']">
-            <span class="feed-menu-icon mr-1">
+            <span class="feed-menu-icon mr-1 linkimg">
               <img src="assets/img/employee-icon.png" alt="Employee-Icon">
             </span>
             <span class="feed-menu-text fs16 fw700">Employee Registration</span>
@@ -32,7 +32,7 @@
         
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/medical-surveillance/list']">
-            <span class="feed-menu-icon mr-1">
+            <span class="feed-menu-icon mr-1 linkimg">
               <img src="assets/img/medical-icon.png" alt="Medical-Icon">
             </span>
             <span class="feed-menu-text fs16 fw700"> Medical Surveillance</span>
@@ -161,7 +161,7 @@
       <ul class="nav flex-column w-space-nowrap">
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/audiometric/list']">
-            <span class="feed-menu-icon mr-1">
+            <span class="feed-menu-icon mr-1 linkimg">
               <img src="assets/img/radio.png" alt="radio-Icon">
             </span>
             <span class="feed-menu-text fs16 fw700 pl-2 pt-2">Audiometric</span>
@@ -227,7 +227,7 @@
           <li class="nav-item" routerLinkActive="active">
             <span [routerLink]="['/report']" class="d-none"></span>
             <a class="nav-link text-themed-verydarkblue t14">
-              <span class="feed-menu-icon mr-1">
+              <span class="feed-menu-icon mr-1 linkimg">
                 <img src="assets/img/portable-document-format.png" alt="portable-document-format-Icon">
               </span>
               <span class="feed-menu-text fs16 fw700 pl-2 pt-2">Report</span>
@@ -239,7 +239,7 @@
           <div class="ml-4 w-space-normal" [collapse]="isCollapsedReport">
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/report/medical-surveillance-summary']">
-                <span class="feed-menu-icon mr-1">
+                <span class="feed-menu-icon mr-1 linkimg">
                   <img src="assets/img/MedicalSurveillan.png" alt="MedicalSurveillance-Icon">
                 </span>
                 <span class="feed-menu-text fs14 fw500">Medical Surveillance Summary</span>
@@ -247,7 +247,7 @@
             </li>
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/report/audiometric-report']">
-                <span class="feed-menu-icon mr-1">
+                <span class="feed-menu-icon mr-1 linkimg">
                   <img src="assets/img/Workers_Abnormal.png" alt="Form-Icon">
                 </span>
                 <span class="feed-menu-text fs14 fw500">Audiometric Report</span>
@@ -255,7 +255,7 @@
             </li>
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/report/abnormal-exam-results']">
-                <span class="feed-menu-icon mr-1">
+                <span class="feed-menu-icon mr-1 linkimg">
                   <img src="assets/img/document.png" alt="document-Icon">
                 </span>
                 <span class="feed-menu-text fs14 fw500">Abnormal Exam. Results</span>
@@ -283,7 +283,7 @@
             <li class="nav-item" routerLinkActive="active">
               <span [routerLink]="['/ohs-client']" class="d-none"></span>
               <a class="nav-link text-themed-verydarkblue t14">
-                <span class="feed-menu-icon mr-1">
+                <span class="feed-menu-icon mr-1 linkimg">
                   <img src="assets/img/ClientList.png" alt="ClientList-Icon">
                 </span>
                 <span class="feed-menu-text fs16 fw700 pl-2 pt-2">OHS Client</span>
@@ -295,7 +295,7 @@
             <div class="ml-4 w-space-normal" [collapse]="isCollapsedOHSClient">
               <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/ohs-client/list']">
-                  <span class="feed-menu-icon mr-1">
+                  <span class="feed-menu-icon mr-1 linkimg">
                     <img src="assets/img/ClientList.png" alt="ClientList-Icon">
                   </span>
                   <span class="feed-menu-text fs14 fw500">OHS Client List</span>
@@ -303,7 +303,7 @@
               </li>
               <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/ohs-client/settings']">
-                  <span class="feed-menu-icon mr-2">
+                  <span class="feed-menu-icon mr-2 linkimg">
                     <img src="assets/img/company.png" alt="company-Icon">
                   </span>
                   <span class="feed-menu-text fs14 fw500">OHS Client Settings</span>
@@ -322,7 +322,7 @@
             <li class="nav-item" routerLinkActive="active">
               <span [routerLink]="['/ohd-settings']" class="d-none"></span>
               <a class="nav-link text-themed-verydarkblue t14">
-                <span class="feed-menu-icon mr-1">
+                <span class="feed-menu-icon mr-1 linkimg">
                   <img src="assets/img/doctor-settings.png" alt="Doctor-setting-Icon">
                 </span>
                 <span class="feed-menu-text fs16 fw700 pl-2 pt-2">OHD Settings</span>
@@ -334,7 +334,7 @@
             <div class="ml-4 w-space-normal" [collapse]="isCollapsedOHDSettings">
               <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/ohd-settings/settings']">
-                  <span class="feed-menu-icon mr-1">
+                  <span class="feed-menu-icon mr-1 linkimg">
                     <img src="assets/img/doctor-settings.png" alt="Doctor-setting-Icon">
                   </span>
                   <span class="feed-menu-text fs14 fw500">Settings</span>
@@ -342,7 +342,7 @@
               </li>
               <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link text-themed-verydarkblue t14" [routerLink]="['/ohd-settings/manage-users']">
-                  <span class="feed-menu-icon mr-1">
+                  <span class="feed-menu-icon mr-1 linkimg">
                     <img src="assets/img/add.png" alt="add-Icon">
                   </span>
                   <span class="feed-menu-text fs14 fw500">Manage Users</span>

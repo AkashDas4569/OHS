@@ -4,6 +4,7 @@
 @import './core/functions';
 @import './core/variables';
 @import './core/mixins';
+
 // Responive Breakpoints
 @include media-breakpoint-down(xs) {
   // Styles
@@ -12,13 +13,46 @@
 	  height: 100%;
 	}
 }
-// @include media-breakpoint-up(xs) {
+@include media-breakpoint-only(xs) {
+	// .dropdown-toggle::after {
+	// 	margin-left: 2.255em;
+	// 	vertical-align: .255em;
+	// 	border: none;
+	// 	display: inline-block;
+	// 	font-size: .625rem;
+	// }
+	
+	// .dropdown, .dropleft, .dropright, .dropup {
+	// 	position: relative;
+	// 	left: 170px;
+	// 	display: inline-flex;
+	// 	flex-direction: column;
+	// 	justify-content: center;
+	// 	align-self: center;
+	// 	align-items: center;
+	// }
+	// .dropdown.show .dropdown-toggle.menu-arrow + .dropdown-menu {
+	// 	margin-top: 0; 
+	// }
+}
+@include media-breakpoint-between(xs, sm) {
+	.title-left {
+		display: block !important;
+	}
+	.title-center {
+		display: none !important;
+	}
+}
+@include media-breakpoint-between(md, xxl) {
+	.title-center {
+		display: block !important;
+	}
+	.title-left {
+		display: none !important;
+	}
+}
 
-// }
-// @include media-breakpoint-only(sm) {
-
-// }
-// @include media-breakpoint-between(xs, sm) {
+// @include media-breakpoint-up(sm) {
 
 // }
 // @include media-breakpoint-between(xs, md) {
@@ -46,36 +80,33 @@
 	
 }
 @include media-breakpoint-between(xs, lg) {
-
+	
 }
 @include media-breakpoint-down(md) {
-	.navbar-expand-lg .navbar-collapse {
-		max-height: calc(100vh - 62px);
-		overflow: auto;
-	}
-	.navbar {
-		&.navbar-expand-lg {
-			max-height: 100vh;
-			overflow: auto;
-		}
-	}
-	.dropdown-menu{	
-		&.mega-menu{
-			// .dropdown-item {
-			.dropdown-list-item {
-				display: flex;
-				width: 100%;
-				margin: 0px;
-			}
-		}
-	}
+	// .navbar-expand-lg .navbar-collapse {
+	// 	max-height: calc(100vh - 62px);
+	// 	overflow: auto;
+	// }
+	// .navbar {
+	// 	&.navbar-expand-lg {
+	// 		max-height: 100vh;
+	// 		overflow: auto;
+	// 	}
+	// }
+	// .dropdown-menu{	
+	// 	&.mega-menu{
+	// 		// .dropdown-item {
+	// 		.dropdown-list-item {
+	// 			display: flex;
+	// 			width: 100%;
+	// 			margin: 0px;
+	// 		}
+	// 	}
+	// }
 }
 @include media-breakpoint-up(lg) {
-	.navbar-expand-lg .navbar-collapse {
-		visibility: visible !important;
-		opacity: 1 !important;
-	}
+	// .navbar-expand-lg .navbar-collapse {
+	// 	visibility: visible !important;
+	// 	opacity: 1 !important;
+	// }
 }
-// @include media-breakpoint-up(xl) {
-
-// }

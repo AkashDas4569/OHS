@@ -1,9 +1,4 @@
 <!-- PDF Viewer -->
-<style>
-    .mat-form-field-appearance-legacy .mat-form-field-infix {
-    padding: 0px !important;
-}
-</style>
 <body style="background-color: #fff !important;">
 <section class="dashboard pb-2 pt-2 bg-adjust">
             <div class="text-center pt-2 no-print">
@@ -234,14 +229,12 @@
                                 <!-- <div class="text-right pt-3 pb-4 pr-3">
                                     <img [src]="websiteLogo" alt="Sihatku" class="logo">
                                 </div> -->
-                                <div class="text-center pt-3 pb-1">
-                                    <p class="text-muted fw700 fs16 pt-0 pb-3 mt-0 mb-1" style="border-bottom: 1px solid #000;">
-                                       <span class="mr-4">{{employeeDetailsById?.CompanyName}}</span> 
-                                       <span class="mr-4">{{employeeDetails?.EmpName}}</span> 
-                                       <span>{{employeeDetails?.ICNum}}</span> 
-                                    </p>
+                                <div class="pt-3 pb-1 col-md-12 col-xs-12 col-12 d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #000;">
+                                       <p class="text-muted fw700 fs16 pt-0 pb-3 mt-0 mb-1 flex-grow-1 mr-2">{{employeeDetailsById?.CompanyName}}</p> 
+                                       <p class="text-muted fw700 fs16 pt-0 pb-3 mt-0 mb-1 mr-3">{{employeeDetails?.EmpName}}</p> 
+                                       <p class="text-muted fw700 fs16 pt-0 pb-3 mt-0 mb-1">{{employeeDetails?.ICNum}}</p>                                 
                                 </div>
-        
+
                                 <div class="row pl-4 pr-4 pt-2">
                                     <div class="col-sm-12 col-xs-12 mb-1 pb-0">
                                         <p class="fw700 fs22 pt-0 pb-0 mt-0 mb-3">
@@ -676,13 +669,11 @@
                                 <!-- <div class="text-right pt-3 pb-4 pr-3">
                                     <img [src]="websiteLogo" alt="Sihatku" class="logo">
                                 </div> -->
-                                <div class="text-center pt-3 pb-1">
-                                    <p class="text-muted fw700 fs16 pt-0 pb-3 mt-0 mb-1" style="border-bottom: 1px solid #000;">
-                                       <span class="mr-4">{{employeeDetailsById?.CompanyName}}</span> 
-                                       <span class="mr-4">{{employeeDetails?.EmpName}}</span> 
-                                       <span>{{employeeDetails?.ICNum}}</span> 
-                                    </p>
-                                </div>
+                                <div class="pt-3 pb-1 col-md-12 col-xs-12 col-12 d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #000;">
+                                    <p class="text-muted fw700 fs16 pt-0 pb-3 mt-0 mb-1 flex-grow-1 mr-2">{{employeeDetailsById?.CompanyName}}</p> 
+                                    <p class="text-muted fw700 fs16 pt-0 pb-3 mt-0 mb-1 mr-3">{{employeeDetails?.EmpName}}</p> 
+                                    <p class="text-muted fw700 fs16 pt-0 pb-3 mt-0 mb-1">{{employeeDetails?.ICNum}}</p>                                 
+                             </div>
         
                                 <div class="row pl-4 pr-4 pt-3">
                                     <!-- <div class="row"> -->
@@ -767,20 +758,19 @@
                                           </div>
                                  
                                           <div class="col-sm-12 col-xs-12 pt-5 mb-3 text-center text-muted">
-                                            <small>
+                                            <!-- <small>
                                                 Wholly owned by <span>Malaysian Urgent Care Clinics Sdn. Bhd.</span><br>
                                                 <span>9G, Jalan Hentian 1, Pusat Hentian Kajang, 43000 Kajang, Selangor</span><br>
                                                 <span>88A, Jalan Alor, 50200 Kuala Lumpur</span><br>
                                                 <span>3G, Wisma Koperasi, Jalan Koperasi Labu 1, Labu, 71900 Negeri
                                                     Sembilan.</span>
-                                            </small>
-                                            <!-- <small>
-                                                Wholly owned by <span>{{allOhdClinic.cName}}</span><br>
-                                                <span>{{allOhdClinic.cName}}</span><br>
-                                                <span>88A, Jalan Alor, 50200 Kuala Lumpur</span><br>
-                                                <span>3G, Wisma Koperasi, Jalan Koperasi Labu 1, Labu, 71900 Negeri
-                                                    Sembilan.</span>
                                             </small> -->
+                                            <small>
+                                                Wholly owned by <span>{{allOhdClinic.cName}}</span><br>
+                                                <span>{{allOhdClinic.cAddr1}}</span><br>
+                                                <span>{{allOhdClinic.cAddr2}}</span><br>
+                                                <span>{{allOhdClinic.cCity}}, {{allOhdClinic.cPostCode}}, {{allOhdClinic.cState}}.</span>
+                                            </small>
                                           </div>
                                 </div>
                             </div>
