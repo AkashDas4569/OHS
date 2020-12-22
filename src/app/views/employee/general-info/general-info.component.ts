@@ -27,6 +27,7 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
   public maritalStatusList = MaritalStatus;
   public sexData = Gender;
   public relationshipData = Relationship;
+  public relationshipName: string = 'name';
   public nationality: string = 'MY';
   public employeeId: number = 0;
   public employeeDetails: any;
@@ -58,21 +59,21 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
       Address: ['', [Validators.pattern(".*\\S.*[a-zA-Z0-9 ]"), Validators.maxLength(150)]],
       District: ['', Validators.pattern(".*\\S.*[a-zA-Z ]")],
       State: ['', Validators.required],
-      contactNo: ['',[
+      contactNo: ['', [
         Validators.required,
         Validators.pattern(/^[0-9]*$/),
-        Validators.minLength(10),
+        Validators.minLength(9),
         Validators.maxLength(14)
       ]],
-      Postcode: ['', [Validators.pattern(".*\\S.*[0-9]"), Validators.minLength(6)]],
-      ICNum: ['', [Validators.required, Validators.pattern(".*\\S.*[a-zA-Z0-9 ]"), Validators.maxLength(12)], this.employeeMykadIcDuplicateValidator()],
+      Postcode: ['', [Validators.pattern(".*\\S.*[0-9]")]],
+      ICNum: ['', [Validators.required, Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")], this.employeeMykadIcDuplicateValidator()],
       MartialStatus: [''],
       SOCSONum: ['', [Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")]],
       WorkerCompNo: ['', [Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")]],
       WorkPermitNo: ['', [Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")]],
       Gender: ['', Validators.required],
-      NoYrsMarried: ['', [Validators.pattern(".*\\S.*[0-9]"), Validators.maxLength(3)]],
-      NoOfChild: ['', [Validators.pattern(".*\\S.*[0-9]"), Validators.maxLength(3)]],
+      NoYrsMarried: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(3)]],
+      NoOfChild: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(3)]],
       Ethnic: [''],
       Nationality: ['MY', Validators.required],
       EmergencyContactName: ['', [Validators.required, Validators.pattern(".*\\S.*[a-zA-Z ]")]],
@@ -105,7 +106,7 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
 
     this.route.params.subscribe(params => {
       this.employeeId = +params['id'];
-      if(isNaN(this.employeeId)) {
+      if (isNaN(this.employeeId)) {
         this.employeeId = 0;
       }
       console.log(this.employeeId);
@@ -128,15 +129,15 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
 
   dobChange() {
     this.formControls.DOB.valueChanges
-    .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((value: any) => {
-          // console.log(value);
-        
-          const ageValue = moment().diff(value, 'years');
-          this.formControls.Age.setValue(ageValue);
-          this.formControls.Age.updateValueAndValidity();
-          console.log(ageValue);
-        }
+        // console.log(value);
+
+        const ageValue = moment().diff(value, 'years');
+        this.formControls.Age.setValue(ageValue);
+        this.formControls.Age.updateValueAndValidity();
+        console.log(ageValue);
+      }
       );
   }
   employeeMykadIcDuplicateValidator(): AsyncValidatorFn {
@@ -172,27 +173,27 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
   }
   getCompanyList() {
     this.lookupService.getClientList()
-    .pipe(takeUntil(this.onDestroyUnSubscribe))
-    .subscribe((clientList: any) => {
-      this.allClientList = clientList['ClientList'];
-      // console.log(this.allClientList);
-    });
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((clientList: any) => {
+        this.allClientList = clientList['ClientList'];
+        // console.log(this.allClientList);
+      });
   }
   getCountryList() {
     this.lookupService.getCountryList({})
-    .pipe(takeUntil(this.onDestroyUnSubscribe))
-    .subscribe((countryList: any) => {
-      this.countryList = countryList['CountryList'];
-      // console.log(this.countryList);
-    });
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((countryList: any) => {
+        this.countryList = countryList['CountryList'];
+        // console.log(this.countryList);
+      });
   }
   getEthnicList() {
     this.lookupService.getEthnicList({})
-    .pipe(takeUntil(this.onDestroyUnSubscribe))
-    .subscribe((ethnicList: any) => {
-      this.ethnicList = ethnicList['CountryList'];
-      // console.log(this.ethnicList);
-    });
+      .pipe(takeUntil(this.onDestroyUnSubscribe))
+      .subscribe((ethnicList: any) => {
+        this.ethnicList = ethnicList['CountryList'];
+        // console.log(this.ethnicList);
+      });
   }
   nationalityChange() {
     if (this.nationality) {
@@ -223,51 +224,51 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
   }
 
   getEmployeeDetails() {
-    if (this.employeeId && !isNaN(this.employeeId)) { 
+    if (this.employeeId && !isNaN(this.employeeId)) {
       this.employeeService.getEmployeeDetailsById({ employeeID: this.employeeId })
-      .pipe(takeUntil(this.onDestroyUnSubscribe))
-      .subscribe((response: any) => {
-        if(response['status'] == 200) {
-          this.employeeDetails = response['employeeDetails'];
-          console.log(this.employeeDetails);
+        .pipe(takeUntil(this.onDestroyUnSubscribe))
+        .subscribe((response: any) => {
+          if (response['status'] == 200) {
+            this.employeeDetails = response['employeeDetails'];
+            console.log(this.employeeDetails);
 
-          this.employeeRegistrationForm.patchValue({
-            Id: this.employeeDetails.Id,
-            clientId: this.employeeDetails.ClientId,
-            egcId: this.employeeDetails.egcId,
-            EmergencyContactName: this.employeeDetails.egcName,
-            EmergencyContactRelationship: this.employeeDetails.egcRelationship,
-            EmergencyContactTel: this.employeeDetails.egcTelNo,
-            EmergencyContactAddress: this.employeeDetails.egcAddress,
-            EmployeerName: this.employeeDetails.egcNameOfEmployer,
-            EmergencyContactEmail: this.employeeDetails.egcEmail,
-            // egcEmployerAddr: null,
-            EmergencyContactPostcode: this.employeeDetails.egcPostcode,
-            EmergencyContactPhone: this.employeeDetails.egcContactNumber,
-            EmergencyContactFax: this.employeeDetails.egcFax,
-  
-            EmpName: this.employeeDetails.EmpName,
-            Address: this.employeeDetails.Addr1,
-            // Addr2: null,
-            District:  this.employeeDetails.District,
-            State:  this.employeeDetails.State,
-            Postcode:  this.employeeDetails.Postcode,
-            contactNo:  this.employeeDetails.PhoneNumber,
-            ICNum:  this.employeeDetails.ICNum.replace(/[\+\- )(]/g,''),
-            DOB: moment(this.employeeDetails.DateOfBirth, 'DD/MM/YYYY'),
-            Age:  this.employeeDetails.Age,
-            SOCSONum:  this.employeeDetails.SOCSONum,
-            WorkPermitNo: this.employeeDetails.WorkPermitNo,
-            WorkerCompNo: this.employeeDetails.WorkCompensationNo,
-            Gender:  this.employeeDetails.Gender,
-            MartialStatus:  this.employeeDetails.MartialStatus,
-            NoOfChild:  this.employeeDetails.NoOfChild,
-            NoYrsMarried:  this.employeeDetails.NoYrsMarried,
-            Ethnic:  +(this.employeeDetails.Ethnic),
-            Nationality:  this.employeeDetails.Nationality,
-          });
-        }
-      });
+            this.employeeRegistrationForm.patchValue({
+              Id: this.employeeDetails.Id,
+              clientId: this.employeeDetails.ClientId,
+              egcId: this.employeeDetails.egcId,
+              EmergencyContactName: this.employeeDetails.egcName,
+              EmergencyContactRelationship: this.employeeDetails.egcRelationship,
+              EmergencyContactTel: this.employeeDetails.egcTelNo,
+              EmergencyContactAddress: this.employeeDetails.egcAddress,
+              EmployeerName: this.employeeDetails.egcNameOfEmployer,
+              EmergencyContactEmail: this.employeeDetails.egcEmail,
+              // egcEmployerAddr: null,
+              EmergencyContactPostcode: this.employeeDetails.egcPostcode,
+              EmergencyContactPhone: this.employeeDetails.egcContactNumber,
+              EmergencyContactFax: this.employeeDetails.egcFax,
+
+              EmpName: this.employeeDetails.EmpName,
+              Address: this.employeeDetails.Addr1,
+              // Addr2: null,
+              District: this.employeeDetails.District,
+              State: this.employeeDetails.State,
+              Postcode: this.employeeDetails.Postcode,
+              contactNo: this.employeeDetails.PhoneNumber,
+              ICNum: this.employeeDetails.ICNum.replace(/[\+\- )(]/g, ''),
+              DOB: moment(this.employeeDetails.DateOfBirth, 'DD/MM/YYYY'),
+              Age: this.employeeDetails.Age,
+              SOCSONum: this.employeeDetails.SOCSONum,
+              WorkPermitNo: this.employeeDetails.WorkPermitNo,
+              WorkerCompNo: this.employeeDetails.WorkCompensationNo,
+              Gender: this.employeeDetails.Gender,
+              MartialStatus: this.employeeDetails.MartialStatus,
+              NoOfChild: this.employeeDetails.NoOfChild,
+              NoYrsMarried: this.employeeDetails.NoYrsMarried,
+              Ethnic: +(this.employeeDetails.Ethnic),
+              Nationality: this.employeeDetails.Nationality,
+            });
+          }
+        });
     }
   }
 
@@ -278,9 +279,9 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
     this.employeeRegistrationForm.value.DOB = moment(this.employeeRegistrationForm.value.DOB).format('DD/MM/YYYY');
     this.employeeRegistrationForm.value.ICNum = this.employeeRegistrationForm.value.ICNum.replace(/[\+\- )(]/g, '');
 
-    // this.openCheckInModal(registerVisitPurpose);
+    // this.openCheckInModal(registerVisitPurpose, this.employeeRegistrationForm.value);
 
-    if(this.employeeRegistrationForm.valid) {
+    if (this.employeeRegistrationForm.valid) {
       if ((this.employeeId && !isNaN(this.employeeId)) && this.employeeRegistrationForm.value.Id > 0) {
         this.addEditEmployeeDataPayLoad = {
           employee: {
@@ -297,30 +298,30 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
             egcPostcode: this.employeeRegistrationForm.value.EmergencyContactPostcode,
             egcContactNumber: this.employeeRegistrationForm.value.EmergencyContactPhone,
             egcFax: this.employeeRegistrationForm.value.EmergencyContactFax,
-  
+
             EmpName: this.employeeRegistrationForm.value.EmpName,
             Addr1: this.employeeRegistrationForm.value.Address,
             // Addr2: null,
-            District:  this.employeeRegistrationForm.value.District,
-            State:  this.employeeRegistrationForm.value.State,
-            Postcode:  this.employeeRegistrationForm.value.Postcode,
-            PhoneNumber:  this.employeeRegistrationForm.value.contactNo,
-            ICNum:  this.employeeRegistrationForm.value.ICNum,
-            DOB:  this.employeeRegistrationForm.value.DOB,
-            Age:  this.employeeRegistrationForm.value.Age,
-            SOCSONum:  this.employeeRegistrationForm.value.SOCSONum,
+            District: this.employeeRegistrationForm.value.District,
+            State: this.employeeRegistrationForm.value.State,
+            Postcode: this.employeeRegistrationForm.value.Postcode,
+            PhoneNumber: this.employeeRegistrationForm.value.contactNo,
+            ICNum: this.employeeRegistrationForm.value.ICNum,
+            DOB: this.employeeRegistrationForm.value.DOB,
+            Age: this.employeeRegistrationForm.value.Age,
+            SOCSONum: this.employeeRegistrationForm.value.SOCSONum,
             WorkPermitNo: this.employeeRegistrationForm.value.WorkPermitNo,
             WorkCompensationNo: this.employeeRegistrationForm.value.WorkerCompNo,
-            Gender:  this.employeeRegistrationForm.value.Gender,
-            MartialStatus:  this.employeeRegistrationForm.value.MartialStatus,
-            NoOfChild:  this.employeeRegistrationForm.value.NoOfChild,
-            NoYrsMarried:  this.employeeRegistrationForm.value.NoYrsMarried,
-            Ethnic:  this.employeeRegistrationForm.value.Ethnic,
-            Nationality:  this.employeeRegistrationForm.value.Nationality,
-            DateRegistered:  null,
-            RegUserId:  userId,
-            DateUpdated:  null,
-            UpdatedUserId:  userId
+            Gender: this.employeeRegistrationForm.value.Gender,
+            MartialStatus: this.employeeRegistrationForm.value.MartialStatus,
+            NoOfChild: this.employeeRegistrationForm.value.NoOfChild,
+            NoYrsMarried: this.employeeRegistrationForm.value.NoYrsMarried,
+            Ethnic: this.employeeRegistrationForm.value.Ethnic,
+            Nationality: this.employeeRegistrationForm.value.Nationality,
+            DateRegistered: null,
+            RegUserId: userId,
+            DateUpdated: null,
+            UpdatedUserId: userId
           }
         }
       } else {
@@ -339,57 +340,57 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
             egcPostcode: this.employeeRegistrationForm.value.EmergencyContactPostcode,
             egcContactNumber: this.employeeRegistrationForm.value.EmergencyContactPhone,
             egcFax: this.employeeRegistrationForm.value.EmergencyContactFax,
-  
+
             EmpName: this.employeeRegistrationForm.value.EmpName,
             Addr1: this.employeeRegistrationForm.value.Address,
             // Addr2: null,
-            District:  this.employeeRegistrationForm.value.District,
-            State:  this.employeeRegistrationForm.value.State,
-            Postcode:  this.employeeRegistrationForm.value.Postcode,
-            PhoneNumber:  this.employeeRegistrationForm.value.contactNo,
-            ICNum:  this.employeeRegistrationForm.value.ICNum,
-            DOB:  this.employeeRegistrationForm.value.DOB,
-            Age:  this.employeeRegistrationForm.value.Age,
-            SOCSONum:  this.employeeRegistrationForm.value.SOCSONum,
+            District: this.employeeRegistrationForm.value.District,
+            State: this.employeeRegistrationForm.value.State,
+            Postcode: this.employeeRegistrationForm.value.Postcode,
+            PhoneNumber: this.employeeRegistrationForm.value.contactNo,
+            ICNum: this.employeeRegistrationForm.value.ICNum,
+            DOB: this.employeeRegistrationForm.value.DOB,
+            Age: this.employeeRegistrationForm.value.Age,
+            SOCSONum: this.employeeRegistrationForm.value.SOCSONum,
             WorkPermitNo: this.employeeRegistrationForm.value.WorkPermitNo,
             WorkCompensationNo: this.employeeRegistrationForm.value.WorkerCompNo,
-            Gender:  this.employeeRegistrationForm.value.Gender,
-            MartialStatus:  this.employeeRegistrationForm.value.MartialStatus,
-            NoOfChild:  this.employeeRegistrationForm.value.NoOfChild,
-            NoYrsMarried:  this.employeeRegistrationForm.value.NoYrsMarried,
-            Ethnic:  this.employeeRegistrationForm.value.Ethnic,
-            Nationality:  this.employeeRegistrationForm.value.Nationality,
-            DateRegistered:  null,
-            RegUserId:  userId,
-            DateUpdated:  null,
-            UpdatedUserId:  userId
+            Gender: this.employeeRegistrationForm.value.Gender,
+            MartialStatus: this.employeeRegistrationForm.value.MartialStatus,
+            NoOfChild: this.employeeRegistrationForm.value.NoOfChild,
+            NoYrsMarried: this.employeeRegistrationForm.value.NoYrsMarried,
+            Ethnic: this.employeeRegistrationForm.value.Ethnic,
+            Nationality: this.employeeRegistrationForm.value.Nationality,
+            DateRegistered: null,
+            RegUserId: userId,
+            DateUpdated: null,
+            UpdatedUserId: userId
           }
         }
       }
-      
+
 
       console.log(this.addEditEmployeeDataPayLoad);
 
       this.employeeService.addEditEmployee(this.addEditEmployeeDataPayLoad)
-      .pipe(takeUntil(this.onDestroyUnSubscribe))
-      .subscribe((registerIn: any) => {
-          if(registerIn['status'] == 200 && registerIn['employeeID']) {
+        .pipe(takeUntil(this.onDestroyUnSubscribe))
+        .subscribe((registerIn: any) => {
+          if (registerIn['status'] == 200 && registerIn['employeeID']) {
             this.formControls.Id.setValue(registerIn['employeeID']);
             this.openCheckInModal(registerVisitPurpose, this.employeeRegistrationForm.value);
-          }else {
+          } else {
             this.snackBar.open('Something went wrong! Please try again.', 'Close', {
               panelClass: 'error-popup',
             });
           }
-      });
-    }else {
+        });
+    } else {
       this.snackBar.open('Something went wrong! Please check all the fields before submitting the form.', 'Close', {
         panelClass: 'error-popup',
       });
     }
-   }
+  }
 
-   openCheckInModal(template: any, regFormValue: any) {
+  openCheckInModal(template: any, regFormValue: any) {
     template.openModal(regFormValue);
-   }
+  }
 }

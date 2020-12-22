@@ -176,7 +176,7 @@ export const Errors: ErrorsInterface = {
   ContactMobile: [
     { type: 'required', message: 'Contact Number is required.' },
     { type: 'pattern', message: 'Please enter a valid Contact Number.' },
-    { type: 'minlength', message: 'Must be 10 or more than 10 characters.' },
+    { type: 'minlength', message: 'Must be 9 or more than 9 characters.' },
     { type: 'maxlength', message: 'Should not be more than 14 characters.' }
   ],
   ContactOffice: [

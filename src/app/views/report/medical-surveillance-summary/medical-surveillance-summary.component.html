@@ -138,15 +138,13 @@
                                         </td>
                                         <td class="pl-2 border-right text-center">
                                             <div class="btn btn-warning min-width btn-sm fs14 fw500 rounded-pill"
-                                                type="button"
-                                                [routerLink]="['/report-result/medical-surveillance-report-result', data.EmployeeID, data.EmployeeOHSTestVisitID]">
+                                                type="button" (click)="goToMedicalSurveillanceReport(data)">
                                                 <span>Get Report</span>
                                             </div>
                                         </td>
                                         <td class="pl-2 border-right text-center">
                                             <div class="btn btn-warning min-width btn-sm fs14 fw500 rounded-pill"
-                                                type="button"
-                                                [routerLink]="['/report-result/certificate-fitness', data.EmployeeID, data.EmployeeOHSTestVisitID]">
+                                                type="button" (click)="goToCertificateFitness(data)">
                                                 <span>Get Report</span>
                                             </div>
                                         </td>
@@ -155,8 +153,7 @@
                                         </td> -->
                                         <td class="pl-2 text-center">
                                             <div class="btn btn-warning min-width btn-sm fs14 fw500 rounded-pill"
-                                                type="button"
-                                                [routerLink]="['/report-result/medical-removal-protection', data.EmployeeID, data.EmployeeOHSTestVisitID]">
+                                                type="button" (click)="goToMedicalRemovalProtection(data)">
                                                 <span>Get Report</span>
                                             </div>
                                         </td>

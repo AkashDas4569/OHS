@@ -68,8 +68,8 @@ export class ExamOutcomeRecordComponent implements OnInit, OnDestroy {
       RecosId: [0],
       RecosEmployer: ['', [Validators.required, Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")]],
       RecosEmployee: ['', [Validators.required, Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")]],
-      RecosAssessor: ['', [Validators.required, Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")]],
-      RecosRefer: ['', [Validators.required, Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")]],
+      RecosAssessor: ['', [Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")]],
+      RecosRefer: ['', [Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")]],
       RecosOthers: ['', Validators.pattern(".*\\S.*[a-zA-Z0-9 ]")]
     });
 

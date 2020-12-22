@@ -63,11 +63,9 @@
         <form class="chemical-HistoryForm col-xl-12 col-12 p-0" [formGroup]="chemicalHistoryForm"
             (ngSubmit)="onSubmit()" autocomplete="off">
             <div class="row pt-3">
-                <div class="col-xl-12 col-12 pt-1 pb-4 pl-4">
-                    <p class="fw500 text-uppercase"> The Employer must present the Chemical Health Risk Assessment
-                        Report to
-                        the OHD who<br>
-                        will analyse it before conducting Medical Examination</p>
+                <div class="col-sm-12 col-md-12 col-xl-12 col-12 pt-1 pb-2 pl-4 d-flex">
+                    <p class="fw600 text-uppercase fs12 text-left flex-grow-1"> The Employer must present the Chemical Health Risk Assessment
+                        Report to the OHD who will analyse it before conducting Medical Examination</p>
                 </div>
 
                 <div class="col-xl-12 col-12">
@@ -229,8 +227,8 @@
                                                     <mat-radio-button [value]=false> </mat-radio-button>
                                                 </mat-radio-group>
                                             </td>
-                                            <td>
-                                                <p class="fs14 fw500 text-red text-center pt-2">(Specify the name of the
+                                            <td class="pb-0 mb-0">
+                                                <p class="fs14 fw500 text-red text-center pt-1">(Specify the name of the
                                                     chemical)</p>
                                             </td>
                                         </tr>

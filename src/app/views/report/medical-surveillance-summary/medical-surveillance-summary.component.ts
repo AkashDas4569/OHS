@@ -125,6 +125,33 @@ export class MedicalSurveillanceSummaryComponent implements OnInit, OnDestroy {
     this.getMedicalSurSummaryList(pageSize, this.currentPage);
 }
 
+goToMedicalSurveillanceReport(data: any) {
+  // console.log(data);
+  console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
+
+  const url = '/report-result/medical-surveillance-report-result/' + data.EmployeeID + '/' + data.EmployeeOHSTestVisitID
+  console.log(url);
+
+  window.open(url, "_blank");
+}
+goToCertificateFitness(data: any) {
+  // console.log(data);
+  console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
+
+  const url = '/report-result/certificate-fitness/' + data.EmployeeID + '/' + data.EmployeeOHSTestVisitID
+  console.log(url);
+    
+  window.open(url, "_blank");
+}
+goToMedicalRemovalProtection(data: any) {
+  // console.log(data);
+  console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
+
+  const url = '/report-result/medical-removal-protection/' + data.EmployeeID + '/' + data.EmployeeOHSTestVisitID
+  console.log(url);
+
+  window.open(url, "_blank");
+}
   
   onSubmit() {
     this.medicalSurveillanceSummaryForm.markAllAsTouched();

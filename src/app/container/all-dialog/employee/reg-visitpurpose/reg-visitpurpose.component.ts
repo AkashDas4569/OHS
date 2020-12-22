@@ -67,12 +67,18 @@ export class RegVisitpurposeComponent implements OnInit {
       // console.log(this.allVisitPurposeData);
     });
   }
+  
   getOHDDoctorList() {
       this.lookupService.getOHDDoctorList()
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((result: any) => {
         this.allOHDDoctorList = result['OHDoctorList'];
-        // console.log(this.allOHDDoctorList);
+       
+        // console.log(this.allOHDDoctorList.length);
+        if(this.allOHDDoctorList.length === 1) {
+          this.formControls.OHDDoctorId.setValue(+this.allOHDDoctorList[0].Id);
+        }
+        console.log(this.allOHDDoctorList);
     });
   }
 

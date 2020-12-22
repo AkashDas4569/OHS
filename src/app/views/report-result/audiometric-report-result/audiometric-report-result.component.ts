@@ -321,4 +321,7 @@ export class AudiometricReportResultComponent implements OnInit, OnDestroy {
     console.log('Pdf Download');
     window.print();
   }
+  closePdf() {
+    window.close();
+  }
 }

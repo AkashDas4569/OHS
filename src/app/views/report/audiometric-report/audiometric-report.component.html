@@ -121,8 +121,8 @@
                                             {{data.DateOfTest}}
                                         </td>
                                         <td class="pl-2 text-center">
-                                            <div class="btn btn-warning btn-sm rounded-pill" type="button"
-                                                [routerLink]="['/report-result/audiometric-report-result', data.EmployeeID, data.EmployeeOHSTestVisitID]">
+                                            <div class="btn btn-warning btn-sm rounded-pill" type="button" (click)="goToAudiometricReport(data)"
+                                                >
                                                 <small class="fs14 fw500">Get Report</small>
                                             </div>
                                         </td>

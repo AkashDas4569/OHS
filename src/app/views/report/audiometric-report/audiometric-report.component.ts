@@ -123,6 +123,15 @@ export class AudiometricReportComponent implements OnInit, OnDestroy {
     this.getAudiometricReport(pageSize, this.currentPage);
 }
 
+  goToAudiometricReport(data: any) {
+    // console.log(data);
+    // console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
+    const url = '/report-result/audiometric-report-result/' + data.EmployeeID + '/' + data.EmployeeOHSTestVisitID
+    console.log(url);
+    
+    window.open(url, "_blank");
+  }
+
   onSubmit() {
     this.audiometricResultForm.markAllAsTouched();
     console.log(this.audiometricResultForm);

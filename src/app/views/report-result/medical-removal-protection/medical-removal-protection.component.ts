@@ -98,4 +98,7 @@ export class MedicalRemovalProtectionComponent implements OnInit {
     console.log('Pdf Download');
     window.print();
   }
+  closePdf() {
+    window.close();
+  }
 }

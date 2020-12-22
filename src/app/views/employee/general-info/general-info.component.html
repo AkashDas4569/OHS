@@ -313,7 +313,7 @@
                                                 formControlName="EmergencyContactRelationship">
                                                 <mat-option class="fs12 fw600">Select Relationship Type
                                                 </mat-option>
-                                                <mat-option *ngFor="let list of relationshipData.relationship" [value]="list.code">
+                                                <mat-option *ngFor="let list of relationshipData.relationship | orderBy: relationshipName" [value]="list.code">
                                                 {{list.name}}
                                                 </mat-option>
                                             </mat-select>

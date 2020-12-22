@@ -14,6 +14,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { OrderModule } from 'ngx-order-pipe';
 import {
   ToggleViewPasswordDirective
 } from '../directives';
@@ -73,6 +74,7 @@ const allDialogTemplates = [
     TabsModule.forRoot(),
     CollapseModule.forRoot(),
     AccordionModule.forRoot(),
+    OrderModule
   ],
   exports: [
     CommonModule,
@@ -91,6 +93,7 @@ const allDialogTemplates = [
     TabsModule,
     CollapseModule,
     AccordionModule,
+    OrderModule,
     // Directives
     ToggleViewPasswordDirective,
     // Pipes
