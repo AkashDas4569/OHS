@@ -56,14 +56,14 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
       EmployeeId: ['', Validators.required],
       EmployeeOHSTestVisitId: ['', Validators.required],
       OHDoctorId: ['', Validators.required],
-      Trained: [''],
+      Trained: ['', Validators.required],
       SpecifyTrained: [''],
-      Symptoms: [''],
+      Symptoms: ['', Validators.required],
       SpecifySymptoms: [''],
       SymptomsDate: [''],
-      PPEApproved: [''],
+      PPEApproved: ['', Validators.required],
       SpecifyPPEApproved: [''],
-      Exposure: [''],
+      Exposure: ['', Validators.required],
       ExposureAvg: [''],
       MaxExposureLimit: [''],
       WorkplaceMonitor: [''],
@@ -227,6 +227,10 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
             });
           }
         });
+    } else {
+      this.snackBar.open('All Fields are required before Saving! Please try again.', 'Close', {
+        panelClass: 'error-popup',
+      });
     }
   }
 }

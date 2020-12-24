@@ -112,6 +112,11 @@
                                             <textarea autocomplete="off" placeholder="Date of Medical Examination" formControlName="MedExamDt"
                                                 class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30"
                                                 rows="10" readonly></textarea>
+
+                                                <!-- Error Message -->
+                                                <span class="help-block bottom fs12 text-red"
+                                                *ngIf="errorState(formControls['MedExamDt'], 'MedExamDt').message"
+                                                [innerHTML]="errorState(formControls['MedExamDt'], 'MedExamDt').message"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -125,6 +130,11 @@
                                                 class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10" (focusout)="checkedTrue()"></textarea> -->
                                             <textarea autocomplete="off" placeholder="Enter Result of Biological Monitoring" formControlName="ResultOfBioMonitor"
                                                 class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10"></textarea>
+                                        
+                                                <!-- Error Message -->
+                                                <span class="help-block bottom fs12 text-red"
+                                                *ngIf="errorState(formControls['ResultOfBioMonitor'], 'errorMsg').message"
+                                                [innerHTML]="errorState(formControls['ResultOfBioMonitor'], 'errorMsg').message"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -136,6 +146,11 @@
                                         <div class="form-group w-100">
                                             <!-- <textarea autocomplete="off" placeholder="Fitness To Work (Fit, Further Test Needed)" formControlName="FitToWork" class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10" (focusout)="checkedTrue()"></textarea> -->
                                             <textarea autocomplete="off" placeholder="Enter Fitness To Work" formControlName="FitToWork" class="form-control bg-transparent brr0 p-2 fw500 fs14" cols="30" rows="10"></textarea>
+
+                                            <!-- Error Message -->
+                                            <span class="help-block bottom fs12 text-red"
+                                            *ngIf="errorState(formControls['FitToWork'], 'errorMsg').message"
+                                            [innerHTML]="errorState(formControls['FitToWork'], 'errorMsg').message"></span>
                                         </div>
                                     </div>
                                 </div>

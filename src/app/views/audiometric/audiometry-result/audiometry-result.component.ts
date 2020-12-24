@@ -127,43 +127,47 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         AUAnnualId: [0],
         EnteredUserId: ['', Validators.required],
         BaseOrAnnual: ['A'],
-        R500: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        R1000: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        R2000: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        R3000: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        R4000: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        R6000: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L500: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L1000: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L2000: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L3000: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L4000: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L6000: ['', [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        AvgR1: [{ value: '', disabled: true }, [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        AvgL1: [{ value: '', disabled: true }, [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        AvgR2: [{ value: '', disabled: true }, [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        AvgL2: [{ value: '', disabled: true }, [Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]]
+        R500: [''],
+        R1000: [''],
+        R2000: [''],
+        R3000: [''],
+        R4000: [''],
+        R6000: [''],
+        R8000: [''],
+        L500: [''],
+        L1000: [''],
+        L2000: [''],
+        L3000: [''],
+        L4000: [''],
+        L6000: [''],
+        L8000: [''],
+        AvgR1: [{ value: '', disabled: true }, [Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        AvgL1: [{ value: '', disabled: true }, [Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        AvgR2: [{ value: '', disabled: true }, [Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        AvgL2: [{ value: '', disabled: true }, [Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]]
       }),
       audiometricBaseline: this.fb.group({
         AUBLBaselineId: [0],
         EnteredUserId: ['', Validators.required],
         BaseOrAnnual: ['B'],
-        R500: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        R1000: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        R2000: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        R3000: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        R4000: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        R6000: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L500: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L1000: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L2000: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L3000: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L4000: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        L6000: ['', [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        AvgR1: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        AvgL1: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        AvgR2: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]],
-        AvgL2: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^(?:\d*\.\d{1,2}|\d+)$/), Validators.maxLength(6)]]
+        R500: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        R1000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        R2000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        R3000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        R4000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        R6000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        R8000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        L500: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        L1000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        L2000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        L3000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        L4000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        L6000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        L8000: ['', [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        AvgR1: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        AvgL1: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        AvgR2: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]],
+        AvgL2: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]]
       })
     });
 
@@ -210,31 +214,37 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
   onSelectChange() {
     console.log('Selected Type--> ', this.audiometricTestGroup.controls.TypeOfAudiogram.value);
     if (this.audiometricTestGroup.controls.TypeOfAudiogram.value === 'A') {
-      this.annualGroup.controls.R500.setValidators(Validators.required);
-      this.annualGroup.controls.R1000.setValidators(Validators.required);
-      this.annualGroup.controls.R2000.setValidators(Validators.required);
-      this.annualGroup.controls.R3000.setValidators(Validators.required);
-      this.annualGroup.controls.R4000.setValidators(Validators.required);
-      this.annualGroup.controls.R6000.setValidators(Validators.required);
-      this.annualGroup.controls.L500.setValidators(Validators.required);
-      this.annualGroup.controls.L1000.setValidators(Validators.required);
-      this.annualGroup.controls.L2000.setValidators(Validators.required);
-      this.annualGroup.controls.L3000.setValidators(Validators.required);
-      this.annualGroup.controls.L4000.setValidators(Validators.required);
-      this.annualGroup.controls.L6000.setValidators(Validators.required);
+      this.annualGroup.controls.R500.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.R1000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.R2000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.R3000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.R4000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.R6000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.R8000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.L500.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.L1000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.L2000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.L3000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.L4000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.L6000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+      this.annualGroup.controls.L8000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
+  
     } else {
+      console.log('Else part -----');
       this.annualGroup.controls.R500.clearValidators();
       this.annualGroup.controls.R1000.clearValidators();
       this.annualGroup.controls.R2000.clearValidators();
       this.annualGroup.controls.R3000.clearValidators();
       this.annualGroup.controls.R4000.clearValidators();
       this.annualGroup.controls.R6000.clearValidators();
+      this.annualGroup.controls.R8000.clearValidators();
       this.annualGroup.controls.L500.clearValidators();
       this.annualGroup.controls.L1000.clearValidators();
       this.annualGroup.controls.L2000.clearValidators();
       this.annualGroup.controls.L3000.clearValidators();
       this.annualGroup.controls.L4000.clearValidators();
       this.annualGroup.controls.L6000.clearValidators();
+      this.annualGroup.controls.L8000.clearValidators();
     }
     this.annualGroup.controls.R500.updateValueAndValidity();
     this.annualGroup.controls.R1000.updateValueAndValidity();
@@ -242,14 +252,16 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
     this.annualGroup.controls.R3000.updateValueAndValidity();
     this.annualGroup.controls.R4000.updateValueAndValidity();
     this.annualGroup.controls.R6000.updateValueAndValidity();
+    this.annualGroup.controls.R8000.updateValueAndValidity();
     this.annualGroup.controls.L500.updateValueAndValidity();
     this.annualGroup.controls.L1000.updateValueAndValidity();
     this.annualGroup.controls.L2000.updateValueAndValidity();
     this.annualGroup.controls.L3000.updateValueAndValidity();
     this.annualGroup.controls.L4000.updateValueAndValidity();
     this.annualGroup.controls.L6000.updateValueAndValidity();
+    this.annualGroup.controls.L8000.updateValueAndValidity();
 
-    this.viewLineChart();
+    // this.viewLineChart();
   }
   getEmployeeById() {
     this.employeeService.getEmployeeById({ employeeID: this.employeeId })
@@ -273,7 +285,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         if (audiometryResultData['status'] == 200) {
           this.audiometryResultDetails = audiometryResultData['audiometricResult'];
           this.audiometryResultBaseLineDetails = audiometryResultData['audiometricBaseline'];
-          this.audiometryResultAnnualDetails = audiometryResultData['audiometricAnnual']
+          this.audiometryResultAnnualDetails = audiometryResultData['audiometricAnnual'];
           console.log(this.audiometryResultDetails);
           console.log(this.audiometryResultBaseLineDetails);
           console.log(this.audiometryResultAnnualDetails);
@@ -300,12 +312,14 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
               L3000: this.audiometryResultAnnualDetails?.L3000,
               L4000: this.audiometryResultAnnualDetails?.L4000,
               L6000: this.audiometryResultAnnualDetails?.L6000,
+              L8000: this.audiometryResultAnnualDetails?.L8000,
               R500: this.audiometryResultAnnualDetails?.R500,
               R1000: this.audiometryResultAnnualDetails?.R1000,
               R2000: this.audiometryResultAnnualDetails?.R2000,
               R3000: this.audiometryResultAnnualDetails?.R3000,
               R4000: this.audiometryResultAnnualDetails?.R4000,
               R6000: this.audiometryResultAnnualDetails?.R6000,
+              R8000: this.audiometryResultAnnualDetails?.R8000,
               AvgL1: this.audiometryResultAnnualDetails?.AvgL1,
               AvgL2: this.audiometryResultAnnualDetails?.AvgL2,
               AvgR1: this.audiometryResultAnnualDetails?.AvgR1,
@@ -320,12 +334,14 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
               R3000: this.audiometryResultBaseLineDetails?.R3000,
               R4000: this.audiometryResultBaseLineDetails?.R4000,
               R6000: this.audiometryResultBaseLineDetails?.R6000,
+              R8000: this.audiometryResultBaseLineDetails?.R8000,
               L500: this.audiometryResultBaseLineDetails?.L500,
               L1000: this.audiometryResultBaseLineDetails?.L1000,
               L2000: this.audiometryResultBaseLineDetails?.L2000,
               L3000: this.audiometryResultBaseLineDetails?.L3000,
               L4000: this.audiometryResultBaseLineDetails?.L4000,
               L6000: this.audiometryResultBaseLineDetails?.L6000,
+              L8000: this.audiometryResultBaseLineDetails?.L8000,
               AvgR1: this.audiometryResultBaseLineDetails?.AvgR1,
               AvgR2: this.audiometryResultBaseLineDetails?.AvgR2,
               AvgL1: this.audiometryResultBaseLineDetails?.AvgL1,
@@ -363,80 +379,80 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
   }
 
   calculateBaseLineAvgRight() {
-    if (this.baseLineGroup.controls.R500.value > 0 && this.baseLineGroup.controls.R1000.value > 0 && this.baseLineGroup.controls.R2000.value > 0 && this.baseLineGroup.controls.R3000.value > 0) {
-      const calculatedValue1 = (Number(this.baseLineGroup.controls.R500.value) + Number(this.baseLineGroup.controls.R1000.value) + Number(this.baseLineGroup.controls.R2000.value) + Number(this.baseLineGroup.controls.R3000.value)) / 4.00;
+    // if (this.baseLineGroup.controls.R500.value > 0 && this.baseLineGroup.controls.R1000.value > 0 && this.baseLineGroup.controls.R2000.value > 0 && this.baseLineGroup.controls.R3000.value > 0) {
+      const calculatedValue1 = (Number(this.baseLineGroup.controls.R500?.value) + Number(this.baseLineGroup.controls.R1000?.value) + Number(this.baseLineGroup.controls.R2000?.value) + Number(this.baseLineGroup.controls.R3000?.value)) / 4.00;
       const avgBaseLineRightValue1 = parseFloat((calculatedValue1).toFixed(2));
       this.baseLineAvgRight1 = avgBaseLineRightValue1;
 
       // console.log('baseLineAvgRight1:', this.baseLineAvgRight1)
       this.baseLineGroup.controls.AvgR1.setValue(this.baseLineAvgRight1);
       this.baseLineGroup.controls.AvgR1.enable();
-    }
-    if (this.baseLineGroup.controls.R2000.value > 0 && this.baseLineGroup.controls.R3000.value > 0 && this.baseLineGroup.controls.R4000.value > 0) {
-      const calculatedValue2 = (Number(this.baseLineGroup.controls.R2000.value) + Number(this.baseLineGroup.controls.R3000.value) + Number(this.baseLineGroup.controls.R4000.value)) / 3.00;
+    // }
+    // if (this.baseLineGroup.controls.R2000.value > 0 && this.baseLineGroup.controls.R3000.value > 0 && this.baseLineGroup.controls.R4000.value > 0) {
+      const calculatedValue2 = (Number(this.baseLineGroup.controls.R2000?.value) + Number(this.baseLineGroup.controls.R3000?.value) + Number(this.baseLineGroup.controls.R4000?.value)) / 3.00;
       const avgBaseLineRightValue2 = parseFloat((calculatedValue2).toFixed(2));
       this.baseLineAvgRight2 = avgBaseLineRightValue2;
 
       // console.log('baseLineAvgRight2:', this.baseLineAvgRight2)
       this.baseLineGroup.controls.AvgR2.setValue(this.baseLineAvgRight2);
       this.baseLineGroup.controls.AvgR2.enable();
-    }
+    // }
   }
   calculateBaseLineAvgLeft() {
-    if (this.baseLineGroup.controls.L500.value > 0 && this.baseLineGroup.controls.L1000.value > 0 && this.baseLineGroup.controls.L2000.value > 0 && this.baseLineGroup.controls.L3000.value > 0) {
-      const calculatedValue1 = (Number(this.baseLineGroup.controls.L500.value) + Number(this.baseLineGroup.controls.L1000.value) + Number(this.baseLineGroup.controls.L2000.value) + Number(this.baseLineGroup.controls.L3000.value)) / 4.00;
+    // if (this.baseLineGroup.controls.L500.value > 0 && this.baseLineGroup.controls.L1000.value > 0 && this.baseLineGroup.controls.L2000.value > 0 && this.baseLineGroup.controls.L3000.value > 0) {
+      const calculatedValue1 = (Number(this.baseLineGroup.controls.L500?.value) + Number(this.baseLineGroup.controls.L1000?.value) + Number(this.baseLineGroup.controls.L2000?.value) + Number(this.baseLineGroup.controls.L3000?.value)) / 4.00;
       const avgBaseLineLeftValue1 = parseFloat((calculatedValue1).toFixed(2));
       this.baseLineAvgLeft1 = avgBaseLineLeftValue1;
 
       // console.log('baseLineAvgLeft1:', this.baseLineAvgLeft1)
       this.baseLineGroup.controls.AvgL1.setValue(this.baseLineAvgLeft1);
       this.baseLineGroup.controls.AvgL1.enable();
-    }
-    if (this.baseLineGroup.controls.L2000.value > 0 && this.baseLineGroup.controls.L3000.value > 0 && this.baseLineGroup.controls.L4000.value > 0) {
-      const calculatedValue2 = (Number(this.baseLineGroup.controls.L2000.value) + Number(this.baseLineGroup.controls.L3000.value) + Number(this.baseLineGroup.controls.L4000.value)) / 3.00;
+    // }
+    // if (this.baseLineGroup.controls.L2000.value > 0 && this.baseLineGroup.controls.L3000.value > 0 && this.baseLineGroup.controls.L4000.value > 0) {
+      const calculatedValue2 = (Number(this.baseLineGroup.controls.L2000?.value) + Number(this.baseLineGroup.controls.L3000?.value) + Number(this.baseLineGroup.controls.L4000?.value)) / 3.00;
       const avgBaseLineLeftValue2 = parseFloat((calculatedValue2).toFixed(2));
       this.baseLineAvgLeft2 = avgBaseLineLeftValue2;
 
       // console.log('baseLineAvgLeft2:', this.baseLineAvgLeft2)
       this.baseLineGroup.controls.AvgL2.setValue(this.baseLineAvgLeft2);
       this.baseLineGroup.controls.AvgL2.enable();
-    }
+    // }
   }
   calculateAnnualAvgRight() {
-    if (this.annualGroup.controls.R500.value > 0 && this.annualGroup.controls.R1000.value > 0 && this.annualGroup.controls.R2000.value > 0 && this.annualGroup.controls.R3000.value > 0) {
+    // if (this.annualGroup.controls.R500.value > 0 && this.annualGroup.controls.R1000.value > 0 && this.annualGroup.controls.R2000.value > 0 && this.annualGroup.controls.R3000.value > 0) {
       const calculatedValue1 = (Number(this.annualGroup.controls.R500.value) + Number(this.annualGroup.controls.R1000.value) + Number(this.annualGroup.controls.R2000.value) + Number(this.annualGroup.controls.R3000.value)) / 4.00;
       const avgAnnualRightValue1 = parseFloat((calculatedValue1).toFixed(2));
       this.annualAvgRight1 = avgAnnualRightValue1;
 
       this.annualGroup.controls.AvgR1.setValue(this.annualAvgRight1);
       this.annualGroup.controls.AvgR1.enable();
-    }
-    if (this.annualGroup.controls.R2000.value > 0 && this.annualGroup.controls.R3000.value > 0 && this.annualGroup.controls.R4000.value > 0) {
+    // }
+    // if (this.annualGroup.controls.R2000.value > 0 && this.annualGroup.controls.R3000.value > 0 && this.annualGroup.controls.R4000.value > 0) {
       const calculatedValue2 = (Number(this.annualGroup.controls.R2000.value) + Number(this.annualGroup.controls.R3000.value) + Number(this.annualGroup.controls.R4000.value)) / 3.00;
       const avgAnnualRightValue2 = parseFloat((calculatedValue2).toFixed(2));
       this.annualAvgRight2 = avgAnnualRightValue2;
 
       this.annualGroup.controls.AvgR2.setValue(this.annualAvgRight2);
       this.annualGroup.controls.AvgR2.enable();
-    }
+    // }
   }
   calculateAnnualAvgLeft() {
-    if (this.annualGroup.controls.L500.value > 0 && this.annualGroup.controls.L1000.value > 0 && this.annualGroup.controls.L2000.value > 0 && this.annualGroup.controls.L3000.value > 0) {
+    // if (this.annualGroup.controls.L500.value > 0 && this.annualGroup.controls.L1000.value > 0 && this.annualGroup.controls.L2000.value > 0 && this.annualGroup.controls.L3000.value > 0) {
       const calculatedValue1 = (Number(this.annualGroup.controls.L500.value) + Number(this.annualGroup.controls.L1000.value) + Number(this.annualGroup.controls.L2000.value) + Number(this.annualGroup.controls.L3000.value)) / 4.00;
       const avgAnnualLeftValue1 = parseFloat((calculatedValue1).toFixed(2));
       this.annualAvgLeft1 = avgAnnualLeftValue1;
 
       this.annualGroup.controls.AvgL1.setValue(this.annualAvgLeft1);
       this.annualGroup.controls.AvgL1.enable();
-    }
-    if (this.annualGroup.controls.L2000.value > 0 && this.annualGroup.controls.L3000.value > 0 && this.annualGroup.controls.L4000.value > 0) {
+    // }
+    // if (this.annualGroup.controls.L2000.value > 0 && this.annualGroup.controls.L3000.value > 0 && this.annualGroup.controls.L4000.value > 0) {
       const calculatedValue2 = (Number(this.annualGroup.controls.L2000.value) + Number(this.annualGroup.controls.L3000.value) + Number(this.annualGroup.controls.L4000.value)) / 3.00;
       const avgAnnualLeftValue2 = parseFloat((calculatedValue2).toFixed(2));
       this.annualAvgLeft2 = avgAnnualLeftValue2;
 
       this.annualGroup.controls.AvgL2.setValue(this.annualAvgLeft2);
       this.annualGroup.controls.AvgL2.enable();
-    }
+    // }
   }
 
   noDataCanvas(element: ElementRef) {
@@ -451,7 +467,10 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
   }
   createLineChart(element: ElementRef, chartData: any, chartOption: any) {
     this.ctx = element.nativeElement.getContext('2d');
-    // console.log('Chart Data:', chartData);
+    console.log('Chart Data:', chartData);
+    if(this.audiometricTestGroup.controls.TypeOfAudiogram.value === 'B'){
+      chartData.datasets[1] = [];
+    }
     // console.log('Chart Option', chartOption);
 
     const lineChart = new Chart(this.ctx, {
@@ -468,7 +487,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       { x: 3000, y: this.baseLineGroup.controls.R3000.value },
       { x: 4000, y: this.baseLineGroup.controls.R4000.value },
       { x: 6000, y: this.baseLineGroup.controls.R6000.value },
-      // { x: 8000, y : -75}
+      { x: 8000, y: this.baseLineGroup.controls.R8000.value },
     ];
     this.LeftBaseLine = [
       { x: 500, y: this.baseLineGroup.controls.L500.value },
@@ -477,7 +496,10 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       { x: 3000, y: this.baseLineGroup.controls.L3000.value },
       { x: 4000, y: this.baseLineGroup.controls.L4000.value },
       { x: 6000, y: this.baseLineGroup.controls.L6000.value },
+      { x: 8000, y: this.baseLineGroup.controls.L8000.value },
     ];
+    console.log('Line 482 ===>', this.audiometricTestGroup.controls.TypeOfAudiogram.value);
+
     if(this.audiometricTestGroup.controls.TypeOfAudiogram.value === 'A') {
       this.RightAnnual = [
         { x: 500, y: this.annualGroup.controls.R500.value },
@@ -486,7 +508,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         { x: 3000, y: this.annualGroup.controls.R3000.value },
         { x: 4000, y: this.annualGroup.controls.R4000.value },
         { x: 6000, y: this.annualGroup.controls.R6000.value },
-        // { x: 8000, y : -25}
+        { x: 8000, y: this.annualGroup.controls.R8000.value },
       ];
       this.LeftAnnual = [
         { x: 500, y: this.annualGroup.controls.L500.value },
@@ -495,6 +517,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         { x: 3000, y: this.annualGroup.controls.L3000.value },
         { x: 4000, y: this.annualGroup.controls.L4000.value },
         { x: 6000, y: this.annualGroup.controls.L6000.value },
+        { x: 8000, y: this.annualGroup.controls.L8000.value },
       ];
     } else {
       this.RightAnnual = [];
@@ -502,13 +525,13 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
     }
     
     const rightFrequencyData = {
-      labels: this.RightBaseLine.map(item => item.x),
+      labels: this.RightBaseLine?.map(item => item.x),
       // labels: this.clinicMetrics.DailyMetric.map((item: any) => item.DayOfMonth),
       datasets: [
         {
           label: 'BASELINE',
           // data: this.clinicMetrics.DailyMetric.map((item: any) => item.TotalPatient),
-          data: this.RightBaseLine.map(item => item.y),
+          data: this.RightBaseLine?.map(item => item.y),
           backgroundColor: '#ff638466',
           borderWidth: 3,
           borderColor: '#ff6384',
@@ -518,7 +541,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         {
           label: 'ANNUAL',
           // data: this.clinicMetrics.DailyMetric.map((item: any) => item.TotalPatient),
-          data: this.RightAnnual.map(item => item.y),
+          data: this.RightAnnual?.map(item => (item?.y)),
           backgroundColor: '#21cf3c66',
           borderWidth: 2,
           borderDash: [5, 10],
@@ -527,16 +550,15 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
           lineTension: 0,
         }
       ],
-
     };
     const leftFrequencyData = {
-      labels: this.LeftBaseLine.map(item => item.x),
+      labels: this.LeftBaseLine?.map(item => item.x),
       // labels: this.clinicMetrics.DailyMetric.map((item: any) => item.DayOfMonth),
       datasets: [
         {
           label: 'BASELINE',
           // data: this.clinicMetrics.DailyMetric.map((item: any) => item.TotalPatient),
-          data: this.LeftBaseLine.map(item => item.y),
+          data: this.LeftBaseLine?.map(item => item.y),
           backgroundColor: '#ff638466',
           borderWidth: 3,
           borderColor: '#ff6384',
@@ -546,7 +568,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         {
           label: 'ANNUAL',
           // data: this.clinicMetrics.DailyMetric.map((item: any) => item.TotalPatient),
-          data: this.LeftAnnual.map(item => item.y),
+          data: this.LeftAnnual?.map(item => (item?.y)),
           backgroundColor: '#21cf3c66',
           borderWidth: 2,
           borderDash: [5, 10],
@@ -556,6 +578,10 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         }
       ]
     };
+    console.log('Right Frequency', rightFrequencyData);
+    console.log('Left Frequency', leftFrequencyData);
+    
+    
     this.createLineChart(this.frequencyChartRightEar, rightFrequencyData, this.lineChartOption);
     this.createLineChart(this.frequencyChartLeftEar, leftFrequencyData, this.lineChartOption);
   }
@@ -581,19 +607,22 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         .pipe(takeUntil(this.onDestroyUnSubscribe))
         .subscribe((response: any) => {
           if (response['status'] == 200) {
+            this.getAudiometricResultDetails();
+            this.viewLineChart();
+
             if (this.audiometryResultForm.value.audiometricResult.Id > 0) {
               // this.snackBar.open('Updated Successfully', 'Close', {
               //   panelClass: 'success-popup',
               // });
 
-              this.getAudiometricResultDetails();
+              // this.getAudiometricResultDetails();
               this.updateNext = true;
             } else {
               this.snackBar.open('Saved Successfully', 'Close', {
                 panelClass: 'success-popup',
               });
 
-              this.getAudiometricResultDetails();
+              // this.getAudiometricResultDetails();
               this.saveNext = true;
             }
           } else {

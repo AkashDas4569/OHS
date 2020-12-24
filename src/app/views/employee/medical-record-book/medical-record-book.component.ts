@@ -69,8 +69,8 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
       EmployeeOHSTestVisitId: ['', Validators.required],
       EnteredUserId: ['', Validators.required],
       MedExamDt: [moment().format('DD/MM/YYYY'), Validators.required],
-      ResultOfBioMonitor: [''],
-      FitToWork: [''],
+      ResultOfBioMonitor: ['', Validators.required],
+      FitToWork: ['', Validators.required],
       // Fit: [{value: false, disabled: true}],
     });
 

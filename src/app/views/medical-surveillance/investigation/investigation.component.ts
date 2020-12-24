@@ -53,28 +53,28 @@ export class InvestigationComponent implements OnInit, OnDestroy {
       EmployeeId: ['', Validators.required],
       EmployeeOHSTestVisitId: ['', Validators.required],
       LabTestCategory: [null],
-      FEME: [''],
+      FEME: ['', Validators.required],
       FemeSpecify: [''],
-      Hb: [''],
+      Hb: ['', Validators.required],
       HbSpecify: [''],
-      BUSE: [''],
+      BUSE: ['', Validators.required],
       BUSEspecify: [''],
-      RenalProfile: [''],
+      RenalProfile: ['', Validators.required],
       RenalProfileSpecify: [''],
-      LiverFn: [''],
+      LiverFn: ['', Validators.required],
       LiverFnSpecify: [''],
       OtherSpecify: [''],
-      Sputum: [''],
+      Sputum: ['', Validators.required],
       SputumSpecify: [''],
-      CXR: [''],
+      CXR: ['', Validators.required],
       CXRSpecify: [''],
-      FVC: [''],
+      FVC: ['', Validators.required],
       FVCspecify: [''],
-      FEV1: [''],
+      FEV1: ['', Validators.required],
       FEV1specify: [''],
-      FEV1_FVC: [''],
+      FEV1_FVC: ['', Validators.required],
       FEV1_FVCspecify: [''],
-      Audigram: [''],
+      Audigram: ['', Validators.required],
       AudigramSpecify: [''],
       Immunization: [''],
       Other: [''],
@@ -214,6 +214,10 @@ export class InvestigationComponent implements OnInit, OnDestroy {
             panelClass: 'error-popup',
           });
         }
+      });
+    } else {
+      this.snackBar.open('All Fields are required before Saving! Please try again.', 'Close', {
+        panelClass: 'error-popup',
       });
     }
   }

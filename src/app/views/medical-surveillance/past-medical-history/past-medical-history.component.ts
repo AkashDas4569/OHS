@@ -52,35 +52,35 @@ export class PastMedicalHistoryComponent implements OnInit, AfterViewInit, OnDes
       EmployeeId: ['', Validators.required],
       EmployeeOHSTestVisitId: ['', Validators.required],
       OHDoctorId: ['', Validators.required],
-      CNS: [''],
+      CNS: ['', Validators.required],
       SpecifyCNS: [''],
-      PNS: [''],
+      PNS: ['', Validators.required],
       SpecifyPNS: [''],
-      CVS: [''],
+      CVS: ['', Validators.required],
       SpecifyCVS: [''],
-      RESPsys: [''],
+      RESPsys: ['', Validators.required],
       SpecifyRESPsys: [''],
-      Gastro: [''],
+      Gastro: ['', Validators.required],
       SpecifyGastro: [''],
-      MuscSke: [''],
+      MuscSke: ['', Validators.required],
       SpecifyMuscSke: [''],
-      Endocrine: [''],
+      Endocrine: ['', Validators.required],
       SpecifyEndocrine: [''],
-      Genitourinary: [''],
+      Genitourinary: ['', Validators.required],
       SpecifyGenitourinary: [''],
-      Reproductive: [''],
+      Reproductive: ['', Validators.required],
       SpecifyReproductive: [''],
-      Allergy: [''],
+      Allergy: ['', Validators.required],
       SpecifyAllergy: [''],
-      Hospitalization: [''],
+      Hospitalization: ['', Validators.required],
       SpecifyHospitalization: [''],
-      PrevInjury: [''],
+      PrevInjury: ['', Validators.required],
       SpecifyPrevInjury: [''],
-      Compensation: [''],
+      Compensation: ['', Validators.required],
       SpecifyCompensation: [''],
-      CoWorkers: [''],
+      CoWorkers: ['', Validators.required],
       SpecifyCoWorkers: [''],
-      OtherProblems: [''],
+      OtherProblems: ['', Validators.required],
       SpecifyOtherProblems: ['']
     });
 
@@ -229,6 +229,10 @@ export class PastMedicalHistoryComponent implements OnInit, AfterViewInit, OnDes
             panelClass: 'error-popup',
           });
         }
+      });
+    } else {
+      this.snackBar.open('All Fields are required before Saving! Please try again.', 'Close', {
+        panelClass: 'error-popup',
       });
     }
   }

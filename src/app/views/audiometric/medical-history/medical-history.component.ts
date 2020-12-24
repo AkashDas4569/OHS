@@ -56,16 +56,16 @@ export class MedicalHistoryComponent implements OnInit, OnDestroy {
       EmployeeId: ['', Validators.required],
       EmployeeOHSTestVisitId: ['', Validators.required],
       UserIDEntered: ['', Validators.required],
-      InjuryHistory: [''],
-      URTIsymptoms: [''],
-      BuzzHistory: [''],
-      DiseaseAffect: [''],
-      CertHearingLoss: [''],
-      Antibiotics: [''],
-      LoudNoiseHobby: [''],
-      scubaDiving: [''],
-      ExpoExplosion: [''],
-      Expo14hoursPrior: [''],
+      InjuryHistory: ['', Validators.required],
+      URTIsymptoms: ['', Validators.required],
+      BuzzHistory: ['', Validators.required],
+      DiseaseAffect: ['', Validators.required],
+      CertHearingLoss: ['', Validators.required],
+      Antibiotics: ['', Validators.required],
+      LoudNoiseHobby: ['', Validators.required],
+      scubaDiving: ['', Validators.required],
+      ExpoExplosion: ['', Validators.required],
+      Expo14hoursPrior: ['', Validators.required],
     });
 
     this.formControls.EmployeeId.setValue(this.employeeId);
@@ -166,6 +166,10 @@ export class MedicalHistoryComponent implements OnInit, OnDestroy {
             });
           }
         });
+    } else {
+      this.snackBar.open('All Fields are required before Saving! Please try again.', 'Close', {
+        panelClass: 'error-popup',
+      });
     }
   }
 }

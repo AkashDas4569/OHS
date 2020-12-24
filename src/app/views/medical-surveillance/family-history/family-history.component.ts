@@ -52,13 +52,13 @@ export class FamilyHistoryComponent implements OnInit, OnDestroy {
       EmployeeId: ['', Validators.required],
       UpdateOHDoctorId: ['', Validators.required],
       OHDoctorId: ['', Validators.required],
-      MedicalIllness: [''],
+      MedicalIllness: ['', Validators.required],
       SpecifyMedicalIllness: [''],
-      Allergy: [''],
+      Allergy: ['', Validators.required],
       SpecifyAllergy: [''],
-      Congential: [''],
+      Congential: ['', Validators.required],
       SpecifyCongential: [''],
-      OtherIllness: [''],
+      OtherIllness: ['', Validators.required],
       SpecifyOtherIllness: ['']
     });
 
@@ -182,6 +182,10 @@ export class FamilyHistoryComponent implements OnInit, OnDestroy {
             });
           }
         });
+    } else {
+      this.snackBar.open('All Fields are required before Saving! Please try again.', 'Close', {
+        panelClass: 'error-popup',
+      });
     }
   }
 }

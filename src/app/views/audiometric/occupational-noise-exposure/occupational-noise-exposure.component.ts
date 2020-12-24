@@ -63,13 +63,13 @@ export class OccupationalNoiseExposureComponent implements OnInit, OnDestroy {
       EmployeeId: ['', Validators.required],
       EmployeeOHSTestVisitId: ['', Validators.required],
       UserIDEntered: ['', Validators.required],
-      ExceedNoiseExpo: [''],
-      ExpoLoudPreEmp: [''],
-      ExpoLoudCurEmp: [''],
-      ExpoLoudPart: [''],
-      ProtectPreEmp: [''],
-      ProtectCurEmp: [''],
-      ProtectPart: [''],
+      ExceedNoiseExpo: ['', Validators.required],
+      ExpoLoudPreEmp: ['', Validators.required],
+      ExpoLoudCurEmp: ['', Validators.required],
+      ExpoLoudPart: ['', Validators.required],
+      ProtectPreEmp: ['', Validators.required],
+      ProtectCurEmp: ['', Validators.required],
+      ProtectPart: ['', Validators.required],
     });
 
     this.formControls.EmployeeId.setValue(this.employeeId);
@@ -167,6 +167,10 @@ export class OccupationalNoiseExposureComponent implements OnInit, OnDestroy {
             });
           }
         });
+    } else {
+      this.snackBar.open('All Fields are required before Saving! Please try again.', 'Close', {
+        panelClass: 'error-popup',
+      });
     }
   }
 }

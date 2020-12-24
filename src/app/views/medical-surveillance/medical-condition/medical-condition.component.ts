@@ -60,45 +60,46 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
       MsMedConId: [0],
       MSMensesHistoryId: [0],
       Smoker: [false],
+      // Smoker: [''],
       NonSmoker: [false],
       StoppedSmoking: [false],
       NoYearsSmoked: ['', Validators.pattern(/^[0-9]*$/)],
       NoOfCigaratesPerDay: ['', Validators.pattern(/^[0-9]*$/)],
-      EyeProblem: [''],
+      EyeProblem: ['', Validators.required],
       SpecifyEyeProblem: [''],
-      Fits: [''],
+      Fits: ['', Validators.required],
       SpecifyFits: [''],
-      HeadInjury: [''],
+      HeadInjury: ['', Validators.required],
       SpecifyHeadInjury: [''],
-      Giddiness: [''],
+      Giddiness: ['', Validators.required],
       SpeicyGiddiness: [''],
-      Fainting: [''],
+      Fainting: ['', Validators.required],
       SpecifyFainting: [''],
-      BrainSurgery: [''],
+      BrainSurgery: ['', Validators.required],
       SpecifyBrainSurgery: [''],
-      Stroke: [''],
+      Stroke: ['', Validators.required],
       SpecifyStroke: [''],
-      Diabetes: [''],
+      Diabetes: ['', Validators.required],
       SpecifyDiabetes: [''],
-      MentalIllness: [''],
+      MentalIllness: ['', Validators.required],
       SpecifyMentalIllness: [''],
-      Alcohol: [''],
+      Alcohol: ['', Validators.required],
       SpecifyAlcohol: [''],
-      Drugs: [''],
+      Drugs: ['', Validators.required],
       SpecifyDrugs: [''],
-      Spine: [''],
+      Spine: ['', Validators.required],
       SpecifySpine: [''],
-      Hypertension: [''],
+      Hypertension: ['', Validators.required],
       SpecifyHypertension: [''],
-      Cough: [''],
+      Cough: ['', Validators.required],
       SpecifyCough: [''],
-      Hearing: [''],
+      Hearing: ['', Validators.required],
       SpecifyHearing: [''],
-      kidney: [''],
+      kidney: ['', Validators.required],
       SpecifyKidney: [''],
-      RegMeds: [''],
+      RegMeds: ['', Validators.required],
       SpecifyRegMeds: [''],
-      OtherIllness: [''],
+      OtherIllness: ['', Validators.required],
       SpecifyOtherIllness: [''],
 
       AgeOfMenarche: [''],
@@ -130,7 +131,17 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
     this.onDestroyUnSubscribe.complete();
   }
 
-
+  valueToggle(name: string) {
+    // this.formControls.Smoker.value != this.formControls.NonSmoker.value
+   if(name === 'Smoker') {
+     this.formControls.Smoker.setValue(true);
+    this.formControls.NonSmoker.setValue(false);
+   }
+   if(name === 'NonSmoker') {
+    this.formControls.NonSmoker.setValue(true);
+    this.formControls.Smoker.setValue(false);
+   }
+  }
   getEmployeeById() {
     this.employeeService.getEmployeeById({ employeeID: this.employeeId })
       .pipe(takeUntil(this.onDestroyUnSubscribe))
@@ -277,6 +288,10 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
             });
           }
         });
+    } else {
+      this.snackBar.open('All Fields are required before Saving! Please try again.', 'Close', {
+        panelClass: 'error-popup',
+      });
     }
   }
 }

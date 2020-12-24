@@ -42,22 +42,22 @@ export const Errors: ErrorsInterface = {
   ],
   baseLineRight: [
     { type: 'required', message: 'Field is required.' },
-    { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
+    { type: 'pattern', message: 'Integer with 2 decimal places.' },
     { type: 'maxlength', message: 'Should not be more than 6 Characters.' }
   ],
   baseLineLeft: [
     { type: 'required', message: 'Field is required.' },
-    { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
+    { type: 'pattern', message: 'Integer with 2 decimal places.' },
     { type: 'maxlength', message: 'Should not be more than 6 Characters.' }
   ],
   annualRight: [
     { type: 'required', message: 'Field is required.' },
-    { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
+    { type: 'pattern', message: 'Integer with 2 decimal places.' },
     { type: 'maxlength', message: 'Should not be more than 6 Characters.' }
   ],
   annualLeft: [
     { type: 'required', message: 'Field is required.' },
-    { type: 'pattern', message: 'Only numbers are allowed with 2 decimal places.' },
+    { type: 'pattern', message: 'Integer with 2 decimal places.' },
     { type: 'maxlength', message: 'Should not be more than 6 Characters.' }
   ],
   RecosOthers: [
@@ -139,6 +139,12 @@ export const Errors: ErrorsInterface = {
     { type: 'required', message: 'Appointment Date is required.' }
   ],
   fromDate: [
+    { type: 'required', message: 'Date is required.' }
+  ],
+  MedExamDt: [
+    { type: 'required', message: 'Date is required.' }
+  ],
+  ResultOfBioMonitor: [
     { type: 'required', message: 'Date is required.' }
   ],
   strength: [

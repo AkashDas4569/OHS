@@ -219,14 +219,15 @@
                                             3000</th>
                                         <th scope="col" class="text-center border-right-bold" style="min-width: 100px;">
                                             4000</th>
-                                        <th scope="col" class="text-center" style="min-width: 100px;">6000</th>
+                                        <th scope="col" class="text-center border-right-bold" style="min-width: 100px;">6000</th>
+                                        <th scope="col" class="text-center" style="min-width: 100px;">8000</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <ng-container formGroupName="audiometricBaseline">
                                         <tr class="text-uppercase">
-                                            <td colspan="8">
+                                            <td colspan="9">
                                                 <div
                                                     class="bg-color6 rounded-top px-3 pt-2 pb-1 mb-1 d-flex justify-content-start flex-row flex-wrap">
                                                     <mat-label class="fw700 fs16">BaseLine :</mat-label>
@@ -244,7 +245,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R500" (change)="calculateBaseLineAvgRight()">
                                                         <!-- <button mat-icon-button type="button" matSuffix tabindex="-1"
                                                         (click)="clearInput('')">
@@ -261,7 +262,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R1000" (change)="calculateBaseLineAvgRight()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['R1000'], 'baseLineRight').message">
@@ -274,7 +275,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R2000" (change)="calculateBaseLineAvgRight()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['R2000'], 'baseLineRight').message">
@@ -287,7 +288,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R3000" (change)="calculateBaseLineAvgRight()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['R3000'], 'baseLineRight').message">
@@ -300,7 +301,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R4000" (change)="calculateBaseLineAvgRight()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['R4000'], 'baseLineRight').message">
@@ -309,15 +310,28 @@
                                                     </mat-form-field>
                                                 </div>
                                             </td>
-                                            <td class="border-right-bold border-bottom text-center w-10">
+                                            <td class="border-bottom border-right-bold text-center w-10">
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R6000">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['R6000'], 'baseLineRight').message">
                                                             {{ errorState(baseLineGroup.controls['R6000'], 'baseLineRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="number" autocomplete="off"
+                                                            formControlName="R8000">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['R8000'], 'baseLineRight').message">
+                                                            {{ errorState(baseLineGroup.controls['R8000'], 'baseLineRight').message }}
                                                         </mat-error>
                                                     </mat-form-field>
                                                 </div>
@@ -334,7 +348,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L500" (change)="calculateBaseLineAvgLeft()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['L500'], 'baseLineLeft').message">
@@ -347,7 +361,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L1000" (change)="calculateBaseLineAvgLeft()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['L1000'], 'baseLineLeft').message">
@@ -360,7 +374,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L2000" (change)="calculateBaseLineAvgLeft()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['L2000'], 'baseLineLeft').message">
@@ -373,7 +387,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L3000" (change)="calculateBaseLineAvgLeft()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['L3000'], 'baseLineLeft').message">
@@ -386,7 +400,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L4000" (change)="calculateBaseLineAvgLeft()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['L4000'], 'baseLineLeft').message">
@@ -395,11 +409,11 @@
                                                     </mat-form-field>
                                                 </div>
                                             </td>
-                                            <td class="border-right-bold border-bottom text-center w-10">
+                                            <td class="border-bottom border-right-bold text-center w-10">
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L6000">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(baseLineGroup.controls['L6000'], 'baseLineLeft').message">
@@ -408,11 +422,24 @@
                                                     </mat-form-field>
                                                 </div>
                                             </td>
+                                            <td class="border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="number" autocomplete="off"
+                                                            formControlName="L8000">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(baseLineGroup.controls['L8000'], 'baseLineLeft').message">
+                                                            {{ errorState(baseLineGroup.controls['L8000'], 'baseLineLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
                                         </tr>
                                     </ng-container>
                                     <ng-container *ngIf="audiometricTestGroup.controls['TypeOfAudiogram'].value === 'A'" formGroupName="audiometricAnnual">
                                         <tr class="text-uppercase">
-                                            <td colspan="8">
+                                            <td colspan="9">
                                                 <div
                                                     class="bg-color6 rounded-top px-3 pt-2 pb-1 mb-1 d-flex justify-content-start flex-row flex-wrap">
                                                     <mat-label class="fw700 fs16">Annual :</mat-label>
@@ -430,7 +457,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R500" (change)="calculateAnnualAvgRight()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['R500'], 'annualRight').message">
@@ -443,7 +470,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R1000" (change)="calculateAnnualAvgRight()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['R1000'], 'annualRight').message">
@@ -456,7 +483,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R2000" (change)="calculateAnnualAvgRight()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['R2000'], 'annualRight').message">
@@ -469,7 +496,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R3000" (change)="calculateAnnualAvgRight()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['R3000'], 'annualRight').message">
@@ -482,7 +509,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R4000" (change)="calculateAnnualAvgRight()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['R4000'], 'annualRight').message">
@@ -491,15 +518,28 @@
                                                     </mat-form-field>
                                                 </div>
                                             </td>
-                                            <td class="border-right-bold border-bottom text-center w-10">
+                                            <td class="border-bottom border-right-bold text-center w-10">
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="R6000">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['R6000'], 'annualRight').message">
                                                             {{ errorState(annualGroup.controls['R6000'], 'annualRight').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="number" autocomplete="off"
+                                                            formControlName="R8000">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['R8000'], 'annualRight').message">
+                                                            {{ errorState(annualGroup.controls['R8000'], 'annualRight').message }}
                                                         </mat-error>
                                                     </mat-form-field>
                                                 </div>
@@ -516,7 +556,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L500" (change)="calculateAnnualAvgLeft()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['L500'], 'annualLeft').message">
@@ -529,7 +569,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L1000" (change)="calculateAnnualAvgLeft()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['L1000'], 'annualLeft').message">
@@ -542,7 +582,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L2000" (change)="calculateAnnualAvgLeft()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['L2000'], 'annualLeft').message">
@@ -555,7 +595,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L3000" (change)="calculateAnnualAvgLeft()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['L3000'], 'annualLeft').message">
@@ -568,7 +608,7 @@
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L4000" (change)="calculateAnnualAvgLeft()">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['L4000'], 'annualLeft').message">
@@ -577,15 +617,28 @@
                                                     </mat-form-field>
                                                 </div>
                                             </td>
-                                            <td class="border-right-bold border-bottom text-center w-10">
+                                            <td class="border-bottom border-right-bold text-center w-10">
                                                 <div class="text-muted w-10" style="min-width: 70px">
                                                     <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
                                                         <mat-label class="fw600"></mat-label>
-                                                        <input matInput type="text" autocomplete="off"
+                                                        <input matInput type="number" autocomplete="off"
                                                             formControlName="L6000">
                                                         <mat-error class="w-space-normal"
                                                             *ngIf="errorState(annualGroup.controls['L6000'], 'annualLeft').message">
                                                             {{ errorState(annualGroup.controls['L6000'], 'annualLeft').message }}
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </td>
+                                            <td class="border-bottom text-center w-10">
+                                                <div class="text-muted w-10" style="min-width: 70px">
+                                                    <mat-form-field class="w-10 text-center pb-2" floatLabel="never">
+                                                        <mat-label class="fw600"></mat-label>
+                                                        <input matInput type="number" autocomplete="off"
+                                                            formControlName="L8000">
+                                                        <mat-error class="w-space-normal"
+                                                            *ngIf="errorState(annualGroup.controls['L8000'], 'annualLeft').message">
+                                                            {{ errorState(annualGroup.controls['L8000'], 'annualLeft').message }}
                                                         </mat-error>
                                                     </mat-form-field>
                                                 </div>
