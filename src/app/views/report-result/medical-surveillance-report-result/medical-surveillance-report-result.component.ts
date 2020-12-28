@@ -72,8 +72,8 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       this.employeeId = +params['eId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
     });
 
     this.getMedicalSurveillanceDetails();
@@ -106,14 +106,14 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
           this.gender = ((this.employeeDetails.Gender === 'M') ? 'Male' : 'Female');
           this.maritalStatus = ((this.employeeDetails.MartialStatus === 'S') ? 'Single' : 'Married');
           this.ethnicId = +(this.employeeDetails.Ethnic);
-          console.log('Ethinic Id ==>', this.ethnicId);
+          // console.log('Ethinic Id ==>', this.ethnicId);
 
           // console.log('Ethnic List ==>', this.ethnicList);
           this.ethnicList;
           this.ethnicName = this.ethnicList.filter((item: any) => item.Id === this.ethnicId).map((item: any) => item.Name);
 
-          console.log('Selected Ethnic Name ::', this.ethnicName);
-          console.log('Employee Details ==>', this.employeeDetails);
+          // console.log('Selected Ethnic Name ::', this.ethnicName);
+          // console.log('Employee Details ==>', this.employeeDetails);
         }
       });
 
@@ -129,7 +129,7 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       .subscribe((medicalConditionData: any) => {
         if (medicalConditionData['status'] == 200) {
           this.medicalConditionDetails = medicalConditionData['msMedCond'];
-          console.log(this.medicalConditionDetails);
+          // console.log(this.medicalConditionDetails);
         }
       });
 
@@ -145,7 +145,7 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       .subscribe((pastMedicalHistoryData: any) => {
         if (pastMedicalHistoryData['status'] == 200) {
           this.pastMedicalHistoryDetails = pastMedicalHistoryData['msPastMedHistory'];
-          console.log(this.pastMedicalHistoryDetails);
+          // console.log(this.pastMedicalHistoryDetails);
         }
       });
 
@@ -160,7 +160,7 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       .subscribe((familyHistoryData: any) => {
         if (familyHistoryData['status'] == 200) {
           this.familyHistoryDetails = familyHistoryData['familyHistory'];
-          console.log(this.familyHistoryDetails);
+          // console.log(this.familyHistoryDetails);
         }
       });
 
@@ -176,7 +176,7 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       .subscribe((occupationalHistoryData: any) => {
         if (occupationalHistoryData['status'] == 200) {
           this.occupationalHistoryDetails = occupationalHistoryData['occupationalHistory'];
-          console.log(this.occupationalHistoryDetails);
+          // console.log(this.occupationalHistoryDetails);
         }
       });
 
@@ -194,7 +194,7 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
           this.chemicalHistoryDetails = chemicalHistoryData['msChemicalHistory'];
           this.symptomsDateFormatted = moment(this.chemicalHistoryDetails.SymptomsDateStr, 'DD/MM/YYYY');
 
-          console.log(this.chemicalHistoryDetails);
+          // console.log(this.chemicalHistoryDetails);
         }
       });
 
@@ -210,7 +210,7 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       .subscribe((physicalExamData: any) => {
         if (physicalExamData['status'] == 200) {
           this.physicalExamDetails = physicalExamData['msPhysicalExam'];
-          console.log('Physical Exam ==>', this.physicalExamDetails);
+          // console.log('Physical Exam ==>', this.physicalExamDetails);
         }
       });
 
@@ -226,7 +226,7 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       .subscribe((investigationData: any) => {
         if (investigationData['status'] == 200) {
           this.investigationDetails = investigationData['labInvestigation'];
-          console.log('Investigation ==>', this.investigationDetails);
+          // console.log('Investigation ==>', this.investigationDetails);
         }
       });
 
@@ -242,7 +242,7 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       .subscribe((examOutcomeData: any) => {
         if (examOutcomeData['status'] == 200) {
           this.examOutcomeDetails = examOutcomeData['examOutcome'];
-          console.log('Exam Outcome ==>', this.examOutcomeDetails);
+          // console.log('Exam Outcome ==>', this.examOutcomeDetails);
         }
       });
 
@@ -258,7 +258,7 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       .subscribe((medicalRecordBookData: any) => {
         if (medicalRecordBookData['status'] == 200) {
           this.medicalRecordBookDetails = medicalRecordBookData['msRecordBook'];
-          console.log('Medical Record Book ==>', this.medicalRecordBookDetails);
+          // console.log('Medical Record Book ==>', this.medicalRecordBookDetails);
         }
       });
 
@@ -267,7 +267,7 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((allOhdClinic: any) => {
         this.allOhdClinic = allOhdClinic['ohdClinic'];
-        console.log('Clinic API', this.allOhdClinic);
+        // console.log('Clinic API', this.allOhdClinic);
       });
 
       // CertificateFitness API
@@ -282,13 +282,13 @@ export class MedicalSurveillanceReportResultComponent implements OnInit, OnDestr
       .subscribe((medicalCertificateFitnessData: any) => {
         if (medicalCertificateFitnessData['status'] == 200) {
           this.medicalCertificateFitnessDetails = medicalCertificateFitnessData['MedicalCertificate'];
-          console.log('Medical Certificate ==>', this.medicalCertificateFitnessDetails);
+          // console.log('Medical Certificate ==>', this.medicalCertificateFitnessDetails);
         }
       });
   }
 
   downloadPdf() {
-    console.log('Pdf Download');
+    // console.log('Pdf Download');
     window.print();
 
     // console.log(pdfMake);

@@ -84,7 +84,7 @@ export class UpdateuserComponent implements OnInit, OnDestroy {
       active: Boolean(this.authenticationService.getStatus())
     }
 
-    console.log(manageUserDataPayLoad);
+    // console.log(manageUserDataPayLoad);
 
     if (this.manageUser.valid) {
       this.ohdService.addEditUserModule(manageUserDataPayLoad)
@@ -111,7 +111,7 @@ export class UpdateuserComponent implements OnInit, OnDestroy {
   openModal(data: any) {
     this.modalRef = this.modalService.show(this.updateUser, { class: 'updateUser-modal modal-dialog-centered' });
     this.dataDetails = data;
-    console.log(this.dataDetails);
+    // console.log(this.dataDetails);
 
     this.manageUser.patchValue({
       Id: this.dataDetails.Id,

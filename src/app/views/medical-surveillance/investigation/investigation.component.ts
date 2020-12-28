@@ -43,9 +43,9 @@ export class InvestigationComponent implements OnInit, OnDestroy {
       this.employeeTestVisitId = +params['eTestVisitId'];
       this.doctorId = +params['dId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
-      console.log('doctorId: ', this.doctorId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('doctorId: ', this.doctorId);
     });
 
     this.investigationForm = this.fb.group({
@@ -120,7 +120,7 @@ export class InvestigationComponent implements OnInit, OnDestroy {
       .subscribe((investigationData: any) => {
         if (investigationData['status'] == 200) {
           this.investigationDetails = investigationData['labInvestigation'];
-          console.log(this.investigationDetails);
+          // console.log(this.investigationDetails);
 
           this.investigationForm.patchValue({
             Id: this.investigationDetails.Id,
@@ -158,7 +158,7 @@ export class InvestigationComponent implements OnInit, OnDestroy {
       });
   }
   clearInput(ipField: string){
-    console.log(ipField);
+    // console.log(ipField);
     // if((ipField === 'OtherSpecify') || (ipField === 'Immunization') || (ipField === 'Other')) {
     //   this.formControls[ipField].reset();
     //   this.formControls[ipField].clearValidators();
@@ -179,7 +179,7 @@ export class InvestigationComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.investigationForm.markAllAsTouched();
-    console.log(this.investigationForm);
+    // console.log(this.investigationForm);
 
     if (this.investigationForm.valid) {
       const investigationDataPayLoad = {
@@ -187,12 +187,12 @@ export class InvestigationComponent implements OnInit, OnDestroy {
           ...this.investigationForm.value
         }
       }
-      console.log(investigationDataPayLoad);
+      // console.log(investigationDataPayLoad);
 
       this.medicalSurveillanceService.addEditInvestigation(investigationDataPayLoad)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response['status'] == 200) {
           if (this.investigationForm.value.Id > 0) {
             this.snackBar.open('Updated Successfully', 'Close', {

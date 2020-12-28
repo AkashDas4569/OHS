@@ -90,7 +90,7 @@ export class OhdSettingsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((allOhdClinic: any) => {
         this.allOhdClinic = allOhdClinic['ohdClinic'];
-        console.log(this.allOhdClinic);
+        // console.log(this.allOhdClinic);
         // console.log(this.allOhdClinic.cName);
 
         this.formControls.clinicName.setValue(this.allOhdClinic.cName);
@@ -111,14 +111,14 @@ export class OhdSettingsComponent implements OnInit, OnDestroy {
     this.ohdService.getOhdList(doctorDataPayLoad)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((allOhdList: any) => {
-        console.log(allOhdList);
+        // console.log(allOhdList);
         this.allOhdList = allOhdList['ohdDoctor'];
         this.totalDocuments = allOhdList['totalNumber'];
         this.numberOfPages = Math.ceil(this.totalDocuments/this.pageSize);
-        console.log('No. of Pages: ', this.numberOfPages);
-        console.log('Total Number: ', this.totalDocuments);
+        // console.log('No. of Pages: ', this.numberOfPages);
+        // console.log('Total Number: ', this.totalDocuments);
         
-        console.log(this.allOhdList);
+        // console.log(this.allOhdList);
         this.noDataText = 'No Data Found';
       });
   }
@@ -160,7 +160,7 @@ export class OhdSettingsComponent implements OnInit, OnDestroy {
       }
     }
 
-    console.log(this.ohdSettingsDataPayLoad);
+    // console.log(this.ohdSettingsDataPayLoad);
   } else {
     this.ohdSettingsDataPayLoad = {
       ohdDoctor: {
@@ -176,7 +176,7 @@ export class OhdSettingsComponent implements OnInit, OnDestroy {
       }
     }
 
-    console.log(this.ohdSettingsDataPayLoad);
+    // console.log(this.ohdSettingsDataPayLoad);
   }
     this.currentPage = 1;
     if (this.ohdSettingsForm.valid) {

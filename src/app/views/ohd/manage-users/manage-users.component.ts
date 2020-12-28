@@ -104,9 +104,9 @@ export class ManageUsersComponent implements OnInit, OnDestroy {
     this.ohdService.getUserList({})
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((allUserList: any) => {
-        console.log(allUserList);
+        // console.log(allUserList);
         this.allUserList = allUserList['users'];
-        console.log(this.allUserList);
+        // console.log(this.allUserList);
         this.noDataText = 'No Data Found';
       });
   }
@@ -121,7 +121,7 @@ export class ManageUsersComponent implements OnInit, OnDestroy {
       passwd: this.manageUser.value.userPassword,
       active: Boolean(this.authenticationService.getStatus())
     }
-    console.log(manageUserDataPayLoad);
+    // console.log(manageUserDataPayLoad);
 
     if (this.manageUser.valid) {
       this.ohdService.addEditUserModule(manageUserDataPayLoad)

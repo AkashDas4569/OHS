@@ -46,9 +46,9 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
       this.doctorId = +params['dId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('doctorId: ', this.doctorId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('doctorId: ', this.doctorId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
     });
 
     this.chemicalHistoryForm = this.fb.group({
@@ -109,7 +109,7 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
       .subscribe((chemicalHistoryData: any) => {
         if (chemicalHistoryData['status'] == 200) {
           this.chemicalHistoryDetails = chemicalHistoryData['msChemicalHistory'];
-          console.log(this.chemicalHistoryDetails);
+          // console.log(this.chemicalHistoryDetails);
 
           this.chemicalHistoryForm.patchValue({
             Id: this.chemicalHistoryDetails.Id,
@@ -133,8 +133,8 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
   }
 
   onSelectChange(radioBtn: string, ipField: string, dateField?: string) {
-    console.log(radioBtn);
-    console.log(ipField);
+    // console.log(radioBtn);
+    // console.log(ipField);
 
     if(!this.formControls[radioBtn].value) {
       this.formControls[ipField].reset();
@@ -155,10 +155,10 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
     }
   }
   onSelectChangeChemicalExpose(radioBtn: string, ipField: string, ipField2: string, ipField3: string) {
-    console.log(radioBtn);
-    console.log(ipField);
-    console.log(ipField2);
-    console.log(ipField3);
+    // console.log(radioBtn);
+    // console.log(ipField);
+    // console.log(ipField2);
+    // console.log(ipField3);
 
     if(!this.formControls[radioBtn].value) {
       this.formControls[ipField].reset();
@@ -178,7 +178,7 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
     this.formControls[ipField3].updateValueAndValidity();
   }
   clearInput(ipField: string){
-    console.log(ipField);
+    // console.log(ipField);
     if(ipField) {
     this.formControls[ipField].reset();
     this.formControls[ipField].setValidators(Validators.required);
@@ -190,7 +190,7 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
   
   onSubmit() {
     this.chemicalHistoryForm.markAllAsTouched();
-    console.log(this.chemicalHistoryForm);
+    // console.log(this.chemicalHistoryForm);
     this.chemicalHistoryForm.value.SymptomsDate = moment(this.chemicalHistoryForm.value.SymptomsDate).format('DD/MM/YYYY');
 
     if (this.chemicalHistoryForm.valid) {
@@ -199,12 +199,12 @@ export class ChemicalHistoryComponent implements OnInit, OnDestroy {
           ...this.chemicalHistoryForm.value
         }
       }
-      console.log(chemicalHistoryDataPayLoad);
+      // console.log(chemicalHistoryDataPayLoad);
 
       this.medicalSurveillanceService.addEditChemicalHistory(chemicalHistoryDataPayLoad)
         .pipe(takeUntil(this.onDestroyUnSubscribe))
         .subscribe((response: any) => {
-          console.log(response);
+          // console.log(response);
           if (response['status'] == 200) {
             if (this.chemicalHistoryForm.value.Id > 0) {
               this.snackBar.open('Updated Successfully', 'Close', {

@@ -72,10 +72,10 @@ export class OhsClientListComponent implements OnInit, OnDestroy {
         this.clientListData = clientListData['clients'];
         this.totalDocuments = clientListData['totalNumber'];
         this.numberOfPages = Math.ceil(this.totalDocuments/this.pageSize);
-        console.log('No. of Pages: ', this.numberOfPages);
-        console.log('Total Number: ', this.totalDocuments);
+        // console.log('No. of Pages: ', this.numberOfPages);
+        // console.log('Total Number: ', this.totalDocuments);
 
-        console.log(this.clientListData);
+        // console.log(this.clientListData);
         this.noDataText = 'No Data Found';
       });
   }
@@ -99,7 +99,7 @@ export class OhsClientListComponent implements OnInit, OnDestroy {
 }
 
   editClient(data: any) {
-    console.log(data);
+    // console.log(data);
     
     this.router.navigate(['/ohs-client/update-settings', data.Id]);
   }

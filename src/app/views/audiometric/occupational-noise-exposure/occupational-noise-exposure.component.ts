@@ -51,12 +51,12 @@ export class OccupationalNoiseExposureComponent implements OnInit, OnDestroy {
       this.employeeTestVisitId = +params['eTestVisitId'];
       // this.doctorId = +params['dId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
       // console.log('doctorId: ', this.doctorId);
     });
     this.userId = Number(this.authenticationService.getUserLoggedInID());
-    console.log(this.userId);
+    // console.log(this.userId);
 
     this.occupationalNoiseForm = this.fb.group({
       Id: [0],
@@ -112,7 +112,7 @@ export class OccupationalNoiseExposureComponent implements OnInit, OnDestroy {
       .subscribe((occupationalNoiseExposureData: any) => {
         if (occupationalNoiseExposureData['status'] == 200) {
           this.occupationalNoiseDetails = occupationalNoiseExposureData['occupationalNoiseExpo'];
-          console.log(this.occupationalNoiseDetails);
+          // console.log(this.occupationalNoiseDetails);
 
           this.occupationalNoiseForm.patchValue({
             Id: this.occupationalNoiseDetails.Id,
@@ -132,7 +132,7 @@ export class OccupationalNoiseExposureComponent implements OnInit, OnDestroy {
   }
   onSubmit() {
     this.occupationalNoiseForm.markAllAsTouched();
-    console.log(this.occupationalNoiseForm);
+    // console.log(this.occupationalNoiseForm);
 
     if (this.occupationalNoiseForm.valid) {
       const occupationalNoiseExposureDataPayLoad = {
@@ -140,7 +140,7 @@ export class OccupationalNoiseExposureComponent implements OnInit, OnDestroy {
           ...this.occupationalNoiseForm.value
         }
       }
-      console.log(occupationalNoiseExposureDataPayLoad);
+      // console.log(occupationalNoiseExposureDataPayLoad);
 
       this.audiometricService.addEditOccupationalNoiseExposure(occupationalNoiseExposureDataPayLoad)
         .pipe(takeUntil(this.onDestroyUnSubscribe))

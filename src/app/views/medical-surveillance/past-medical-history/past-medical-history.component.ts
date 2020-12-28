@@ -42,9 +42,9 @@ export class PastMedicalHistoryComponent implements OnInit, AfterViewInit, OnDes
       this.doctorId = +params['dId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('doctorId: ', this.doctorId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);      
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('doctorId: ', this.doctorId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);      
     });
    
     this.pastMedicalHistoryForm = this.fb.group({
@@ -127,7 +127,7 @@ export class PastMedicalHistoryComponent implements OnInit, AfterViewInit, OnDes
     .subscribe((pastMedicalHistoryData: any) => {
       if(pastMedicalHistoryData['status'] == 200) {
       this.pastMedicalHistoryDetails = pastMedicalHistoryData['msPastMedHistory'];
-      console.log(this.pastMedicalHistoryDetails);
+      // console.log(this.pastMedicalHistoryDetails);
 
       this.pastMedicalHistoryForm.patchValue({
         Id: this.pastMedicalHistoryDetails.Id,
@@ -170,8 +170,8 @@ export class PastMedicalHistoryComponent implements OnInit, AfterViewInit, OnDes
   }
 
   onSelectChange(radioBtn: string, ipField: string) {
-    console.log(radioBtn);
-    console.log(ipField);
+    // console.log(radioBtn);
+    // console.log(ipField);
 
     if (!this.formControls[radioBtn].value) {
       this.formControls[ipField].reset();
@@ -182,7 +182,7 @@ export class PastMedicalHistoryComponent implements OnInit, AfterViewInit, OnDes
     this.formControls[ipField].updateValueAndValidity();
   }
   clearInput(ipField: string) {
-    console.log(ipField);
+    // console.log(ipField);
     if (ipField) {
       this.formControls[ipField].reset();
       this.formControls[ipField].setValidators(Validators.required);
@@ -194,7 +194,7 @@ export class PastMedicalHistoryComponent implements OnInit, AfterViewInit, OnDes
   
   onSubmit() {
     this.pastMedicalHistoryForm.markAllAsTouched();
-    console.log(this.pastMedicalHistoryForm);
+    // console.log(this.pastMedicalHistoryForm);
     
     if(this.pastMedicalHistoryForm.valid) {
       const pastMedicalHistoryDataPayLoad = {
@@ -202,12 +202,12 @@ export class PastMedicalHistoryComponent implements OnInit, AfterViewInit, OnDes
           ...this.pastMedicalHistoryForm.value
         }
       }
-      console.log(pastMedicalHistoryDataPayLoad);
+      // console.log(pastMedicalHistoryDataPayLoad);
 
       this.medicalSurveillanceService.addEditPastMedicalHistory(pastMedicalHistoryDataPayLoad)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if(response['status'] == 200) {
           if(this.pastMedicalHistoryForm.value.Id > 0) {
             this.snackBar.open('Updated Successfully', 'Close', {

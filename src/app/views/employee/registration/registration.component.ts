@@ -76,14 +76,14 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.employeeSearchRegisterForm.markAllAsTouched();
     if (this.employeeSearchRegisterForm.valid) {
-      console.log(this.employeeSearchRegisterForm.value);
+      // console.log(this.employeeSearchRegisterForm.value);
     this.noDataText = `Please wait while we're fetching your data...`;
     this.employeeService.getAllEmployeeList(this.employeeSearchRegisterForm.value)
     .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((allEmployeeList: any) => {
-        console.log(allEmployeeList);
+        // console.log(allEmployeeList);
         this.employeeData = allEmployeeList['employees'];
-        console.log(this.employeeData);
+        // console.log(this.employeeData);
         this.noDataText = 'No Data Found';
       });
     }

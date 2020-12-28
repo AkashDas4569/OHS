@@ -44,9 +44,9 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
       this.employeeTestVisitId = +params['eTestVisitId'];
       // this.gender = params['sex'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('doctorId: ', this.doctorId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('doctorId: ', this.doctorId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
       // console.log('Gender: ', this.gender);
     });
 
@@ -164,7 +164,7 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
       .subscribe((medicalConditionData: any) => {
         if (medicalConditionData['status'] == 200) {
           this.medicalConditionDetails = medicalConditionData['msMedCond'];
-          console.log(this.medicalConditionDetails);
+          // console.log(this.medicalConditionDetails);
 
           this.medicalConditionForm.patchValue({
             EmployeeId: this.medicalConditionDetails.EmployeeId,
@@ -228,8 +228,8 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
   }
 
   onSelectChange(radioBtn: string, ipField: string) {
-    console.log(radioBtn);
-    console.log(ipField);
+    // console.log(radioBtn);
+    // console.log(ipField);
 
     if (!this.formControls[radioBtn].value) {
       this.formControls[ipField].reset();
@@ -240,7 +240,7 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
     this.formControls[ipField].updateValueAndValidity();
   }
   clearInput(ipField: string) {
-    console.log(ipField);
+    // console.log(ipField);
     if (ipField) {
       this.formControls[ipField].reset();
       this.formControls[ipField].setValidators(Validators.required);
@@ -252,7 +252,7 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.medicalConditionForm.markAllAsTouched();
-    console.log(this.medicalConditionForm);
+    // console.log(this.medicalConditionForm);
 
     if (this.medicalConditionForm.valid) {
       const medicalConditionDataPayLoad = {
@@ -260,12 +260,12 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
           ...this.medicalConditionForm.value
         }
       }
-      console.log(medicalConditionDataPayLoad);
+      // console.log(medicalConditionDataPayLoad);
 
       this.medicalSurveillanceService.addEditMedicalCondititon(medicalConditionDataPayLoad)
         .pipe(takeUntil(this.onDestroyUnSubscribe))
         .subscribe((response: any) => {
-          console.log(response);
+          // console.log(response);
           if (response['status'] == 200) {
             if ((this.medicalConditionForm.value.SmokingId > 0 && this.medicalConditionForm.value.MsMedConId)) {
               this.snackBar.open('Updated Successfully', 'Close', {

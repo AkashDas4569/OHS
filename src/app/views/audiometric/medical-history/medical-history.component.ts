@@ -44,12 +44,12 @@ export class MedicalHistoryComponent implements OnInit, OnDestroy {
       this.employeeTestVisitId = +params['eTestVisitId'];
       // this.doctorId = +params['dId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
       // console.log('doctorId: ', this.doctorId);
     });
     this.userId = Number(this.authenticationService.getUserLoggedInID());
-    console.log(this.userId);
+    // console.log(this.userId);
 
     this.medicalHistoryForm = this.fb.group({
       Id: [0],
@@ -108,7 +108,7 @@ export class MedicalHistoryComponent implements OnInit, OnDestroy {
       .subscribe((medicalHistoryData: any) => {
         if (medicalHistoryData['status'] == 200) {
           this.medicalHistoryDetails = medicalHistoryData['auMedHistory'];
-          console.log(this.medicalHistoryDetails);
+          // console.log(this.medicalHistoryDetails);
 
           this.medicalHistoryForm.patchValue({
             Id: this.medicalHistoryDetails.Id,
@@ -131,7 +131,7 @@ export class MedicalHistoryComponent implements OnInit, OnDestroy {
     }
   onSubmit() {
     this.medicalHistoryForm.markAllAsTouched();
-    console.log(this.medicalHistoryForm);
+    // console.log(this.medicalHistoryForm);
 
     if (this.medicalHistoryForm.valid) {
       const medicalHistoryDataPayLoad = {
@@ -139,7 +139,7 @@ export class MedicalHistoryComponent implements OnInit, OnDestroy {
           ...this.medicalHistoryForm.value
         }
       }
-      console.log(medicalHistoryDataPayLoad);
+      // console.log(medicalHistoryDataPayLoad);
 
       this.audiometricService.addEditMedicalHistory(medicalHistoryDataPayLoad)
         .pipe(takeUntil(this.onDestroyUnSubscribe))

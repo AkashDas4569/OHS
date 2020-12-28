@@ -42,9 +42,9 @@ export class OccupationalHistoryComponent implements OnInit, OnDestroy {
       this.doctorId = +params['dId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('doctorId: ', this.doctorId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('doctorId: ', this.doctorId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
     });
 
     this.occupationalHistoryForm = this.fb.group({
@@ -104,7 +104,7 @@ export class OccupationalHistoryComponent implements OnInit, OnDestroy {
     .subscribe((occupationalHistoryData: any) => {
       if(occupationalHistoryData['status'] == 200){
         this.occupationalHistoryDetails = occupationalHistoryData['occupationalHistory'];
-        console.log(this.occupationalHistoryDetails);
+        // console.log(this.occupationalHistoryDetails);
 
         this.occupationalHistoryForm.patchValue({
           Id: this.occupationalHistoryDetails.Id,
@@ -128,7 +128,7 @@ export class OccupationalHistoryComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.occupationalHistoryForm.markAllAsTouched();
-    console.log(this.occupationalHistoryForm);
+    // console.log(this.occupationalHistoryForm);
 
     if (this.occupationalHistoryForm.valid) {
     const occupationalHistoryDataPayLoad = {
@@ -136,12 +136,12 @@ export class OccupationalHistoryComponent implements OnInit, OnDestroy {
       ...this.occupationalHistoryForm.value
       }
     }
-    console.log(occupationalHistoryDataPayLoad);
+    // console.log(occupationalHistoryDataPayLoad);
 
     this.medicalSurveillanceService.addEditOccupationalHistory(occupationalHistoryDataPayLoad)
     .pipe(takeUntil(this.onDestroyUnSubscribe))
     .subscribe((response: any) => {
-      console.log(response);
+      // console.log(response);
       if(response['status'] == 200) {
         if(this.occupationalHistoryForm.value.Id > 0) {
           this.snackBar.open('Updated Successfully', 'Close', {

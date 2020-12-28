@@ -59,7 +59,7 @@ export class MedicalSurveillanceListComponent implements OnInit, AfterViewInit, 
   }
 
   onChangeStatus(employeeMedQueue: any) {
-    console.log(employeeMedQueue)
+    // console.log(employeeMedQueue)
     if (employeeMedQueue.SelectedStatus) {
       // if (patientQueue.SelectedStatus === patientQueue.CurrentStatus) {
         this.queueNavigate(employeeMedQueue);
@@ -72,7 +72,7 @@ export class MedicalSurveillanceListComponent implements OnInit, AfterViewInit, 
   }
 
   private queueNavigate(employeeMedQueue: any) {
-    console.log(employeeMedQueue.SelectedStatus);
+    // console.log(employeeMedQueue.SelectedStatus);
     switch(employeeMedQueue.SelectedStatus) {
       case EmployeeMedSurQueueStatus.MedicalCondition: {
         this.router.navigate(['/medical-surveillance', 'status', 'medical-condition', employeeMedQueue.EmpId, employeeMedQueue.DoctorID, employeeMedQueue.EmployeeTestVisitID]);
@@ -134,14 +134,14 @@ export class MedicalSurveillanceListComponent implements OnInit, AfterViewInit, 
         });
         
         this.queueStatus = result['AudTstStatusList'];
-        console.log(this.queueStatus);
+        // console.log(this.queueStatus);
     });
   }
   loadMedicalSurQueueStatus() {
     this.lookupService.getMedicalSurveillanceQueueStatusList()
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((result: any) => {
-        console.log(result);
+        // console.log(result);
     });
   }
   
@@ -154,7 +154,7 @@ export class MedicalSurveillanceListComponent implements OnInit, AfterViewInit, 
     .pipe(takeUntil(this.onDestroyUnSubscribe))
         .subscribe((employeeMedSurData: any) => {
           this.allEmployeeQueues = employeeMedSurData['checkInMedQ'];
-          console.log(this.allEmployeeQueues);
+          // console.log(this.allEmployeeQueues);
           this.noDataText = 'No Data Found';
         });
   }
@@ -166,7 +166,7 @@ export class MedicalSurveillanceListComponent implements OnInit, AfterViewInit, 
     .pipe(takeUntil(this.onDestroyUnSubscribe))
         .subscribe((employeeMedSurCheckoutData: any) => {
           this.allEmployeeCheckoutQueues = employeeMedSurCheckoutData['checkOutMedQ'];
-          console.log(this.allEmployeeCheckoutQueues);
+          // console.log(this.allEmployeeCheckoutQueues);
           this.noDataText = 'No Data Found';
         });
   }

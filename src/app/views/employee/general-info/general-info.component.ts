@@ -109,7 +109,7 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
       if (isNaN(this.employeeId)) {
         this.employeeId = 0;
       }
-      console.log(this.employeeId);
+      // console.log(this.employeeId);
 
       this.getEmployeeDetails();
     });
@@ -136,7 +136,7 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
         const ageValue = moment().diff(value, 'years');
         this.formControls.Age.setValue(ageValue);
         this.formControls.Age.updateValueAndValidity();
-        console.log(ageValue);
+        // console.log(ageValue);
       }
       );
   }
@@ -230,7 +230,7 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
         .subscribe((response: any) => {
           if (response['status'] == 200) {
             this.employeeDetails = response['employeeDetails'];
-            console.log(this.employeeDetails);
+            // console.log(this.employeeDetails);
 
             this.employeeRegistrationForm.patchValue({
               Id: this.employeeDetails.Id,
@@ -274,7 +274,7 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
 
   onSubmit(registerVisitPurpose: any) {
     this.employeeRegistrationForm.markAllAsTouched();
-    console.log(this.employeeRegistrationForm);
+    // console.log(this.employeeRegistrationForm);
     const userId = Number(this.authenticationService.getUserLoggedInID());
     this.employeeRegistrationForm.value.DOB = moment(this.employeeRegistrationForm.value.DOB).format('DD/MM/YYYY');
     this.employeeRegistrationForm.value.ICNum = this.employeeRegistrationForm.value.ICNum.replace(/[\+\- )(]/g, '');
@@ -369,7 +369,7 @@ export class GeneralInfoComponent implements OnInit, OnDestroy {
       }
 
 
-      console.log(this.addEditEmployeeDataPayLoad);
+      // console.log(this.addEditEmployeeDataPayLoad);
 
       this.employeeService.addEditEmployee(this.addEditEmployeeDataPayLoad)
         .pipe(takeUntil(this.onDestroyUnSubscribe))

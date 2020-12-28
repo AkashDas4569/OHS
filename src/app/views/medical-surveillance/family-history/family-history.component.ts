@@ -42,9 +42,9 @@ export class FamilyHistoryComponent implements OnInit, OnDestroy {
       this.doctorId = +params['dId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('doctorId: ', this.doctorId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('doctorId: ', this.doctorId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
     });
 
     this.familyHistoryForm = this.fb.group({
@@ -101,7 +101,7 @@ export class FamilyHistoryComponent implements OnInit, OnDestroy {
       .subscribe((familyHistoryData: any) => {
         if (familyHistoryData['status'] == 200) {
           this.familyHistoryDetails = familyHistoryData['familyHistory'];
-          console.log(this.familyHistoryDetails);
+          // console.log(this.familyHistoryDetails);
 
           this.familyHistoryForm.patchValue({
             Id: this.familyHistoryDetails.Id,
@@ -122,8 +122,8 @@ export class FamilyHistoryComponent implements OnInit, OnDestroy {
   }
 
   onSelectChange(radioBtn: string, ipField: string) {
-    console.log(radioBtn);
-    console.log(ipField);
+    // console.log(radioBtn);
+    // console.log(ipField);
 
     if (!this.formControls[radioBtn].value) {
       this.formControls[ipField].reset();
@@ -134,7 +134,7 @@ export class FamilyHistoryComponent implements OnInit, OnDestroy {
     this.formControls[ipField].updateValueAndValidity();
   }
   clearInput(ipField: string) {
-    console.log(ipField);
+    // console.log(ipField);
     if (ipField) {
       this.formControls[ipField].reset();
       this.formControls[ipField].setValidators(Validators.required);
@@ -146,7 +146,7 @@ export class FamilyHistoryComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.familyHistoryForm.markAllAsTouched();
-    console.log(this.familyHistoryForm);
+    // console.log(this.familyHistoryForm);
 
     if (this.familyHistoryForm.valid) {
       const familyHistoryDataPayLoad = {
@@ -155,7 +155,7 @@ export class FamilyHistoryComponent implements OnInit, OnDestroy {
         },
         employeeOHSTestVisitId: this.employeeTestVisitId
       }
-      console.log(familyHistoryDataPayLoad);
+      // console.log(familyHistoryDataPayLoad);
 
       this.medicalSurveillanceService.addEditFamilyHistory(familyHistoryDataPayLoad)
         .pipe(takeUntil(this.onDestroyUnSubscribe))

@@ -99,10 +99,10 @@ export class MedicalSurveillanceSummaryComponent implements OnInit, OnDestroy {
       this.medicalSurveillanceSummaryDetails = medicalSurveillanceSummaryReport['MedSurSummary'];
       this.totalDocuments = medicalSurveillanceSummaryReport['totalNumber'];
       this.numberOfPages = Math.ceil(this.totalDocuments/this.pageSize);
-      console.log('No. of Pages: ', this.numberOfPages);
-      console.log('Total Number: ', this.totalDocuments);
+      // console.log('No. of Pages: ', this.numberOfPages);
+      // console.log('Total Number: ', this.totalDocuments);
 
-      console.log(this.medicalSurveillanceSummaryDetails);
+      // console.log(this.medicalSurveillanceSummaryDetails);
       this.noDataText = 'No Data Found.';
     });
   }
@@ -127,44 +127,44 @@ export class MedicalSurveillanceSummaryComponent implements OnInit, OnDestroy {
 
 goToMedicalSurveillanceReport(data: any) {
   // console.log(data);
-  console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
+  // console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
 
   const url = '/report-result/medical-surveillance-report-result/' + data.EmployeeID + '/' + data.EmployeeOHSTestVisitID
-  console.log(url);
+  // console.log(url);
 
   window.open(url, "_blank");
 }
 goToCertificateFitness(data: any) {
   // console.log(data);
-  console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
+  // console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
 
   const url = '/report-result/certificate-fitness/' + data.EmployeeID + '/' + data.EmployeeOHSTestVisitID
-  console.log(url);
+  // console.log(url);
     
   window.open(url, "_blank");
 }
 goToMedicalRemovalProtection(data: any) {
   // console.log(data);
-  console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
+  // console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
 
   const url = '/report-result/medical-removal-protection/' + data.EmployeeID + '/' + data.EmployeeOHSTestVisitID
-  console.log(url);
+  // console.log(url);
 
   window.open(url, "_blank");
 }
   
   onSubmit() {
     this.medicalSurveillanceSummaryForm.markAllAsTouched();
-    console.log(this.medicalSurveillanceSummaryForm);
+    // console.log(this.medicalSurveillanceSummaryForm);
     this.medicalSurveillanceSummaryForm.value.FromDate = this.formControls.FromDate.value.format('DD/MM/YYYY');
     this.medicalSurveillanceSummaryForm.value.ToDate = this.formControls.ToDate.value.format('DD/MM/YYYY');
     
     this.currentPage = 1;
     if(this.medicalSurveillanceSummaryForm.valid) {
-      console.log('Valid');
+      // console.log('Valid');
       this.getMedicalSurSummaryList(this.pageSize, this.currentPage);
     } else {
-      console.log('Invalid');
+      // console.log('Invalid');
     }
   }
 }

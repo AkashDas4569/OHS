@@ -102,12 +102,12 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       this.employeeTestVisitId = +params['eTestVisitId'];
       // this.doctorId = +params['dId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
       // console.log('doctorId: ', this.doctorId);
     });
     this.userId = Number(this.authenticationService.getUserLoggedInID());
-    console.log(this.userId);
+    // console.log(this.userId);
 
     this.audiometryResultForm = this.fb.group({
       audiometricResult: this.fb.group({
@@ -212,7 +212,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
   }
 
   onSelectChange() {
-    console.log('Selected Type--> ', this.audiometricTestGroup.controls.TypeOfAudiogram.value);
+    // console.log('Selected Type--> ', this.audiometricTestGroup.controls.TypeOfAudiogram.value);
     if (this.audiometricTestGroup.controls.TypeOfAudiogram.value === 'A') {
       this.annualGroup.controls.R500.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
       this.annualGroup.controls.R1000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
@@ -230,7 +230,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       this.annualGroup.controls.L8000.setValidators([Validators.required, Validators.pattern(/^[0-9 ()+-]+\d*(\.\d{1,2})?$/), Validators.maxLength(6)]);
   
     } else {
-      console.log('Else part -----');
+      // console.log('Else part -----');
       this.annualGroup.controls.R500.clearValidators();
       this.annualGroup.controls.R1000.clearValidators();
       this.annualGroup.controls.R2000.clearValidators();
@@ -281,14 +281,14 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
     this.audiometricService.getAudiometricResultDetails(audiometricResult)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((audiometryResultData: any) => {
-        console.log(audiometryResultData);
+        // console.log(audiometryResultData);
         if (audiometryResultData['status'] == 200) {
           this.audiometryResultDetails = audiometryResultData['audiometricResult'];
           this.audiometryResultBaseLineDetails = audiometryResultData['audiometricBaseline'];
           this.audiometryResultAnnualDetails = audiometryResultData['audiometricAnnual'];
-          console.log(this.audiometryResultDetails);
-          console.log(this.audiometryResultBaseLineDetails);
-          console.log(this.audiometryResultAnnualDetails);
+          // console.log(this.audiometryResultDetails);
+          // console.log(this.audiometryResultBaseLineDetails);
+          // console.log(this.audiometryResultAnnualDetails);
 
           this.audiometryResultForm.patchValue({
             audiometricResult: {
@@ -370,7 +370,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
     this.audiometricService.getCheckInDateForAudiometric(data)
     .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((checkInDateResult: any) => {
-        console.log(checkInDateResult);
+        // console.log(checkInDateResult);
         this.checkInDate = checkInDateResult['DOT'];
         let checkInDt = moment(this.checkInDate, 'DD/MM/YYYY');
         this.audiometricTestGroup.controls.DateOfTest.setValue(checkInDt);
@@ -467,7 +467,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
   }
   createLineChart(element: ElementRef, chartData: any, chartOption: any) {
     this.ctx = element.nativeElement.getContext('2d');
-    console.log('Chart Data:', chartData);
+    // console.log('Chart Data:', chartData);
     if(this.audiometricTestGroup.controls.TypeOfAudiogram.value === 'B'){
       chartData.datasets[1] = [];
     }
@@ -498,7 +498,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       { x: 6000, y: this.baseLineGroup.controls.L6000.value },
       { x: 8000, y: this.baseLineGroup.controls.L8000.value },
     ];
-    console.log('Line 482 ===>', this.audiometricTestGroup.controls.TypeOfAudiogram.value);
+    // console.log('Line 482 ===>', this.audiometricTestGroup.controls.TypeOfAudiogram.value);
 
     if(this.audiometricTestGroup.controls.TypeOfAudiogram.value === 'A') {
       this.RightAnnual = [
@@ -578,8 +578,8 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         }
       ]
     };
-    console.log('Right Frequency', rightFrequencyData);
-    console.log('Left Frequency', leftFrequencyData);
+    // console.log('Right Frequency', rightFrequencyData);
+    // console.log('Left Frequency', leftFrequencyData);
     
     
     this.createLineChart(this.frequencyChartRightEar, rightFrequencyData, this.lineChartOption);
@@ -587,21 +587,21 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
   }
   btnToggle() {
     this.audiometryResultForm.markAllAsTouched();
-    console.log(this.audiometryResultForm);
+    // console.log(this.audiometryResultForm);
     this.audiometryResultForm.value.audiometricResult.DateOfTest = this.audiometricTestGroup.controls.DateOfTest.value.format('DD/MM/YYYY');
 
 
       if(this.audiometryResultForm.valid) {
-      console.log('Valid');
+      // console.log('Valid');
 
         if(this.btnText === 'Show Graph') { 
-        console.log("API Fired");
+        // console.log("API Fired");
         const audiometryResultDataPayLoad = {
           // audiometricResult: {
           ...this.audiometryResultForm.value
           // }
         }
-        console.log(audiometryResultDataPayLoad);
+        // console.log(audiometryResultDataPayLoad);
 
         this.audiometricService.addEditAudiometricResult(audiometryResultDataPayLoad)
         .pipe(takeUntil(this.onDestroyUnSubscribe))
@@ -635,7 +635,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       
     this.showHide = !this.showHide;
 
-    console.log(this.showHide);
+    // console.log(this.showHide);
 
     if (this.showHide) {
       this.btnText = 'Show Graph';
@@ -643,7 +643,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       this.btnText = 'Hide Graph';
     }
     } else {
-      console.log('Invalid');
+      // console.log('Invalid');
       this.snackBar.open('Error!! Required fields need to be filled before viewing the graph.', 'Close', {
         panelClass: 'error-popup',
       });
@@ -652,17 +652,17 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.audiometryResultForm.markAllAsTouched();
-    console.log(this.audiometryResultForm);
+    // console.log(this.audiometryResultForm);
     this.audiometryResultForm.value.audiometricResult.DateOfTest = this.audiometricTestGroup.controls.DateOfTest.value.format('DD/MM/YYYY');
 
     if (this.audiometryResultForm.valid) {
-      console.log('Valid');
+      // console.log('Valid');
       const audiometryResultDataPayLoad = {
         // audiometricResult: {
         ...this.audiometryResultForm.value
         // }
       }
-      console.log(audiometryResultDataPayLoad);
+      // console.log(audiometryResultDataPayLoad);
 
       this.audiometricService.addEditAudiometricResult(audiometryResultDataPayLoad)
         .pipe(takeUntil(this.onDestroyUnSubscribe))
@@ -690,7 +690,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
           }
         });
     } else {
-      console.log('Invalid');
+      // console.log('Invalid');
       this.snackBar.open('Error!! Required fields need to be filled before Submit.', 'Close', {
         panelClass: 'error-popup',
       });

@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.authenticationService.login(this.loginForm.value)
         .pipe(takeUntil(this.onDestroyUnSubscribe))
         .subscribe((loggedIn: any) => {
-          console.log(loggedIn);
+          // console.log(loggedIn);
           if (loggedIn['status'] == 200) {
-            console.log('After Login');
+            // console.log('After Login');
             this.loginData = loggedIn;
             // console.log(this.loginData);
             localStorage.setItem('authKey', loggedIn['user']['authKey']);

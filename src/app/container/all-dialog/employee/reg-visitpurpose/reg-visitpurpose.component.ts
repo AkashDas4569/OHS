@@ -78,14 +78,14 @@ export class RegVisitpurposeComponent implements OnInit {
         if(this.allOHDDoctorList.length === 1) {
           this.formControls.OHDDoctorId.setValue(+this.allOHDDoctorList[0].Id);
         }
-        console.log(this.allOHDDoctorList);
+        // console.log(this.allOHDDoctorList);
     });
   }
 
   onSelectChange(event: any) {
     // console.log(event);
     this.purposeId = event.value;
-    console.log('Purpose Id:', this.purposeId);
+    // console.log('Purpose Id:', this.purposeId);
   }
   onSubmit() {
     this.visitPurpose.markAllAsTouched();
@@ -108,7 +108,7 @@ export class RegVisitpurposeComponent implements OnInit {
           OHDDoctorId: +(this.visitPurpose.value.OHDDoctorId)
           }
         }
-        console.log(visitPurposeDataPayLoadForMedicalSurveillance);
+        // console.log(visitPurposeDataPayLoadForMedicalSurveillance);
 
         this.medicalSurveillanceService.addMedicalSurveillance(visitPurposeDataPayLoadForMedicalSurveillance)
             .pipe(takeUntil(this.onDestroyUnSubscribe))
@@ -137,7 +137,7 @@ export class RegVisitpurposeComponent implements OnInit {
           OHDDoctorId: +(this.visitPurpose.value.OHDDoctorId)
           }
         }
-        console.log(visitPurposeDataPayLoadForAudiometric);
+        // console.log(visitPurposeDataPayLoadForAudiometric);
 
       this.audiometricService.addAudiometric(visitPurposeDataPayLoadForAudiometric)
             .pipe(takeUntil(this.onDestroyUnSubscribe))

@@ -84,22 +84,22 @@ export class AbnormalExamResultsComponent implements OnInit, OnDestroy {
     .pipe(takeUntil(this.onDestroyUnSubscribe))
     .subscribe((abnormalExamReport: any) => {
       this.abnormalExamResultDetails = abnormalExamReport['MedAbnormalResult'];
-      console.log(this.abnormalExamResultDetails);
+      // console.log(this.abnormalExamResultDetails);
       
       this.noDataText = 'No Data Found.';
     });
   }
   onSubmit() {
     this.abnormalExamResultForm.markAllAsTouched();
-    console.log(this.abnormalExamResultForm);
+    // console.log(this.abnormalExamResultForm);
     this.abnormalExamResultForm.value.FromDate = this.formControls.FromDate.value.format('DD/MM/YYYY');
     this.abnormalExamResultForm.value.ToDate = this.formControls.ToDate.value.format('DD/MM/YYYY');
 
     if(this.abnormalExamResultForm.valid) {
-      console.log('Valid');
+      // console.log('Valid');
       this.getAbnormalExamResults();
     } else {
-      console.log('Invalid');
+      // console.log('Invalid');
     }
   }
 

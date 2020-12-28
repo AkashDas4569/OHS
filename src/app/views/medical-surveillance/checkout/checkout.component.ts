@@ -48,12 +48,12 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.employeeTestVisitId = +params['eTestVisitId'];
       this.doctorId = +params['dId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
-      console.log('doctorId: ', this.doctorId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('doctorId: ', this.doctorId);
     });
     this.userId = Number(this.authenticationService.getUserLoggedInID());
-    console.log(this.userId);
+    // console.log(this.userId);
 
     this.checkoutForm = this.fb.group({
       // Id: [0],
@@ -105,7 +105,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     .subscribe((checkoutData: any) => {
       if (checkoutData['status'] == 200) {
         this.checkoutDetails = checkoutData['medSurCheckOut'];
-          console.log(this.checkoutDetails);
+          // console.log(this.checkoutDetails);
 
           this.checkedTrue();
       }
@@ -123,7 +123,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.checkoutForm.markAllAsTouched();
-    console.log(this.checkoutForm);
+    // console.log(this.checkoutForm);
 
     if (this.checkoutForm.valid) {
       const checkoutDataPayLoad = {
@@ -131,12 +131,12 @@ export class CheckoutComponent implements OnInit, OnDestroy {
           ...this.checkoutForm.value
         }
       }
-      console.log(checkoutDataPayLoad);
+      // console.log(checkoutDataPayLoad);
 
       this.medicalSurveillanceService.addEditCheckout(checkoutDataPayLoad)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if(response['status'] == 200) {
           this.snackBar.open('Employee CheckOut Successfully', 'Close', {
             panelClass: 'success-popup',

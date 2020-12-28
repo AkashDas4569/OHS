@@ -59,7 +59,7 @@ export class AudiometricTestComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   onChangeStatus(employeeAudiometricQueue: any) {
-    console.log(employeeAudiometricQueue)
+    // console.log(employeeAudiometricQueue)
     if (employeeAudiometricQueue.SelectedStatus) {
       // if (patientQueue.SelectedStatus === patientQueue.CurrentStatus) {
       this.queueNavigate(employeeAudiometricQueue);
@@ -72,7 +72,7 @@ export class AudiometricTestComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   private queueNavigate(employeeAudiometricQueue: any) {
-    console.log(employeeAudiometricQueue.SelectedStatus);
+    // console.log(employeeAudiometricQueue.SelectedStatus);
     switch (employeeAudiometricQueue.SelectedStatus) {
       case EmployeeAudiometricQueueStatus.OccupationalNoiseExposure: {
         this.router.navigate(['/audiometric', 'status', 'occupational-noise-exposure', employeeAudiometricQueue.EmpId, employeeAudiometricQueue.EmployeeTestVisitID]);
@@ -107,14 +107,14 @@ export class AudiometricTestComponent implements OnInit, AfterViewInit, OnDestro
         });
 
         this.queueStatus = result['AudTstStatusList'];
-        console.log(this.queueStatus);
+        // console.log(this.queueStatus);
       });
   }
   loadAudiometricQueueStatus() {
     this.lookupService.getAudiometricQueueStatusList()
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((result: any) => {
-        console.log(result);
+        // console.log(result);
       });
   }
   loadEmployeeAudiometricQueue(loader: string) {
@@ -126,7 +126,7 @@ export class AudiometricTestComponent implements OnInit, AfterViewInit, OnDestro
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((employeeAudiometricData: any) => {
         this.allEmployeeQueues = employeeAudiometricData['checkInAud'];
-        console.log(this.allEmployeeQueues);
+        // console.log(this.allEmployeeQueues);
 
         this.noDataText = 'No Data Found';
       });
@@ -139,7 +139,7 @@ export class AudiometricTestComponent implements OnInit, AfterViewInit, OnDestro
     .pipe(takeUntil(this.onDestroyUnSubscribe))
         .subscribe((employeeMedSurCheckoutData: any) => {
           this.allEmployeeCheckoutQueues = employeeMedSurCheckoutData['checkOutAud'];
-          console.log(this.allEmployeeCheckoutQueues);
+          // console.log(this.allEmployeeCheckoutQueues);
           this.noDataText = 'No Data Found';
         });
   }

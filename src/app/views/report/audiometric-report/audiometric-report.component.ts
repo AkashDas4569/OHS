@@ -88,7 +88,7 @@ export class AudiometricReportComponent implements OnInit, OnDestroy {
       skip: pageNumber,
       take: this.pageSize
     };
-    console.log(audiometricDataPayLoad);
+    // console.log(audiometricDataPayLoad);
     this.noDataText = `Please wait while we're fetching your data...`;
 
     this.reportsService.getAudiometricReport(audiometricDataPayLoad)
@@ -97,10 +97,10 @@ export class AudiometricReportComponent implements OnInit, OnDestroy {
       this.audiometricResultDetails = audiometricResultDetails['AudiometricReport'];
       this.totalDocuments = audiometricResultDetails['totalNumber'];
       this.numberOfPages = Math.ceil(this.totalDocuments/this.pageSize);
-      console.log('No. of Pages: ', this.numberOfPages);
-      console.log('Total Number: ', this.totalDocuments);
+      // console.log('No. of Pages: ', this.numberOfPages);
+      // console.log('Total Number: ', this.totalDocuments);
 
-      console.log(this.audiometricResultDetails);
+      // console.log(this.audiometricResultDetails);
       this.noDataText = 'No Data Found.';
     });
   }
@@ -127,23 +127,23 @@ export class AudiometricReportComponent implements OnInit, OnDestroy {
     // console.log(data);
     // console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
     const url = '/report-result/audiometric-report-result/' + data.EmployeeID + '/' + data.EmployeeOHSTestVisitID
-    console.log(url);
+    // console.log(url);
     
     window.open(url, "_blank");
   }
 
   onSubmit() {
     this.audiometricResultForm.markAllAsTouched();
-    console.log(this.audiometricResultForm);
+    // console.log(this.audiometricResultForm);
     this.audiometricResultForm.value.FromDate = this.formControls.FromDate.value.format('DD/MM/YYYY');
     this.audiometricResultForm.value.ToDate = this.formControls.ToDate.value.format('DD/MM/YYYY');
 
     this.currentPage = 1;
     if(this.audiometricResultForm.valid) {
-      console.log('Valid');
+      // console.log('Valid');
       this.getAudiometricReport(this.pageSize, this.currentPage);
     } else {
-      console.log('Invalid');
+      // console.log('Invalid');
     }
   }
 }

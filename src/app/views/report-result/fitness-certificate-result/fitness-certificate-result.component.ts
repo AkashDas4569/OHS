@@ -44,8 +44,8 @@ export class FitnessCertificateResultComponent implements OnInit, OnDestroy {
       this.employeeId = +params['eId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
     });
 
     this.getMedicalCertificateFitnessReport();
@@ -70,12 +70,12 @@ export class FitnessCertificateResultComponent implements OnInit, OnDestroy {
     .subscribe((medicalCertificateFitnessData: any) => {
       if (medicalCertificateFitnessData['status'] == 200) {
         this.medicalCertificateFitnessDetails = medicalCertificateFitnessData['MedicalCertificate'];
-        console.log('Medical Certificate ==>', this.medicalCertificateFitnessDetails);
+        // console.log('Medical Certificate ==>', this.medicalCertificateFitnessDetails);
 
         this.empAddress = [this.medicalCertificateFitnessDetails?.Addr1, this.medicalCertificateFitnessDetails?.City, this.medicalCertificateFitnessDetails?.State];
 
         this.empAddress = this.empAddress.filter((item: any) => item).join(', ');
-        console.log('Emp Address', this.empAddress);
+        // console.log('Emp Address', this.empAddress);
       }
     });  
   }
@@ -84,16 +84,16 @@ export class FitnessCertificateResultComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((allOhdClinic: any) => {
         this.allOhdClinic = allOhdClinic['ohdClinic'];
-        console.log(this.allOhdClinic);
+        // console.log(this.allOhdClinic);
 
         this.clinicAddress = [this.allOhdClinic.cAddr1, this.allOhdClinic.cAddr2, this.allOhdClinic.cCity, this.allOhdClinic.cPostCode, this.allOhdClinic.cState];
         this.clinicAddress = this.clinicAddress.filter((item:any) => item).join(', ');
 
-        console.log('Clinic Address', this.clinicAddress);
+        // console.log('Clinic Address', this.clinicAddress);
       });
   }
   downloadPdf() {
-    console.log('Pdf Download');
+    // console.log('Pdf Download');
     window.print();
   }
   closePdf() {

@@ -44,9 +44,9 @@ export class ExamOutcomeRecordComponent implements OnInit, OnDestroy {
       this.employeeTestVisitId = +params['eTestVisitId'];
       this.doctorId = +params['dId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
-      console.log('doctorId: ', this.doctorId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('doctorId: ', this.doctorId);
     });
 
     this.examOutcomeForm = this.fb.group({
@@ -115,7 +115,7 @@ export class ExamOutcomeRecordComponent implements OnInit, OnDestroy {
       .subscribe((examOutcomeData: any) => {
         if (examOutcomeData['status'] == 200) {
           this.examOutcomeDetails = examOutcomeData['examOutcome'];
-          console.log(this.examOutcomeDetails);
+          // console.log(this.examOutcomeDetails);
 
           
           this.examOutcomeForm.patchValue({
@@ -147,7 +147,7 @@ export class ExamOutcomeRecordComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.examOutcomeForm.markAllAsTouched();
-    console.log(this.examOutcomeForm);
+    // console.log(this.examOutcomeForm);
 
     if (this.examOutcomeForm.valid) {
       const examOutcomeDataPayLoad = {
@@ -155,12 +155,12 @@ export class ExamOutcomeRecordComponent implements OnInit, OnDestroy {
           ...this.examOutcomeForm.value
         }
       }
-      console.log(examOutcomeDataPayLoad);
+      // console.log(examOutcomeDataPayLoad);
 
       this.medicalSurveillanceService.addEditExamOutCome(examOutcomeDataPayLoad)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response['status'] == 200) {
           if ((this.examOutcomeForm.value.Id > 0) && (this.examOutcomeForm.value.RecosId > 0)) {
             this.snackBar.open('Updated Successfully', 'Close', {

@@ -46,7 +46,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, OnDestroy {
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log(state.url, next.data.title);
+    // console.log(state.url, next.data.title);
     if (this.authenticationService.getToken()) {
       this.titleService.setTitle(`${next.data.title} - OHS`);
       // Not logged so return true
@@ -58,7 +58,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, OnDestroy {
     }
   }
   private logout() {
-    console.log('Logout');
+    // console.log('Logout');
     this.authenticationService.logOut({})
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((loggedOut: any) => {

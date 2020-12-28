@@ -58,9 +58,9 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
       this.employeeTestVisitId = +params['eTestVisitId'];
       this.doctorId = +params['dId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
-      console.log('doctorId: ', this.doctorId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('doctorId: ', this.doctorId);
     });
 
     this.physicalExamForm = this.fb.group({
@@ -201,7 +201,7 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
       .subscribe((physicalExamData: any) => {
         if(physicalExamData['status'] == 200) {
             this.physicalExamDetails = physicalExamData['msPhysicalExam'];
-            console.log(this.physicalExamDetails);
+            // console.log(this.physicalExamDetails);
             
             this.physicalExamForm.patchValue({
               Id: this.physicalExamDetails.Id,
@@ -376,7 +376,7 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
     }
   }
   clearInput(ipField: string){
-    console.log(ipField);
+    // console.log(ipField);
     // if((ipField === 'OtherSpecify') || (ipField === 'Immunization') || (ipField === 'Other')) {
     //   this.formControls[ipField].reset();
     //   this.formControls[ipField].clearValidators();
@@ -397,7 +397,7 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.physicalExamForm.markAllAsTouched();
-    console.log(this.physicalExamForm);
+    // console.log(this.physicalExamForm);
 
     if (this.physicalExamForm.valid) {
       const physicalExamDataPayLoad = {
@@ -405,12 +405,12 @@ export class PhysicalExamComponent implements OnInit, OnDestroy {
           ...this.physicalExamForm.value
         }
       }
-      console.log(physicalExamDataPayLoad);
+      // console.log(physicalExamDataPayLoad);
 
       this.medicalSurveillanceService.addEditPhysicalExam(physicalExamDataPayLoad)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response['status'] == 200) {
           if (this.physicalExamForm.value.Id > 0) {
             this.snackBar.open('Updated Successfully', 'Close', {

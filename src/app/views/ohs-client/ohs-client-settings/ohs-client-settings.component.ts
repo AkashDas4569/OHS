@@ -84,7 +84,7 @@ export class OhsClientSettingsComponent implements OnChanges, OnInit, OnDestroy 
       if(isNaN(this.clientId)) {
         this.clientId = 0;
       }
-      console.log(this.clientId);
+      // console.log(this.clientId);
 
       this.getClientDetails();
     });
@@ -207,7 +207,7 @@ export class OhsClientSettingsComponent implements OnChanges, OnInit, OnDestroy 
         .subscribe((response: any) => {
           if(response['status'] == 200) {
             this.clientDetails = response['client'];
-            console.log(this.clientDetails);
+            // console.log(this.clientDetails);
 
             this.ohsClientSettingsForm.patchValue({
               Id: this.clientDetails.Id,
@@ -279,8 +279,8 @@ export class OhsClientSettingsComponent implements OnChanges, OnInit, OnDestroy 
       }
     }
 
-      console.log('Valid', this.ohsClientSettingsForm);
-      console.log(this.addEditOhsClientDataPayLoad);
+      // console.log('Valid', this.ohsClientSettingsForm);
+      // console.log(this.addEditOhsClientDataPayLoad);
 
       this.ohsClientService.addEditOhsClientModule(this.addEditOhsClientDataPayLoad)
         .pipe(takeUntil(this.onDestroyUnSubscribe))
@@ -308,8 +308,8 @@ export class OhsClientSettingsComponent implements OnChanges, OnInit, OnDestroy 
           }
         });
     } else {
-      console.log('In-Valid', this.ohsClientSettingsForm);
-      console.log(this.addEditOhsClientDataPayLoad);
+      // console.log('In-Valid', this.ohsClientSettingsForm);
+      // console.log(this.addEditOhsClientDataPayLoad);
       this.snackBar.open('Error!! Required fields need to be filled before Submit.', 'Close', {
         panelClass: 'error-popup',
       });

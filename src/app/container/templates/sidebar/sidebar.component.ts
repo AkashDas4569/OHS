@@ -37,7 +37,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userRoleId = this.authenticationService.getUserRolesId();
-    console.log(this.userRoleId);
+    // console.log(this.userRoleId);
     
     // this.isDarkmodeActive = JSON.parse(localStorage.getItem('isDarkmodeActive'));
     // if (this.isDarkmodeActive) {

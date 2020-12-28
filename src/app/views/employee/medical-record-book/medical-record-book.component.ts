@@ -56,12 +56,12 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
       this.employeeTestVisitId = +params['eTestVisitId'];
       this.doctorId = +params['dId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
-      console.log('doctorId: ', this.doctorId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('doctorId: ', this.doctorId);
     });
     this.userId = Number(this.authenticationService.getUserLoggedInID());
-    console.log(this.userId);
+    // console.log(this.userId);
     
     this.medicalRecordBookForm = this.fb.group({
       Id: [0],
@@ -115,7 +115,7 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
       .subscribe((medicalRecordBookData: any) => {
         if (medicalRecordBookData['status'] == 200) {
           this.medicalRecordBookDetails = medicalRecordBookData['msRecordBook'];
-          console.log(this.medicalRecordBookDetails);
+          // console.log(this.medicalRecordBookDetails);
 
           this.medicalRecordBookForm.patchValue({
             Id: this.medicalRecordBookDetails.Id,
@@ -142,15 +142,15 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
   //   }
   // }
   imageFileSelected(event: any) {
-    console.log(event.target.files);
+    // console.log(event.target.files);
 
     if (event.target.files && event.target.files[0]) {
       this.imageFile = event.target.files[0];
-      console.log(this.imageFile);
+      // console.log(this.imageFile);
 
       this.file = this.imageFile.name.split('.').pop();
       this.imageId = event.target.id;
-      console.log(this.imageId);
+      // console.log(this.imageId);
       
       if ((this.file === 'png' || this.file === 'PNG') || (this.file === 'jpg' || this.file === 'JPG') || (this.file === 'jpeg' || this.file === 'JPEG')) {
         const reader = new FileReader();
@@ -165,7 +165,7 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
         reader.readAsDataURL(this.imageFile);
         this.selectedName = this.imageFile.name;
         this.selectedFile = event.target.files[0];
-        console.log(this.selectedName);
+        // console.log(this.selectedName);
         // this.formControls.File.setValue(event.target.files[0].name);
       } else {
         this.selectedName = 'Upload Company Logo';
@@ -178,7 +178,7 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.medicalRecordBookForm.markAllAsTouched();
-    console.log(this.medicalRecordBookForm);
+    // console.log(this.medicalRecordBookForm);
 
     if (this.medicalRecordBookForm.valid) {
       const medicalRecordBookDataPayLoad = {
@@ -186,12 +186,12 @@ export class MedicalRecordBookComponent implements OnInit, OnDestroy {
           ...this.medicalRecordBookForm.value
         }
       }
-      console.log(medicalRecordBookDataPayLoad);
+      // console.log(medicalRecordBookDataPayLoad);
 
       this.medicalSurveillanceService.addEditRecordBook(medicalRecordBookDataPayLoad)
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response['status'] == 200) {
           if (this.medicalRecordBookForm.value.Id > 0) {
             this.snackBar.open('Updated Successfully', 'Close', {

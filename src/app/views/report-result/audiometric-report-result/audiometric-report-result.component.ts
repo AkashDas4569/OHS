@@ -95,8 +95,8 @@ export class AudiometricReportResultComponent implements OnInit, OnDestroy {
       this.employeeId = +params['eId'];
       this.employeeTestVisitId = +params['eTestVisitId'];
 
-      console.log('employeeId: ', this.employeeId);
-      console.log('employeeTestVisitId: ', this.employeeTestVisitId);
+      // console.log('employeeId: ', this.employeeId);
+      // console.log('employeeTestVisitId: ', this.employeeTestVisitId);
     });
 
     this.getAudiometricDetails();
@@ -122,7 +122,7 @@ export class AudiometricReportResultComponent implements OnInit, OnDestroy {
         this.gender = ((this.employeeDetails.Gender === 'M') ? 'Male' : 'Female');
         // this.maritalStatus = ((this.employeeDetails.MartialStatus === 'S') ? 'Single' : 'Married');
 
-        console.log(this.employeeDetails);
+        // console.log(this.employeeDetails);
       }
     });
 
@@ -131,7 +131,7 @@ export class AudiometricReportResultComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((result: any) => {
         this.employeeDetailsById = result['employeeDataForMedicalConditionModel'];
-        console.log(this.employeeDetailsById);
+        // console.log(this.employeeDetailsById);
       });
 
     // Occupational Noise Exposure
@@ -146,7 +146,7 @@ export class AudiometricReportResultComponent implements OnInit, OnDestroy {
       .subscribe((occupationalNoiseExposureData: any) => {
         if (occupationalNoiseExposureData['status'] == 200) {
           this.occupationalNoiseDetails = occupationalNoiseExposureData['occupationalNoiseExpo'];
-          console.log('occupationalNoiseExpo', this.occupationalNoiseDetails);
+          // console.log('occupationalNoiseExpo', this.occupationalNoiseDetails);
         }
       });
 
@@ -162,7 +162,7 @@ export class AudiometricReportResultComponent implements OnInit, OnDestroy {
       .subscribe((medicalHistoryData: any) => {
         if (medicalHistoryData['status'] == 200) {
           this.medicalHistoryDetails = medicalHistoryData['auMedHistory'];
-          console.log('MedicalHistory', this.medicalHistoryDetails);
+          // console.log('MedicalHistory', this.medicalHistoryDetails);
         }
       });
       
@@ -176,14 +176,14 @@ export class AudiometricReportResultComponent implements OnInit, OnDestroy {
       this.audiometricService.getAudiometricResultDetails(audiometricResult)
         .pipe(takeUntil(this.onDestroyUnSubscribe))
         .subscribe((audiometryResultData: any) => {
-          console.log(audiometryResultData);
+          // console.log(audiometryResultData);
           if (audiometryResultData['status'] == 200) {
             this.audiometryResultDetails = audiometryResultData['audiometricResult'];
             this.audiometryResultBaseLineDetails = audiometryResultData['audiometricBaseline'];
             this.audiometryResultAnnualDetails = audiometryResultData['audiometricAnnual']
-            console.log('Audiometric Result Details', this.audiometryResultDetails);
-            console.log('Audiometric Baseline Details', this.audiometryResultBaseLineDetails);
-            console.log('Audiometric Annual Details', this.audiometryResultAnnualDetails);
+            // console.log('Audiometric Result Details', this.audiometryResultDetails);
+            // console.log('Audiometric Baseline Details', this.audiometryResultBaseLineDetails);
+            // console.log('Audiometric Annual Details', this.audiometryResultAnnualDetails);
           }
 
           this.viewLineChart();
@@ -194,7 +194,7 @@ export class AudiometricReportResultComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.onDestroyUnSubscribe))
       .subscribe((allOhdClinic: any) => {
         this.allOhdClinic = allOhdClinic['ohdClinic'];
-        console.log('Clinic API', this.allOhdClinic);
+        // console.log('Clinic API', this.allOhdClinic);
       });
   }
   noDataCanvas(element: ElementRef) {
@@ -318,7 +318,7 @@ export class AudiometricReportResultComponent implements OnInit, OnDestroy {
 
 
   downloadPdf() {
-    console.log('Pdf Download');
+    // console.log('Pdf Download');
     window.print();
   }
   closePdf() {

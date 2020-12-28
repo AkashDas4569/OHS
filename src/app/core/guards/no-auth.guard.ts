@@ -27,7 +27,7 @@ export class NoAuthGuard implements CanActivateChild {
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log(state.url, next.data.title);
+    // console.log(state.url, next.data.title);
     if (!this.authenticationService.getToken()) {
       this.titleService.setTitle(`${next.data.title} - OHS`);
       // Not logged so return true
