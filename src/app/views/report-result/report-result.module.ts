@@ -9,7 +9,8 @@ import {
   AudiometricReportResultComponent,
   FitnessCertificateResultComponent,
   SummaryReportMedicalSurveillanceComponent,
-  MedicalRemovalProtectionComponent 
+  MedicalRemovalProtectionComponent,
+  MedicalRecordBookResultComponent
 } from './';
 
 
@@ -19,7 +20,8 @@ import {
     AudiometricReportResultComponent,
     FitnessCertificateResultComponent,
     SummaryReportMedicalSurveillanceComponent,
-    MedicalRemovalProtectionComponent
+    MedicalRemovalProtectionComponent,
+    MedicalRecordBookResultComponent
   ],
   imports: [
     CommonModule,

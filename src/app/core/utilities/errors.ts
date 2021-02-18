@@ -84,6 +84,14 @@ export const Errors: ErrorsInterface = {
   errorMsg: [
     { type: 'required', message: 'Field should not be empty.' },
   ],
+  NoYearsSmoked: [
+    { type: 'required', message: 'Field should not be empty.' },
+    { type: 'pattern', message: 'Only numbers are allowed' },
+  ],
+  NoOfCigaratesPerDay: [
+    { type: 'required', message: 'Field should not be empty.' },
+    { type: 'pattern', message: 'Only numbers are allowed' },
+  ],
   fax: [
     { type: 'required', message: 'Fax Number is required.' },
     { type: 'pattern', message: 'Only numbers are allowed' },

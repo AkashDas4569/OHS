@@ -70,7 +70,10 @@ export class AudiometricReportResultComponent implements OnInit, OnDestroy {
         scaleLabel: {
           labelString: 'dB',
           display: true
-        }
+        },
+        ticks: {
+          reverse: true
+      },
       }]
     }
   };

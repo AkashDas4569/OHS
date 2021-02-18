@@ -79,7 +79,10 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
         scaleLabel: {
           labelString: 'dB',
           display: true
-        }
+        },
+        ticks: {
+          reverse: true
+      },
       }]
     }
   };
@@ -428,7 +431,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       this.annualGroup.controls.AvgR1.enable();
     // }
     // if (this.annualGroup.controls.R2000.value > 0 && this.annualGroup.controls.R3000.value > 0 && this.annualGroup.controls.R4000.value > 0) {
-      const calculatedValue2 = (Number(this.annualGroup.controls.R2000.value) + Number(this.annualGroup.controls.R3000.value) + Number(this.annualGroup.controls.R4000.value)) / 3.00;
+      const calculatedValue2 = (Number(this.annualGroup.controls.R2000.value - this.baseLineGroup.controls.R2000.value) + Number(this.annualGroup.controls.R3000.value - this.baseLineGroup.controls.R3000.value) + Number(this.annualGroup.controls.R4000.value - this.baseLineGroup.controls.R4000.value)) / 3.00;
       const avgAnnualRightValue2 = parseFloat((calculatedValue2).toFixed(2));
       this.annualAvgRight2 = avgAnnualRightValue2;
 
@@ -446,7 +449,7 @@ export class AudiometryResultComponent implements OnInit, OnDestroy {
       this.annualGroup.controls.AvgL1.enable();
     // }
     // if (this.annualGroup.controls.L2000.value > 0 && this.annualGroup.controls.L3000.value > 0 && this.annualGroup.controls.L4000.value > 0) {
-      const calculatedValue2 = (Number(this.annualGroup.controls.L2000.value) + Number(this.annualGroup.controls.L3000.value) + Number(this.annualGroup.controls.L4000.value)) / 3.00;
+      const calculatedValue2 = (Number(this.annualGroup.controls.L2000.value - this.baseLineGroup.controls.L2000.value) + Number(this.annualGroup.controls.L3000.value - this.baseLineGroup.controls.L3000.value) + Number(this.annualGroup.controls.L4000.value - this.baseLineGroup.controls.L4000.value)) / 3.00;
       const avgAnnualLeftValue2 = parseFloat((calculatedValue2).toFixed(2));
       this.annualAvgLeft2 = avgAnnualLeftValue2;
 

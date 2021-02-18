@@ -134,13 +134,28 @@ export class MedicalConditionComponent implements OnInit, OnDestroy {
   valueToggle(name: string) {
     // this.formControls.Smoker.value != this.formControls.NonSmoker.value
    if(name === 'Smoker') {
-     this.formControls.Smoker.setValue(true);
+    this.formControls.Smoker.setValue(true);
     this.formControls.NonSmoker.setValue(false);
+    this.formControls.StoppedSmoking.setValue(false);
+    this.formControls.NoYearsSmoked.setValidators([Validators.required, Validators.pattern(/^[0-9]*$/)]);
+    this.formControls.NoOfCigaratesPerDay.setValidators([Validators.required, Validators.pattern(/^[0-9]*$/)]);
    }
    if(name === 'NonSmoker') {
     this.formControls.NonSmoker.setValue(true);
     this.formControls.Smoker.setValue(false);
+    this.formControls.StoppedSmoking.setValue(false);
+    this.formControls.NoYearsSmoked.setValidators(Validators.pattern(/^[0-9]*$/));
+    this.formControls.NoOfCigaratesPerDay.setValidators(Validators.pattern(/^[0-9]*$/));
    }
+   if(name === 'StoppedSmoking') {
+    this.formControls.NonSmoker.setValue(false);
+    this.formControls.Smoker.setValue(false);
+    this.formControls.StoppedSmoking.setValue(true);
+    this.formControls.NoYearsSmoked.setValidators([Validators.required, Validators.pattern(/^[0-9]*$/)]);
+    this.formControls.NoOfCigaratesPerDay.setValidators([Validators.required, Validators.pattern(/^[0-9]*$/)]);
+   }
+   this.formControls.NoYearsSmoked.updateValueAndValidity();
+   this.formControls.NoOfCigaratesPerDay.updateValueAndValidity();
   }
   getEmployeeById() {
     this.employeeService.getEmployeeById({ employeeID: this.employeeId })

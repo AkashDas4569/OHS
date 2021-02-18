@@ -6,13 +6,21 @@ import {
   AudiometricReportResultComponent,
   FitnessCertificateResultComponent,
   SummaryReportMedicalSurveillanceComponent,
-  MedicalRemovalProtectionComponent 
+  MedicalRemovalProtectionComponent,
+  MedicalRecordBookResultComponent 
 } from './';
 
 const routes: Routes = [
   {
     path: 'medical-surveillance-report-result/:eId/:eTestVisitId',
     component: MedicalSurveillanceReportResultComponent,
+    data: {
+      title: 'Medical Surveillance'
+    }
+  },
+  {
+    path: 'medical-record-book-result/:eId/:eTestVisitId',
+    component: MedicalRecordBookResultComponent,
     data: {
       title: 'Medical Record Book'
     }

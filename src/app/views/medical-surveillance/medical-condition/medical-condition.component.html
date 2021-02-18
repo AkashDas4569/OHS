@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="form-check-inline">
                                     <mat-label class="fs14 fw600">
-                                        <mat-checkbox formControlName="StoppedSmoking" color="primary">Stopped Smoking
+                                        <mat-checkbox formControlName="StoppedSmoking" color="primary" (change)="valueToggle('StoppedSmoking')">Stopped Smoking
                                         </mat-checkbox>
                                     </mat-label>
                                 </div>
@@ -100,6 +100,10 @@
                                     <mat-label class="fs14 fw600">No. of years smoked</mat-label>
                                     <input formControlName="NoYearsSmoked" autocomplete="off" matInput
                                         placeholder="Enter No. of years smoked" type="text">
+                                <mat-error
+                                        *ngIf="errorState(formControls['NoYearsSmoked'], 'NoYearsSmoked').message">
+                                        {{ errorState(formControls['NoYearsSmoked'], 'NoYearsSmoked').message }}
+                                </mat-error>
                                 </mat-form-field>
                                 <!-- <mat-label class="fs14 fw600">
                                          <mat-checkbox color="primary">No. of years smoked</mat-checkbox>
@@ -110,6 +114,10 @@
                                     <mat-label class="fs14 fw600">No. of cigeratte/day</mat-label>
                                     <input formControlName="NoOfCigaratesPerDay" autocomplete="off" matInput
                                         placeholder="Enter No. of cigeratte/day" type="text">
+                                <mat-error
+                                        *ngIf="errorState(formControls['NoOfCigaratesPerDay'], 'NoOfCigaratesPerDay').message">
+                                        {{ errorState(formControls['NoOfCigaratesPerDay'], 'NoOfCigaratesPerDay').message }}
+                                </mat-error>
                                 </mat-form-field>
                                 <!-- <mat-label class="fs14 fw600">
                                          <mat-checkbox color="primary">No. of cigeratte/day</mat-checkbox>

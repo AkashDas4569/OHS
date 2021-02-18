@@ -134,6 +134,15 @@ goToMedicalSurveillanceReport(data: any) {
 
   window.open(url, "_blank");
 }
+goToMedicalRecordBookReport(data: any) {
+console.log(data);
+  console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);
+
+  const url = '/report-result/medical-record-book-result/' + data.EmployeeID + '/' + data.EmployeeOHSTestVisitID
+  // console.log(url);
+
+  window.open(url, "_blank");
+}
 goToCertificateFitness(data: any) {
   // console.log(data);
   // console.log(data.EmployeeID, data.EmployeeOHSTestVisitID);

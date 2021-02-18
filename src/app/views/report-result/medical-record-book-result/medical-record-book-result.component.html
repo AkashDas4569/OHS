@@ -1,0 +1,101 @@
+<!-- PDF Viewer -->
+<body style="background-color: #fff !important;">
+    <section class="dashboard pb-5 pt-4 bg-adjust">
+        <div class="text-center pt-2 no-print">
+            <div class="btn btn-primary min-width btn-sm fs14 fw500 rounded-pill mr-2" type="button"
+                (click)="downloadPdf()">
+                <span>Print</span>
+            </div>
+            <div class="btn btn-danger min-width btn-sm fs14 fw500 rounded-pill" type="button"
+                (click)="closePdf()">
+                <span>Close</span>
+            </div>
+        </div>
+
+        <div id="pdfTable">
+            <div class="col-md-12 col-xs-12 col-sm-12 col-12 dashboard pt-3">
+                <!-- Start Employee Medical Record Book -->
+            <div class="row m-0">
+                <div class="col-sm-12 col-xs-12 pt-5 mt-4 pb-4">
+                    <div class="text-right pt-2 pb-1">
+                        <!-- <img [src]="websiteLogo" alt="Sihatku" class="logo"> -->
+                        <p class="pr-3" style="border-bottom: 2px solid #000;">Guidelines on Medical Surveillance</p>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 d-flex justify-content-end pt-0 pb-2">
+                        <p class="pr-2 mr-2 fw700 fs20">USECHH 2</p>
+                    </div>
+                    <div class="pb-5 mb-2 mt-2 bg-white w-100">
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 col-12 pt-3">
+                                    <div class="row pl-4 pr-4 pt-4">
+                                        <div class="col-sm-6 col-xs-12 mx-auto text-center p-4 mt-4 mb-5 d-block" style="width:100%; border:2px solid #000;">
+                                            <div class="col-sm-12 col-xs-12 pb-3">
+                                                <p class="text-center fs12 fw500 pt-3">
+                                                <small class="w-space-normal">(USE AND STANDARD OF EXPOSURE OF CHEMICALS HAZARDOUS TO HEALTH)<br>
+                                                  REGULATIONS 2000
+                                                </small>
+                                                </p>           
+                                            </div> 
+            
+                                            <div class="col-sm-12 col-xs-12 text-center">
+                                                <p class="fw700 fs16 w-100 text-center pb-1">EMPLOYEE<br>
+                                                  MEDICAL RECORD BOOK
+                                                </p>
+                                                </div>
+                                          
+                                                  <div class="mt-1 mb-2">
+                                                    <img style="height: 90px; width: 90px;" src="assets/img/EMPLOYEE_LOGO.png" alt="Logo">
+                                                 </div>
+            
+                                                    <div class="ml-2 mr-2 mt-4 mb-3">
+                                                      <p class="text-start pt-3 pb-4">Name :  <span style="border-bottom: 1px solid #000;">{{employeeDetails?.EmpName}}</span> </p>
+                                                    </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-xs-12 col-12">
+                                        <div class="pb-5 mb-2 mt-1 mt-3 border w-100">
+                                            <div class="row pl-3 pr-3">
+                                       
+                                                       <div class="table-responsive mb-2 mt-0">
+                                                        <table class="table table-bordered"> 
+                                                          <thead>
+                                                            <tr>
+                                                              <th scope="col" class="text-black text-center">Date of Medical<br>
+                                                                Examination</th> 
+                                                              <th scope="col" class="text-black text-center">Result of Biological<br>
+                                                                Monitoring</th> 
+                                                              <th scope="col" class="text-black text-center">Fitness to Work<br>
+                                                                (Fit, Further Tests Needed)</th> 
+                                                              <th scope="col" class="text-black text-center">Name of OHD,<br>
+                                                                DOSH Reg. No.</th>                                          
+                                                            </tr>
+                                                          </thead>         
+                                                          <tbody>
+                                                            <tr>               
+                                                              <td class="text-center pb-6">{{medicalRecordBookDetails?.MedicalExamDate}}</td>   
+                                                              <td class="text-center pb-6">{{medicalRecordBookDetails?.ResultOfBioMonitor}}</td> 
+                                                              <td class="text-center pb-6">{{medicalRecordBookDetails?.FitToWork}}</td> 
+                                                              <td class="text-center pb-6">{{medicalCertificateFitnessDetails?.OHDName}},<br>
+                                                                {{medicalCertificateFitnessDetails?.DOSHRegNo}}</td>                                  
+                                                            </tr>           
+                                                          </tbody>
+                                                        </table>      
+                                                       </div>
+                                            </div>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xs-12 text-start mt-5 mb-2" style="width:100%; border-top: 2px solid #000 !important;">
+                    <p class="text-black fs16 pt-1 pl-0">Department of Occupational Safety and Health (DOSH) Malaysia</p>
+                </div>
+            </div>
+            <!-- End Employee Medical Record Book -->
+            </div>
+        </div>
+    </section>
+</body>

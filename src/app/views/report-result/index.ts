@@ -3,3 +3,4 @@ export { AudiometricReportResultComponent } from './audiometric-report-result/au
 export { FitnessCertificateResultComponent } from './fitness-certificate-result/fitness-certificate-result.component';
 export { SummaryReportMedicalSurveillanceComponent } from './summary-report-medical-surveillance/summary-report-medical-surveillance.component';
 export { MedicalRemovalProtectionComponent } from './medical-removal-protection/medical-removal-protection.component';
+export { MedicalRecordBookResultComponent } from './medical-record-book-result/medical-record-book-result.component';
